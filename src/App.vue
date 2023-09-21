@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue';
-import { useI18n } from 'vue-i18n';
+import { useTranslation } from "./hooks";
 
-const { t } = useI18n();
+const { t } = useTranslation();
 
 </script>
 
@@ -98,3 +98,4 @@ nav a:first-of-type {
   }
 }
 </style>
+@/hook

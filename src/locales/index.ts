@@ -1,12 +1,25 @@
 import { createI18n } from "vue-i18n";
-import { LANGUAGE_DATA_SOURCE, LANGUAGE_EN } from "@/constants";
-import messages from "./messages";
+import { Locales, LOCALE_KEYS } from "@/constants";
 
-export const i18n = createI18n({
-  legacy: false, // you must set `false`, to use Composition API. see more https://vue-i18n.intlify.dev/guide/advanced/composition.html
-  locale: LANGUAGE_EN.key,
-  messages,
+import en from "./en";
+import km from "./km";
 
-  availableLocales: LANGUAGE_DATA_SOURCE,
-  fallbackLocale: LANGUAGE_EN.key,
+// Type-define 'en-US' as the master schema for the resource
+export type MessageSchema = typeof en;
+
+export const i18n = createI18n<[MessageSchema], string>({
+  // you must set `false`, to use Composition API. see more https://vue-i18n.intlify.dev/guide/advanced/composition.html
+  legacy: false,
+
+  // Refer a global scope Composer instance of i18n
+  globalInjection: true,
+
+  locale: Locales.EN,
+  fallbackLocale: Locales.EN,
+  availableLocales: LOCALE_KEYS,
+
+  messages: {
+    [Locales.EN]: en,
+    [Locales.KH]: km,
+  },
 });
