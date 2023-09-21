@@ -1,1 +1,1 @@
-export * from "./Language";
+export * from "./Locale";
