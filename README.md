@@ -10,7 +10,26 @@
 
 ## Description
 
-The boilerplate of Vue 3 + Typescript + Vite + Pinia + Vue i18n for buildings efficient, faster, maintainable, and scalable for enterprise applications.
+The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind CSS, and Vue i18n for buildings efficient, faster, maintainable, and scalable for enterprise applications.
+
+## Table of Contents
+
+1.  [Core Dependencies](#core-dependencies)
+2.  [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+
+## Core Dependencies
+
+[&#8593; Back to top](#table-of-contents)
+
+- [Vue](https://vuejs.org/) ![React](https://img.shields.io/badge/v-%5E3.3.4-blue.svg)
+- [Typescript](https://www.typescriptlang.org/) ![Typescript](https://img.shields.io/badge/v-%5E5.2.0-blue.svg)
+- [Vue Router](https://router.vuejs.org/) ![Vue Router](https://img.shields.io/badge/v-%5E4.2.4-blue.svg)
+- [Vue i18n](https://vue-i18n.intlify.dev/) ![Vue i19n](https://img.shields.io/badge/v-%5E12.1.4-blue.svg)
+- [Pinia](https://pinia.vuejs.org/) ![Pinia](https://img.shields.io/badge/v-%5E2.1.6-blue.svg)
+- [Axios](https://www.npmjs.com/package/axios) ![Axios](https://img.shields.io/badge/v-%5E1.5.0-blue.svg)
+- [Tailwind CSS](https://tailwindcss.com/) ![Tailwind CSS](https://img.shields.io/badge/v-%5E3.3.3-blue.svg)
 
 ## Recommended IDE Setup
 
@@ -103,4 +122,4 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
     `npm run build`
 
-Happy Coding :)
+Happy Coding... :)
