@@ -2,11 +2,11 @@
 import { onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 
+import { useI18n } from './hooks';
 import BaseService from './services/BaseService';
-import { useTranslation } from "./hooks";
 import HelloWorld from './components/HelloWorld.vue';
 
-const { t } = useTranslation();
+const { t } = useI18n();
 
 onMounted(async () => {
   const user = await BaseService.get("https://jsonplaceholder.typicode.com/users/1");
