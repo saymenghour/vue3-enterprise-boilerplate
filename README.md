@@ -1,12 +1,17 @@
-# Vue 3 + TypeScript + Vite + Pinia + Vue i18n
+<div align="center">
+<a href="https://vuejs.org/" target="blank" style="margin: 0 1rem;"><img src="https://router.vuejs.org/logo.svg" width="80" alt="Vue Logo" /></a>
+<a href="https://www.typescriptlang.org/" target="blank" style="margin: 0 1rem;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1024px-Typescript_logo_2020.svg.png?20210506173343" width="80" alt="Typescript Logo" /></a>
+<a href="https://vitejs.dev/" target="blank" style="margin: 0 1rem;"><img src="https://vitejs.dev/logo.svg" width="80" alt="Vite 3 Logo" /></a>
+<a href="https://pinia.vuejs.org/" target="blank" style="margin: 0 1rem;"><img src="https://pinia.vuejs.org/logo.svg" width="50" alt="Pinia Logo" /></a>
+<a href="https://vue-i18n.intlify.dev/" target="blank" style="margin: 0 1rem;"><img src="https://vue-i18n.intlify.dev/vue-i18n-logo.svg" width="90" alt="Vue i18n Logo" /></a>
 
-<p align="center">
-  <a href="https://vuejs.org/" target="blank" style="margin: 0 1rem;"><img src="https://router.vuejs.org/logo.svg" width="80" alt="Vue Logo" /></a>
-  <a href="https://www.typescriptlang.org/" target="blank" style="margin: 0 1rem;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1024px-Typescript_logo_2020.svg.png?20210506173343" width="80" alt="Typescript Logo" /></a>
-  <a href="https://vitejs.dev/" target="blank" style="margin: 0 1rem;"><img src="https://vitejs.dev/logo.svg" width="80" alt="Vite 3 Logo" /></a>
-  <a href="https://pinia.vuejs.org/" target="blank" style="margin: 0 1rem;"><img src="https://pinia.vuejs.org/logo.svg" width="50" alt="Pinia Logo" /></a>
-  <a href="https://vue-i18n.intlify.dev/" target="blank" style="margin: 0 1rem;"><img src="https://vue-i18n.intlify.dev/vue-i18n-logo.svg" width="90" alt="Vue i18n Logo" /></a>
-</p>
+<br><br>
+
+[![license](https://img.shields.io/github/license/saymenghour/vue3-enterprise-boilerplate.svg)](LICENSE) [![repo-size](https://img.shields.io/github/repo-size/saymenghour/vue3-enterprise-boilerplate.svg)](repo-size) [![last-commit](https://img.shields.io/github/last-commit/saymenghour/vue3-enterprise-boilerplate.svg)](last-commit) [![stars](https://img.shields.io/github/stars/saymenghour/vue3-enterprise-boilerplate.svg)](stars) [![forks](https://img.shields.io/github/forks/saymenghour/vue3-enterprise-boilerplate.svg)](forks) [![release](https://img.shields.io/github/release/saymenghour/vue3-enterprise-boilerplate.svg)](release) [![watchers](https://img.shields.io/github/watchers/saymenghour/vue3-enterprise-boilerplate.svg)](watchers)
+
+<h1>Vue 3 + TypeScript + Vite + Pinia + Vue i18n</h1>
+
+</div>
 
 ## Description
 
@@ -123,3 +128,7 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
     `npm run build`
 
 Happy Coding... :)
+
+## License
+
+[MIT](./LICENSE)
