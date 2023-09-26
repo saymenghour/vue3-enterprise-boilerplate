@@ -1,5 +1,13 @@
 import type { RouteRecordRaw } from "vue-router";
+import { Permission } from "@/constants/Permission";
 
 export const privateRoutes: RouteRecordRaw[] = [
-  // import respective modules
+  {
+    path: "/dashboard",
+    name: "dashboard",
+    component: () => import("@/views/DashboardView.vue"),
+    meta: {
+      permissions: [Permission.VIEW_DASHBOARD]
+    }
+  }
 ];
