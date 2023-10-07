@@ -86,33 +86,53 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 2. Clone this repository to your computer:
 
-   `https://github.com/saymenghour/vue3-enterprise-boilerplate.git`
+   ```bash
+   https://github.com/saymenghour/vue3-enterprise-boilerplate.git
+   ```
 
 3. Go to project directory:
 
-   `cd vue3-enterprise-boilerplate`
+   ```bash
+   cd vue3-enterprise-boilerplate
+   ```
 
 4. Open project in VScode:
 
-   `code .`
+   ```bash
+   code .
+   ```
 
 5. Run command below to ignore git case-sensitive filename
 
-   `git config --global core.ignorecase false`
+   ```bash
+   git config --global core.ignorecase false
+   ```
 
 6. From the project's root directory, install the required packages (dependencies):
 
-   using [npm](https://www.npmjs.com/): `npm install` or `npm i`
+   using [npm](https://www.npmjs.com/):
 
-   using [pnpm](https://pnpm.io/): `pnpm install` or `pnpm i`
+   ```bash
+   npm install
+   ```
+
+   or using [pnpm](https://pnpm.io/):
+
+   ```bash
+   pnpm install
+   ```
 
 7. Create environment files:
 
-   `cp .env.example .env`
+   ```bash
+   cp .env.example .env
+   ```
 
    or for local development using
 
-   `cp .env .env.local`
+   ```bash
+   cp .env .env.local
+   ```
 
 8. Change its values appropriately
 
@@ -122,7 +142,9 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 9. To run the app on your local machine:
 
-   `npm run dev`
+   ```bash
+   npm run dev
+   ```
 
 10. Build for production
 
