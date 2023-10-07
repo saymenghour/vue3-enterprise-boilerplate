@@ -15,22 +15,26 @@ class BaseService {
 			const request = await HttpRequest.send(method, url, data, extraHeaders, extraConfig);
 			return request.data;
 		} catch (error: any) {
-			console.error(error);
-			const { data, status, statusText } = error.response;
-			throw data != ""
-				? data
-				: {
-					message: `${status} ${statusText}`,
-				};
+			if (error.code === "ERR_CANCELED") {
+				console.log('Request aborted:', error.message);
+			} else {
+				console.error(error.message);
+				const { data, status, statusText } = error.response;
+				throw data != ""
+					? data
+					: {
+						message: `${status} ${statusText}`,
+					};
+			}
 		}
 	}
 
-	get(
+	get<T = any>(
 		url: string,
 		queryParams?: any,
 		extraHeaders?: AxiosRequestHeaders,
 		extraConfig?: AxiosRequestConfig
-	) {
+	): Promise<T> {
 		if (queryParams) {
 			const query = queryString.stringify(queryParams);
 			url = url.indexOf("?") == -1 ? `${url}?${query}` : `${url}&${query}`;
@@ -38,30 +42,30 @@ class BaseService {
 		return this.sendRequest("GET", url, undefined, extraHeaders, extraConfig);
 	}
 
-	post(
+	post<T = any>(
 		url: string,
 		data: Record<string, any>,
 		extraHeaders?: AxiosRequestHeaders,
 		extraConfig?: AxiosRequestConfig
-	) {
+	): Promise<T> {
 		return this.sendRequest("POST", url, data, extraHeaders, extraConfig);
 	}
 
-	put(
+	put<T = any>(
 		url: string,
 		data: Record<string, any>,
 		extraHeaders?: AxiosRequestHeaders,
 		extraConfig?: AxiosRequestConfig
-	) {
+	): Promise<T> {
 		return this.sendRequest("PUT", url, data, extraHeaders, extraConfig);
 	}
 
-	delete(
+	delete<T = any>(
 		url: string,
 		data?: Record<string, any>,
 		extraHeaders?: AxiosRequestHeaders,
 		extraConfig?: AxiosRequestConfig
-	) {
+	): Promise<T> {
 		return this.sendRequest("DELETE", url, data, extraHeaders, extraConfig);
 	}
 

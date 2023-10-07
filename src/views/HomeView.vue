@@ -6,8 +6,14 @@ import BaseService from '@/services/BaseService';
 const controller = new AbortController();
 const signal = controller.signal;
 
+type Photo  = {
+  id: number,
+  title: string,
+  url: string,
+};
+
 onMounted(async () => {
-  const req = await BaseService.get("https://jsonplaceholder.typicode.com/photos", undefined, undefined, { signal });
+  const req = await BaseService.get<Photo[]>("https://jsonplaceholder.typicode.com/photos", undefined, undefined, { signal });
   console.log("photos", req);
 });
 
