@@ -12,7 +12,8 @@ class BaseService {
 		extraConfig?: Partial<AxiosRequestConfig>
 	) {
 		try {
-			return await HttpRequest.send(method, url, data, extraHeaders, extraConfig);
+			const request = await HttpRequest.send(method, url, data, extraHeaders, extraConfig);
+			return request.data;
 		} catch (error: any) {
 			console.error(error);
 			const { data, status, statusText } = error.response;
@@ -24,7 +25,7 @@ class BaseService {
 		}
 	}
 
-	async get(
+	get(
 		url: string,
 		queryParams?: any,
 		extraHeaders?: AxiosRequestHeaders,
@@ -37,16 +38,31 @@ class BaseService {
 		return this.sendRequest("GET", url, undefined, extraHeaders, extraConfig);
 	}
 
-	async post(url: string, data: Record<string, any>, extraHeaders?: AxiosRequestHeaders) {
-		return this.sendRequest("POST", url, data, extraHeaders);
+	post(
+		url: string,
+		data: Record<string, any>,
+		extraHeaders?: AxiosRequestHeaders,
+		extraConfig?: AxiosRequestConfig
+	) {
+		return this.sendRequest("POST", url, data, extraHeaders, extraConfig);
 	}
 
-	async put(url: string, data: Record<string, any>) {
-		return this.sendRequest("PUT", url, data);
+	put(
+		url: string,
+		data: Record<string, any>,
+		extraHeaders?: AxiosRequestHeaders,
+		extraConfig?: AxiosRequestConfig
+	) {
+		return this.sendRequest("PUT", url, data, extraHeaders, extraConfig);
 	}
 
-	async delete(url: string, data?: Record<string, any>) {
-		return this.sendRequest("DELETE", url, data);
+	delete(
+		url: string,
+		data?: Record<string, any>,
+		extraHeaders?: AxiosRequestHeaders,
+		extraConfig?: AxiosRequestConfig
+	) {
+		return this.sendRequest("DELETE", url, data, extraHeaders, extraConfig);
 	}
 
 }

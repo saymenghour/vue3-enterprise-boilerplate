@@ -35,8 +35,7 @@ export class HttpRequest {
 			...extraConfig,
 		};
 
-		const response = await axios(requestOptions);
-		return response.data;
+		return axios(requestOptions);
 	}
 
 }
