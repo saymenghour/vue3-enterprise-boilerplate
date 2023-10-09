@@ -1,17 +1,10 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 
 import { useI18n } from './hooks';
-import BaseService from './services/BaseService';
 import HelloWorld from './components/HelloWorld.vue';
 
 const { t } = useI18n();
-
-onMounted(async () => {
-  const user = await BaseService.get("https://jsonplaceholder.typicode.com/users/1");
-  console.log(user);
-});
 
 </script>
 
