@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "axios": "^1.5.1",
-    "pinia": "^2.1.6",
+    "pinia": "^2.1.7",
     "query-string": "^8.1.0",
     "vue": "^3.3.4",
     "vue-i18n": "^9.5.0",
@@ -23,7 +23,7 @@
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.5.1",
     "@tsconfig/node18": "^18.2.2",
-    "@types/node": "^18.18.4",
+    "@types/node": "^18.18.5",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "@vue/eslint-config-prettier": "^8.0.0",
@@ -38,6 +38,6 @@
     "tailwindcss": "^3.3.3",
     "typescript": "~5.2.0",
     "vite": "^4.4.11",
-    "vue-tsc": "^1.8.16"
+    "vue-tsc": "^1.8.19"
   }
 }

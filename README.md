@@ -33,7 +33,7 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 - [Typescript](https://www.typescriptlang.org/) ![Typescript](https://img.shields.io/badge/v-%5E5.2.0-blue.svg)
 - [Vue Router](https://router.vuejs.org/) ![Vue Router](https://img.shields.io/badge/v-%5E4.2.5-blue.svg)
 - [Vue i18n](https://vue-i18n.intlify.dev/) ![Vue i19n](https://img.shields.io/badge/v-%5E9.5.0-blue.svg)
-- [Pinia](https://pinia.vuejs.org/) ![Pinia](https://img.shields.io/badge/v-%5E2.1.6-blue.svg)
+- [Pinia](https://pinia.vuejs.org/) ![Pinia](https://img.shields.io/badge/v-%5E2.1.7-blue.svg)
 - [Axios](https://www.npmjs.com/package/axios) ![Axios](https://img.shields.io/badge/v-%5E1.5.1-blue.svg)
 - [Tailwind CSS](https://tailwindcss.com/) ![Tailwind CSS](https://img.shields.io/badge/v-%5E3.3.3-blue.svg)
 
@@ -82,73 +82,75 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 [&#8593; Back to top](#table-of-contents)
 
-1. Make sure you have a fresh version of [Node.js](https://nodejs.org/en) and NPM installed.
+1.  Make sure you have a fresh version of [Node.js](https://nodejs.org/en) and NPM installed.
 
-2. Clone this repository to your computer:
+2.  Clone this repository to your computer:
 
-   ```bash
-   https://github.com/saymenghour/vue3-enterprise-boilerplate.git
-   ```
+    ```bash
+    https://github.com/saymenghour/vue3-enterprise-boilerplate.git
+    ```
 
-3. Go to project directory:
+3.  Go to project directory:
 
-   ```bash
-   cd vue3-enterprise-boilerplate
-   ```
+    ```bash
+    cd vue3-enterprise-boilerplate
+    ```
 
-4. Open project in VScode:
+4.  Open project in VScode:
 
-   ```bash
-   code .
-   ```
+    ```bash
+    code .
+    ```
 
-5. Run command below to ignore git case-sensitive filename
+5.  Run command below to ignore git case-sensitive filename
 
-   ```bash
-   git config --global core.ignorecase false
-   ```
+    ```bash
+    git config --global core.ignorecase false
+    ```
 
-6. From the project's root directory, install the required packages (dependencies):
+6.  From the project's root directory, install the required packages (dependencies):
 
-   using [npm](https://www.npmjs.com/):
+    using [npm](https://www.npmjs.com/):
 
-   ```bash
-   npm install
-   ```
+    ```bash
+    npm install
+    ```
 
-   or using [pnpm](https://pnpm.io/):
+    or using [pnpm](https://pnpm.io/):
 
-   ```bash
-   pnpm install
-   ```
+    ```bash
+    pnpm install
+    ```
 
-7. Create environment files:
+7.  Create environment files:
 
-   ```bash
-   cp .env.example .env
-   ```
+    ```bash
+    cp .env.example .env
+    ```
 
-   or for local development using
+    or for local development using
 
-   ```bash
-   cp .env .env.local
-   ```
+    ```bash
+    cp .env .env.local
+    ```
 
-8. Change its values appropriately
+8.  Change its values appropriately
 
-   for example: `BASE_API_URL="http://localhost:8080"`
+    ```bash
+    BASE_API_URL="http://localhost:8080"
+    ```
 
-   or `BASE_API_URL="http://exmaple.com"`
+9.  To run the app on your local machine:
 
-9. To run the app on your local machine:
-
-   ```bash
-   npm run dev
-   ```
+    ```bash
+    npm run dev
+    ```
 
 10. Build for production
 
-    `npm run build`
+    ```bash
+    npm run build
+    ```
 
 Happy Coding... :)
 
