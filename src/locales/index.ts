@@ -3,6 +3,7 @@ import { Locales, LOCALE_KEYS } from "@/constants";
 
 import en from "./en";
 import km from "./km";
+import { getLocale } from "@/services/LocalStorage";
 
 // Type-define 'en-US' as the master schema for the resource
 export type MessageSchema = typeof en;
@@ -14,12 +15,12 @@ export const i18n = createI18n<[MessageSchema], string>({
   // Refer a global scope Composer instance of i18n
   globalInjection: true,
 
-  locale: Locales.EN,
+  locale: getLocale() ?? Locales.EN,
   fallbackLocale: Locales.EN,
   availableLocales: LOCALE_KEYS,
 
   messages: {
     [Locales.EN]: en,
-    [Locales.KH]: km,
+    [Locales.KM]: km,
   },
 });

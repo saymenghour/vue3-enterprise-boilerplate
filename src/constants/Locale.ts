@@ -1,6 +1,6 @@
 export enum Locales {
 	EN = 'en',
-	KH = 'kh',
+	KM = 'km',
 }
 
 export type LanguageType = {
@@ -15,9 +15,9 @@ export const LANGUAGES: LanguageType[] = [
 		label: "English",
 	},
 	{
-		value: Locales.KH,
+		value: Locales.KM,
 		label: "ភាសាខ្មែរ",
 	}
 ];
 
-export const LOCALE_KEYS: string[] = [Locales.EN, Locales.KH];
+export const LOCALE_KEYS: string[] = [Locales.EN, Locales.KM];
