@@ -1,5 +1,5 @@
 export default {
-  signIn: "Sing in",
+  signIn: "Sign in",
   forgotPassword: "Forgot password?",
   forgotYourPassword: "Forgot your password?",
 };

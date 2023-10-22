@@ -16,6 +16,7 @@
     "@vee-validate/zod": "^4.11.8",
     "@vueuse/core": "^10.5.0",
     "axios": "^1.5.1",
+    "element-plus": "^2.4.1",
     "pinia": "^2.1.7",
     "query-string": "^8.1.0",
     "vee-validate": "^4.11.8",
