@@ -1,6 +1,6 @@
 export default {
   login: {
-    username: "username@company.com",
+    username: "Enter your username",
     password: "Enter {passwordLength} characters or more"
   }
 };

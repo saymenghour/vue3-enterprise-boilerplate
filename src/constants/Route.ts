@@ -1,3 +1,4 @@
 export const RouteName = {
-  Login: "login"
+  Login: "login",
+  Dashboard: "dashboard",
 } as const;
