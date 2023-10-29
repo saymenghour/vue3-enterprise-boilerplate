@@ -114,15 +114,18 @@
 import { useMutation } from 'vue-query';
 import { useField, useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
+import { useRoute } from 'vue-router';
+
+import router from '@/router';
 import { useI18n } from '@/hooks';
+import { saveToken } from '@/services/LocalStorage';
+import { RouteName } from '@/constants/Route';
 import { loginSchema } from "./loginSchema";
 import { loginWithCredential } from './LoginService';
 import type { LoginForm } from './loginType';
-import { saveToken } from '@/services/LocalStorage';
-import router from '@/router';
-import { RouteName } from '@/constants/Route';
 
 const { t } = useI18n();
+const route = useRoute();
 
 const { handleSubmit, errors, resetForm } = useForm({
   validationSchema: toTypedSchema(loginSchema),
@@ -136,9 +139,13 @@ const { isLoading, error, mutate } = useMutation(
   {
     onSuccess: (response) => {
       const { accessToken, refreshToken, expiresAt, deviceId } = response.data;
-      saveToken(accessToken, refreshToken, expiresAt, deviceId);      
-      router.push({ name: RouteName.Dashboard });
+      saveToken(accessToken, refreshToken, expiresAt, deviceId);
       resetForm();
+      if (route.query?.redirect) {
+        router.push({ path: route.query.redirect as string, replace: true });
+      } else {
+        router.push({ name: RouteName.Dashboard, replace: true });
+      }
     },
   }
 );

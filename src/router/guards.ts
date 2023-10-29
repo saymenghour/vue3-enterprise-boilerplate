@@ -9,8 +9,9 @@ export const privateRoutesGuard: RouteRecordRaw[] = [
     beforeEnter: (to, from, next) => {
       // // see more https://router.vuejs.org/guide/advanced/meta.html
       // // see more https://router.vuejs.org/guide/advanced/navigation-guards.html
+      const login = { name: RouteName.Login, query: { redirect: to.fullPath } };
       if (!getAccessToken()) {
-        next({ name: RouteName.Login });
+        next(login);
       } else {
         const userPermissions: string[] = []; // ["READ:DASHBOARD"]
 
@@ -21,7 +22,7 @@ export const privateRoutesGuard: RouteRecordRaw[] = [
           // This logic check only meta.permissions is not empty array and redirect to login if user don't have permission
           permissions.forEach((routePermission) => {
             const hasPermission = userPermissions.includes(routePermission);
-            hasPermission ? next() : next({ name: RouteName.Login });
+            hasPermission ? next() : next(login);
           });
         }
       }

@@ -1,10 +1,18 @@
 import { RouteName } from "@/constants/Route";
+import { getAccessToken } from "@/services/LocalStorage";
 import type { RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
     path: "/login",
     name: RouteName.Login,
+    beforeEnter: (to, from, next) => {
+      if (!getAccessToken()) {
+        next();
+      } else {
+        next({ path: from.fullPath, replace: true });
+      }
+    },
     component: () => import("@/modules/authentication/LoginView.vue"),
   }
 ];
