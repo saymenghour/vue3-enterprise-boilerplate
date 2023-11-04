@@ -17,14 +17,15 @@ class BaseService {
 		} catch (error: any) {
 			if (error.code === "ERR_CANCELED") {
 				console.log('Request aborted:', error.message);
-			} else {
-				console.error(error.message);
+			} else if (error.response) {
 				const { data, status, statusText } = error.response;
 				throw data != ""
 					? data
 					: {
 						message: `${status} ${statusText}`,
 					};
+			} else {
+				throw error;
 			}
 		}
 	}

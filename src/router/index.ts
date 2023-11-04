@@ -1,12 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { VUE_BASE_PATH } from '@/constants';
 import { publicRoutes } from './publicRoutes';
-import { privateRoutes } from './privateRoutes';
+import { privateRoutesGuard } from './guards';
 
 const router = createRouter({
-  history: createWebHistory(process.env.VUE_BASE_PATH),
+  history: createWebHistory(VUE_BASE_PATH),
   routes: [
     ...publicRoutes,
-    ...privateRoutes
+    ...privateRoutesGuard,
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: () => import("@/modules/exception/NotFound.vue"),
+    }
   ]
 });
 

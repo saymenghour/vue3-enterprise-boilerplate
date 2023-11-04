@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BaseService from '@/services/BaseService';
 import { onMounted, onUnmounted } from 'vue';
-import { createAsyncAction } from "../utils/actionCreator";
+import BaseService from '@/services/BaseService';
+import { createAsyncAction } from "@/utils/actionCreator";
 
-type Photo  = {
+type Photo = {
   id: number,
   title: string,
   url: string,
@@ -55,11 +55,10 @@ onUnmounted(() => {
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .dashboard {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+.dashboard {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

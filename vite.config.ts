@@ -1,14 +1,20 @@
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, URL } from 'node:url';
 
-import { defineConfig, loadEnv, UserConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
+import { defineConfig, loadEnv, UserConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: UserConfig) => {
   const env = loadEnv(mode ?? "development", process.cwd(), "");
 
+  const basePath: string = env.VUE_BASE_PATH + "/";
+  const proxy: Record<string, string> = {
+    api: basePath + "api",
+  };
+
   return {
+    base: basePath,
     plugins: [
       vue(),
       vueJsx(),
@@ -20,6 +26,15 @@ export default defineConfig(({ mode }: UserConfig) => {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
-    }
-  }
-})
+    },
+    server: {
+      proxy: {
+        [proxy.api]: {
+          target: env.BASE_API_URL,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(basePath, ""),
+        },
+      },
+    },
+  };
+});
