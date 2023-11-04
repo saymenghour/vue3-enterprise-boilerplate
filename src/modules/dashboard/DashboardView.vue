@@ -3,7 +3,7 @@ import { onMounted, onUnmounted } from 'vue';
 import BaseService from '@/services/BaseService';
 import { createAsyncAction } from "@/utils/actionCreator";
 
-type Photo  = {
+type Photo = {
   id: number,
   title: string,
   url: string,
