@@ -2,7 +2,7 @@
   <div class="common-layout">
     <el-container>
       <Sider /> 
-      <el-container :class="'is-vertical'">
+      <el-container :class="'is-vertical dark:text-slate-400 dark:bg-slate-900'">
         <Header />
         <Content>
           <slot />

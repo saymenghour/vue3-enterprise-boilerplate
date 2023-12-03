@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "@vee-validate/zod": "^4.12.2",
     "@vueuse/core": "^10.6.1",
     "axios": "^1.6.2",
