@@ -2,6 +2,7 @@
 import { onMounted, onUnmounted } from 'vue';
 import BaseService from '@/services/BaseService';
 import { createAsyncAction } from "@/utils/actionCreator";
+import { MasterLayout } from "@/components";
 
 type Photo = {
   id: number,
@@ -49,9 +50,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="dashboard">
-    <h1>This is an dashboard page</h1>
-  </div>
+  <MasterLayout>
+    <div class="dashboard">
+      <h1>This is an dashboard page</h1>
+    </div>
+  </MasterLayout>
 </template>
 
 <style>

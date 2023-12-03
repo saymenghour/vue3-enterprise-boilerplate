@@ -32,10 +32,10 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 - [Vite](https://vitejs.dev/) ![Vite](https://img.shields.io/badge/v-%5E4.4.11-blue.svg)
 - [Typescript](https://www.typescriptlang.org/) ![Typescript](https://img.shields.io/badge/v-%5E5.2.0-blue.svg)
 - [Vue Router](https://router.vuejs.org/) ![Vue Router](https://img.shields.io/badge/v-%5E4.2.5-blue.svg)
-- [Vue i18n](https://vue-i18n.intlify.dev/) ![Vue i19n](https://img.shields.io/badge/v-%5E9.6.1-blue.svg)
+- [Vue i18n](https://vue-i18n.intlify.dev/) ![Vue i19n](https://img.shields.io/badge/v-%5E9.7.0-blue.svg)
 - [Vue Query](https://vue-query.vercel.app/) ![Vue i19n](https://img.shields.io/badge/v-%5E1.26.0-blue.svg)
 - [Pinia](https://pinia.vuejs.org/) ![Pinia](https://img.shields.io/badge/v-%5E2.1.7-blue.svg)
-- [Axios](https://www.npmjs.com/package/axios) ![Axios](https://img.shields.io/badge/v-%5E1.6.0-blue.svg)
+- [Axios](https://www.npmjs.com/package/axios) ![Axios](https://img.shields.io/badge/v-%5E1.6.2-blue.svg)
 - [Tailwind CSS](https://tailwindcss.com/) ![Tailwind CSS](https://img.shields.io/badge/v-%5E3.3.5-blue.svg)
 
 ## Recommended IDE Setup

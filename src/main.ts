@@ -9,10 +9,14 @@ import router from './router';
 import { i18n } from './locales';
 import "./services/api/AxiosInterceptor";
 
+import ElementPlus from 'element-plus';
+import 'element-plus/dist/index.css';
+
 const app = createApp(App)
   .use(createPinia())
   .use(router)
   .use(i18n)
-  .use(VueQueryPlugin);
+  .use(VueQueryPlugin)
+  .use(ElementPlus);
 
 app.mount('#app');

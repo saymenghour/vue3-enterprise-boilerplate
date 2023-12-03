@@ -11,7 +11,8 @@
   ],
   "compilerOptions": {
     "types": [
-      "node"
+      "node",
+      "element-plus/global"
     ],
     "composite": true,
     "baseUrl": ".",
