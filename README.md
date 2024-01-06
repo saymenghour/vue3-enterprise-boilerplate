@@ -28,15 +28,15 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 
 [&#8593; Back to top](#table-of-contents)
 
-- [Vue](https://vuejs.org/) ![Vue](https://img.shields.io/badge/v-%5E3.3.4-blue.svg)
-- [Vite](https://vitejs.dev/) ![Vite](https://img.shields.io/badge/v-%5E4.4.11-blue.svg)
-- [Typescript](https://www.typescriptlang.org/) ![Typescript](https://img.shields.io/badge/v-%5E5.2.0-blue.svg)
+- [Vue](https://vuejs.org/) ![Vue](https://img.shields.io/badge/v-%5E3.4.5-blue.svg)
+- [Vite](https://vitejs.dev/) ![Vite](https://img.shields.io/badge/v-%5E5.0.11-blue.svg)
+- [Typescript](https://www.typescriptlang.org/) ![Typescript](https://img.shields.io/badge/v-%5E5.3.3-blue.svg)
 - [Vue Router](https://router.vuejs.org/) ![Vue Router](https://img.shields.io/badge/v-%5E4.2.5-blue.svg)
 - [Vue i18n](https://vue-i18n.intlify.dev/) ![Vue i19n](https://img.shields.io/badge/v-%5E9.7.0-blue.svg)
 - [Vue Query](https://vue-query.vercel.app/) ![Vue i19n](https://img.shields.io/badge/v-%5E1.26.0-blue.svg)
 - [Pinia](https://pinia.vuejs.org/) ![Pinia](https://img.shields.io/badge/v-%5E2.1.7-blue.svg)
-- [Axios](https://www.npmjs.com/package/axios) ![Axios](https://img.shields.io/badge/v-%5E1.6.2-blue.svg)
-- [Tailwind CSS](https://tailwindcss.com/) ![Tailwind CSS](https://img.shields.io/badge/v-%5E3.3.5-blue.svg)
+- [Axios](https://www.npmjs.com/package/axios) ![Axios](https://img.shields.io/badge/v-%5E1.6.5-blue.svg)
+- [Tailwind CSS](https://tailwindcss.com/) ![Tailwind CSS](https://img.shields.io/badge/v-%5E3.4.1-blue.svg)
 
 ## Recommended IDE Setup
 
@@ -63,7 +63,7 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 [&#8593; Back to top](#table-of-contents)
 
-1. [Node Js](https://nodejs.org/en/) version `v18.18.0`. The current Long Term Support (LTS) release is an ideal starting point.
+1. [Node Js](https://nodejs.org/en/) version `v20.10.0`. The current Long Term Support (LTS) release is an ideal starting point.
 2. [Visual Studio Code](https://code.visualstudio.com/download). Visual Studio Code is the free and open-sourced code editor. It is one of the top most editor used especially for JavaScript application development.
 
    **Recommended Plugin for VSCode**

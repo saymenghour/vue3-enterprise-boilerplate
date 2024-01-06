@@ -25,9 +25,6 @@
               />
             </svg>
             <span class="sr-only">Info</span>
-            <div>
-              {{ error?.message }}
-            </div>
           </div>
           <form
             class="space-y-4 md:space-y-6"
