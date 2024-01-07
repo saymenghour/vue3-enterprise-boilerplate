@@ -1,7 +1,5 @@
 <template>
-  <el-main>
-    <slot />
-  </el-main>
+  This is user page
 </template>
 
 <script setup lang="ts">

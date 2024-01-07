@@ -116,10 +116,11 @@ import { useRoute } from 'vue-router';
 import router from '@/router';
 import { useI18n } from '@/hooks';
 import { saveToken } from '@/services/LocalStorage';
-import { RouteName } from '@/constants/Route';
+import { AppRoute } from '@/constants/Route';
 import { loginSchema } from "./loginSchema";
 import { loginWithCredential } from './LoginService';
 import type { LoginForm } from './loginType';
+import { ref } from 'vue';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -141,7 +142,7 @@ const { isLoading, error, mutate } = useMutation(
       if (route.query?.redirect) {
         router.push({ path: route.query.redirect as string, replace: true });
       } else {
-        router.push({ name: RouteName.Dashboard, replace: true });
+        router.push({ name: AppRoute.Dashboard, replace: true });
       }
     },
   }
@@ -151,4 +152,6 @@ const onSubmit = handleSubmit(({ username, password }) => {
   mutate({ username, password });
 });
 
-</script>@/constants/RouteName
+const isOpen = ref(false);
+
+</script>

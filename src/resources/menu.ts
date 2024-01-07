@@ -1,8 +1,9 @@
-import type { MenuItemType } from "@/types/menu";
+import { AppRoute } from "@/constants/Route";
+import type { MenuItem } from "@/types/menu";
 
-export const menus: MenuItemType[] = [
+export const menus: MenuItem[] = [
   {
-    key: "/dashboard",
+    key: AppRoute.Dashboard.path,
     label: "label.dashboard.title"
   },
   {
@@ -10,11 +11,11 @@ export const menus: MenuItemType[] = [
     label: "label.userManagement.title",
     subMenus: [
       {
-        key: "/user-management/user",
+        key: AppRoute.User.path,
         label: "label.userManagement.user.title"
       },
       {
-        key: "/user-management/role",
+        key: AppRoute.Role.path,
         label: "label.userManagement.role.title"
       }
     ]

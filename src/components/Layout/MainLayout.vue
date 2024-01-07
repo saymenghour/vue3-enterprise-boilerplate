@@ -16,7 +16,6 @@
 import Header from "./Header/HeaderLayout.vue";
 import Sider from "./Sider/SiderLayout.vue";
 import Content from "./Content/ContentLayout.vue";
-
 </script>
 
 <style scoped></style>

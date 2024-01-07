@@ -1,4 +1,4 @@
-@import './base.css';
+@import "./element-plus.css";
 
 @tailwind base;
 @tailwind components;

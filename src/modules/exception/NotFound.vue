@@ -1,14 +1,18 @@
 <template>
-  <div class="notfound">
-    <h1>404 The page you were looking for doesn't exist.</h1>
+  <div class="flex items-center justify-center h-screen">
+    <div class="text-center">
+      <h1>
+        404
+      </h1>
+      <h2 class="mb-3">
+        The page you were looking for doesn't exist.
+      </h2>
+      <RouterLink to="/">
+        <el-button>Go Home</el-button>
+      </RouterLink>
+    </div>
   </div>
 </template>
 
 <style>
-.notfound {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 </style>

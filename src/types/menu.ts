@@ -1,8 +1,8 @@
-export interface MenuItemType {
+export interface MenuItem {
 	key: string;
 	label: string;
 	icon?: any;
 	authority?: string;
-	subMenus?: MenuItemType[];
+	subMenus?: MenuItem[];
 	type?: "group";
 }
