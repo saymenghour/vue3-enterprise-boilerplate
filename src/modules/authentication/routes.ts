@@ -1,11 +1,11 @@
-import { RouteName } from "@/constants/Route";
+import { AppRoute } from "@/constants/Route";
 import { getAccessToken } from "@/services/LocalStorage";
 import type { RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
-    path: "/login",
-    name: RouteName.Login,
+    path: AppRoute.Login.path,
+    name: AppRoute.Login.name,
     beforeEnter: (to, from, next) => {
       if (!getAccessToken()) {
         next();

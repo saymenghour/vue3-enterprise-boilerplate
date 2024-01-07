@@ -1,0 +1,13 @@
+.el-aside {
+  padding: 1rem !important;
+}
+
+.el-menu {
+  border: unset !important;
+}
+
+.el-menu-item,
+.el-sub-menu,
+.el-sub-menu__title {
+  border-radius: 0.5rem !important;
+}
