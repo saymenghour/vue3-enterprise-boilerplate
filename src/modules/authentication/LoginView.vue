@@ -120,7 +120,6 @@ import { AppRoute } from '@/constants/Route';
 import { loginSchema } from "./loginSchema";
 import { loginWithCredential } from './LoginService';
 import type { LoginForm } from './loginType';
-import { ref } from 'vue';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -142,7 +141,7 @@ const { isLoading, error, mutate } = useMutation(
       if (route.query?.redirect) {
         router.push({ path: route.query.redirect as string, replace: true });
       } else {
-        router.push({ name: AppRoute.Dashboard, replace: true });
+        router.push({ name: AppRoute.Dashboard.name, replace: true });
       }
     },
   }
@@ -151,7 +150,5 @@ const { isLoading, error, mutate } = useMutation(
 const onSubmit = handleSubmit(({ username, password }) => {
   mutate({ username, password });
 });
-
-const isOpen = ref(false);
 
 </script>

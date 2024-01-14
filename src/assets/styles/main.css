@@ -4,6 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-background: #fff;
+
+    --color-border: #e5e7eb;
+
+    --menu-active-color: var(--el-menu-hover-bg-color);
+  }
+
+  :root[class~="dark"] {
+    --color-background: #1D2125;
+
+    --color-border: #A6C5E229;
+
+    --menu-active-color: #1C2B41;
+  }
+}
+
 body {
   min-height: 100vh;
   color: var(--color-text);

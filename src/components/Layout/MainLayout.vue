@@ -1,8 +1,8 @@
 <template>
-  <div class="common-layout">
+  <div class="common-layout bg-color-background">
     <el-container>
       <Sider /> 
-      <el-container :class="'is-vertical dark:text-slate-400 dark:bg-slate-900'">
+      <el-container class="is-vertical">
         <Header />
         <Content>
           <slot />

@@ -11,3 +11,8 @@
 .el-sub-menu__title {
   border-radius: 0.5rem !important;
 }
+
+.el-menu-item:hover,
+.el-sub-menu__title:hover {
+  background-color: var(--menu-active-color) !important;
+}

@@ -8,6 +8,7 @@
         v-if="!item.subMenus"
         :key="item.label"
         :index="item.key"
+        :class="isActive(item.key)"
       >
         {{ t(item.label) }}
       </el-menu-item>
@@ -25,6 +26,8 @@
           :key="subMenu.key"
           :label="subMenu.label"
           :index="subMenu.key"
+          :class="isActive(subMenu.key)"
+          @click="console.log('a')"
         >
           {{ t(subMenu.label) }}
         </el-menu-item>
@@ -55,6 +58,10 @@ onMounted(() => {
 watch(() => route.path, (path: string) => {
   activeMenu.value = path;
 });
+
+const isActive = (path: string): string => {
+  return activeMenu.value == path ? 'bg-menu-active-color': '';
+};
 
 </script>
 

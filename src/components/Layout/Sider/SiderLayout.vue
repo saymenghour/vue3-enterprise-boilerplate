@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen border-r dark:text-slate-400 bg-white dark:bg-slate-900 dark:border-r-gray-700">
+  <div class="h-screen border-r border-color-border">
     <el-aside>
       <el-scrollbar>
         <MenuViewVue :menus="menus" />
