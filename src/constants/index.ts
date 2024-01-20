@@ -1,3 +1,3 @@
-export * from "./Locale";
+export * from './Locale';
 
-export const VUE_BASE_PATH = process.env.VUE_BASE_PATH ?? "";
+export const VUE_BASE_PATH = process.env.VUE_BASE_PATH ?? '';

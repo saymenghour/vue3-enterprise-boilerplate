@@ -2,9 +2,14 @@ type CreateActionOptions = {
   signal: AbortSignal
 }
 
-type Callback<Request, Response> = (payload: Request | undefined, options: CreateActionOptions) => Promise<Response> | void;
+type Callback<Request, Response> = (
+  payload: Request | undefined,
+  options: CreateActionOptions
+) => Promise<Response> | void
 
-export const createAsyncAction = (<Response = any, Request = any>(callbackFn: Callback<Request, Response>) => {
+export const createAsyncAction = <Response = any, Request = any>(
+  callbackFn: Callback<Request, Response>
+) => {
   let abortController: AbortController | null = null;
 
   const action = (payload?: Request) => {
@@ -22,4 +27,4 @@ export const createAsyncAction = (<Response = any, Request = any>(callbackFn: Ca
   };
 
   return action as typeof action & { abort: () => void };
-});
+};

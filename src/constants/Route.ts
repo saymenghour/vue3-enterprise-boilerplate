@@ -1,18 +1,18 @@
 export const AppRoute = {
   Login: {
-    name: "login",
-    path: "/login",
+    name: 'login',
+    path: '/login'
   },
   Dashboard: {
-    name: "dashboard",
-    path: "/"
+    name: 'dashboard',
+    path: '/'
   },
   User: {
-    name: "user",
-    path: "/user-management/users"
+    name: 'user',
+    path: '/user-management/users'
   },
   Role: {
-    name: "role",
-    path: "/user-management/roles"
-  },
+    name: 'role',
+    path: '/user-management/roles'
+  }
 } as const;

@@ -1,3 +1,3 @@
 export default {
-  greeting: "You did it!"
+  greeting: 'You did it!'
 };

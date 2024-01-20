@@ -2,12 +2,12 @@ import '@/assets/styles/main.css';
 
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { VueQueryPlugin } from "vue-query";
+import { VueQueryPlugin } from 'vue-query';
 
 import App from './App.vue';
 import router from './router';
 import { i18n } from './locales';
-import "./services/api/AxiosInterceptor";
+import './services/api/AxiosInterceptor';
 
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';

@@ -1,6 +1,4 @@
-import type { RouteRecordRaw } from "vue-router";
-import authenticationRoutes from "@/modules/authentication/routes";
+import type { RouteRecordRaw } from 'vue-router';
+import authenticationRoutes from '@/modules/authentication/routes';
 
-export const publicRoutes: RouteRecordRaw[] = [
-  ...authenticationRoutes
-];
+export const publicRoutes: RouteRecordRaw[] = [...authenticationRoutes];

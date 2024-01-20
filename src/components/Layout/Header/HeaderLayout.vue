@@ -1,9 +1,6 @@
 <template>
   <el-header>
-    <!-- ========== HEADER ========== -->
-    <header
-      class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full border-b border-border text-sm py-2.5 sm:py-4 dark:color-background"
-    >
+    <div class="sticky top-0 py-2.5 sm:py-4 border-b border-muted">
       <nav
         aria-label="Global"
         class="flex basis-full items-center w-full mx-auto"
@@ -16,7 +13,9 @@
           >Brand</a>
         </div>
 
-        <div class="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
+        <div
+          class="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3"
+        >
           <div class="sm:hidden">
             <button
               class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:color-background"
@@ -50,7 +49,9 @@
               for="icon"
             >Search</label>
             <div class="relative">
-              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+              <div
+                class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4"
+              >
                 <svg
                   class="flex-shrink-0 h-4 w-4 text-gray-400"
                   fill="none"
@@ -88,7 +89,7 @@
               :inactive-action-icon="Sunny"
             />
             <button
-              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 dark:text-white hover:bg-menu-active-color disabled:opacity-50 disabled:pointer-events-none dark:color-background"
+              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 dark:text-white hover:bg-menu-hover-bg-color disabled:opacity-50 disabled:pointer-events-none dark:color-background"
               type="button"
             >
               <svg
@@ -107,11 +108,11 @@
                 <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
               </svg>
             </button>
+            <UserNav />
           </div>
         </div>
       </nav>
-    </header>
-    <!-- ========== END HEADER ========== -->
+    </div>
   </el-header>
 </template>
 
@@ -119,11 +120,10 @@
 import { ref } from 'vue';
 import { useDark } from '@vueuse/core';
 import { Moon, Sunny } from '@element-plus/icons-vue';
+import UserNav from '@/components/Layout/Header/UserNav.vue';
 
 const isDark = useDark();
 const theme = ref(isDark);
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

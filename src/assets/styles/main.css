@@ -1,4 +1,4 @@
-@import "./element-plus.css";
+@import './element-plus.css';
 
 @tailwind base;
 @tailwind components;
@@ -18,10 +18,10 @@
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
 
-    --border: #e5e7eb;
+    --border: 220 13% 91%;
     --input: 214.3 31.8% 91.4%;
 
-    --primary: #409eff;
+    --primary: 210 100% 63%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -37,12 +37,13 @@
 
     --radius: 0.5rem;
 
+    --menu-hover-bg-color: 212 100% 96%;
     --menu-active-color: var(--primary);
-    --menu-active-bg-color: #ecf5ff;
+    --menu-active-bg-color: var(--menu-hover-bg-color);
   }
 
-  :root[class~="dark"] {
-    --background: 222.2 84% 4.9%;
+  :root[class~='dark'] {
+    --background: 240 10% 3.9%;
     --foreground: 210 40% 98%;
 
     --muted: 217.2 32.6% 17.5%;
@@ -54,10 +55,10 @@
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
 
-    --border: #A6C5E229;
+    --border: 209 51% 77%;
     --input: 217.2 32.6% 17.5%;
 
-    --primary: #409eff;
+    --primary: 210 100% 63%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -71,15 +72,16 @@
 
     --ring: 212.7 26.8% 83.9%;
 
+    --menu-hover-bg-color: 210 29% 13%;
     --menu-active-color: var(--primary);
-    --menu-active-bg-color: #18222c;
+    --menu-active-bg-color: var(--menu-hover-bg-color);
   }
 }
 
 body {
   min-height: 100dvh;
   color: var(--color-text);
-  background: var(--background-color);
+  background: hsl(var(--background));
   transition:
     color 0.5s,
     background-color 0.5s;

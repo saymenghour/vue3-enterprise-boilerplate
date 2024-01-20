@@ -1,10 +1,4 @@
-<template>
-  This is role page
-</template>
+<template>This is role page</template>
 
-<script setup lang="ts">
-
-</script>
-<style scoped>
-
-</style>
+<script setup lang="ts"></script>
+<style scoped></style>

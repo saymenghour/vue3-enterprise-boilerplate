@@ -55,14 +55,16 @@ onMounted(() => {
   activeMenu.value = route.path;
 });
 
-watch(() => route.path, (path: string) => {
-  activeMenu.value = path;
-});
+watch(
+  () => route.path,
+  (path: string) => {
+    activeMenu.value = path;
+  }
+);
 
 const isActive = (path: string): string => {
-  return activeMenu.value == path ? '!text-menu-active-color bg-menu-active-bg-color' : '';
+  return activeMenu.value == path ? '!text-menu-active-color !bg-menu-active-bg-color' : '';
 };
-
 </script>
 
 <style scoped></style>

@@ -9,6 +9,4 @@ import { RouterView } from 'vue-router';
 import { MasterLayout } from '..';
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
