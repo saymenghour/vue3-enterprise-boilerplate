@@ -1,5 +1,5 @@
 <template>
-  <div class="common-layout bg-color-background">
+  <div class="common-layout">
     <el-container>
       <Sider /> 
       <el-container class="is-vertical">
