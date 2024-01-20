@@ -1,4 +1,10 @@
 export default {
+  theme: {
+    light: 'ភ្លឺ',
+    dark: 'ងងឹត',
+    system: 'ប្រព័ន្ធ'
+  },
+
   dashboard: {
     title: 'ផ្ទាំងគ្រប់គ្រង'
   },

@@ -83,31 +83,7 @@
           </div>
 
           <div class="flex flex-row items-center justify-end gap-2">
-            <el-switch
-              v-model="theme"
-              :active-action-icon="Moon"
-              :inactive-action-icon="Sunny"
-            />
-            <button
-              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 dark:text-white hover:bg-menu-hover-bg-color disabled:opacity-50 disabled:pointer-events-none dark:color-background"
-              type="button"
-            >
-              <svg
-                class="flex-shrink-0 w-4 h-4"
-                fill="none"
-                height="24"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                width="24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-              </svg>
-            </button>
+            <ThemeSwitcher />
             <UserNav />
           </div>
         </div>
@@ -117,13 +93,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import { useDark } from '@vueuse/core';
-import { Moon, Sunny } from '@element-plus/icons-vue';
 import UserNav from '@/components/Layout/Header/UserNav.vue';
-
-const isDark = useDark();
-const theme = ref(isDark);
+import ThemeSwitcher from '@/components/ThemeSwticher/ThemeSwitcher.vue';
 </script>
 
 <style scoped></style>

@@ -1,4 +1,10 @@
 export default {
+  theme: {
+    light: 'Light',
+    dark: 'Dark',
+    system: 'System'
+  },
+
   dashboard: {
     title: 'Dashboard'
   },
