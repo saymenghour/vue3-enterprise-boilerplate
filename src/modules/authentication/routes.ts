@@ -1,6 +1,6 @@
-import { AppRoute } from "@/constants/Route";
-import { getAccessToken } from "@/services/LocalStorage";
-import type { RouteRecordRaw } from "vue-router";
+import { AppRoute } from '@/constants/Route';
+import { getAccessToken } from '@/services/LocalStorage';
+import type { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -13,7 +13,7 @@ const routes: RouteRecordRaw[] = [
         next({ path: from.fullPath, replace: true });
       }
     },
-    component: () => import("@/modules/authentication/LoginView.vue"),
+    component: () => import('@/modules/authentication/LoginView.vue')
   }
 ];
 

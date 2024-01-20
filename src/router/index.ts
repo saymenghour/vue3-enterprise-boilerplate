@@ -11,7 +11,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
-      component: () => import("@/modules/exception/NotFound.vue"),
+      component: () => import('@/modules/exception/NotFound.vue')
     }
   ]
 });

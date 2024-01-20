@@ -1,15 +1,16 @@
-import type { RouteRecordRaw } from "vue-router";
-import { getAccessToken } from "@/services/LocalStorage";
-import { AppRoute } from "@/constants/Route";
-import { privateRoutes } from "./privateRoutes";
+import type { RouteRecordRaw } from 'vue-router';
+import { getAccessToken } from '@/services/LocalStorage';
+import { AppRoute } from '@/constants/Route';
+import { privateRoutes } from './privateRoutes';
+import PrivateOutlet from '@/components/PrivateOutlet/PrivateOutlet.vue';
 
 export const privateRoutesGuard: RouteRecordRaw[] = [
   {
-    path: "/",
+    path: '/',
     beforeEnter: (to, from, next) => {
       // // see more https://router.vuejs.org/guide/advanced/meta.html
       // // see more https://router.vuejs.org/guide/advanced/navigation-guards.html
-      const login = { name: AppRoute.Login, query: { redirect: to.fullPath } };
+      const login = { name: AppRoute.Login.name, query: { redirect: to.fullPath } };
       if (!getAccessToken()) {
         next(login);
       } else {
@@ -27,6 +28,7 @@ export const privateRoutesGuard: RouteRecordRaw[] = [
         }
       }
     },
+    component: PrivateOutlet,
     children: privateRoutes
-  },
+  }
 ];

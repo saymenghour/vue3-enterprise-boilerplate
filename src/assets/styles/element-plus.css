@@ -11,3 +11,9 @@
 .el-sub-menu__title {
   border-radius: 0.5rem !important;
 }
+
+.el-menu-item,
+.el-sub-menu__title {
+  height: 42px !important;
+  line-height: 42px !important;
+}

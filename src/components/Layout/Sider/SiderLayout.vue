@@ -1,6 +1,7 @@
 <template>
-  <div class="h-screen border-r dark:text-slate-400 bg-white dark:bg-slate-900 dark:border-r-gray-700">
+  <div class="h-dvh border-r border-muted">
     <el-aside>
+      <BrandLogo />
       <el-scrollbar>
         <MenuViewVue :menus="menus" />
       </el-scrollbar>
@@ -8,11 +9,10 @@
   </div>
 </template>
 
-
-<script setup lang="ts">
-import MenuViewVue from "../Menu/MenuView.vue";
-import { menus } from "@/resources/menu";
+<script lang="ts" setup>
+import MenuViewVue from '../Menu/MenuView.vue';
+import { menus } from '@/resources/menu';
+import BrandLogo from '@/components/Layout/Brand/BrandLogo.vue';
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

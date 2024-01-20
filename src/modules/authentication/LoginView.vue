@@ -5,7 +5,9 @@
         class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
       >
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+          <h1
+            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
+          >
             {{ t('label.signInToYourAccount') }}
           </h1>
           <div
@@ -46,8 +48,7 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 :placeholder="t('placeholder.login.username')"
               >
-              <span class="text-red-500 mt-1 text-xs block">
-                {{ errors.username }}</span>
+              <span class="text-red-500 mt-1 text-xs block"> {{ errors.username }}</span>
             </div>
             <div>
               <label
@@ -65,8 +66,7 @@
                 :placeholder="t('placeholder.login.password', { passwordLength: 4 })"
                 class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
-              <span class="text-red-500 mt-1 text-xs block">
-                {{ errors.password }}</span>
+              <span class="text-red-500 mt-1 text-xs block"> {{ errors.password }}</span>
               <div class="mt-2 flex items-center justify-end">
                 <a
                   href="#"
@@ -117,16 +117,15 @@ import router from '@/router';
 import { useI18n } from '@/hooks';
 import { saveToken } from '@/services/LocalStorage';
 import { AppRoute } from '@/constants/Route';
-import { loginSchema } from "./loginSchema";
+import { loginSchema } from './loginSchema';
 import { loginWithCredential } from './LoginService';
 import type { LoginForm } from './loginType';
-import { ref } from 'vue';
 
 const { t } = useI18n();
 const route = useRoute();
 
 const { handleSubmit, errors, resetForm } = useForm({
-  validationSchema: toTypedSchema(loginSchema),
+  validationSchema: toTypedSchema(loginSchema)
 });
 
 const { value: username } = useField('username');
@@ -142,16 +141,13 @@ const { isLoading, error, mutate } = useMutation(
       if (route.query?.redirect) {
         router.push({ path: route.query.redirect as string, replace: true });
       } else {
-        router.push({ name: AppRoute.Dashboard, replace: true });
+        router.push({ name: AppRoute.Dashboard.name, replace: true });
       }
-    },
+    }
   }
 );
 
 const onSubmit = handleSubmit(({ username, password }) => {
   mutate({ username, password });
 });
-
-const isOpen = ref(false);
-
 </script>

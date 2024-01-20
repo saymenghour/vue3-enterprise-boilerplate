@@ -1,3 +1,3 @@
 export default {
-  greeting: "អ្នកធ្វើវាបានហើយ!"
+  greeting: 'អ្នកធ្វើវាបានហើយ!'
 };

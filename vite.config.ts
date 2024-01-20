@@ -4,6 +4,9 @@ import { defineConfig, loadEnv, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
+import tailwind from "tailwindcss";
+import autoprefixer from "autoprefixer";
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: UserConfig) => {
   const env = loadEnv(mode ?? "development", process.cwd(), "");
@@ -19,6 +22,11 @@ export default defineConfig(({ mode }: UserConfig) => {
       vue(),
       vueJsx(),
     ],
+    css: {
+      postcss: {
+        plugins: [tailwind(), autoprefixer()],
+      },
+    },
     define: {
       "process.env": env,
     },
