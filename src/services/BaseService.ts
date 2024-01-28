@@ -1,5 +1,6 @@
 import type { AxiosRequestConfig, AxiosRequestHeaders } from 'axios';
 import queryString from 'query-string';
+
 import { HttpRequest } from './HttpRequest';
 
 class BaseService {

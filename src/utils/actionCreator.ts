@@ -1,11 +1,11 @@
 type CreateActionOptions = {
-  signal: AbortSignal
-}
+  signal: AbortSignal;
+};
 
 type Callback<Request, Response> = (
   payload: Request | undefined,
   options: CreateActionOptions
-) => Promise<Response> | void
+) => Promise<Response> | void;
 
 export const createAsyncAction = <Response = any, Request = any>(
   callbackFn: Callback<Request, Response>

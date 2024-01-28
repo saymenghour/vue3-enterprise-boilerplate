@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { DropdownMenuLabel, type DropdownMenuLabelProps } from 'radix-vue';
+
 import { cn } from '@/lib/utils';
 
 const props = defineProps<
   DropdownMenuLabelProps & {
-    inset?: boolean
-    class?: string
+    inset?: boolean;
+    class?: string;
   }
 >();
 </script>

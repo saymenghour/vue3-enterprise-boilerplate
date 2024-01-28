@@ -1,6 +1,9 @@
-import { VUE_BASE_PATH } from '@/constants';
 import axios from 'axios';
 import type { AxiosRequestConfig, AxiosRequestHeaders } from 'axios';
+
+import { getAccessToken, getDeviceId } from './LocalStorage';
+
+import { VUE_BASE_PATH } from '@/constants';
 
 export class HttpRequest {
   static async send(
@@ -13,7 +16,8 @@ export class HttpRequest {
     let headers: Partial<AxiosRequestHeaders> = {
       Accept: 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Device-Id': getDeviceId()
     };
 
     headers = { ...headers, ...extraHeaders };
@@ -21,7 +25,7 @@ export class HttpRequest {
     if (['/api/v1/oauth2/login'].includes(url)) {
       delete headers.Authorization;
     } else {
-      const accessToken = localStorage.getItem('accessToken');
+      const accessToken = getAccessToken();
       if (accessToken) {
         headers.Authorization = `Bearer ${accessToken}`;
       }

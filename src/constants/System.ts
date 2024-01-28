@@ -1,8 +1,8 @@
 export enum Authentication {
-  AccessToken = 'accessToken',
-  RefreshToken = 'refreshToken',
-  DeviceId = 'deviceId',
-  ExpiryIn = 'expiryIn'
+  AccessToken = 'access-token',
+  RefreshToken = 'refresh-token',
+  DeviceId = 'device-id',
+  ExpiryIn = 'expires-in'
 }
 
 export enum System {

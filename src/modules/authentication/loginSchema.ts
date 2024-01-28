@@ -1,4 +1,5 @@
 import { z } from 'zod';
+
 import { i18n } from '@/locales';
 
 export const loginSchema = z.object({

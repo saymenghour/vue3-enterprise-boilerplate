@@ -1,16 +1,11 @@
 <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
-      <Button
-        variant="ghost"
-        class="relative h-8 w-8 rounded-full"
+      <img
+        :src="dropdownItem[mode].icon"
+        :alt="dropdownItem[mode].alt"
+        :class="`relative h-5 w-5 rounded-full mr-2 cursor-pointer ${isDark ? 'invert' : ''}`"
       >
-        <img
-          :src="dropdownItem[mode].icon"
-          :alt="dropdownItem[mode].alt"
-          :class="`mr-2 ${isDark ? 'invert' : ''}`"
-        >
-      </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent
       class="w-42"
@@ -18,7 +13,7 @@
     >
       <DropdownMenuGroup>
         <DropdownMenuItem
-          v-for="{theme, icon, alt, label} in dropdownItem"
+          v-for="{ theme, icon, alt, label } in dropdownItem"
           :key="theme"
           @click="onThemeChange(theme)"
         >
@@ -36,6 +31,11 @@
 
 <script setup lang="ts">
 import { useColorMode, useDark } from '@vueuse/core';
+
+import darkIcon from './icons/dark.svg';
+import lightIcon from './icons/light.svg';
+import systemIcon from './icons/system.svg';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -44,9 +44,6 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 import { useI18n } from '@/hooks';
-import lightIcon from './icons/light.svg';
-import darkIcon from './icons/dark.svg';
-import systemIcon from './icons/system.svg';
 
 const { t } = useI18n();
 const mode = useColorMode();
@@ -76,9 +73,6 @@ const dropdownItem = {
 const onThemeChange = (theme: any) => {
   mode.value = theme;
 };
-
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

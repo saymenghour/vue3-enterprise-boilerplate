@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Check } from 'lucide-vue-next';
 import {
   DropdownMenuCheckboxItem,
   type DropdownMenuCheckboxItemEmits,
@@ -6,7 +7,7 @@ import {
   DropdownMenuItemIndicator,
   useEmitAsProps
 } from 'radix-vue';
-import { Check } from 'lucide-vue-next';
+
 import { cn } from '@/lib/utils';
 
 const props = defineProps<DropdownMenuCheckboxItemProps & { class?: string }>();

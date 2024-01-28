@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Circle } from 'lucide-vue-next';
 import {
   DropdownMenuItemIndicator,
   DropdownMenuRadioItem,
@@ -6,7 +7,7 @@ import {
   type DropdownMenuRadioItemProps,
   useEmitAsProps
 } from 'radix-vue';
-import { Circle } from 'lucide-vue-next';
+
 import { cn } from '@/lib/utils';
 
 const props = defineProps<DropdownMenuRadioItemProps & { class?: string }>();

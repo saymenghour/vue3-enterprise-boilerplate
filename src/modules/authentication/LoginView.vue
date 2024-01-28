@@ -1,18 +1,14 @@
 <template>
-  <section class="bg-gray-50 dark:bg-gray-900">
+  <section>
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <div
-        class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
-      >
+      <div class="w-full rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1
-            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
-          >
+          <h1 class="text-xl font-bold leading-tight tracking-tight">
             {{ t('label.signInToYourAccount') }}
           </h1>
           <div
             v-if="error"
-            class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+            class="flex items-center p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50"
             role="alert"
           >
             <svg
@@ -45,7 +41,7 @@
                 :disabled="isLoading"
                 autocomplete="off"
                 name="username"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                class="border text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 :placeholder="t('placeholder.login.username')"
               >
               <span class="text-red-500 mt-1 text-xs block"> {{ errors.username }}</span>
@@ -103,23 +99,29 @@
           </form>
         </div>
       </div>
+      <div class="flex items-center justify-center mt-4">
+        <span class="mr-2"> Theme: </span>
+        <ThemeSwitcher />
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { useMutation } from 'vue-query';
-import { useField, useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
+import { useField, useForm } from 'vee-validate';
+import { useMutation } from 'vue-query';
 import { useRoute } from 'vue-router';
 
-import router from '@/router';
-import { useI18n } from '@/hooks';
-import { saveToken } from '@/services/LocalStorage';
-import { AppRoute } from '@/constants/Route';
+import { loginWithCredential } from './authenticationService';
+import type { LoginForm } from './authenticationType';
 import { loginSchema } from './loginSchema';
-import { loginWithCredential } from './LoginService';
-import type { LoginForm } from './loginType';
+
+import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue';
+import { AppRoute } from '@/constants/Route';
+import { useI18n } from '@/hooks';
+import router from '@/router';
+import { saveToken } from '@/services/LocalStorage';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -151,3 +153,4 @@ const onSubmit = handleSubmit(({ username, password }) => {
   mutate({ username, password });
 });
 </script>
+./authenicationService./authenticationService./authenticatinoType

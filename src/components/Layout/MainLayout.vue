@@ -13,9 +13,19 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
+import Content from './Content/ContentLayout.vue';
 import Header from './Header/HeaderLayout.vue';
 import Sider from './Sider/SiderLayout.vue';
-import Content from './Content/ContentLayout.vue';
+
+import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
+
+const { fetchCurrentUser } = useCurrentUserStore();
+
+onMounted(() => {
+  fetchCurrentUser();
+});
 </script>
 
 <style scoped></style>

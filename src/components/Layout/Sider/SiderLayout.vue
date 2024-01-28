@@ -11,8 +11,9 @@
 
 <script lang="ts" setup>
 import MenuViewVue from '../Menu/MenuView.vue';
-import { menus } from '@/resources/menu';
+
 import BrandLogo from '@/components/Layout/Brand/BrandLogo.vue';
+import { menus } from '@/resources/menu';
 </script>
 
 <style scoped></style>

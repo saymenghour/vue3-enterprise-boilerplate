@@ -1,11 +1,14 @@
 {
     "editor.tabSize": 2,
-    "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
     "[vue]": {
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
     },
+    "editor.formatOnSave": false,
+    "eslint.validate": [
+        "typescript"
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    }
 }

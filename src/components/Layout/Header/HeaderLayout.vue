@@ -5,14 +5,6 @@
         aria-label="Global"
         class="flex basis-full items-center w-full mx-auto"
       >
-        <div class="me-5 lg:me-0 lg:hidden">
-          <a
-            aria-label="Brand"
-            class="flex-none text-xl font-semibold dark:text-white"
-            href="#"
-          >Brand</a>
-        </div>
-
         <div
           class="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3"
         >
@@ -94,7 +86,7 @@
 
 <script lang="ts" setup>
 import UserNav from '@/components/Layout/Header/UserNav.vue';
-import ThemeSwitcher from '@/components/ThemeSwticher/ThemeSwitcher.vue';
+import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue';
 </script>
 
 <style scoped></style>

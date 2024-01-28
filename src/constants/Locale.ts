@@ -4,10 +4,10 @@ export enum Locales {
 }
 
 export type LanguageType = {
-  value: string
-  label: string
-  icon?: string
-}
+  value: string;
+  label: string;
+  icon?: string;
+};
 
 export const LANGUAGES: LanguageType[] = [
   {

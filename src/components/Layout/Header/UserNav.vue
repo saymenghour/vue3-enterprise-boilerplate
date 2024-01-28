@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +11,11 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
+import { storeToRefs } from 'pinia';
+
+const store = useCurrentUserStore();
+const { user } = storeToRefs(store);
 </script>
 
 <template>
@@ -19,12 +25,12 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
         variant="ghost"
         class="relative h-8 w-8 rounded-full"
       >
-        <Avatar class="h-8 w-8">
+        <Avatar class="relative h-8 w-8 rounded-full">
           <AvatarImage
-            src="/avatars/01.png"
-            alt="@shadcn"
+            src=""
+            alt="user-avatar"
           />
-          <AvatarFallback>SC</AvatarFallback>
+          <AvatarFallback>U</AvatarFallback>
         </Avatar>
       </Button>
     </DropdownMenuTrigger>
@@ -35,14 +41,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
       <DropdownMenuLabel class="font-normal flex">
         <div class="flex flex-col space-y-1">
           <p class="text-sm font-medium leading-none">
-            Username
+            {{ user?.fullNameEn }}
           </p>
           <p class="text-xs leading-none text-muted-foreground">
-            username@example.com
+            {{ user?.email }}
           </p>
         </div>
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
+      
       <DropdownMenuGroup>
         <DropdownMenuItem>
           Profile

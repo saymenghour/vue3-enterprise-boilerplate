@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { VUE_BASE_PATH } from '@/constants';
-import { publicRoutes } from './publicRoutes';
+
 import { privateRoutesGuard } from './guards';
+import { publicRoutes } from './publicRoutes';
+
+import { VUE_BASE_PATH } from '@/constants';
 
 const router = createRouter({
   history: createWebHistory(VUE_BASE_PATH),

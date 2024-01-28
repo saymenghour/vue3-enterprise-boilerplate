@@ -39,11 +39,12 @@
 <script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import type { MenuItem } from '@/types/menu';
+
 import { useI18n } from '@/hooks';
+import type { MenuItem } from '@/types/menu';
 
 defineProps<{
-  menus: MenuItem[]
+  menus: MenuItem[];
 }>();
 
 const { t } = useI18n();
