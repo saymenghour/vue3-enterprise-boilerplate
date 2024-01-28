@@ -118,10 +118,10 @@ import type { LoginForm } from './authenticationType';
 import { loginSchema } from './loginSchema';
 
 import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue';
-import { AppRoute } from '@/constants/Route';
+import { AppRoute } from '@/constants';
 import { useI18n } from '@/hooks';
 import router from '@/router';
-import { saveToken } from '@/services/LocalStorage';
+import { saveToken } from '@/services/localStorage';
 
 const { t } = useI18n();
 const route = useRoute();
@@ -133,10 +133,9 @@ const { handleSubmit, errors, resetForm } = useForm({
 const { value: username } = useField('username');
 const { value: password } = useField('password');
 
-const { isLoading, error, mutate } = useMutation(
-  (credential: LoginForm) => loginWithCredential(credential),
-  {
-    onSuccess: (response) => {
+const { isLoading, error, mutate } = useMutation((credential: LoginForm) => loginWithCredential(credential), {
+  onSuccess: (response) => {
+    if (response) {
       const { accessToken, refreshToken, expiresAt, deviceId } = response.data;
       saveToken(accessToken, refreshToken, expiresAt, deviceId);
       resetForm();
@@ -147,10 +146,10 @@ const { isLoading, error, mutate } = useMutation(
       }
     }
   }
-);
+});
 
 const onSubmit = handleSubmit(({ username, password }) => {
   mutate({ username, password });
 });
 </script>
-./authenicationService./authenticationService./authenticatinoType
+@/services/localStorage

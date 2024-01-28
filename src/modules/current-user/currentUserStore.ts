@@ -11,9 +11,9 @@ export const useCurrentUserStore = defineStore('currentUser', {
   getters: {},
   actions: {
     async fetchCurrentUser() {
-      const { data } = await fetchCurrentUserApi();
-      this.user = data?.user;
-      this.authorities = data?.authorities;
+      const currentUser = await fetchCurrentUserApi();
+      this.user = currentUser?.user ?? null;
+      this.authorities = currentUser?.authorities ?? [];
     }
   }
 });

@@ -1,5 +1,9 @@
 import { Locales } from '@/constants';
-import { Authentication, System } from '@/constants/System';
+import { Authentication, System } from '@/constants';
+
+export const getBearerToken = (): string => {
+  return `Bearer ${getAccessToken()}`;
+};
 
 export const getAccessToken = (): string | null => {
   return localStorage.getItem(Authentication.AccessToken);
@@ -33,12 +37,7 @@ export const setDeviceId = (deviceId: string) => {
   localStorage.setItem(Authentication.DeviceId, deviceId);
 };
 
-export const saveToken = (
-  accessToken: string,
-  refreshToken: string,
-  expiryIn: string,
-  deviceId: string = ''
-): void => {
+export const saveToken = (accessToken: string, refreshToken: string, expiryIn: string, deviceId: string = ''): void => {
   setAccessToken(accessToken);
   setRefreshToken(refreshToken);
   setExpiryIn(expiryIn);

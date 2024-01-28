@@ -4,7 +4,7 @@
     "[vue]": {
         "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
     },
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "eslint.validate": [
         "typescript"
     ],

@@ -1,1 +1,1 @@
-export { default as MasterLayout } from './Layout/MainLayout.vue';
+export { default as PrivateOutlet } from './PrivateOutlet/PrivateOutlet.vue';

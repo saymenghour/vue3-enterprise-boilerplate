@@ -1,7 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router';
 
-import { AppRoute } from '@/constants/Route';
-import { getAccessToken } from '@/services/LocalStorage';
+import { AppRoute } from '@/constants';
+import { getAccessToken } from '@/services/localStorage';
 
 const routes: RouteRecordRaw[] = [
   {

@@ -49,7 +49,7 @@ const { user } = storeToRefs(store);
         </div>
       </DropdownMenuLabel>
       <DropdownMenuSeparator />
-      
+
       <DropdownMenuGroup>
         <DropdownMenuItem>
           Profile

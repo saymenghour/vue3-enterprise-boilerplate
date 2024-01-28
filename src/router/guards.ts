@@ -2,9 +2,9 @@ import type { RouteRecordRaw } from 'vue-router';
 
 import { privateRoutes } from './privateRoutes';
 
-import PrivateOutlet from '@/components/PrivateOutlet/PrivateOutlet.vue';
-import { AppRoute } from '@/constants/Route';
-import { getAccessToken } from '@/services/LocalStorage';
+import { PrivateOutlet } from '@/components';
+import { AppRoute } from '@/constants';
+import { getAccessToken } from '@/services/localStorage';
 
 export const privateRoutesGuard: RouteRecordRaw[] = [
   {

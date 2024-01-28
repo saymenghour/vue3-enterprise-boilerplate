@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router';
 
-import { AppRoute } from '@/constants/Route';
+import { AppRoute } from '@/constants';
 import { userManagementRoutes } from '@/modules/user-management/router';
 
 export const privateRoutes: RouteRecordRaw[] = [

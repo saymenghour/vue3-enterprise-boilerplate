@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router';
 
-import { AppRoute } from '@/constants/Route';
+import { AppRoute } from '@/constants';
 
 export const userManagementRoutes: RouteRecordRaw[] = [
   {

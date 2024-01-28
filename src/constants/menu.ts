@@ -1,4 +1,4 @@
-import { AppRoute } from '@/constants/Route';
+import { AppRoute } from '@/constants';
 import type { MenuItem } from '@/types/menu';
 
 export const menus: MenuItem[] = [

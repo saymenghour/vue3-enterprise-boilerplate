@@ -1,27 +1,14 @@
-import type {
-  LoginForm,
-  LoginRequest,
-  LoginResponse,
-  RefreshTokenRequest,
-  RefreshTokenResponse
-} from './authenticationType';
-
-import { AppRoute } from '@/constants/Route';
+import { axios } from '@/http/axios';
 import router from '@/router';
-import { fetchApi } from '@/services/api/FetchAPI';
-import BaseService from '@/services/BaseService';
-import {
-  destroySensitiveInfo,
-  getAccessToken,
-  getDeviceId,
-  getRefreshToken,
-  saveToken
-} from '@/services/LocalStorage';
+
+import { AppRoute } from '@/constants';
 import { AESUtils, RSAUtils } from '@/utils/crypto';
+import { destroySensitiveInfo, getBearerToken, getDeviceId, getRefreshToken, saveToken } from '@/services/localStorage';
+import type { LoginForm, LoginRequest, LoginResponse, RefreshTokenRequest, RefreshTokenResponse } from './authenticationType';
 
 export const loginWithCredential = async ({ username, password }: LoginForm) => {
   const secretKey = AESUtils.generateRandomByteArray();
-  const request: LoginRequest = {
+  const data: LoginRequest = {
     username: username.trim(),
     password: AESUtils.encryptWithKey(password.trim(), secretKey),
     grantType: 'password',
@@ -30,40 +17,33 @@ export const loginWithCredential = async ({ username, password }: LoginForm) => 
     encryptedAesKey: RSAUtils.encrypt(secretKey.toString(), process.env.PUBLIC_KEY ?? '')
   };
 
-  const response = await BaseService.post<ResponseSuccess<LoginResponse>>(
-    '/api/v1/oauth2/login',
-    request
-  );
-  return response;
+  const res = await axios.post<ResponseSuccess<LoginResponse>>('/api/v1/oauth2/login', data, {
+    headers: {
+      'Device-Id': getDeviceId()
+    }
+  });
+  return res.data;
 };
 
-export const refreshToken = async (): Promise<void> => {
+export const refreshToken = async (): Promise<string | undefined> => {
   try {
     if (getRefreshToken() && getDeviceId()) {
-      const formValues: RefreshTokenRequest = {
+      const data: RefreshTokenRequest = {
         grantType: 'refresh_token',
         clientId: process.env.CLIENT_ID ?? '',
         clientSecret: process.env.CLIENT_SECRET ?? '',
         refreshToken: getRefreshToken() ?? ''
       };
 
-      const configOption: RequestInit = {
-        method: 'POST',
+      const res: ResponseSuccess<RefreshTokenResponse> = await axios.post('/api/v1/oauth2/refresh-token', data, {
         headers: {
-          'Content-Type': 'application/json',
-          Authorization: `bearer ${getAccessToken()}`
-        },
-        body: JSON.stringify(formValues)
-      };
-
-      const res: ResponseSuccess<RefreshTokenResponse> = await fetchApi(
-        '/api/v1/oauth2/refresh-token',
-        configOption
-      );
+          Authorization: getBearerToken()
+        }
+      });
       const { accessToken, refreshToken, expiresAt, deviceId } = res.data;
       saveToken(accessToken, refreshToken, expiresAt, deviceId);
       // TODO: display dialog session expired
-      return;
+      return 'Successfully';
     }
 
     destroySensitiveInfo();
