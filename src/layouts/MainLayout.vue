@@ -18,10 +18,7 @@ import { onMounted } from 'vue';
 import Content from './Content/ContentLayout.vue';
 import Header from './Header/HeaderLayout.vue';
 import Sider from './Sider/SiderLayout.vue';
-
-import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
-
-const { fetchCurrentUser } = useCurrentUserStore();
+import { fetchCurrentUser } from '@/modules/current-user/currentUserService';
 
 onMounted(() => {
   fetchCurrentUser();

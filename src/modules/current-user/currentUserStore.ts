@@ -1,6 +1,4 @@
-import { defineStore, acceptHMRUpdate } from 'pinia';
-
-import { fetchCurrentUserApi } from './currentUserApi';
+import { acceptHMRUpdate, defineStore } from 'pinia';
 import type { CurrentUser } from './currentUserType';
 
 export const useCurrentUserStore = defineStore('currentUser', {
@@ -10,8 +8,7 @@ export const useCurrentUserStore = defineStore('currentUser', {
   }),
   getters: {},
   actions: {
-    async fetchCurrentUser() {
-      const currentUser = await fetchCurrentUserApi();
+    setCurrentUser(currentUser?: CurrentUser) {
       this.user = currentUser?.user ?? null;
       this.authorities = currentUser?.authorities ?? [];
     }
