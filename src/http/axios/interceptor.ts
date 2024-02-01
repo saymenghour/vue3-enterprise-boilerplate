@@ -1,4 +1,4 @@
-import { axios } from '.';
+import { axiosInstance as axios } from '.';
 import { getBearerToken } from '@/services/localStorage';
 
 import { ErrorCode } from '@/constants';
@@ -21,8 +21,8 @@ axios.interceptors.response.use(
   async (error: any) => {
     const res: ResponseError = error.response.data;
     if (res?.errorCode == ErrorCode.AccessTokenExpired && !error.config._isRetry) {
-      refreshToken().then((response) => {
-        if (response !== null) {
+      return refreshToken().then((response) => {
+        if (response) {
           error.config._isRetry = true;
           const originalRequestConfig = error.config;
           originalRequestConfig.headers.Authorization = getBearerToken();

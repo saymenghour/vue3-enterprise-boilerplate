@@ -1,9 +1,8 @@
-import { axios } from '@/http/axios';
 import router from '@/router';
-
+import { axios } from '@/http/axios';
 import { AppRoute } from '@/constants';
+import { destroySensitiveInfo, getDeviceId, getRefreshToken, saveToken } from '@/services/localStorage';
 import { AESUtils, RSAUtils } from '@/utils/crypto';
-import { destroySensitiveInfo, getBearerToken, getDeviceId, getRefreshToken, saveToken } from '@/services/localStorage';
 import type { LoginForm, LoginRequest, LoginResponse, RefreshTokenRequest, RefreshTokenResponse } from './authenticationType';
 
 export const loginWithCredential = async ({ username, password }: LoginForm) => {
@@ -22,6 +21,8 @@ export const loginWithCredential = async ({ username, password }: LoginForm) => 
       'Device-Id': getDeviceId()
     }
   });
+  const { accessToken, refreshToken, expiresAt, deviceId } = res.data?.data ?? {};
+  saveToken(accessToken, refreshToken, expiresAt, deviceId);
   return res.data;
 };
 
@@ -35,12 +36,12 @@ export const refreshToken = async (): Promise<string | undefined> => {
         refreshToken: getRefreshToken() ?? ''
       };
 
-      const res: ResponseSuccess<RefreshTokenResponse> = await axios.post('/api/v1/oauth2/refresh-token', data, {
+      const res = await axios.post<ResponseSuccess<RefreshTokenResponse>>('/api/v1/oauth2/refresh-token', data, {
         headers: {
-          Authorization: getBearerToken()
+          'Device-Id': getDeviceId()
         }
       });
-      const { accessToken, refreshToken, expiresAt, deviceId } = res.data;
+      const { accessToken, refreshToken, expiresAt, deviceId } = res.data?.data ?? {};
       saveToken(accessToken, refreshToken, expiresAt, deviceId);
       // TODO: display dialog session expired
       return 'Successfully';

@@ -4,25 +4,24 @@ import type { AxiosRequestConfig } from 'axios';
 import queryString from 'query-string';
 
 export class Http {
-  private static defaultConfig = {
-    headers: {
-      'Device-Id': getDeviceId(),
-      Authorization: getBearerToken()
-    }
-  };
 
   private static getConfig = (config?: AxiosRequestConfig) => {
+    const defaultConfig = {
+      headers: {
+        'Device-Id': getDeviceId(),
+        Authorization: getBearerToken()
+      }
+    };
+
     if (!config) {
-      return {
-        ...Http.defaultConfig
-      };
+      return { ...defaultConfig };
     }
 
     const { headers, ...rest } = config;
     return {
       ...rest,
       headers: {
-        ...Http.defaultConfig,
+        ...defaultConfig,
         ...headers
       } as any
     };
@@ -46,7 +45,7 @@ export class Http {
         url = url.indexOf('?') == -1 ? `${url}?${query}` : `${url}&${query}`;
       }
       const res = await axios.get<T>(url, Http.getConfig(config));
-      return res.data;
+      return res?.data;
     } catch (error: any) {
       Http.getError(error);
     }
@@ -55,7 +54,7 @@ export class Http {
   static async post<T = any>(url: string, data: Record<string, any>, config?: AxiosRequestConfig) {
     try {
       const res = await axios.post<T>(url, data, Http.getConfig(config));
-      return res.data;
+      return res?.data;
     } catch (error: any) {
       Http.getError(error);
     }
@@ -64,7 +63,7 @@ export class Http {
   static async put<T = any>(url: string, data: Record<string, any>, config?: AxiosRequestConfig) {
     try {
       const res = await axios.put<T>(url, data, Http.getConfig(config));
-      return res.data;
+      return res?.data;
     } catch (error: any) {
       Http.getError(error);
     }
@@ -73,7 +72,7 @@ export class Http {
   static async delete<T = any>(url: string, config?: AxiosRequestConfig) {
     try {
       const res = await axios.delete<T>(url, Http.getConfig(config));
-      return res.data;
+      return res?.data;
     } catch (error: any) {
       Http.getError(error);
     }

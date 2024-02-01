@@ -10,3 +10,5 @@ export const axios = axiosRequest.create({
     'Content-Type': 'application/json'
   }
 });
+
+export const axiosInstance = axios;
