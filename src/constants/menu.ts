@@ -1,4 +1,4 @@
-import { AppRoute } from '@/constants';
+import { AppRoute, Permission } from '@/constants';
 import type { MenuItem } from '@/types/menu';
 
 export const menus: MenuItem[] = [
@@ -12,11 +12,13 @@ export const menus: MenuItem[] = [
     subMenus: [
       {
         key: AppRoute.User.path,
-        label: 'label.userManagement.user.title'
+        label: 'label.userManagement.user.title',
+        authorities: [Permission.CREATE_USER, Permission.EDIT_USER, Permission.VIEW_USER_LISTING, Permission.VIEW_USER_DETAILS]
       },
       {
         key: AppRoute.Role.path,
-        label: 'label.userManagement.role.title'
+        label: 'label.userManagement.role.title',
+        authorities: [Permission.CREATE_ROLE, Permission.EDIT_ROLE, Permission.VIEW_ROLE_LISTING, Permission.VIEW_ROLE_DETAILS]
       }
     ]
   }

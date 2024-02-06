@@ -4,7 +4,6 @@ import type { AxiosRequestConfig } from 'axios';
 import queryString from 'query-string';
 
 export class Http {
-
   private static getConfig = (config?: AxiosRequestConfig) => {
     const defaultConfig = {
       headers: {

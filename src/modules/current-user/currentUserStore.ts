@@ -6,7 +6,12 @@ export const useCurrentUserStore = defineStore('currentUser', {
     user: null,
     authorities: []
   }),
-  getters: {},
+  getters: {
+    isAuthorize: (state) => (menuAuthorities?: string[]) => {
+      const authoritiesSet = new Set(state.authorities);
+      return menuAuthorities == null || menuAuthorities.some((authority) => authoritiesSet.has(authority));
+    }
+  },
   actions: {
     setCurrentUser(currentUser?: CurrentUser) {
       this.user = currentUser?.user ?? null;

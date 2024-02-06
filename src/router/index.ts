@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-import { privateRoutesGuard } from './guards';
-import { publicRoutes } from './publicRoutes';
-
 import { VUE_BASE_PATH } from '@/constants';
+import { requiresAuth } from './guards';
+import { privateRoutes } from './privateRoutes';
+import { publicRoutes } from './publicRoutes';
 
 const router = createRouter({
   history: createWebHistory(VUE_BASE_PATH),
   routes: [
     ...publicRoutes,
-    ...privateRoutesGuard,
+    ...privateRoutes,
     {
       path: '/:pathMatch(.*)*',
       name: 'NotFound',
@@ -17,5 +17,7 @@ const router = createRouter({
     }
   ]
 });
+
+router.beforeEach(requiresAuth);
 
 export default router;

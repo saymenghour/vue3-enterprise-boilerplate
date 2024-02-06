@@ -2,7 +2,7 @@ export interface MenuItem {
   key: string;
   label: string;
   icon?: any;
-  authority?: string;
+  authorities?: string[];
   subMenus?: MenuItem[];
   type?: 'group';
 }

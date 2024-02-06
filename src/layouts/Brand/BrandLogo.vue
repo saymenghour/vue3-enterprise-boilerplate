@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import vue from "@/assets/images/logo/vue.svg";
+import vue from '@/assets/images/logo/vue.svg';
 </script>
 
 <style scoped></style>

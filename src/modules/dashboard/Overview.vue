@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { VisAxis, VisStackedBar, VisXYContainer } from '@unovis/vue';
 
-type Data = typeof data[number]
+type Data = (typeof data)[number];
 const data = [
   { name: 'Jan', total: Math.floor(Math.random() * 5000) + 1000 },
   { name: 'Feb', total: Math.floor(Math.random() * 5000) + 1000 },
@@ -14,7 +14,7 @@ const data = [
   { name: 'Sep', total: Math.floor(Math.random() * 5000) + 1000 },
   { name: 'Oct', total: Math.floor(Math.random() * 5000) + 1000 },
   { name: 'Nov', total: Math.floor(Math.random() * 5000) + 1000 },
-  { name: 'Dec', total: Math.floor(Math.random() * 5000) + 1000 },
+  { name: 'Dec', total: Math.floor(Math.random() * 5000) + 1000 }
 ];
 </script>
 

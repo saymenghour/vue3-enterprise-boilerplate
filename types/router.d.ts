@@ -5,6 +5,7 @@ export { };
 
 declare module "vue-router" {
   interface RouteMeta {
-    permissions?: string[]
+    requiresAuth: boolean,
+    authorities?: string[],
   }
 }

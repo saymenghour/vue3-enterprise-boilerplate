@@ -3,17 +3,15 @@
     <el-aside>
       <BrandLogo />
       <el-scrollbar>
-        <MenuViewVue :menus="menus" />
+        <MenuView />
       </el-scrollbar>
     </el-aside>
   </div>
 </template>
 
 <script lang="ts" setup>
-import MenuViewVue from '../Menu/MenuView.vue';
-
 import BrandLogo from '../Brand/BrandLogo.vue';
-import { menus } from '@/constants';
+import MenuView from '../Menu/MenuView.vue';
 </script>
 
 <style scoped></style>

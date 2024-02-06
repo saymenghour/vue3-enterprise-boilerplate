@@ -1,4 +1,8 @@
 export const AppRoute = {
+  Unauthorize: {
+    name: 'unauthorize',
+    path: '/unauthorize'
+  },
   Login: {
     name: 'login',
     path: '/login'

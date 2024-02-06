@@ -182,9 +182,7 @@ import Overview from './Overview.vue';
           <Card class="col-span-3">
             <CardHeader>
               <CardTitle>Recent Sales</CardTitle>
-              <CardDescription>
-                You made 265 sales this month.
-              </CardDescription>
+              <CardDescription> You made 265 sales this month. </CardDescription>
             </CardHeader>
             <CardContent>
               <RecentSales />
@@ -196,5 +194,4 @@ import Overview from './Overview.vue';
   </div>
 </template>
 
-<style>
-</style>
+<style></style>

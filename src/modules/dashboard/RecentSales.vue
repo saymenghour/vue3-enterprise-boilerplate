@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-
 </script>
 
 <template>
@@ -8,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
     <div class="flex items-center">
       <Avatar class="h-9 w-9">
         <AvatarImage
-          src="/avatars/01.png"
+          src="https://i.pravatar.cc/300"
           alt="Avatar"
         />
         <AvatarFallback>OM</AvatarFallback>
@@ -28,7 +27,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
     <div class="flex items-center">
       <Avatar class="flex h-9 w-9 items-center justify-center space-y-0 border">
         <AvatarImage
-          src="/avatars/02.png"
+          src="https://i.pravatar.cc/300"
           alt="Avatar"
         />
         <AvatarFallback>JL</AvatarFallback>
@@ -48,7 +47,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
     <div class="flex items-center">
       <Avatar class="h-9 w-9">
         <AvatarImage
-          src="/avatars/03.png"
+          src="https://i.pravatar.cc/300"
           alt="Avatar"
         />
         <AvatarFallback>IN</AvatarFallback>
@@ -68,7 +67,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
     <div class="flex items-center">
       <Avatar class="h-9 w-9">
         <AvatarImage
-          src="/avatars/04.png"
+          src="https://i.pravatar.cc/300"
           alt="Avatar"
         />
         <AvatarFallback>WK</AvatarFallback>
@@ -88,7 +87,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
     <div class="flex items-center">
       <Avatar class="h-9 w-9">
         <AvatarImage
-          src="/avatars/05.png"
+          src="https://i.pravatar.cc/300"
           alt="Avatar"
         />
         <AvatarFallback>SD</AvatarFallback>

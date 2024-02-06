@@ -3,7 +3,7 @@
     :default-active="activeMenu"
     :router="true"
   >
-    <template v-for="item in menus">
+    <template v-for="item in authorizedMenus">
       <el-menu-item
         v-if="!item.subMenus"
         :key="item.label"
@@ -27,7 +27,6 @@
           :class="isActive(subMenu.key)"
           :index="subMenu.key"
           :label="subMenu.label"
-          @click="console.log('a')"
         >
           {{ t(subMenu.label) }}
         </el-menu-item>
@@ -39,16 +38,18 @@
 <script lang="ts" setup>
 import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { storeToRefs } from 'pinia';
 
+import { menus } from '@/constants';
 import { useI18n } from '@/hooks';
 import type { MenuItem } from '@/types/menu';
-
-defineProps<{
-  menus: MenuItem[];
-}>();
+import { ArrayUtils } from '@/utils/common';
+import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 
 const { t } = useI18n();
 const route = useRoute();
+const store = useCurrentUserStore();
+const { authorities } = storeToRefs(store);
 
 const activeMenu = ref<string>('');
 
@@ -63,9 +64,32 @@ watch(
   }
 );
 
-const isActive = (path: string): string => {
+function isActive(path: string): string {
   return activeMenu.value == path ? '!text-menu-active-color !bg-menu-active-bg-color' : '';
-};
+}
+
+function getAuthorizedMenus(menus: MenuItem[]): MenuItem[] {
+  const authorizedMenus: MenuItem[] = [];
+  for (const menu of menus) {
+    if (store.isAuthorize(menu.authorities) && ArrayUtils.isEmpty(menu.subMenus)) {
+      authorizedMenus.push(menu);
+    } else if (!ArrayUtils.isEmpty(menu.subMenus)) {
+      const subMenus = getAuthorizedMenus(menu.subMenus ?? []);
+      if (!ArrayUtils.isEmpty(subMenus)) {
+        authorizedMenus.push({ ...menu, subMenus });
+      }
+    }
+  }
+  return authorizedMenus;
+}
+
+const authorizedMenus = ref<MenuItem[]>(getAuthorizedMenus(menus));
+watch(
+  () => authorities.value,
+  () => {
+    authorizedMenus.value = getAuthorizedMenus(menus);
+  }
+);
 </script>
 
 <style scoped></style>
