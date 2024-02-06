@@ -1,7 +1,7 @@
 import router from '@/router';
 import { axios } from '@/http/axios';
 import { AppRoute } from '@/constants';
-import { destroySensitiveInfo, getDeviceId, getRefreshToken, saveToken } from '@/services/localStorage';
+import { destroySensitiveInfo, getAccessToken, getBearerToken, getDeviceId, getRefreshToken, saveToken } from '@/services/localStorage';
 import { AESUtils, RSAUtils } from '@/utils/crypto';
 import type { LoginForm, LoginRequest, LoginResponse, RefreshTokenRequest, RefreshTokenResponse } from './authenticationType';
 
@@ -55,3 +55,16 @@ export const refreshToken = async (): Promise<string | undefined> => {
     router.push({ name: AppRoute.Login.name });
   }
 };
+
+export function logout() {
+  axios.post('/api/v1/oauth2/logout', {
+    accessToken: getAccessToken()
+  }, {
+    headers: {
+      'Device-Id': getDeviceId(),
+      "Authorization": getBearerToken()
+    }
+  });
+  destroySensitiveInfo();
+  router.push({ name: AppRoute.Login.name });
+}

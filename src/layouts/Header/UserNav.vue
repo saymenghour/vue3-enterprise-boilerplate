@@ -11,6 +11,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
+import { logout } from '@/modules/authentication/authenticationService';
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 import { storeToRefs } from 'pinia';
 
@@ -61,7 +62,7 @@ const { user } = storeToRefs(store);
         </DropdownMenuItem>
       </DropdownMenuGroup>
       <DropdownMenuSeparator />
-      <DropdownMenuItem>
+      <DropdownMenuItem @select="logout">
         Log out
         <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
       </DropdownMenuItem>
