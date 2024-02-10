@@ -7,61 +7,111 @@
 
 <br><br>
 
-[![license](https://img.shields.io/github/license/saymenghour/vue3-enterprise-boilerplate.svg)](LICENSE) [![repo-size](https://img.shields.io/github/repo-size/saymenghour/vue3-enterprise-boilerplate.svg)](repo-size) [![last-commit](https://img.shields.io/github/last-commit/saymenghour/vue3-enterprise-boilerplate.svg)](last-commit) [![stars](https://img.shields.io/github/stars/saymenghour/vue3-enterprise-boilerplate.svg)](stars) [![forks](https://img.shields.io/github/forks/saymenghour/vue3-enterprise-boilerplate.svg)](forks) [![release](https://img.shields.io/github/release/saymenghour/vue3-enterprise-boilerplate.svg)](release) [![watchers](https://img.shields.io/github/watchers/saymenghour/vue3-enterprise-boilerplate.svg)](watchers)
+[![license](https://img.shields.io/github/license/saymenghour/vue3-enterprise-boilerplate.svg)](LICENSE)
+[![repo-size](https://img.shields.io/github/repo-size/saymenghour/vue3-enterprise-boilerplate.svg)](repo-size)
+[![last-commit](https://img.shields.io/github/last-commit/saymenghour/vue3-enterprise-boilerplate.svg)](last-commit)
+[![release](https://img.shields.io/github/release/saymenghour/vue3-enterprise-boilerplate.svg)](release)
 
-<h1>Vue 3 + TypeScript + Vite + Pinia + Vue i18n</h1>
-
+<h1>✨ Vue Boilerplate ✨</h1>
 </div>
-
-## Description
 
 The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind CSS, and Vue i18n for buildings efficient, faster, maintainable, and scalable for enterprise applications.
 
-## Table of Contents
+### 📚 Table of Contents
 
-1.  [Core Dependencies](#core-dependencies)
-2.  [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
+- [❓ What's Included?](#-whats-included)
+- [🖇️ Core Dependencies](#️-core-dependencies)
+- [🗂️ Project Structure](#️-project-structure)
+- [🚀 Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [💡 Scripts](#-scripts)
+- [📝 License](#-license)
 
-## Core Dependencies
+## ❓ What's Included?
 
-[&#8593; Back to top](#table-of-contents)
+- [x] Authentication: Provides a secure login system for users.
+- [x] Authorization: Implements role-based access control to manage user permissions.
+- [x] Multiple Language: Supports localization and enables users to switch between different languages.
+- [x] Theme (Light/Dark/System): Offers a choice of light, dark, or system-based theme for a personalized user experience.
+- [x] Form Validation: Includes form validation functionality to ensure data integrity and improve user experience.
+- [x] Error Handling: Handles and displays error messages in a user-friendly manner.
+- [x] API Integration: Integrates with external APIs to fetch data and provide dynamic content.
+- [ ] Responsive Design: Ensures the application is optimized for various screen sizes and devices.
+- [ ] Testing: Includes a test suite with unit tests and integration tests for reliable code quality.
+- [ ] Documentation: Provides comprehensive documentation to guide developers and users.
 
-- [Vue](https://vuejs.org/) ![Vue](https://img.shields.io/badge/v-%5E3.4.5-blue.svg)
-- [Vite](https://vitejs.dev/) ![Vite](https://img.shields.io/badge/v-%5E5.0.11-blue.svg)
-- [Typescript](https://www.typescriptlang.org/) ![Typescript](https://img.shields.io/badge/v-%5E5.3.3-blue.svg)
-- [Vue Router](https://router.vuejs.org/) ![Vue Router](https://img.shields.io/badge/v-%5E4.2.5-blue.svg)
-- [Vue i18n](https://vue-i18n.intlify.dev/) ![Vue i19n](https://img.shields.io/badge/v-%5E9.7.0-blue.svg)
-- [Vue Query](https://vue-query.vercel.app/) ![Vue i19n](https://img.shields.io/badge/v-%5E1.26.0-blue.svg)
-- [Pinia](https://pinia.vuejs.org/) ![Pinia](https://img.shields.io/badge/v-%5E2.1.7-blue.svg)
-- [Axios](https://www.npmjs.com/package/axios) ![Axios](https://img.shields.io/badge/v-%5E1.6.5-blue.svg)
-- [Tailwind CSS](https://tailwindcss.com/) ![Tailwind CSS](https://img.shields.io/badge/v-%5E3.4.1-blue.svg)
+## 🖇️ Core Dependencies
 
-## Recommended IDE Setup
+[&#8593; Back to top](#-table-of-contents)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+| Library      | Version                                                         | Description                                                                                        |
+| ------------ | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Vue          | ![Vue](https://img.shields.io/badge/%5E3.4.5-blue.svg)          | A progressive JavaScript framework for building user interfaces.                                   |
+| Vite         | ![Vite](https://img.shields.io/badge/%5E5.0.11-blue.svg)        | Next-generation frontend build tooling for fast and efficient development.                         |
+| Typescript   | ![Typescript](https://img.shields.io/badge/%5E5.3.3-blue.svg)   | A superset of JavaScript that enhances the development experience with static typing.              |
+| Vue Router   | ![Vue Router](https://img.shields.io/badge/%5E4.2.5-blue.svg)   | Official router for Vue.js, used for managing application routes.                                  |
+| Vue i18n     | ![Vue i19n](https://img.shields.io/badge/%5E9.7.0-blue.svg)     | Internationalization plugin for Vue.js applications, enabling multi-language support.              |
+| Vue Query    | ![Vue i19n](https://img.shields.io/badge/%5E1.26.0-blue.svg)    | A data-fetching and state management library for Vue.js, with powerful data-fetching capabilities. |
+| Pinia        | ![Pinia](https://img.shields.io/badge/%5E2.1.7-blue.svg)        | An intuitive store for Vue.js applications, providing centralized state management.                |
+| Axios        | ![Axios](https://img.shields.io/badge/%5E1.6.5-blue.svg)        | Promise-based HTTP client for making API requests.                                                 |
+| Tailwind CSS | ![Tailwind CSS](https://img.shields.io/badge/%5E3.4.1-blue.svg) | A highly customizable CSS framework for rapid web development.                                     |
 
-## Type Support for `.vue` Imports in TS
+## 🗂️ Project Structure
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+```
+├── public/
+│   ├── assets
+│   │   ├── fonts
+|   |   └── images
+│   └── favicon.ico
+├── src
+│   ├── assets
+│   │   ├── images
+│   │   └── styles
+│   ├── components
+│   │   ├── PrivateOutlet
+│   │   ├── ui
+│   │   └── ...
+│   ├── constants
+│   ├── hooks
+│   ├── http
+│   │   ├── axios
+│   │   └── index.ts
+│   ├── layouts
+│   │   ├── MainLayout.ts
+│   │   └── ...
+│   ├── locales
+│   │   ├── en
+│   │   └── km
+│   ├── modules
+│   │   ├── authentication
+│   │   ├── current-user
+│   │   ├── dashboard
+│   │   └── ...
+│   ├── router
+│   │   ├── privateRoutes.ts
+│   │   ├── publicRoutes.ts
+│   │   └── ...
+│   ├── services
+│   ├── types
+│   ├── utils
+│   │   ├── common
+│   │   ├── crypto
+│   │   └── ...
+│   ├── App.ts
+│   └── main.ts
+├── types
+├── package.json
+└── ...
+.
+```
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-[&#8593; Back to top](#table-of-contents)
+[&#8593; Back to top](#-table-of-contents)
 
 1. [Node Js](https://nodejs.org/en/) version `v20.10.0`. The current Long Term Support (LTS) release is an ideal starting point.
 2. [Visual Studio Code](https://code.visualstudio.com/download). Visual Studio Code is the free and open-sourced code editor. It is one of the top most editor used especially for JavaScript application development.
@@ -81,80 +131,65 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ### Installation
 
-[&#8593; Back to top](#table-of-contents)
+[&#8593; Back to top](#-table-of-contents)
 
-1.  Make sure you have a fresh version of [Node.js](https://nodejs.org/en) and NPM installed.
+1.  Clone this repository to your computer:
 
-2.  Clone this repository to your computer:
-
-    ```bash
+    ```sh
     https://github.com/saymenghour/vue3-enterprise-boilerplate.git
-    ```
-
-3.  Go to project directory:
-
-    ```bash
     cd vue3-enterprise-boilerplate
-    ```
-
-4.  Open project in VScode:
-
-    ```bash
     code .
     ```
 
-5.  Run command below to ignore git case-sensitive filename
+2.  Run command below to ignore git case-sensitive filename
 
-    ```bash
+    ```sh
     git config --global core.ignorecase false
     ```
 
-6.  From the project's root directory, install the required packages (dependencies):
+3.  From the project's root directory, install the required packages (dependencies):
 
-    using [npm](https://www.npmjs.com/):
-
-    ```bash
-    npm install
-    ```
-
-    or using [pnpm](https://pnpm.io/):
-
-    ```bash
+    ```sh
     pnpm install
     ```
 
-7.  Create environment files:
+4.  Create environment files:
 
-    ```bash
+    ```sh
     cp .env.example .env
     ```
 
-    or for local development using
+5.  Set up the environment variables.
 
-    ```bash
-    cp .env .env.local
+6.  To run the app on your local machine:
+
+    ```sh
+    pnpm dev
     ```
 
-8.  Change its values appropriately
+7.  Build for production
 
-    ```bash
-    BASE_API_URL="http://localhost:8080"
+    ```sh
+    pnpm build
     ```
 
-9.  To run the app on your local machine:
+    Happy Coding :)
 
-    ```bash
-    npm run dev
-    ```
+## 💡 Scripts
 
-10. Build for production
+[&#8593; Back to top](#-table-of-contents)
 
-    ```bash
-    npm run build
-    ```
+The following scripts are available:
 
-Happy Coding... :)
+| Script         | Action                                                    |
+| -------------- | --------------------------------------------------------- |
+| `pnpm install` | Installs the project dependencies.                        |
+| `pnpm dev`     | Runs the application in development mode.                 |
+| `pnpm build`   | Builds the production-ready optimized bundle.             |
+| `pnpm preview` | Starts the preview server using Vite.                     |
+| `pnpm lint`    | Runs ESLint to lint the project files and fix any issues. |
+| `pnpm format`  | Formats the source code using Prettier.                   |
 
-## License
+## 📝 License
 
-[MIT](./LICENSE)
+This project is licensed under the [MIT](./LICENSE) License.
