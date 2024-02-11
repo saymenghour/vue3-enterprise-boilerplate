@@ -1,7 +1,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
 import type { CurrentUser } from './currentUserType';
 
-export const useCurrentUserStore = defineStore('currentUser', {
+export const useCurrentUserStore = defineStore('currentUserStore', {
   state: (): CurrentUser => ({
     user: null,
     authorities: []
