@@ -2,18 +2,18 @@ import router from '@/router';
 import { axios } from '@/http/axios';
 import { AppRoute } from '@/constants';
 import { destroySensitiveInfo, getAccessToken, getBearerToken, getDeviceId, getRefreshToken, saveToken } from '@/services/localStorage';
-import { AESUtils, RSAUtils } from '@/utils/crypto';
+import { AESCipher, RSACipher } from '@/utils/crypto';
 import type { LoginForm, LoginRequest, LoginResponse, RefreshTokenRequest, RefreshTokenResponse } from './authenticationType';
 
 export const loginWithCredential = async ({ username, password }: LoginForm) => {
-  const secretKey = AESUtils.generateRandomByteArray();
+  const secretKey = AESCipher.generateRandomString();
   const data: LoginRequest = {
     username: username.trim(),
-    password: AESUtils.encryptWithKey(password.trim(), secretKey),
+    password: AESCipher.encryptWithKey(password.trim(), secretKey),
     grantType: 'password',
     clientId: process.env.CLIENT_ID ?? '',
     clientSecret: process.env.CLIENT_SECRET ?? '',
-    encryptedAesKey: RSAUtils.encrypt(secretKey.toString(), process.env.PUBLIC_KEY ?? '')
+    encryptedAesKey: RSACipher.encrypt(secretKey, process.env.PUBLIC_KEY ?? '')
   };
 
   const res = await axios.post<ResponseSuccess<LoginResponse>>('/api/v1/oauth2/login', data, {
