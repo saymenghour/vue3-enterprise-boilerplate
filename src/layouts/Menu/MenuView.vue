@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 
@@ -52,17 +52,16 @@ const store = useCurrentUserStore();
 const { authorities } = storeToRefs(store);
 
 const activeMenu = ref<string>('');
+const authorizedMenus = ref<MenuItem[]>(getAuthorizedMenus(menus));
 
 onMounted(() => {
   activeMenu.value = route.path;
 });
 
-watch(
-  () => route.path,
-  (path: string) => {
-    activeMenu.value = path;
-  }
-);
+watchEffect(() => {
+  authorizedMenus.value = getAuthorizedMenus(menus);
+  activeMenu.value = route.path;
+});
 
 function isActive(path: string): string {
   return activeMenu.value == path ? '!text-menu-active-color !bg-menu-active-bg-color' : '';
@@ -82,14 +81,6 @@ function getAuthorizedMenus(menus: MenuItem[]): MenuItem[] {
   }
   return authorizedMenus;
 }
-
-const authorizedMenus = ref<MenuItem[]>(getAuthorizedMenus(menus));
-watch(
-  () => authorities.value,
-  () => {
-    authorizedMenus.value = getAuthorizedMenus(menus);
-  }
-);
 </script>
 
 <style scoped></style>

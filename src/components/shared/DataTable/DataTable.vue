@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useVueTable,
 } from '@tanstack/vue-table';
-import { ArrowUpDown, ChevronDown } from 'lucide-vue-next';
+import { ChevronDown, SlidersHorizontal } from 'lucide-vue-next';
 
 import { h, ref } from 'vue';
 import { Button } from '@/components/ui/button';
@@ -79,7 +79,7 @@ const table = useVueTable({
             variant="outline"
             class="ml-auto"
           >
-            Columns <ChevronDown class="ml-2 h-4 w-4" />
+            <SlidersHorizontal class="mr-2 h-4 w-4" /> View <ChevronDown class="ml-1 h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
@@ -168,4 +168,4 @@ const table = useVueTable({
       </div>
     </div>
   </div>
-</template>
+</template>@/components/shared/DataTable/table

@@ -1,0 +1,28 @@
+<template>
+  <div
+    v-if="loading"
+    class="flex items-center space-x-4"
+  >
+    <Skeleton class="h-12 w-12 rounded-full" />
+    <div class="space-y-2">
+      <Skeleton class="h-4 w-[250px]" />
+      <Skeleton class="h-4 w-[200px]" />
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import Skeleton from './Skeleton.vue';
+
+interface Props {
+  loading?: boolean;
+}
+
+const { loading } = withDefaults(defineProps<Props>(), {
+  loading: true
+});
+</script>
+
+<style scoped>
+
+</style>
