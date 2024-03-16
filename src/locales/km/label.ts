@@ -8,9 +8,16 @@ export default {
   dashboard: {
     title: 'ផ្ទាំងគ្រប់គ្រង'
   },
+
   signInToYourAccount: 'ចូលគណនីរបស់អ្នក',
+  search: "ស្វែងរក",
   username: 'ឈ្មោះ​អ្នកប្រើប្រាស់',
   password: 'ពាក្យសម្ងាត់',
+  fullNameEn: 'ឈ្មោះពេញ (ជាភាសាអង់គ្លេស)',
+  fullNameKh: 'ឈ្មោះពេញ (ជាភាសាខ្មែរ)',
+  email: "អ៊ីមែល",
+  status: "ស្ថានភាព",
+  actions: "សកម្មភាព",
 
   userManagement: {
     title: 'ការគ្រប់គ្រងអ្នកប្រើប្រាស់',

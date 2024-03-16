@@ -8,6 +8,10 @@ import { getLocale } from '@/services/localStorage';
 
 // Type-define 'en-US' as the master schema for the resource
 export type MessageSchema = typeof en;
+export const messages = {
+  [Locales.EN]: en,
+  [Locales.KM]: km
+};
 
 export const i18n = createI18n<[MessageSchema], string>({
   // you must set `false`, to use Composition API. see more https://vue-i18n.intlify.dev/guide/advanced/composition.html
@@ -20,8 +24,5 @@ export const i18n = createI18n<[MessageSchema], string>({
   fallbackLocale: Locales.EN,
   availableLocales: LOCALE_KEYS,
 
-  messages: {
-    [Locales.EN]: en,
-    [Locales.KM]: km
-  }
+  messages
 });

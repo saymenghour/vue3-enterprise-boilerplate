@@ -1,10 +1,9 @@
 <template>
   <SkeletonPageDetails v-if="isLoading" />
   <template v-else>
-    <Breadcrumb />
-    <Descriptions
-      :fields
-    />
+    <Breadcrumb title="User Management" />
+    <Title :name="t('label.userManagement.user.title')" />
+    <Descriptions :fields />
   </template>
 </template>
 
@@ -13,9 +12,11 @@ import { ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { useFetchUserById } from '@/modules/user-management/user/userService';
 import { SkeletonPageDetails } from '@/components/ui/skeleton';
-import { Breadcrumb, Descriptions } from '@/components';
-import type { DescriptionsField } from '@/components/shared/Descriptions/Descriptions.vue';
+import { Breadcrumb, Descriptions, Title } from '@/components';
+import type { DescriptionsField } from '@/components/shared/Descriptions.vue';
+import { useI18n } from '@/hooks';
 
+const { t } = useI18n();
 const { params } = useRoute();
 const { isLoading, data } = useFetchUserById(params.id as string);
 
@@ -53,6 +54,4 @@ watchEffect(() => {
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

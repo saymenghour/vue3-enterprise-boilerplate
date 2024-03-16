@@ -8,9 +8,16 @@ export default {
   dashboard: {
     title: 'Dashboard'
   },
+
   signInToYourAccount: 'Sign in to your account',
+  search: "Search",
   username: 'Username',
   password: 'Password',
+  fullNameEn: 'Full Name (EN)',
+  fullNameKh: 'Full Name (KH)',
+  email: "Email",
+  status: "Status",
+  actions: "Actions",
 
   userManagement: {
     title: 'User Management',
@@ -19,7 +26,7 @@ export default {
       list: 'User List',
       info: 'User Info',
       category: 'User Category',
-      loginInfo: 'User Login Info'
+      loginInfo: 'User Login Info',
     },
 
     role: {
