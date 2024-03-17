@@ -1,10 +1,10 @@
 <template>
   <SkeletonPageListing v-if="isLoading" />
   <template v-else>
-    <Breadcrumb title="User Management" />
+    <Breadcrumb :title="t('label.userManagement.title')" />
     <Title
       :name="t('label.userManagement.user.title')"
-      description="Managing users includes functionalities such as user authentication, permissions, profile management, password control, activity tracking, account deactivation/suspension, and user communication."
+      :description="t('label.userManagement.user.description')"
     />
     <DataTable
       :data="data ?? []"
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { h } from 'vue';
+import { computed, h } from 'vue';
 import { storeToRefs } from 'pinia';
 import type { ColumnDef } from '@tanstack/vue-table';
 
@@ -30,7 +30,7 @@ const { isLoading } = useFetchUsers();
 const store = useUserStore();
 const { users: data } = storeToRefs(store);
 
-const columns: ColumnDef<User>[] = [
+const columns= computed((): ColumnDef<User>[]  => [
   {
     accessorKey: 'fullNameEn',
     header: t('label.fullNameEn')
@@ -57,7 +57,7 @@ const columns: ColumnDef<User>[] = [
       return h('div', { class: 'relative' }, h(UserListingDropdownAction, { user }));
     }
   }
-];
+]);
 </script>
 
 <style scoped></style>

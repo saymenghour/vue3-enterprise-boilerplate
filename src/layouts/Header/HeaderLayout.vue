@@ -71,6 +71,7 @@
           </div>
 
           <div class="flex flex-row items-center justify-end gap-2">
+            <LocaleSwitcher />
             <ThemeSwitcher />
             <UserNav />
           </div>
@@ -81,6 +82,7 @@
 </template>
 
 <script lang="ts" setup>
+import LocaleSwitcher from '@/components/LocalSwitcher/LocaleSwitcher.vue';
 import UserNav from './UserNav.vue';
 import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue';
 </script>

@@ -1,4 +1,9 @@
 export default {
+  locale: {
+    en: "English",
+    km: "Khmer"
+  },
+
   theme: {
     light: 'Light',
     dark: 'Dark',
@@ -23,6 +28,7 @@ export default {
     title: 'User Management',
     user: {
       title: 'Users',
+      description: "Managing users includes functionalities such as user authentication, permissions, profile management, password control, activity tracking, account deactivation/suspension, and user communication.",
       list: 'User List',
       info: 'User Info',
       category: 'User Category',

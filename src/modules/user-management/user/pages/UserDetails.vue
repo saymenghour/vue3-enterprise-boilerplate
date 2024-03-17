@@ -1,14 +1,14 @@
 <template>
   <SkeletonPageDetails v-if="isLoading" />
   <template v-else>
-    <Breadcrumb title="User Management" />
+    <Breadcrumb :title="t('label.userManagement.title')" />
     <Title :name="t('label.userManagement.user.title')" />
     <Descriptions :fields />
   </template>
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { useFetchUserById } from '@/modules/user-management/user/userService';
 import { SkeletonPageDetails } from '@/components/ui/skeleton';
@@ -20,36 +20,39 @@ const { t } = useI18n();
 const { params } = useRoute();
 const { isLoading, data } = useFetchUserById(params.id as string);
 
-const fields = ref<DescriptionsField[]>([]);
+const fields = computed((): DescriptionsField[] => {
+  const user = data.value;
+  if (!user) {
+    return [];
+  }
 
-watchEffect(() => {
-  fields.value = [
+  return [
     {
       label: 'User Information',
       type: 'section',
       fields: [
         {
-          label: 'Full Name (EN)',
-          value: data.value?.fullNameEn
+          label: t('label.fullNameEn'),
+          value: user.fullNameEn,
         },
         {
-          label: 'Full Name (KH)',
-          value: data.value?.fullNameKh
+          label: t('label.fullNameKh'),
+          value: user.fullNameKh,
         },
         {
-          label: 'Username',
-          value: data.value?.username
+          label: t('label.username'),
+          value: user.username,
         },
         {
-          label: 'Email',
-          value: data.value?.email
+          label: t('label.email'),
+          value: user.email,
         },
         {
-          label: 'Status',
-          value: data.value?.status
+          label: t('label.status'),
+          value: user.status,
         },
-      ]
-    }
+      ],
+    },
   ];
 });
 </script>
