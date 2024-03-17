@@ -1,18 +1,48 @@
 <template>
-  <div
-    v-if="loading"
-    class="flex items-center space-x-4"
-  >
-    <Skeleton class="h-12 w-12 rounded-full" />
-    <div class="space-y-2">
-      <Skeleton class="h-4 w-[250px]" />
-      <Skeleton class="h-4 w-[200px]" />
-    </div>
-  </div>
+  <SkeletonPageHeader />
+  <Table>
+    <TableHeader>
+      <TableRow>
+        <TableHead class="w-[240px]">
+          <Skeleton class="h-6 w-full" />
+        </TableHead>
+        <TableHead><Skeleton class="h-6 w-full" /></TableHead>
+        <TableHead><Skeleton class="h-6 w-full" /></TableHead>
+        <TableHead>
+          <Skeleton class="h-6 w-full" />
+        </TableHead>
+        <TableHead class="w-[150px]">
+          <Skeleton class="h-6 w-full" />
+        </TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow
+        v-for="i in 15"
+        :key="i"
+      >
+        <TableCell><Skeleton class="h-6 w-full" /></TableCell>
+        <TableCell><Skeleton class="h-6 w-full" /></TableCell>
+        <TableCell><Skeleton class="h-6 w-full" /></TableCell>
+        <TableCell><Skeleton class="h-6 w-full" /></TableCell>
+        <TableCell><Skeleton class="h-6 w-full" /></TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
 </template>
 
 <script setup lang="ts">
 import Skeleton from './Skeleton.vue';
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table';
+import SkeletonPageHeader from './SkeletonPageHeader.vue';
 
 interface Props {
   loading?: boolean;
