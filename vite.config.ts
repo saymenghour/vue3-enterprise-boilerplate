@@ -35,6 +35,7 @@ export default defineConfig(({ mode }: UserConfig) => {
       }
     },
     server: {
+      host: true,
       proxy: {
         [proxy.api]: {
           target: env.BASE_API_URL,

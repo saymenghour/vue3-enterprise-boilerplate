@@ -1,0 +1,10 @@
+services:
+  vite-boilderplate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
+    volumes:
+      - .:/app
+      - /app/node_modules
