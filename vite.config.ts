@@ -10,9 +10,9 @@ import { defineConfig, loadEnv, UserConfig } from 'vite';
 export default defineConfig(({ mode }: UserConfig) => {
   const env = loadEnv(mode ?? "development", process.cwd(), "");
 
-  const basePath: string = env.VUE_BASE_PATH + "/";
+  const basePath: string = env.VUE_BASE_PATH;
   const proxy: Record<string, string> = {
-    api: basePath + "api",
+    api: basePath + "/api",
   };
 
   return {

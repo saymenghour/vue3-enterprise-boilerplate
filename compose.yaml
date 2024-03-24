@@ -1,5 +1,5 @@
 services:
-  vite-boilderplate:
+  dov:
     build:
       context: .
       dockerfile: Dockerfile
@@ -8,3 +8,10 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - '5173:5173'
