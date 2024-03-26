@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - '3000:3000'
+
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - prod

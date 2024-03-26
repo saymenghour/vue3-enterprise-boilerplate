@@ -197,22 +197,16 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 
 - Build and Run the Container
 
-  Execute the following command to build the Docker all images and start the container in detached mode (running in the background):
+  Execute the following command to build the Docker all images and start the container in detached mode (running in the background) for local development:
 
   ```sh
   docker compose up -d
   ```
 
-  Build and start for local development
+  Build and start for production
 
   ```sh
-  docker compose up -d dev
-  ```
-
-  Build and start for local development
-
-  ```sh
-  docker compose up -d prod nginx
+  docker compose -f compose.prod.yaml up -d
   ```
 
   `docker-compose up`: This instructs Docker Compose to build and bring up the services defined in your docker-compose.yml file.
