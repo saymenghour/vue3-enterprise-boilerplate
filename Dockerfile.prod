@@ -9,7 +9,8 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
+# Build the application from package.json
+RUN npm run build:prod 
 
 # Step 2 - Create a new lightweight image to serve the built files
 FROM node:20-alpine
@@ -25,7 +26,7 @@ RUN npm install
 # Install PM2 globally
 RUN npm install -g pm2
 
-EXPOSE 5173
+EXPOSE 3000
 
 # Start the app with PM2
 CMD ["pm2-runtime", "start", "ecosystem.config.js"]
