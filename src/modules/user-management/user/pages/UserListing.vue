@@ -2,10 +2,12 @@
   <SkeletonPageListing v-if="isLoading" />
   <template v-else>
     <Breadcrumb :title="t('label.userManagement.title')" />
-    <Title
-      :name="t('label.userManagement.user.title')"
-      :description="t('label.userManagement.user.description')"
-    />
+    <Title :name="t('label.userManagement.user.title')">
+      <AddNewButton
+        :path="AppRoute.User.addNew.path"
+        :label="t('label.userManagement.user.button.addNew')"
+      />
+    </Title>
     <DataTable
       :data="data ?? []"
       :columns="columns"
@@ -24,6 +26,8 @@ import { useUserStore } from '../userStore';
 import type { User } from '../userTypes';
 import UserListingDropdownAction from './UserListingDropdownAction.vue';
 import { useI18n } from '@/hooks';
+import AddNewButton from '@/components/shared/ActionButton/AddNewButton.vue';
+import { AppRoute } from '@/constants';
 
 const { t } = useI18n();
 const { isLoading } = useFetchUsers();

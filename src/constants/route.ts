@@ -13,11 +13,15 @@ export const AppRoute = {
   },
   User: {
     name: 'user',
-    path: '/user-management/users'
-  },
-  UserDetails: {
-    name: 'user-details',
-    path: '/user-management/users/:id'
+    path: '/user-management/users',
+    addNew: {
+      name: 'newUser',
+      path: '/user-management/users/create'
+    },
+    details: {
+      name: 'user-details',
+      path: '/user-management/users/:id'
+    },
   },
   Role: {
     name: 'role',

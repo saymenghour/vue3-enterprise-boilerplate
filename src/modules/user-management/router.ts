@@ -12,8 +12,26 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     }
   },
   {
-    path: AppRoute.UserDetails.path,
-    name: AppRoute.UserDetails.name,
+    path: AppRoute.User.path,
+    name: AppRoute.User.name,
+    component: () => import('@/modules/user-management/user/pages/UserListing.vue'),
+    meta: {
+      requiresAuth: true,
+      authorities: [Permission.CREATE_USER, Permission.EDIT_USER, Permission.VIEW_USER_LISTING, Permission.VIEW_USER_DETAILS]
+    }
+  },
+  {
+    path: AppRoute.User.addNew.path,
+    name: AppRoute.User.addNew.name,
+    component: () => import('@/modules/user-management/user/pages/UserDetails.vue'),
+    meta: {
+      requiresAuth: true,
+      authorities: [Permission.CREATE_USER, Permission.EDIT_USER, Permission.VIEW_USER_LISTING, Permission.VIEW_USER_DETAILS]
+    }
+  },
+  {
+    path: AppRoute.User.details.path,
+    name: AppRoute.User.details.name,
     component: () => import('@/modules/user-management/user/pages/UserDetails.vue'),
     meta: {
       requiresAuth: true,

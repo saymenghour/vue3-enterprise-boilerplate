@@ -66,7 +66,7 @@ const table = useVueTable({
 
 <template>
   <div class="w-full">
-    <div class="flex gap-2 items-center py-4">
+    <div class="flex gap-2 items-center pb-4">
       <Input
         class="max-w-sm"
         placeholder="Search..."
