@@ -27,7 +27,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/lib/shadcn/ui/table';
 
 interface Props {
   loading?: boolean;

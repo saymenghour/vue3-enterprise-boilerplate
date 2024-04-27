@@ -27,7 +27,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+} from '@/lib/shadcn/ui/dropdown-menu';
 import { setLocale } from '@/services/localStorage';
 import { Globe } from 'lucide-vue-next';
 </script>

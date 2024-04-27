@@ -1,10 +1,9 @@
-import { fileURLToPath, URL } from 'node:url';
-
+import path from "path";
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import { defineConfig, loadEnv, UserConfig } from 'vite';
 import autoprefixer from "autoprefixer";
 import tailwind from "tailwindcss";
-import { defineConfig, loadEnv, UserConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: UserConfig) => {
@@ -24,6 +23,11 @@ export default defineConfig(({ mode }: UserConfig) => {
       vue(),
       vueJsx(),
     ],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
     css: {
       postcss: {
         plugins: [tailwind(), autoprefixer()],
@@ -31,11 +35,6 @@ export default defineConfig(({ mode }: UserConfig) => {
     },
     define: {
       "process.env": env,
-    },
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
-      }
     },
     server: {
       host: true,

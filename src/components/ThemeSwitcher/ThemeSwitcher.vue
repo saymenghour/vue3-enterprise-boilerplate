@@ -42,7 +42,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+} from '@/lib/shadcn/ui/dropdown-menu';
 import { useI18n } from '@/hooks';
 
 const { t } = useI18n();

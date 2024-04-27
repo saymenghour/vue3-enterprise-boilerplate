@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@/lib/shadcn/ui/avatar';
+import { Button } from '@/lib/shadcn/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger
-} from '@/components/ui/dropdown-menu';
+} from '@/lib/shadcn/ui/dropdown-menu';
 import { logout } from '@/modules/authentication/authenticationService';
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 import { storeToRefs } from 'pinia';

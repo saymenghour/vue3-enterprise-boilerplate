@@ -41,7 +41,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/lib/shadcn/ui/table';
 import SkeletonPageHeader from './SkeletonPageHeader.vue';
 
 interface Props {

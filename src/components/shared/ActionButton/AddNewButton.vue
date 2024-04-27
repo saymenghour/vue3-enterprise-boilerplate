@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { Plus } from 'lucide-vue-next';
-import Button from '../../ui/button/Button.vue';
+import Button from '@/lib/shadcn/ui/button/Button.vue';
 import { computed } from 'vue';
 
 type ButtonProps = {

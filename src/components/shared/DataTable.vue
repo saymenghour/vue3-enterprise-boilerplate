@@ -16,14 +16,14 @@ import {
 import { ChevronDown, SlidersHorizontal } from 'lucide-vue-next';
 
 import { h, ref } from 'vue';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/lib/shadcn/ui/button';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Input } from '@/components/ui/input';
+} from '@/lib/shadcn/ui/dropdown-menu';
+import { Input } from '@/lib/shadcn/ui/input';
 import {
   Table,
   TableBody,
@@ -31,7 +31,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table';
+} from '@/lib/shadcn/ui/table';
 // import { valueUpdater } from '@/lib/utils';
 
 const props = defineProps<{
@@ -168,4 +168,4 @@ const table = useVueTable({
       </div>
     </div>
   </div>
-</template>@/components/shared/DataTable/table
+</template>@/lib/shadcn/ui/shared/DataTable/table
