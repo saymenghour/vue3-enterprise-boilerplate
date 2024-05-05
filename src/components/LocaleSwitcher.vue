@@ -9,8 +9,7 @@
     >
       <DropdownMenuGroup>
         <DropdownMenuItem
-          v-for="locale in $i18n.availableLocales"
-          :key="`locale-${locale}`"
+          v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`"
           @click="() => { $i18n.locale = locale; setLocale(locale) }"
         >
           {{ $t(`label.locale.${locale}`) }}

@@ -18,16 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import Skeleton from './Skeleton.vue';
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/lib/shadcn/ui/table';
+import Skeleton from '@/lib/shadcn/ui/skeleton/Skeleton.vue';
 
 interface Props {
   loading?: boolean;

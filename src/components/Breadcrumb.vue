@@ -3,7 +3,7 @@
     class="flex mb-2 text-sm"
     aria-label="Breadcrumb"
   >
-    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse text-[#303133] dark:text-[#E5EAF3]">
       <li class="inline-flex items-center">
         <RouterLink
           to="/"

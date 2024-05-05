@@ -13,7 +13,7 @@ import { useRoute } from 'vue-router';
 import { useFetchUserById } from '@/modules/user-management/user/userService';
 import { SkeletonPageDetails } from '@/lib/shadcn/ui/skeleton';
 import { Breadcrumb, Descriptions, Title } from '@/components';
-import type { DescriptionsField } from '@/components/shared/Descriptions.vue';
+import type { DescriptionsField } from '@/components/Descriptions.vue';
 import { useI18n } from '@/hooks';
 
 const { t } = useI18n();

@@ -5,7 +5,7 @@
     <Title :name="t('label.userManagement.user.title')">
       <AddNewButton
         :path="AppRoute.User.addNew.path"
-        :label="t('label.userManagement.user.button.addNew')"
+        :label="t('label.userManagement.user.addNew.title')"
       />
     </Title>
     <DataTable
@@ -20,13 +20,12 @@ import { computed, h } from 'vue';
 import { storeToRefs } from 'pinia';
 import type { ColumnDef } from '@tanstack/vue-table';
 
-import { Breadcrumb, DataTable, SkeletonPageListing, Title } from '@/components';
+import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton } from '@/components';
 import { useFetchUsers } from '../userService';
 import { useUserStore } from '../userStore';
 import type { User } from '../userTypes';
 import UserListingDropdownAction from './UserListingDropdownAction.vue';
 import { useI18n } from '@/hooks';
-import AddNewButton from '@/components/shared/ActionButton/AddNewButton.vue';
 import { AppRoute } from '@/constants';
 
 const { t } = useI18n();

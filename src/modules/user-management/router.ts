@@ -23,10 +23,10 @@ export const userManagementRoutes: RouteRecordRaw[] = [
   {
     path: AppRoute.User.addNew.path,
     name: AppRoute.User.addNew.name,
-    component: () => import('@/modules/user-management/user/pages/UserDetails.vue'),
+    component: () => import('@/modules/user-management/user/pages/UserCreate.vue'),
     meta: {
       requiresAuth: true,
-      authorities: [Permission.CREATE_USER, Permission.EDIT_USER, Permission.VIEW_USER_LISTING, Permission.VIEW_USER_DETAILS]
+      authorities: [Permission.CREATE_USER]
     }
   },
   {

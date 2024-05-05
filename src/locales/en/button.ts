@@ -1,5 +1,6 @@
 export default {
   signIn: 'Sign in',
   forgotPassword: 'Forgot password?',
-  forgotYourPassword: 'Forgot your password?'
+  forgotYourPassword: 'Forgot your password?',
+  submit: 'Submit',
 };

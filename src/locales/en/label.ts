@@ -33,8 +33,8 @@ export default {
       info: 'User Info',
       category: 'User Category',
       loginInfo: 'User Login Info',
-      button: {
-        addNew: "New User"
+      addNew: {
+        title: "New User"
       }
     },
 

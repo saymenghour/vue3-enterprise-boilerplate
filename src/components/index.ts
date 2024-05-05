@@ -1,10 +1,16 @@
-export { default as PrivateOutlet } from './PrivateOutlet/PrivateOutlet.vue';
+export { default as PrivateOutlet } from './PrivateOutlet.vue';
+export { default as LocaleSwitcher } from './LocaleSwitcher.vue';
 export { default as ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher.vue';
 
-export { default as DataTable } from './shared/DataTable.vue';
-export { default as Descriptions } from './shared/Descriptions.vue';
-export { default as Breadcrumb } from './shared/Breadcrumb.vue';
-export { default as Title } from './shared/Title.vue';
+export { default as DataTable } from './DataTable.vue';
+export { default as Descriptions } from './Descriptions.vue';
+export { default as Breadcrumb } from './Breadcrumb.vue';
+export { default as Title } from './Title.vue';
+export { default as Input } from './Input.vue';
+export { default as Grid } from './Grid.vue';
+export { default as AddNewButton } from './ActionButton/AddNewButton.vue';
 
 export { default as Button } from "@/lib/shadcn/ui/button/Button.vue";
-export { default as SkeletonPageListing } from "@/lib/shadcn/ui//skeleton/SkeletonPageListing.vue";
+export { default as SkeletonPageListing } from "./Skeleton/SkeletonPageListing.vue";
+export { default as SkeletonPageDetails } from "./Skeleton/SkeletonPageDetails.vue";
+export { default as SkeletonPageHeader } from "./Skeleton/SkeletonPageHeader.vue";

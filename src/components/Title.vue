@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between min-h-10 text-[#303133] dark:text-[#E5EAF3]">
       <span class="text-lg font-medium">
         {{ name }}
       </span>

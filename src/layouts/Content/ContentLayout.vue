@@ -1,8 +1,8 @@
 <template>
-  <el-main>
+  <div class="p-5">
     <UnauthorizeView v-if="!isAuthorize" />
     <slot v-else />
-  </el-main>
+  </div>
 </template>
 
 <script setup lang="ts">

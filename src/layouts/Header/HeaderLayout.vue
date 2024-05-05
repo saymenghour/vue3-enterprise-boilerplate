@@ -82,9 +82,8 @@
 </template>
 
 <script lang="ts" setup>
-import LocaleSwitcher from '@/components/LocalSwitcher/LocaleSwitcher.vue';
+import { LocaleSwitcher, ThemeSwitcher } from '@/components';
 import UserNav from './UserNav.vue';
-import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue';
 </script>
 
 <style scoped></style>
