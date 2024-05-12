@@ -13,16 +13,13 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from 'vue';
-
 import Content from './Content/ContentLayout.vue';
 import Header from './Header/HeaderLayout.vue';
 import Sider from './Sider/SiderLayout.vue';
-import { fetchCurrentUser } from '@/modules/current-user/currentUserService';
+import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 
-onMounted(() => {
-  fetchCurrentUser();
-});
+const { fetchCurrentUser } = useCurrentUserStore();
+fetchCurrentUser();
 </script>
 
 <style scoped></style>

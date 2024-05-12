@@ -8,16 +8,20 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watchEffect } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { useFetchUserById } from '@/modules/user-management/user/userService';
+import { useQuery } from '@tanstack/vue-query';
+import { useI18n } from '@/hooks';
 import { Breadcrumb, Descriptions, Title, SkeletonPageDetails } from '@/components';
 import type { DescriptionsField } from '@/components/Descriptions.vue';
-import { useI18n } from '@/hooks';
+import { fetchUsersDetailsApi } from '../userApi';
 
 const { t } = useI18n();
 const { params } = useRoute();
-const { isLoading, data } = useFetchUserById(params.id as string);
+const { isLoading, data } = useQuery({
+    queryKey: ['useFetchUserById', params.id],
+    queryFn: () => fetchUsersDetailsApi(params.id as string)
+  });
 
 const fields = computed((): DescriptionsField[] => {
   const user = data.value;

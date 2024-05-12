@@ -9,6 +9,6 @@ export type CurrentUser = {
     fullNameKh: string;
     email: string;
     profileImageUrl: string;
-  } | null;
+  } | undefined;
   authorities: string[];
 };

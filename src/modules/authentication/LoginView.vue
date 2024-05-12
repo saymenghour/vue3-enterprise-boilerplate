@@ -38,7 +38,7 @@
               <input
                 id="username"
                 v-model="username"
-                :disabled="isLoading"
+                :disabled="isPending"
                 autocomplete="off"
                 name="username"
                 class="border text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -55,7 +55,7 @@
               <input
                 id="password"
                 v-model="password"
-                :disabled="isLoading"
+                :disabled="isPending"
                 autocomplete="off"
                 type="password"
                 name="password"
@@ -72,12 +72,12 @@
               </div>
             </div>
             <button
-              :disabled="isLoading"
+              :disabled="isPending"
               type="submit"
               class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               <svg
-                v-if="isLoading"
+                v-if="isPending"
                 aria-hidden="true"
                 role="status"
                 class="inline w-4 h-4 mr-3 text-white animate-spin"
@@ -110,7 +110,7 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod';
 import { useField, useForm } from 'vee-validate';
-import { useMutation } from 'vue-query';
+import { useMutation } from '@tanstack/vue-query';
 import { useRoute } from 'vue-router';
 
 import { loginWithCredential } from './authenticationService';
@@ -132,7 +132,8 @@ const { handleSubmit, errors, resetForm } = useForm({
 const { value: username } = useField('username');
 const { value: password } = useField('password');
 
-const { isLoading, error, mutate } = useMutation((credential: LoginForm) => loginWithCredential(credential), {
+const { isPending, error, mutate } = useMutation({
+  mutationFn: (credential: LoginForm) => loginWithCredential(credential),
   onSuccess: (response) => {
     if (response) {
       resetForm();

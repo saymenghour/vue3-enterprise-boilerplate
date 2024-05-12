@@ -17,23 +17,23 @@
 
 <script setup lang="ts">
 import { computed, h } from 'vue';
-import { storeToRefs } from 'pinia';
+import { useQuery } from '@tanstack/vue-query';
 import type { ColumnDef } from '@tanstack/vue-table';
 
-import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton } from '@/components';
-import { useFetchUsers } from '../userService';
-import { useUserStore } from '../userStore';
-import type { User } from '../userTypes';
-import UserListingDropdownAction from './UserListingDropdownAction.vue';
 import { useI18n } from '@/hooks';
 import { AppRoute } from '@/constants';
+import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton } from '@/components';
+import UserListingDropdownAction from './UserListingDropdownAction.vue';
+import { fetchUsersApi } from '../userApi';
+import type { User } from '../userTypes';
 
 const { t } = useI18n();
-const { isLoading } = useFetchUsers();
-const store = useUserStore();
-const { users: data } = storeToRefs(store);
+const { data, isLoading } = useQuery({
+  queryKey: ['fetchUsers'],
+  queryFn: fetchUsersApi
+});
 
-const columns= computed((): ColumnDef<User>[]  => [
+const columns = computed((): ColumnDef<User>[] => [
   {
     accessorKey: 'fullNameEn',
     header: t('label.fullNameEn')

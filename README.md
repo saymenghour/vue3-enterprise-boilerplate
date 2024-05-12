@@ -48,17 +48,17 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 
 [&#8593; Back to top](#-table-of-contents)
 
-| Library      | Version                                                         | Description                                                                                        |
-| ------------ | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Vue          | ![Vue](https://img.shields.io/badge/%5E3.4.26-blue.svg)         | A progressive JavaScript framework for building user interfaces.                                   |
-| Vite         | ![Vite](https://img.shields.io/badge/%5E5.2.11-blue.svg)        | Next-generation frontend build tooling for fast and efficient development.                         |
-| Typescript   | ![Typescript](https://img.shields.io/badge/%5E5.4.5-blue.svg)   | A superset of JavaScript that enhances the development experience with static typing.              |
-| Vue Router   | ![Vue Router](https://img.shields.io/badge/%5E4.3.2-blue.svg)   | Official router for Vue.js, used for managing application routes.                                  |
-| Vue i18n     | ![Vue i19n](https://img.shields.io/badge/%5E9.13.1-blue.svg)    | Internationalization plugin for Vue.js applications, enabling multi-language support.              |
-| Vue Query    | ![Vue i19n](https://img.shields.io/badge/%5E1.26.0-blue.svg)    | A data-fetching and state management library for Vue.js, with powerful data-fetching capabilities. |
-| Pinia        | ![Pinia](https://img.shields.io/badge/%5E2.1.7-blue.svg)        | An intuitive store for Vue.js applications, providing centralized state management.                |
-| Axios        | ![Axios](https://img.shields.io/badge/%5E1.6.8-blue.svg)        | Promise-based HTTP client for making API requests.                                                 |
-| Tailwind CSS | ![Tailwind CSS](https://img.shields.io/badge/%5E3.4.3-blue.svg) | A highly customizable CSS framework for rapid web development.                                     |
+| Library      | Version                                                                 | Description                                                                                        |
+| ------------ | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Vue          | ![Vue](https://img.shields.io/badge/%5E3.4.27-blue.svg)                 | A progressive JavaScript framework for building user interfaces.                                   |
+| Vite         | ![Vite](https://img.shields.io/badge/%5E5.2.11-blue.svg)                | Next-generation frontend build tooling for fast and efficient development.                         |
+| Typescript   | ![Typescript](https://img.shields.io/badge/%5E5.4.5-blue.svg)           | A superset of JavaScript that enhances the development experience with static typing.              |
+| Vue Router   | ![Vue Router](https://img.shields.io/badge/%5E4.3.2-blue.svg)           | Official router for Vue.js, used for managing application routes.                                  |
+| Vue i18n     | ![Vue i18n](https://img.shields.io/badge/%5E9.13.1-blue.svg)            | Internationalization plugin for Vue.js applications, enabling multi-language support.              |
+| Vue Query    | ![@tanstack/vue-query](https://img.shields.io/badge/%5E5.35.5-blue.svg) | A data-fetching and state management library for Vue.js, with powerful data-fetching capabilities. |
+| Pinia        | ![Pinia](https://img.shields.io/badge/%5E2.1.7-blue.svg)                | An intuitive store for Vue.js applications, providing centralized state management.                |
+| Axios        | ![Axios](https://img.shields.io/badge/%5E1.6.8-blue.svg)                | Promise-based HTTP client for making API requests.                                                 |
+| Tailwind CSS | ![Tailwind CSS](https://img.shields.io/badge/%5E3.4.3-blue.svg)         | A highly customizable CSS framework for rapid web development.                                     |
 
 ## 🗂️ Project Structure
 
