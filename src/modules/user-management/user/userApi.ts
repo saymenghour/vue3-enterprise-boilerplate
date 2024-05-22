@@ -1,5 +1,5 @@
 import { Http } from "@/http";
-import type { User } from "./userTypes";
+import type { CreateUser, User } from "./userType";
 
 export async function fetchUsersApi() {
   const res = await Http.get<ResponseSuccess<User[]>>('/api/v1/users');
@@ -8,5 +8,10 @@ export async function fetchUsersApi() {
 
 export async function fetchUsersDetailsApi(id: string) {
   const res = await Http.get<ResponseSuccess<User>>(`/api/v1/users/${id}`);
+  return res?.data;
+}
+
+export async function createNewUser(values: CreateUser) {
+  const res = await Http.post<ResponseSuccess<String>>(`/api/v1/users`, values);
   return res?.data;
 }

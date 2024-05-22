@@ -35,8 +35,8 @@ const fields = computed((): DescriptionsField[] => {
       type: 'section',
       fields: [
         {
-          label: t('label.fullNameEn'),
-          value: user.fullNameEn,
+          label: t('label.fullName'),
+          value: user.fullName,
         },
         {
           label: t('label.fullNameKh'),

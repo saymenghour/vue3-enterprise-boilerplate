@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router';
 import { MoreHorizontal } from 'lucide-vue-next';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/lib/shadcn/ui/dropdown-menu';
 import { Button } from '@/lib/shadcn/ui/button';
-import type { User } from '../userTypes';
+import type { User } from '../userType';
 
 defineProps<{
   user: User

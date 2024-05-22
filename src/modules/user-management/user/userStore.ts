@@ -1,5 +1,5 @@
 import { defineStore, acceptHMRUpdate } from 'pinia';
-import type { User } from './userTypes';
+import type { User } from './userType';
 
 export const useUserStore = defineStore('userStore', {
   state: (): { users: User[] } => ({

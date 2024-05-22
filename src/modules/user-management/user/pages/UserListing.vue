@@ -25,7 +25,7 @@ import { AppRoute } from '@/constants';
 import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton } from '@/components';
 import UserListingDropdownAction from './UserListingDropdownAction.vue';
 import { fetchUsersApi } from '../userApi';
-import type { User } from '../userTypes';
+import type { User } from '../userType';
 
 const { t } = useI18n();
 const { data, isLoading } = useQuery({
@@ -36,7 +36,7 @@ const { data, isLoading } = useQuery({
 const columns = computed((): ColumnDef<User>[] => [
   {
     accessorKey: 'fullNameEn',
-    header: t('label.fullNameEn')
+    header: t('label.fullName')
   },
   {
     accessorKey: 'fullNameKh',

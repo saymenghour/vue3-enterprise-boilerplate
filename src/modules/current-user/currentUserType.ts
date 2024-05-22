@@ -5,7 +5,7 @@ export type CurrentUser = {
     firstNameKh: string;
     lastNameKh: string;
     username: string;
-    fullNameEn: string;
+    fullName: string;
     fullNameKh: string;
     email: string;
     profileImageUrl: string;

@@ -16,11 +16,19 @@ export default {
 
   signInToYourAccount: 'Sign in to your account',
   search: "Search",
+  loginInfo: 'Login Information',
   username: 'Username',
   password: 'Password',
-  fullNameEn: 'Full Name (EN)',
-  fullNameKh: 'Full Name (KH)',
+  confirmPassword: 'Confirm Password',
+  personalInfo: "Personal Information",
+  firstName: "First Name",
+  lastName: "Last Name",
+  firstNameKh: "First Name (Khmer)",
+  lastNameKh: "Last Name (Khmer)",
+  fullName: 'Full Name',
+  fullNameKh: 'Full Name (Khmer)',
   email: "Email",
+  phoneNumber: "Phone Number",
   status: "Status",
   actions: "Actions",
 
@@ -30,9 +38,7 @@ export default {
       title: 'Users',
       description: "Managing users includes functionalities such as user authentication, permissions, profile management, password control, activity tracking, account deactivation/suspension, and user communication.",
       list: 'User List',
-      info: 'User Info',
-      category: 'User Category',
-      loginInfo: 'User Login Info',
+      category: 'Category',
       addNew: {
         title: "New User"
       }
@@ -43,8 +49,8 @@ export default {
       list: 'Roles List',
       info: 'Role Info',
       name: 'Role Name',
-      nameEn: 'Role Name in English',
-      nameKh: 'Role Name in Khmer',
+      nameEn: 'Role Name',
+      nameKh: 'Role Name (Khmer)',
       type: 'Role Type'
     }
   }

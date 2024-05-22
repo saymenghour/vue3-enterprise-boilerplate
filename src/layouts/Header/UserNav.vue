@@ -42,7 +42,7 @@ const { user } = storeToRefs(store);
       <DropdownMenuLabel class="font-normal flex">
         <div class="flex flex-col space-y-1">
           <p class="text-sm font-medium leading-none">
-            {{ user?.fullNameEn }}
+            {{ user?.fullName }}
           </p>
           <p class="text-xs leading-none text-muted-foreground">
             {{ user?.email }}
