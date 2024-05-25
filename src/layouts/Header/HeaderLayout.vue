@@ -1,6 +1,6 @@
 <template>
   <el-header>
-    <div class="sticky top-0 py-2.5 sm:py-4 border-b border-muted">
+    <div class="sticky top-0 py-2.5">
       <nav
         aria-label="Global"
         class="flex basis-full items-center w-full mx-auto"

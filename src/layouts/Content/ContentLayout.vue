@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5">
+  <div class="px-5 pt-5 h-full bg-slate-50">
     <UnauthorizeView v-if="!isAuthorize" />
     <slot v-else />
   </div>

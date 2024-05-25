@@ -26,8 +26,8 @@ export type User = {
 }
 
 export type CreateUser = {
-  firstNameKh: string;
-  lastNameKh: string;
+  firstNameKh?: string;
+  lastNameKh?: string;
   firstName: string;
   lastName: string;
   username: string;

@@ -1,17 +1,19 @@
 <template>
   <SkeletonPageListing v-if="isLoading" />
   <template v-else>
-    <Breadcrumb :title="t('label.userManagement.title')" />
-    <Title :name="t('label.userManagement.user.title')">
-      <AddNewButton
-        :path="AppRoute.User.addNew.path"
-        :label="t('label.userManagement.user.addNew.title')"
+    <Content>
+      <Breadcrumb :title="t('label.userManagement.title')" />
+      <Title :name="t('label.userManagement.user.title')">
+        <AddNewButton
+          :path="AppRoute.User.addNew.path"
+          :label="t('label.userManagement.user.addNew.title')"
+        />
+      </Title>
+      <DataTable
+        :data="data ?? []"
+        :columns="columns"
       />
-    </Title>
-    <DataTable
-      :data="data ?? []"
-      :columns="columns"
-    />
+    </Content>
   </template>
 </template>
 
@@ -22,7 +24,7 @@ import type { ColumnDef } from '@tanstack/vue-table';
 
 import { useI18n } from '@/hooks';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton } from '@/components';
+import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Content } from '@/components';
 import UserListingDropdownAction from './UserListingDropdownAction.vue';
 import { fetchUsersApi } from '../userApi';
 import type { User } from '../userType';

@@ -11,6 +11,7 @@ export { default as Grid } from './Grid.vue';
 export { default as AddNewButton } from './ActionButton/AddNewButton.vue';
 export { default as Form } from './Form.vue';
 export { default as Section } from './Section.vue';
+export { default as Content } from './Content.vue';
 export { default as Row } from './Row.vue';
 export { default as Col } from './Col.vue';
 export { default as Button } from "./Button.vue";

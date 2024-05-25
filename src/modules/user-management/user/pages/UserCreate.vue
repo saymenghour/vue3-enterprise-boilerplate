@@ -1,64 +1,65 @@
 <template>
-  <Breadcrumb :title="t('label.userManagement.title')" />
-  <Title :name="t('label.userManagement.user.addNew.title')" />
+  <Content>
+    <Breadcrumb :title="t('label.userManagement.title')" />
+    <Title :name="t('label.userManagement.user.addNew.title')" />
 
-  <div class="flex items-center justify-center">
-    <Form
-      class="lg:w-3/4 md:w-full"
-      @submit="onSubmit"
-    >
-      <Section>{{ t('label.personalInfo') }}</Section>
-      <Row>
-        <Col :md="12">
-          <Input
-            name="lastNameKh"
-            :label="t('label.lastNameKh')"
-          />
-        </Col>
-        <Col :md="12">
-          <Input
-            name="firstNameKh"
-            :label="t('label.firstNameKh')"
-          />
-        </Col>
-        <Col :md="12">
-          <Input
-            required
-            name="lastName"
-            :label="t('label.lastName')"
-          />
-        </Col>
-        <Col :md="12">
-          <Input
-            required
-            name="firstName"
-            :label="t('label.firstName')"
-          />
-        </Col>
-        <Col :md="12">
-          <Input
-            name="phoneNumber"
-            :label="t('label.phoneNumber')"
-          />
-        </Col>
-        <Col :md="12">
-          <Input
-            name="email"
-            :label="t('label.email')"
-          />
-        </Col>
-      </Row>
+    <div class="flex justify-center">
+      <Form
+        class="lg:w-3/4 md:w-full"
+        @submit="onSubmit"
+      >
+        <Section>{{ t('label.personalInfo') }}</Section>
+        <Row>
+          <Col :md="12">
+            <Input
+              name="lastNameKh"
+              :label="t('label.lastNameKh')"
+            />
+          </Col>
+          <Col :md="12">
+            <Input
+              name="firstNameKh"
+              :label="t('label.firstNameKh')"
+            />
+          </Col>
+          <Col :md="12">
+            <Input
+              required
+              name="lastName"
+              :label="t('label.lastName')"
+            />
+          </Col>
+          <Col :md="12">
+            <Input
+              required
+              name="firstName"
+              :label="t('label.firstName')"
+            />
+          </Col>
+          <Col :md="12">
+            <Input
+              name="phoneNumber"
+              :label="t('label.phoneNumber')"
+            />
+          </Col>
+          <Col :md="12">
+            <Input
+              name="email"
+              :label="t('label.email')"
+            />
+          </Col>
+        </Row>
 
-      <Section>{{ t('label.loginInfo') }}</Section>
-      <Row>
-        <!-- <Col :md="12"> -->
-        <Col>
-          <Input
-            required
-            name="username"
-            :label="t('label.username')"
-          />
-        </Col>
+        <Section>{{ t('label.loginInfo') }}</Section>
+        <Row>
+          <!-- <Col :md="12"> -->
+          <Col>
+            <Input
+              required
+              name="username"
+              :label="t('label.username')"
+            />
+          </Col>
         <!-- <Col
           :md="12"
         >
@@ -69,56 +70,59 @@
             />
           </div>
         </Col> -->
-      </Row>
-      <Row>
-        <Col :md="12">
-          <Input
-            required
-            type="password"
-            name="password"
-            :label="t('label.password')"
-          />
-        </Col>
-        <Col :md="12">
-          <Input
-            required
-            type="password"
-            name="confirmPassword"
-            :label="t('label.confirmPassword')"
-          />
-        </Col>
-      </Row>
+        </Row>
+        <Row>
+          <Col :md="12">
+            <Input
+              required
+              type="password"
+              name="password"
+              :label="t('label.password')"
+            />
+          </Col>
+          <Col :md="12">
+            <Input
+              required
+              type="password"
+              name="confirmPassword"
+              :label="t('label.confirmPassword')"
+            />
+          </Col>
+        </Row>
 
-      <Button
-        type="submit"
-        :loading="isPending"
-      >
-        {{ t('button.submit') }}
-      </Button>
-    </Form>
-  </div>
+        <Button
+          type="submit"
+          :loading="isPending"
+        >
+          {{ t('button.submit') }}
+        </Button>
+      </Form>
+    </div>
+  </Content>
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue';
-import { toTypedSchema } from '@vee-validate/zod';
-import { useMutation } from '@tanstack/vue-query';
-import { z } from 'zod';
+import router from '@/router';
 import { useForm } from 'vee-validate';
-import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section } from '@/components';
-import { useI18n } from '@/hooks';
+import { toTypedSchema } from '@vee-validate/zod';
+import { z } from 'zod';
+import { useMutation } from '@tanstack/vue-query';
+import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Content } from '@/components';
+import { useI18n, useNotification } from '@/hooks';
 import { createUser } from "../userService";
 import type { CreateUser } from "../userType";
+import { AppRoute } from '@/constants';
 
 const { t } = useI18n();
+const { success } = useNotification();
 
 const formSchema = toTypedSchema(z
     .object({
-      lastNameKh: z.string().max(50).trim(),
-      firstNameKh: z.string().max(50).trim(),
+      lastNameKh: z.string().max(50).trim().optional(),
+      firstNameKh: z.string().max(50).trim().optional(),
       lastName: z.string().max(35).trim(),
       firstName: z.string().max(35).trim(),
-      phoneNumber: z.string().max(15).trim().optional(),
+      phoneNumber: z.string().min(9).max(15).trim().optional(),
       email: z.string().email().max(50).trim().optional(),
       username: z
         .string()
@@ -153,6 +157,10 @@ const { handleSubmit } = useForm({
 
 const { isPending, mutate } = useMutation({
   mutationFn: (values: CreateUser) => createUser(values),
+  onSuccess: (data) => {
+    success(data?.message);
+    router.push({ name: AppRoute.User.name });
+  }
 });
 
 const onSubmit = handleSubmit((values) => {

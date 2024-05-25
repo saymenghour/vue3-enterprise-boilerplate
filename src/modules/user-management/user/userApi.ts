@@ -12,6 +12,5 @@ export async function fetchUsersDetailsApi(id: string) {
 }
 
 export async function createNewUser(values: CreateUser) {
-  const res = await Http.post<ResponseSuccess<String>>(`/api/v1/users`, values);
-  return res?.data;
+  return await Http.post<ResponseSuccess<String>>(`/api/v1/users`, values);
 }
