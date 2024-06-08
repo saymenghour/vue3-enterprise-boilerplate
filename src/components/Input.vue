@@ -11,6 +11,7 @@
       <el-input
         v-bind="componentField"
         :type
+        :show-password="type === 'password'"
         :placeholder
       />
     </el-form-item>
