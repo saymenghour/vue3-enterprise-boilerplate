@@ -1,7 +1,9 @@
 <template>
-  <div class="px-5 pt-5 h-full bg-slate-50">
-    <UnauthorizeView v-if="!isAuthorize" />
-    <slot v-else />
+  <div class="pr-5 bg-white h-full">
+    <div class="px-5 pt-5 h-full bg-slate-50 rounded-t-2xl">
+      <UnauthorizeView v-if="!isAuthorize" />
+      <slot v-else />
+    </div>
   </div>
 </template>
 

@@ -25,7 +25,7 @@ type ActionButtonProps = {
 }
 
 type PageProps = {
-  name: string;
+  name?: string;
   description?: string;
   actionButton?: ActionButtonProps[];
 }

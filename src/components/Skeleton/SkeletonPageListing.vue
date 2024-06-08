@@ -18,7 +18,7 @@
     </TableHeader>
     <TableBody>
       <TableRow
-        v-for="i in 5"
+        v-for="i in 10"
         :key="i"
       >
         <TableCell><Skeleton class="h-6 w-full" /></TableCell>

@@ -1,33 +1,33 @@
 <template>
   <SkeletonPageListing v-if="isLoading" />
   <template v-else>
-    <Content>
-      <Breadcrumb :title="t('label.userManagement.title')" />
-      <Title :name="t('label.userManagement.user.title')">
-        <AddNewButton
-          :path="AppRoute.User.addNew.path"
-          :label="t('label.userManagement.user.addNew.title')"
-        />
-      </Title>
-      <DataTable
-        :data="data ?? []"
-        :columns="columns"
+    <Breadcrumb :items="breadcrumbItems" />
+    <Title :name="t('label.userManagement.user.list')">
+      <AddNewButton
+        :path="AppRoute.User.addNew.path"
+        :label="t('label.userManagement.user.addNew.title')"
       />
-    </Content>
+    </Title>
+    <Box>
+      <DataTable
+        :data
+        :columns
+      />
+    </Box>
   </template>
 </template>
 
 <script setup lang="ts">
-import { computed, h } from 'vue';
+import { computed } from 'vue';
 import { useQuery } from '@tanstack/vue-query';
-import type { ColumnDef } from '@tanstack/vue-table';
 
 import { useI18n } from '@/hooks';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Content } from '@/components';
-import UserListingDropdownAction from './UserListingDropdownAction.vue';
+import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box } from '@/components';
 import { fetchUsersApi } from '../userApi';
 import type { User } from '../userType';
+import type { Column } from '@/components/DataTable.vue';
+import type { BreadcrumbItem } from '@/components/Breadcrumb.vue';
 
 const { t } = useI18n();
 const { data, isLoading } = useQuery({
@@ -35,32 +35,32 @@ const { data, isLoading } = useQuery({
   queryFn: fetchUsersApi
 });
 
-const columns = computed((): ColumnDef<User>[] => [
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
   {
-    accessorKey: 'fullNameEn',
-    header: t('label.fullName')
+    title: t('label.userManagement.title')
+  }
+]);
+
+const columns = computed<Column<User>[]>(() => [
+  {
+    title: t('label.fullName'),
+    dataIndex: 'fullName'
   },
   {
-    accessorKey: 'fullNameKh',
-    header: t('label.fullNameKh')
+    title: t('label.fullNameKh'),
+    dataIndex: 'fullNameKh'
   },
   {
-    accessorKey: 'email',
-    header: t('label.email'),
-    cell: ({ row }) => h('div', { class: 'lowercase' }, row.getValue('email'))
+    title: t('label.email'),
+    dataIndex: 'email'
   },
   {
-    accessorKey: 'status',
-    header: t('label.status'),
-    cell: ({ row }) => h('div', { class: 'capitalize' }, row.getValue('status'))
+    title: t('label.status'),
+    dataIndex: 'status'
   },
   {
-    id: 'actions',
-    header: t('label.actions'),
-    cell: ({ row }) => {
-      const user = row.original;
-      return h('div', { class: 'relative' }, h(UserListingDropdownAction, { user }));
-    }
+    title: t('label.actions'),
+    dataIndex: 'status'
   }
 ]);
 </script>

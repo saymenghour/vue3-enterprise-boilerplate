@@ -1,9 +1,9 @@
 <template>
   <nav
-    class="flex mb-2 text-sm"
+    class="flex text-sm"
     aria-label="Breadcrumb"
   >
-    <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse text-[#303133] dark:text-[#E5EAF3]">
+    <ol class="inline-flex items-center text-[#303133] dark:text-[#E5EAF3]">
       <li class="inline-flex items-center">
         <RouterLink
           to="/"
@@ -12,24 +12,22 @@
           {{ t('label.dashboard.title') }}
         </RouterLink>
       </li>
-      <li>
+      <li
+        v-for="{ title, to } in items"
+        :key="title"
+      >
         <div class="flex items-center">
-          <svg
-            class="rtl:rotate-180 w-3 h-3 text-gray-400 mr-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 6 10"
+          <ChevronRight class="w-4 h-4 m-1" />
+          <RouterLink
+            v-if="to"
+            :to="to"
+            class="inline-flex items-center"
           >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="m1 9 4-4-4-4"
-            />
-          </svg>
-          {{ title }}
+            {{ title }}
+          </RouterLink>
+          <template v-else>
+            {{ title }}
+          </template>
         </div>
       </li>
     </ol>
@@ -38,17 +36,20 @@
 
 <script setup lang="ts">
 import { useI18n } from '@/hooks';
-import { RouterLink } from 'vue-router';
+import { RouterLink, type RouteLocationRaw } from 'vue-router';
+import { ChevronRight } from 'lucide-vue-next';
 
-interface BreadcrumbProps {
+export interface BreadcrumbItem {
   title: string
+  to?: RouteLocationRaw
 }
 
-const { title }= defineProps<BreadcrumbProps>();
+interface BreadcrumbProps {
+  items: BreadcrumbItem[]
+}
 
 const { t } = useI18n();
+defineProps<BreadcrumbProps>();
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

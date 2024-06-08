@@ -1,5 +1,5 @@
 <template>
-  <div class="h-dvh border-r border-muted">
+  <div class="h-dvh">
     <el-aside>
       <BrandLogo />
       <el-scrollbar>

@@ -1,27 +1,12 @@
 <template>
-  <Content>
-    <Breadcrumb :title="t('label.userManagement.title')" />
-    <Title :name="t('label.userManagement.user.addNew.title')" />
+  <Breadcrumb :items="breadcrumbItems" />
+  <Title :name="t('label.userManagement.user.addNew.title')" />
 
-    <div class="flex justify-center">
-      <Form
-        class="lg:w-3/4 md:w-full"
-        @submit="onSubmit"
-      >
+  <div class="flex">
+    <Box class="xl:w-9/12 md:w-full">
+      <Form @submit="onSubmit">
         <Section>{{ t('label.personalInfo') }}</Section>
         <Row>
-          <Col :md="12">
-            <Input
-              name="lastNameKh"
-              :label="t('label.lastNameKh')"
-            />
-          </Col>
-          <Col :md="12">
-            <Input
-              name="firstNameKh"
-              :label="t('label.firstNameKh')"
-            />
-          </Col>
           <Col :md="12">
             <Input
               required
@@ -34,6 +19,18 @@
               required
               name="firstName"
               :label="t('label.firstName')"
+            />
+          </Col>
+          <Col :md="12">
+            <Input
+              name="lastNameKh"
+              :label="t('label.lastNameKh')"
+            />
+          </Col>
+          <Col :md="12">
+            <Input
+              name="firstNameKh"
+              :label="t('label.firstNameKh')"
             />
           </Col>
           <Col :md="12">
@@ -97,8 +94,8 @@
           {{ t('button.submit') }}
         </Button>
       </Form>
-    </div>
-  </Content>
+    </Box>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -106,15 +103,27 @@ import router from '@/router';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { useMutation } from '@tanstack/vue-query';
-import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Content } from '@/components';
+import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Content, Box } from '@/components';
 import { useI18n, useNotification } from '@/hooks';
 import { AppRoute } from '@/constants';
-import { createUser } from "../userService";
+import { createUser } from '../userService';
 import { createUserValidationSchema } from '../userSchema';
-import type { CreateUser } from "../userType";
+import type { CreateUser } from '../userType';
+import { computed } from 'vue';
+import type { BreadcrumbItem } from '@/components/Breadcrumb.vue';
 
 const { t } = useI18n();
 const { success } = useNotification();
+
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
+  {
+    title: t('label.userManagement.title')
+  },
+  {
+    title: t('label.userManagement.user.list'),
+    to: AppRoute.User.path
+  }
+]);
 
 const { handleSubmit } = useForm({
   validationSchema: toTypedSchema(createUserValidationSchema)

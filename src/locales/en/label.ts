@@ -40,7 +40,7 @@ export default {
       list: 'User List',
       category: 'Category',
       addNew: {
-        title: "New User"
+        title: "Add New User"
       }
     },
 
