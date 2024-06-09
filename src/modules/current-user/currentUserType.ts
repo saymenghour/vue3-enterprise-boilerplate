@@ -7,6 +7,7 @@ export type CurrentUser = {
     username: string;
     fullName: string;
     fullNameKh: string;
+    displayName: string;
     email: string;
     profileImageUrl: string;
   } | undefined;
