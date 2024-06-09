@@ -1,5 +1,6 @@
 <template>
   <el-table
+    v-if="data?.length"
     :data
     style="width: 100%"
   >
@@ -13,6 +14,10 @@
       >
         <template #default="scope">
           <span>{{ scope.row[column.dataIndex] }}</span>
+          <slot
+            :name="column.key"
+            :row="scope.row as T"
+          />
         </template>
       </el-table-column>
     </template>
@@ -20,23 +25,19 @@
 </template>
 
 <script lang="ts" setup generic="T extends Record<string, any>">
-
-export interface Column<T> {
-  key?: string;
+export type ColumnProps<T> = {
   title: string;
-  dataIndex: keyof T;
   width?: string | number;
+} & (
+    | { key: string; dataIndex?: never }
+    | { key?: never; dataIndex: keyof T }
+  );
+
+type DataTableProps = {
+  loading: boolean
+  data?: T[];
+  columns: ColumnProps<T>[];
 }
 
-const handleEdit = (index: number, row: T) => {
-  console.log(index, row);
-};
-const handleDelete = (index: number, row: T) => {
-  console.log(index, row);
-};
-
-const { data, columns } = defineProps<{
-  data?: T[];
-  columns: Column<T>[];
-}>();
+defineProps<DataTableProps>();
 </script>

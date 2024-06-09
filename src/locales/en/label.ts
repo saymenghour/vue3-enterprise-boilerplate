@@ -32,6 +32,10 @@ export default {
   status: "Status",
   actions: "Actions",
 
+  active: "Active",
+  deactivated: "Deactivated",
+  viewDetails: "View Details",
+
   userManagement: {
     title: 'User Management',
     user: {
@@ -39,9 +43,8 @@ export default {
       description: "Managing users includes functionalities such as user authentication, permissions, profile management, password control, activity tracking, account deactivation/suspension, and user communication.",
       list: 'User List',
       category: 'Category',
-      addNew: {
-        title: "Add New User"
-      }
+      addNew: "Add New User",
+      edit: "Edit User",
     },
 
     role: {

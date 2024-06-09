@@ -1,6 +1,6 @@
 <template>
   <Breadcrumb :items="breadcrumbItems" />
-  <Title :name="t('label.userManagement.user.addNew.title')" />
+  <Title :name="t('label.userManagement.user.addNew')" />
 
   <div class="flex">
     <Box class="xl:w-9/12 md:w-full">
@@ -99,23 +99,24 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import router from '@/router';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { useMutation } from '@tanstack/vue-query';
-import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Content, Box } from '@/components';
+
 import { useI18n, useNotification } from '@/hooks';
 import { AppRoute } from '@/constants';
+import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Content, Box } from '@/components';
+import type { BreadcrumbItemProps } from '@/types';
 import { createUser } from '../userService';
 import { createUserValidationSchema } from '../userSchema';
 import type { CreateUser } from '../userType';
-import { computed } from 'vue';
-import type { BreadcrumbItem } from '@/components/Breadcrumb.vue';
 
 const { t } = useI18n();
 const { success } = useNotification();
 
-const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
+const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
     title: t('label.userManagement.title')
   },

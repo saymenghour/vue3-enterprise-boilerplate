@@ -13,12 +13,12 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useQuery } from '@tanstack/vue-query';
+
 import { useI18n } from '@/hooks';
-import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box } from '@/components';
-import type { DescriptionsField } from '@/components/Descriptions.vue';
-import { fetchUsersDetailsApi } from '../userApi';
-import type { BreadcrumbItem } from '@/components/Breadcrumb.vue';
 import { AppRoute } from '@/constants';
+import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box } from '@/components';
+import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
+import { fetchUsersDetailsApi } from '../userApi';
 
 const { t } = useI18n();
 const { params } = useRoute();
@@ -27,7 +27,7 @@ const { isLoading, data } = useQuery({
   queryFn: () => fetchUsersDetailsApi(params.id as string)
 });
 
-const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
+const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
     title: t('label.userManagement.title')
   },
@@ -37,7 +37,7 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
   }
 ]);
 
-const fields = computed((): DescriptionsField[] => {
+const fields = computed((): DescriptionsFieldProps[] => {
   const user = data.value;
   if (!user) {
     return [];

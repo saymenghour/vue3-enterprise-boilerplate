@@ -39,13 +39,13 @@ import { useI18n } from '@/hooks';
 import { RouterLink, type RouteLocationRaw } from 'vue-router';
 import { ChevronRight } from 'lucide-vue-next';
 
-export interface BreadcrumbItem {
+export interface BreadcrumbItemProps {
   title: string
   to?: RouteLocationRaw
 }
 
 interface BreadcrumbProps {
-  items: BreadcrumbItem[]
+  items: BreadcrumbItemProps[]
 }
 
 const { t } = useI18n();

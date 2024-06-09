@@ -32,12 +32,12 @@
 
 <script setup lang="ts">
 
-export type DescriptionsField =
+export type DescriptionsFieldProps =
   | {
       label: string;
       value?: never;
       type?: 'section';
-      fields: DescriptionsField[];
+      fields: DescriptionsFieldProps[];
     }
   | {
       label: string;
@@ -47,7 +47,7 @@ export type DescriptionsField =
     };
 
 const props = defineProps<{
-  fields: DescriptionsField[];
+  fields: DescriptionsFieldProps[];
 }>();
 </script>
 
