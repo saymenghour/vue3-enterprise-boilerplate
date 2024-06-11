@@ -14,7 +14,7 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useQuery } from '@tanstack/vue-query';
 
-import { useI18n } from '@/hooks';
+import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box } from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';

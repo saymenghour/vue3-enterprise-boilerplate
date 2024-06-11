@@ -41,7 +41,7 @@ import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 
 import { menus } from '@/constants';
-import { useI18n } from '@/hooks';
+import { useI18n } from '@/composables';
 import type { MenuItem } from '@/types/menu';
 import { ArrayUtils } from '@/utils/common';
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';

@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '@/hooks';
+import { useI18n } from '@/composables';
 import { RouterLink, type RouteLocationRaw } from 'vue-router';
 import { ChevronRight } from 'lucide-vue-next';
 

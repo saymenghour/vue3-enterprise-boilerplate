@@ -43,7 +43,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/lib/shadcn/ui/dropdown-menu';
-import { useI18n } from '@/hooks';
+import { useI18n } from '@/composables';
 
 const { t } = useI18n();
 const mode = useColorMode();

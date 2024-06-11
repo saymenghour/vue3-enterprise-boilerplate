@@ -119,7 +119,7 @@ import { loginSchema } from './loginSchema';
 
 import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue';
 import { AppRoute } from '@/constants';
-import { useI18n } from '@/hooks';
+import { useI18n } from '@/composables';
 import router from '@/router';
 
 const { t } = useI18n();

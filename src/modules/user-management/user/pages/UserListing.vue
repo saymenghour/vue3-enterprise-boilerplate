@@ -30,7 +30,7 @@
 import { computed } from 'vue';
 import { useQuery } from '@tanstack/vue-query';
 
-import { useI18n } from '@/hooks';
+import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box, Tag } from '@/components';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';

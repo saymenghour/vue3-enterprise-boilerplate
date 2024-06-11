@@ -10,7 +10,7 @@
 import { computed, reactive } from 'vue';
 import { Tag } from '@/components';
 import type { TagProps } from '@/types';
-import { useI18n } from '@/hooks';
+import { useI18n } from '@/composables';
 import type { User } from '../userType';
 
 type UserStatusProps = {

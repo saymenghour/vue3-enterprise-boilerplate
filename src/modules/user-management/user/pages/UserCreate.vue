@@ -105,7 +105,7 @@ import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
 import { useMutation } from '@tanstack/vue-query';
 
-import { useI18n, useNotification } from '@/hooks';
+import { useI18n, useNotification } from '@/composables';
 import { AppRoute } from '@/constants';
 import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Content, Box } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
