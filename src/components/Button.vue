@@ -18,7 +18,7 @@ interface ButtonProps {
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   type: 'button',
-  variant: 'primary',
+  variant: undefined,
   loading: false
 });
 </script>

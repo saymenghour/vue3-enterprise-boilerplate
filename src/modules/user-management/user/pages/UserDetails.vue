@@ -2,7 +2,16 @@
   <SkeletonPageDetails v-if="isLoading" />
   <template v-else>
     <Breadcrumb :items="breadcrumbItems" />
-    <Title :name="data?.fullName" />
+    <Title
+      :name="data?.fullName"
+      :show-back-button="true"
+    >
+      <EditButton
+        :path="`./${data?.id}/edit`"
+        :label="t('label.userManagement.user.edit')"
+      />
+    </Title>
+      
     <Box>
       <Descriptions :fields />
     </Box>
@@ -16,7 +25,7 @@ import { useQuery } from '@tanstack/vue-query';
 
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box } from '@/components';
+import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box, EditButton } from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import { fetchUsersDetailsApi } from '../userApi';
 

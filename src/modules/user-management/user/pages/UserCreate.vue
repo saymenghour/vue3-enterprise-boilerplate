@@ -1,6 +1,9 @@
 <template>
   <Breadcrumb :items="breadcrumbItems" />
-  <Title :name="t('label.userManagement.user.addNew')" />
+  <Title
+    :name="t('label.userManagement.user.addNew')"
+    :show-back-button="true"
+  />
 
   <div class="flex">
     <Box class="xl:w-9/12 md:w-full">
@@ -87,12 +90,10 @@
           </Col>
         </Row>
 
-        <Button
-          type="submit"
-          :loading="isPending"
-        >
-          {{ t('button.submit') }}
-        </Button>
+        <div class="flex justify-end">
+          <CancelButton />
+          <SaveButton />
+        </div>
       </Form>
     </Box>
   </div>
@@ -107,7 +108,7 @@ import { useMutation } from '@tanstack/vue-query';
 
 import { useI18n, useNotification } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Content, Box } from '@/components';
+import { Breadcrumb,Input, Title, Row, Col, Form, Section, Content, Box, SaveButton, CancelButton } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
 import { createUser } from '../userService';
 import { createUserValidationSchema } from '../userSchema';

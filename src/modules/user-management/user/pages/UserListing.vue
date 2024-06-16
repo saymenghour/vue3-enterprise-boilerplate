@@ -8,6 +8,7 @@
         :label="t('label.userManagement.user.addNew')"
       />
     </Title>
+
     <Box>
       <DataTable
         :loading="isLoading"
@@ -32,7 +33,7 @@ import { useQuery } from '@tanstack/vue-query';
 
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box, Tag } from '@/components';
+import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box } from '@/components';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 import { fetchUsersApi } from '../userApi';
 import type { User } from '../userType';

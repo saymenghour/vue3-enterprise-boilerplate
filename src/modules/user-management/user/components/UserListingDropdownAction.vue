@@ -11,11 +11,15 @@
     <DropdownMenuContent align="end">
       <RouterLink :to="`./users/${user.id}`">
         <DropdownMenuItem>
+          <Eye class="mr-2 h-4 w-4" />
           {{ t('label.viewDetails') }}
         </DropdownMenuItem>
       </RouterLink>
       <RouterLink :to="`./users/${user.id}/edit`">
-        <DropdownMenuItem>{{ t('label.userManagement.user.edit') }}</DropdownMenuItem>
+        <DropdownMenuItem>
+          <SquarePen class="mr-2 h-4 w-4" />
+          {{ t('label.userManagement.user.edit') }}
+        </DropdownMenuItem>
       </RouterLink>
     </DropdownMenuContent>
   </DropdownMenu>
@@ -23,7 +27,7 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import { MoreHorizontal } from 'lucide-vue-next';
+import { Eye, MoreHorizontal, SquarePen } from 'lucide-vue-next';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/lib/shadcn/ui/dropdown-menu';
 import { Button } from '@/lib/shadcn/ui/button';
 import type { User } from '../userType';

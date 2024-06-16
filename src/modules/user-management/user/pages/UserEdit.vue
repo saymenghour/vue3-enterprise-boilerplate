@@ -3,6 +3,7 @@
   <Title
     :name="data?.fullName"
     :loading="isLoading"
+    :show-back-button="true"
   />
 
   <div class="flex">
@@ -72,12 +73,10 @@
         </Col> -->
         </Row>
 
-        <Button
-          type="submit"
-          :loading="isPending"
-        >
-          {{ t('button.submit') }}
-        </Button>
+        <div class="flex justify-end">
+          <CancelButton />
+          <UpdateButton />
+        </div>
       </Form>
     </Box>
   </div>
@@ -92,7 +91,7 @@ import { useMutation, useQuery } from '@tanstack/vue-query';
 import router from '@/router';
 import { useFormAsync, useI18n, useNotification } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Box } from '@/components';
+import { Breadcrumb, Input, Title, Row, Col, Form, Section, Box, CancelButton, UpdateButton } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
 import { updateUser } from '../userService';
 import { updateUserValidationSchema } from '../userSchema';
