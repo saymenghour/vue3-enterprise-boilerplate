@@ -1,16 +1,22 @@
 import { Http } from "@/http";
-import type { CreateUser, User } from "./userType";
+import type { CreateUserFrom, EditUserForm, User } from "./userType";
+
+const userApi = '/api/v1/users';
 
 export async function fetchUsersApi() {
-  const res = await Http.get<ResponseSuccess<User[]>>('/api/v1/users');
+  const res = await Http.get<ResponseSuccess<User[]>>(userApi);
   return res?.data;
 }
 
 export async function fetchUsersDetailsApi(id: string) {
-  const res = await Http.get<ResponseSuccess<User>>(`/api/v1/users/${id}`);
+  const res = await Http.get<ResponseSuccess<User>>(`${userApi}/${id}`);
   return res?.data;
 }
 
-export async function createNewUser(values: CreateUser) {
-  return await Http.post<ResponseSuccess<String>>(`/api/v1/users`, values);
+export async function createNewUserApi(values: CreateUserFrom) {
+  return await Http.post<ResponseSuccess<String>>(`${userApi}`, values);
+}
+
+export async function updateUserApi(values: EditUserForm, id: string) {
+  return await Http.put<ResponseSuccess<String>>(`${userApi}/${id}`, values);
 }

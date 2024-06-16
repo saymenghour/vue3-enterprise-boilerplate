@@ -1,6 +1,9 @@
 <template>
   <Breadcrumb :items="breadcrumbItems" />
-  <Title :name="t('label.userManagement.user.addNew')" />
+  <Title
+    :name="data?.fullName"
+    :loading="isLoading"
+  />
 
   <div class="flex">
     <Box class="xl:w-9/12 md:w-full">
@@ -68,24 +71,6 @@
           </div>
         </Col> -->
         </Row>
-        <Row>
-          <Col :md="12">
-            <Input
-              required
-              type="password"
-              name="password"
-              :label="t('label.password')"
-            />
-          </Col>
-          <Col :md="12">
-            <Input
-              required
-              type="password"
-              name="confirmPassword"
-              :label="t('label.confirmPassword')"
-            />
-          </Col>
-        </Row>
 
         <Button
           type="submit"
@@ -99,22 +84,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import router from '@/router';
-import { useForm } from 'vee-validate';
+import { computed, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import { toTypedSchema } from '@vee-validate/zod';
-import { useMutation } from '@tanstack/vue-query';
+import { useMutation, useQuery } from '@tanstack/vue-query';
 
-import { useI18n, useNotification } from '@/composables';
+import router from '@/router';
+import { useFormAsync, useI18n, useNotification } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Content, Box } from '@/components';
+import { Breadcrumb, Button, Input, Title, Row, Col, Form, Section, Box } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
-import { createUser } from '../userService';
-import { createUserValidationSchema } from '../userSchema';
-import type { CreateUserFrom } from '../userType';
+import { updateUser } from '../userService';
+import { updateUserValidationSchema } from '../userSchema';
+import type { EditUserForm } from '../userType';
+import { fetchUsersDetailsApi } from '../userApi';
 
 const { t } = useI18n();
 const { success } = useNotification();
+const { params } = useRoute();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
@@ -125,16 +112,22 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     to: AppRoute.User.path
   },
   {
-    title: t('label.create'),
-  },
+    title: t('label.edit')
+  }
 ]);
 
-const { handleSubmit } = useForm<CreateUserFrom>({
-  validationSchema: toTypedSchema(createUserValidationSchema)
+const { isLoading, data } = useQuery({
+  queryKey: ['useFetchUserById', params.id],
+  queryFn: () => fetchUsersDetailsApi(params.id as string)
+});
+
+const { handleSubmit } = useFormAsync<EditUserForm>({
+  initialValues: data,
+  validationSchema: toTypedSchema(updateUserValidationSchema)
 });
 
 const { isPending, mutate } = useMutation({
-  mutationFn: (values: CreateUserFrom) => createUser(values),
+  mutationFn: (values: EditUserForm) => updateUser(values, params.id as string),
   onSuccess: (data) => {
     success(data?.message);
     router.push({ name: AppRoute.User.name });
@@ -142,6 +135,7 @@ const { isPending, mutate } = useMutation({
 });
 
 const onSubmit = handleSubmit((values) => {
+  console.log(values);
   mutate(values);
 });
 </script>

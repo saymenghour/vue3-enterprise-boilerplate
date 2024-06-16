@@ -21,16 +21,16 @@
 
 type ActionButtonProps = {
   label: string;
-  
 }
 
 type PageProps = {
-  name?: string;
+  loading?: boolean;
+  name: string | undefined;
   description?: string;
   actionButton?: ActionButtonProps[];
 }
 
-const { name } = defineProps<PageProps>();
+defineProps<PageProps>();
 
 </script>
 

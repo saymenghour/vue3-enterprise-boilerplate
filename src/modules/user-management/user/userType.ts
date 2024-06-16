@@ -25,7 +25,7 @@ export type User = {
   roles: Role[]
 }
 
-export type CreateUser = {
+export type CreateUserFrom = {
   firstNameKh?: string;
   lastNameKh?: string;
   firstName: string;
@@ -35,6 +35,16 @@ export type CreateUser = {
   email?: string;
   password: string;
   confirmPassword: string;
+}
+
+export type EditUserForm = {
+  firstNameKh?: string;
+  lastNameKh?: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  phoneNumber?: string;
+  email?: string;
 }
 
 export type Branch = {

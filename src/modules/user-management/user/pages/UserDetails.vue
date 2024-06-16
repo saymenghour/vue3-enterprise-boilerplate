@@ -22,10 +22,6 @@ import { fetchUsersDetailsApi } from '../userApi';
 
 const { t } = useI18n();
 const { params } = useRoute();
-const { isLoading, data } = useQuery({
-  queryKey: ['useFetchUserById', params.id],
-  queryFn: () => fetchUsersDetailsApi(params.id as string)
-});
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
@@ -34,8 +30,16 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
     title: t('label.userManagement.user.list'),
     to: AppRoute.User.path
-  }
+  },
+  {
+    title: t('label.details'),
+  },
 ]);
+
+const { isLoading, data } = useQuery({
+  queryKey: ['useFetchUserById', params.id],
+  queryFn: () => fetchUsersDetailsApi(params.id as string)
+});
 
 const fields = computed((): DescriptionsFieldProps[] => {
   const user = data.value;

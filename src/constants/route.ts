@@ -22,6 +22,10 @@ export const AppRoute = {
       name: 'user-details',
       path: '/user-management/users/:id'
     },
+    edit: {
+      name: 'user-edit',
+      path: '/user-management/users/:id/edit'
+    },
   },
   Role: {
     name: 'role',

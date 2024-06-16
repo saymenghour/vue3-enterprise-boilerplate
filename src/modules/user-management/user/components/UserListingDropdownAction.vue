@@ -14,7 +14,9 @@
           {{ t('label.viewDetails') }}
         </DropdownMenuItem>
       </RouterLink>
-      <DropdownMenuItem>{{ t('label.userManagement.user.edit') }}</DropdownMenuItem>
+      <RouterLink :to="`./users/${user.id}/edit`">
+        <DropdownMenuItem>{{ t('label.userManagement.user.edit') }}</DropdownMenuItem>
+      </RouterLink>
     </DropdownMenuContent>
   </DropdownMenu>
 </template>

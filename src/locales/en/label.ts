@@ -32,6 +32,9 @@ export default {
   status: "Status",
   actions: "Actions",
 
+  create: "Create",
+  edit: "Edit",
+  details: "Details",
   active: "Active",
   deactivated: "Deactivated",
   viewDetails: "View Details",

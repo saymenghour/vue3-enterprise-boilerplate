@@ -32,6 +32,9 @@ export default {
   status: "ស្ថានភាព",
   actions: "សកម្មភាព",
 
+  create: "បង្កើត",
+  edit: "កែសម្រួល",
+  details: "ព័ត៌មានលម្អិត",
   active: "សកម្ម",
   deactivated: "អសកម្ម",
   viewDetails: "មើលព័ត៌មានលម្អិត",
