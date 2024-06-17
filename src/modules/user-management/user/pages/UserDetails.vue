@@ -12,8 +12,16 @@
       />
     </Title>
       
+    <Box class="mb-5 flex">
+      <UserDetailsInfo :user="data" />
+    </Box>
+
     <Box>
-      <Descriptions :fields />
+      <Descriptions :fields>
+        <template #status>
+          <UserStatus :status="data?.status" />
+        </template>
+      </Descriptions>
     </Box>
   </template>
 </template>
@@ -25,9 +33,11 @@ import { useQuery } from '@tanstack/vue-query';
 
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box, EditButton } from '@/components';
+import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box, EditButton, Avatar } from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import { fetchUsersDetailsApi } from '../userApi';
+import UserDetailsInfo from '../components/UserDetailsInfo.vue';
+import UserStatus from '../components/UserStatus.vue';
 
 const { t } = useI18n();
 const { params } = useRoute();
@@ -78,8 +88,9 @@ const fields = computed((): DescriptionsFieldProps[] => {
           value: user.email
         },
         {
+          slotName: "status",
           label: t('status'),
-          value: user.status
+          // value: user.status
         }
       ]
     }

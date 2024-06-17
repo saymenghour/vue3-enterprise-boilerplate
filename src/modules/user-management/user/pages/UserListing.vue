@@ -26,7 +26,7 @@
         </template>
       
         <template #status="{ row: user }">
-          <UserStatus :user />
+          <UserStatus :status="user.status" />
         </template>
         
         <template #actions="{ row: user }">

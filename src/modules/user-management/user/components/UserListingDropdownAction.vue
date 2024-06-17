@@ -10,13 +10,13 @@
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end">
       <RouterLink :to="`./users/${user.id}`">
-        <DropdownMenuItem>
+        <DropdownMenuItem class="cursor-pointer">
           <Eye class="mr-2 h-4 w-4" />
           {{ t('viewDetails') }}
         </DropdownMenuItem>
       </RouterLink>
       <RouterLink :to="`./users/${user.id}/edit`">
-        <DropdownMenuItem>
+        <DropdownMenuItem class="cursor-pointer">
           <SquarePen class="mr-2 h-4 w-4" />
           {{ t('user.edit') }}
         </DropdownMenuItem>

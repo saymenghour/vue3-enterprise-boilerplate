@@ -1,8 +1,8 @@
 <template>
   <Tag
-    v-if="status"
-    :type="status.type"
-    :label="status.label"
+    v-if="state"
+    :type="state.type"
+    :label="state.label"
   />
 </template>
 
@@ -11,13 +11,12 @@ import { computed } from 'vue';
 import { Tag } from '@/components';
 import type { TagProps } from '@/types';
 import { useI18n } from '@/composables';
-import type { User } from '../userType';
 
 type UserStatusProps = {
-  user: User
+  status: string | undefined;
 }
 
-const { user } = defineProps<UserStatusProps>();
+const { status } = defineProps<UserStatusProps>();
 const { t } = useI18n();
 
 const userStatus = computed<Record<string, TagProps>>(() => ({
@@ -27,7 +26,7 @@ const userStatus = computed<Record<string, TagProps>>(() => ({
   }
 }));
 
-const status = computed(() => userStatus.value[user.status]);
+const state = computed(() => userStatus.value[status ?? ""]);
 </script>
 
 <style scoped></style>

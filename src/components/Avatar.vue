@@ -3,6 +3,7 @@
     :size
     :src
     class="mr-2"
+    fit="fit"
   >
     <el-avatar :icon="UserFilled" />
   </el-avatar>
@@ -13,7 +14,7 @@ import { UserFilled } from '@element-plus/icons-vue';
 
 type AvatarProps = {
   size?: number;
-  src: string;
+  src: string | undefined;
 }
 
 withDefaults(defineProps<AvatarProps>(), {

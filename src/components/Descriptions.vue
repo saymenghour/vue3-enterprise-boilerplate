@@ -22,7 +22,16 @@
         class="mb-2 flex flex-col"
       >
         <span>{{ item.label }}</span>
-        <span class="font-medium">{{ item.value ?? (displayDashIfValueIsNull ? "-" : "") }}</span>
+
+        <span v-if="item.slotName">
+          <slot :name="item.slotName" />
+        </span>
+        <span
+          v-else
+          class="font-medium"
+        >
+          {{ item.value ?? (displayDashIfValueIsNull ? "-" : "") }}
+        </span>
       </div>
     </div>
   </div>
@@ -31,6 +40,7 @@
 <script setup lang="ts">
 export type DescriptionsFieldProps = {
   label: string;
+  slotName?: string;
 } & (
   | {
       value?: never;
