@@ -71,13 +71,13 @@ const columns = computed<ColumnProps<User>[]>(() => [
   {
     title: t('email'),
     dataIndex: 'email',
-    displayDashIfValueIsEmpty: true,
+    displayDashIfValueIsNull: true,
     minWidth: 150,
   },
   {
     title: t('phoneNumber'),
     dataIndex: 'phoneNumber',
-    displayDashIfValueIsEmpty: true,
+    displayDashIfValueIsNull: true,
     minWidth: 150,
   },
   {

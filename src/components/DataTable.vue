@@ -18,7 +18,7 @@
             {{ 
               column.render 
                 ? column.render(scope.row) 
-                : scope.row[column.dataIndex] ?? (column.displayDashIfValueIsEmpty ? "-" : "") 
+                : scope.row[column.dataIndex] ?? (column.displayDashIfValueIsNull ? "-" : "") 
             }}
             <slot
               :name="column.key"
@@ -36,7 +36,7 @@ export type ColumnProps<T> = {
   title: string;
   width?: string | number;
   minWidth?: string | number;
-  displayDashIfValueIsEmpty?: boolean;
+  displayDashIfValueIsNull?: boolean;
   render?: (row: T) => any;
 } & (
     | { key: string; dataIndex?: never }

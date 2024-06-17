@@ -1,6 +1,6 @@
 <template>
   <div
-    v-for="field in props.fields"
+    v-for="field in fields"
     :key="field.label"
   >
     <div
@@ -19,36 +19,39 @@
       <div
         v-for="item in field.fields ?? [field]"
         :key="item.label"
-        class="mb-2"
+        class="mb-2 flex flex-col"
       >
-        <p class="text-sm font-semibold mb-1">
-          {{ item.label }}
-        </p>
-        <div>{{ item.value ?? '-' }}</div>
+        <span>{{ item.label }}</span>
+        <span class="font-medium">{{ item.value ?? (displayDashIfValueIsNull ? "-" : "") }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-
-export type DescriptionsFieldProps =
+export type DescriptionsFieldProps = {
+  label: string;
+} & (
   | {
-      label: string;
       value?: never;
-      type?: 'section';
+      type?: "section";
       fields: DescriptionsFieldProps[];
     }
   | {
-      label: string;
       value?: string;
       type?: never;
       fields?: never;
-    };
+    }
+);
 
-const props = defineProps<{
+type DescriptionsProps = {
   fields: DescriptionsFieldProps[];
-}>();
+  displayDashIfValueIsNull?: boolean;
+}
+
+withDefaults(defineProps<DescriptionsProps>(), {
+  displayDashIfValueIsNull: true
+});
 </script>
 
 <style scoped></style>
