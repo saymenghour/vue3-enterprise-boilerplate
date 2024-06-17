@@ -15,6 +15,16 @@
         :data
         :columns
       >
+        <template #fullName="{ row: user }">
+          <div class="flex items-center">
+            <Avatar :src="user.profileImageUrl" />
+            <div class="flex flex-col">
+              <span>{{ user.fullName }}</span>
+              <span class="text-xs">@{{ user.username }}</span>
+            </div>
+          </div>
+        </template>
+      
         <template #status="{ row: user }">
           <UserStatus :user />
         </template>
@@ -33,7 +43,7 @@ import { useQuery } from '@tanstack/vue-query';
 
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box } from '@/components';
+import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box, Avatar } from '@/components';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 import { fetchUsersApi } from '../userApi';
 import type { User } from '../userType';
@@ -54,24 +64,31 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
 
 const columns = computed<ColumnProps<User>[]>(() => [
   {
+    key: 'fullName',
     title: t('label.fullName'),
-    dataIndex: 'fullName',
-  },
-  {
-    title: t('label.fullNameKh'),
-    dataIndex: 'fullNameKh',
+    minWidth: 150,
   },
   {
     title: t('label.email'),
     dataIndex: 'email',
+    displayDashIfValueIsEmpty: true,
+    minWidth: 150,
+  },
+  {
+    title: t('label.phoneNumber'),
+    dataIndex: 'phoneNumber',
+    displayDashIfValueIsEmpty: true,
+    minWidth: 150,
   },
   {
     key: 'status',
     title: t('label.status'),
+    minWidth: 120,
   },
   {
     key: 'actions',
-    title: t('label.actions')
+    title: t('label.actions'),
+    minWidth: 80,
   }
 ]);
 </script>

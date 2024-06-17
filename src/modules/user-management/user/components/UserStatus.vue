@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive } from 'vue';
+import { computed } from 'vue';
 import { Tag } from '@/components';
 import type { TagProps } from '@/types';
 import { useI18n } from '@/composables';
@@ -18,7 +18,7 @@ type UserStatusProps = {
 }
 
 const { user } = defineProps<UserStatusProps>();
-const { t} = useI18n();
+const { t } = useI18n();
 
 const userStatus = computed<Record<string, TagProps>>(() => ({
   ACTIVE: {

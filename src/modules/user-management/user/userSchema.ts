@@ -2,8 +2,8 @@ import { z } from 'zod';
 
 export const createUserValidationSchema = z
   .object({
-    lastNameKh: z.string().max(50).optional().or(z.literal('')),
-    firstNameKh: z.string().max(50).optional().or(z.literal('')),
+    lastNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
+    firstNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
     lastName: z.
       string({ message: 'Last name is required.' })
       .max(35, { message: 'Last name must be no more than 35 characters long.' }),
@@ -40,8 +40,8 @@ export const createUserValidationSchema = z
 
 export const updateUserValidationSchema = z
   .object({
-    lastNameKh: z.string().max(50).optional().or(z.literal('')),
-    firstNameKh: z.string().max(50).optional().or(z.literal('')),
+    lastNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
+    firstNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
     lastName: z.
       string({ message: 'Last name is required.' })
       .max(35, { message: 'Last name must be no more than 35 characters long.' }),

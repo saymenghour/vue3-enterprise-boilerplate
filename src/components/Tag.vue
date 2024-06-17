@@ -11,14 +11,14 @@
 
 <script setup lang="ts">
 export type TagProps = {
-  type: 'primary' | 'success' | 'info' | 'warning' | 'danger' | undefined
-  label: string | undefined
-  round?: boolean
-  effect?: 'dark' | 'light' | 'plain'
+  type: 'primary' | 'success' | 'info' | 'warning' | 'danger' | undefined;
+  label: string | undefined;
+  round?: boolean;
+  effect?: 'dark' | 'light' | 'plain';
 }
 
 withDefaults(defineProps<TagProps>(), {
-  effect: "dark"
+  effect: "light"
 });
 </script>
 
