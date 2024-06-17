@@ -12,7 +12,7 @@
           v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`"
           @click="() => { $i18n.locale = locale; setLocale(locale) }"
         >
-          {{ $t(`label.locale.${locale}`) }}
+          {{ $t(`locale.${locale}`) }}
         </DropdownMenuItem>
       </DropdownMenuGroup>
     </DropdownMenuContent>

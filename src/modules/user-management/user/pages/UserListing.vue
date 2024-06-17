@@ -2,10 +2,10 @@
   <SkeletonPageListing v-if="isLoading" />
   <template v-else>
     <Breadcrumb :items="breadcrumbItems" />
-    <Title :name="t('label.userManagement.user.list')">
+    <Title :name="t('user.list')">
       <AddNewButton
         :path="AppRoute.User.addNew.path"
-        :label="t('label.userManagement.user.addNew')"
+        :label="t('user.addNew')"
       />
     </Title>
 
@@ -19,7 +19,7 @@
           <div class="flex items-center">
             <Avatar :src="user.profileImageUrl" />
             <div class="flex flex-col">
-              <span>{{ user.fullName }}</span>
+              <span class="font-medium">{{ user.fullName }}</span>
               <span class="text-xs">@{{ user.username }}</span>
             </div>
           </div>
@@ -58,36 +58,36 @@ const { data, isLoading } = useQuery({
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
-    title: t('label.userManagement.title')
+    title: t('userManagement')
   }
 ]);
 
 const columns = computed<ColumnProps<User>[]>(() => [
   {
     key: 'fullName',
-    title: t('label.fullName'),
+    title: t('fullName'),
     minWidth: 150,
   },
   {
-    title: t('label.email'),
+    title: t('email'),
     dataIndex: 'email',
     displayDashIfValueIsEmpty: true,
     minWidth: 150,
   },
   {
-    title: t('label.phoneNumber'),
+    title: t('phoneNumber'),
     dataIndex: 'phoneNumber',
     displayDashIfValueIsEmpty: true,
     minWidth: 150,
   },
   {
     key: 'status',
-    title: t('label.status'),
+    title: t('status'),
     minWidth: 120,
   },
   {
     key: 'actions',
-    title: t('label.actions'),
+    title: t('actions'),
     minWidth: 80,
   }
 ]);

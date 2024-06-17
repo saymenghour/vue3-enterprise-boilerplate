@@ -14,12 +14,17 @@
         :min-width="column.minWidth"
       >
         <template #default="scope">
-          <span v-if="column.render">{{ column.render(scope.row) }}</span>
-          <span v-else>{{ scope.row[column.dataIndex] ?? (column.displayDashIfValueIsEmpty && "-") }}</span>
-          <slot
-            :name="column.key"
-            :row="scope.row as T"
-          />
+          <span>
+            {{ 
+              column.render 
+                ? column.render(scope.row) 
+                : scope.row[column.dataIndex] ?? (column.displayDashIfValueIsEmpty ? "-" : "") 
+            }}
+            <slot
+              :name="column.key"
+              :row="scope.row as T"
+            />
+          </span>
         </template>
       </el-table-column>
     </template>

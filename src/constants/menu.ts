@@ -4,20 +4,20 @@ import type { MenuItem } from '@/types/menu';
 export const menus: MenuItem[] = [
   {
     key: AppRoute.Dashboard.path,
-    label: 'label.dashboard.title'
+    label: 'dashboard'
   },
   {
     key: '/user-management',
-    label: 'label.userManagement.title',
+    label: 'userManagement',
     subMenus: [
       {
         key: AppRoute.User.path,
-        label: 'label.userManagement.user.title',
+        label: 'user.label',
         authorities: [Permission.CREATE_USER, Permission.EDIT_USER, Permission.VIEW_USER_LISTING, Permission.VIEW_USER_DETAILS]
       },
       {
         key: AppRoute.Role.path,
-        label: 'label.userManagement.role.title',
+        label: 'role.label',
         authorities: [Permission.CREATE_ROLE, Permission.EDIT_ROLE, Permission.VIEW_ROLE_LISTING, Permission.VIEW_ROLE_DETAILS]
       }
     ]

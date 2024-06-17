@@ -9,56 +9,56 @@
   <div class="flex">
     <Box class="xl:w-9/12 md:w-full">
       <Form @submit="onSubmit">
-        <Section>{{ t('label.personalInfo') }}</Section>
+        <Section>{{ t('personalInfo') }}</Section>
         <Row>
           <Col :md="12">
             <Input
               required
               name="lastName"
-              :label="t('label.lastName')"
+              :label="t('lastName')"
             />
           </Col>
           <Col :md="12">
             <Input
               required
               name="firstName"
-              :label="t('label.firstName')"
+              :label="t('firstName')"
             />
           </Col>
           <Col :md="12">
             <Input
               name="lastNameKh"
-              :label="t('label.lastNameKh')"
+              :label="t('lastNameKh')"
             />
           </Col>
           <Col :md="12">
             <Input
               name="firstNameKh"
-              :label="t('label.firstNameKh')"
+              :label="t('firstNameKh')"
             />
           </Col>
           <Col :md="12">
             <Input
               name="phoneNumber"
-              :label="t('label.phoneNumber')"
+              :label="t('phoneNumber')"
             />
           </Col>
           <Col :md="12">
             <Input
               name="email"
-              :label="t('label.email')"
+              :label="t('email')"
             />
           </Col>
         </Row>
 
-        <Section>{{ t('label.loginInfo') }}</Section>
+        <Section>{{ t('loginInfo') }}</Section>
         <Row>
           <!-- <Col :md="12"> -->
           <Col>
             <Input
               required
               name="username"
-              :label="t('label.username')"
+              :label="t('username')"
             />
           </Col>
           <!-- <Col
@@ -104,14 +104,14 @@ const { params } = useRoute();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
-    title: t('label.userManagement.title')
+    title: t('userManagement')
   },
   {
-    title: t('label.userManagement.user.list'),
+    title: t('user.list'),
     to: AppRoute.User.path
   },
   {
-    title: t('label.edit')
+    title: t('edit')
   }
 ]);
 

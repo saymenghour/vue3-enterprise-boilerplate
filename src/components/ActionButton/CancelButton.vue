@@ -1,6 +1,6 @@
 <template>
   <Button @click="goBack()">
-    {{ t('button.cancel') }}
+    {{ t('cancel') }}
   </Button>
 </template>
 

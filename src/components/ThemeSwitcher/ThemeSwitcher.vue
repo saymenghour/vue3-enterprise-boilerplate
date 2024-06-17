@@ -54,19 +54,19 @@ const dropdownItem = {
     theme: 'light',
     icon: lightIcon,
     alt: 'light',
-    label: t('label.theme.light')
+    label: t('theme.light')
   },
   dark: {
     theme: 'dark',
     icon: darkIcon,
     alt: 'dark',
-    label: t('label.theme.dark')
+    label: t('theme.dark')
   },
   auto: {
     theme: 'auto',
     icon: systemIcon,
     alt: 'system',
-    label: t('label.theme.system')
+    label: t('theme.system')
   }
 };
 

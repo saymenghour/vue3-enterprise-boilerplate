@@ -22,7 +22,7 @@ const { t } = useI18n();
 
 const userStatus = computed<Record<string, TagProps>>(() => ({
   ACTIVE: {
-    label: t('label.active'),
+    label: t('active'),
     type: "success"
   }
 }));

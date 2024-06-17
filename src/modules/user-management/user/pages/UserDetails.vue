@@ -8,7 +8,7 @@
     >
       <EditButton
         :path="`./${data?.id}/edit`"
-        :label="t('label.userManagement.user.edit')"
+        :label="t('user.edit')"
       />
     </Title>
       
@@ -34,14 +34,14 @@ const { params } = useRoute();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
-    title: t('label.userManagement.title')
+    title: t('userManagement')
   },
   {
-    title: t('label.userManagement.user.list'),
+    title: t('user.list'),
     to: AppRoute.User.path
   },
   {
-    title: t('label.details'),
+    title: t('details'),
   },
 ]);
 
@@ -58,27 +58,27 @@ const fields = computed((): DescriptionsFieldProps[] => {
 
   return [
     {
-      label: t('label.personalInfo'),
+      label: t('personalInfo'),
       type: 'section',
       fields: [
         {
-          label: t('label.fullName'),
+          label: t('fullName'),
           value: user.fullName
         },
         {
-          label: t('label.fullNameKh'),
+          label: t('fullNameKh'),
           value: user.fullNameKh
         },
         {
-          label: t('label.username'),
+          label: t('username'),
           value: user.username
         },
         {
-          label: t('label.email'),
+          label: t('email'),
           value: user.email
         },
         {
-          label: t('label.status'),
+          label: t('status'),
           value: user.status
         }
       ]

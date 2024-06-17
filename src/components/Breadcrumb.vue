@@ -9,7 +9,7 @@
           to="/"
           class="inline-flex items-center"
         >
-          {{ t('label.dashboard.title') }}
+          {{ t('dashboard') }}
         </RouterLink>
       </li>
       <li

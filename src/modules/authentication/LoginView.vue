@@ -4,7 +4,7 @@
       <div class="w-full rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1 class="text-xl font-bold leading-tight tracking-tight">
-            {{ t('label.signInToYourAccount') }}
+            {{ t('signInToYourAccount') }}
           </h1>
           <div
             v-if="error"
@@ -34,7 +34,7 @@
                 for="username"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                {{ t('label.username') }}</label>
+                {{ t('username') }}</label>
               <input
                 id="username"
                 v-model="username"
@@ -51,7 +51,7 @@
                 for="password"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
-                {{ t('label.password') }}</label>
+                {{ t('password') }}</label>
               <input
                 id="password"
                 v-model="password"
@@ -68,7 +68,7 @@
                   href="#"
                   class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
-                  {{ t('button.forgotYourPassword') }}</a>
+                  {{ t('forgotYourPassword') }}</a>
               </div>
             </div>
             <button
@@ -94,7 +94,7 @@
                   fill="currentColor"
                 />
               </svg>
-              {{ t('button.signIn') }}
+              {{ t('signIn') }}
             </button>
           </form>
         </div>
