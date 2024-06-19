@@ -27,6 +27,8 @@ export default {
   phoneNumber: "Phone Number",
   status: "Status",
   actions: "Actions",
+  description: "Description",
+  permissions: "Permissions",
 
   signIn: 'Sign in',
   forgotPassword: 'Forgot password?',
@@ -67,6 +69,8 @@ export default {
     name: 'Role Name',
     nameEn: 'Role Name',
     nameKh: 'Role Name (Khmer)',
-    type: 'Role Type'
+    roleType: 'Role Type',
+    addNew: "Add New Role",
+    edit: "Edit Role",
   },
 };

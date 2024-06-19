@@ -9,13 +9,13 @@ export const AppRoute = {
   },
   Dashboard: {
     name: 'dashboard',
-    path: '/'
+    path: '/dashboard'
   },
   User: {
     name: 'user',
     path: '/user-management/users',
     addNew: {
-      name: 'newUser',
+      name: 'user-create',
       path: '/user-management/users/create'
     },
     details: {
@@ -29,6 +29,18 @@ export const AppRoute = {
   },
   Role: {
     name: 'role',
-    path: '/user-management/roles'
+    path: '/user-management/roles',
+    addNew: {
+      name: 'role-create',
+      path: '/user-management/roles/create'
+    },
+    details: {
+      name: 'user-details',
+      path: '/user-management/roles/:id'
+    },
+    edit: {
+      name: 'user-edit',
+      path: '/user-management/roles/:id/edit'
+    },
   }
 } as const;

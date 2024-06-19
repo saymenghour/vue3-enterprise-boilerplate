@@ -25,7 +25,7 @@ export type User = {
   roles: Role[]
 }
 
-export type CreateUserFrom = {
+export type CreateUserForm = {
   firstNameKh?: string;
   lastNameKh?: string;
   firstName: string;

@@ -1,5 +1,5 @@
 import { Http } from "@/http";
-import type { CreateUserFrom, EditUserForm, User } from "./userType";
+import type { CreateUserForm, EditUserForm, User } from "./userType";
 
 const userApi = '/api/v1/users';
 
@@ -13,7 +13,7 @@ export async function fetchUsersDetailsApi(id: string) {
   return res?.data;
 }
 
-export async function createNewUserApi(values: CreateUserFrom) {
+export async function createNewUserApi(values: CreateUserForm) {
   return await Http.post<ResponseSuccess<String>>(`${userApi}`, values);
 }
 

@@ -1,7 +1,7 @@
 import { createNewUserApi, updateUserApi } from "./userApi";
-import type { CreateUserFrom, EditUserForm } from "./userType";
+import type { CreateUserForm, EditUserForm } from "./userType";
 
-export async function createUser(formValues: CreateUserFrom) {
+export async function createUser(formValues: CreateUserForm) {
   return createNewUserApi(formValues);
 }
 
