@@ -92,7 +92,7 @@
 
         <div class="flex justify-end">
           <CancelButton />
-          <SaveButton />
+          <SaveButton :loading="isPending" />
         </div>
       </Form>
     </Box>
@@ -101,21 +101,18 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import router from '@/router';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
-import { useMutation } from '@tanstack/vue-query';
 
-import { useI18n, useNotification } from '@/composables';
+import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import { Breadcrumb,Input, Title, Row, Col, Form, Section, Content, Box, SaveButton, CancelButton } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
-import { createUser } from '../userService';
 import { createUserValidationSchema } from '../userSchema';
 import type { CreateUserForm } from '../userType';
+import { useCreateUser } from '../userService';
 
 const { t } = useI18n();
-const { success } = useNotification();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
@@ -134,13 +131,7 @@ const { handleSubmit } = useForm<CreateUserForm>({
   validationSchema: toTypedSchema(createUserValidationSchema)
 });
 
-const { isPending, mutate } = useMutation({
-  mutationFn: (values: CreateUserForm) => createUser(values),
-  onSuccess: (data) => {
-    success(data?.message);
-    router.push({ name: AppRoute.User.name });
-  }
-});
+const { isPending, mutate } = useCreateUser();
 
 const onSubmit = handleSubmit((values) => {
   mutate(values);

@@ -4,7 +4,8 @@ import type { CreateRoleForm, EditRoleForm, Role } from "./roleType";
 const ENDPOINT = '/api/v1/roles';
 
 export async function fetchRolesApi() {
-  return (await Http.get<ResponseSuccess<Role[]>>(ENDPOINT))?.data;
+  const response = await Http.get<ResponseSuccess<Role[]>>(ENDPOINT);
+  return response?.data;
 }
 
 export async function fetchRoleByIdApi(id: string) {

@@ -39,22 +39,16 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useQuery } from '@tanstack/vue-query';
-
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box, Avatar } from '@/components';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
-import { fetchUsersApi } from '../userApi';
 import type { User } from '../userType';
 import UserListingDropdownAction from '../components/UserListingDropdownAction.vue';
 import UserStatus from '../components/UserStatus.vue';
+import { useFetchUsers } from '../userService';
 
 const { t } = useI18n();
-const { data, isLoading } = useQuery({
-  queryKey: ['fetchUsers'],
-  queryFn: fetchUsersApi
-});
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
@@ -91,6 +85,9 @@ const columns = computed<ColumnProps<User>[]>(() => [
     minWidth: 80,
   }
 ]);
+
+const { data, isLoading } = useFetchUsers();
+
 </script>
 
 <style scoped></style>

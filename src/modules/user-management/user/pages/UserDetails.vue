@@ -29,15 +29,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { useQuery } from '@tanstack/vue-query';
 
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box, EditButton, Avatar } from '@/components';
+import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box, EditButton } from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
-import { fetchUsersDetailsApi } from '../userApi';
 import UserDetailsInfo from '../components/UserDetailsInfo.vue';
 import UserStatus from '../components/UserStatus.vue';
+import { useFetchUserById } from '../userService';
 
 const { t } = useI18n();
 const { params } = useRoute();
@@ -55,10 +54,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   },
 ]);
 
-const { isLoading, data } = useQuery({
-  queryKey: ['useFetchUserById', params.id],
-  queryFn: () => fetchUsersDetailsApi(params.id as string)
-});
+const { isLoading, data } = useFetchUserById(params.id as string);
 
 const fields = computed((): DescriptionsFieldProps[] => {
   const user = data.value;

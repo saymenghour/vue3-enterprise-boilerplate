@@ -75,7 +75,7 @@
 
         <div class="flex justify-end">
           <CancelButton />
-          <UpdateButton />
+          <UpdateButton :loading="isPending" />
         </div>
       </Form>
     </Box>
@@ -86,17 +86,14 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { toTypedSchema } from '@vee-validate/zod';
-import { useMutation, useQuery } from '@tanstack/vue-query';
 
-import router from '@/router';
 import { useFormAsync, useI18n, useNotification } from '@/composables';
 import { AppRoute } from '@/constants';
 import { Breadcrumb, Input, Title, Row, Col, Form, Section, Box, CancelButton, UpdateButton } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
-import { updateUser } from '../userService';
+import { useFetchUserById, useUpdateUser } from '../userService';
 import { updateUserValidationSchema } from '../userSchema';
 import type { EditUserForm } from '../userType';
-import { fetchUsersDetailsApi } from '../userApi';
 
 const { t } = useI18n();
 const { success } = useNotification();
@@ -115,23 +112,14 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { isLoading, data } = useQuery({
-  queryKey: ['useFetchUserById', params.id],
-  queryFn: () => fetchUsersDetailsApi(params.id as string)
-});
+const { isLoading, data } = useFetchUserById(params.id as string);
 
 const { handleSubmit } = useFormAsync<EditUserForm>({
   initialValues: data,
   validationSchema: toTypedSchema(updateUserValidationSchema)
 });
 
-const { isPending, mutate } = useMutation({
-  mutationFn: (values: EditUserForm) => updateUser(values, params.id as string),
-  onSuccess: (data) => {
-    success(data?.message);
-    router.push({ name: AppRoute.User.name });
-  }
-});
+const { isPending, mutate } = useUpdateUser(params.id as string);
 
 const onSubmit = handleSubmit((values) => {
   mutate(values);

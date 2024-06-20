@@ -4,16 +4,16 @@ import type { CreateUserForm, EditUserForm, User } from "./userType";
 const ENDPOINT = '/api/v1/users';
 
 export async function fetchUsersApi() {
-  const res = await Http.get<ResponseSuccess<User[]>>(ENDPOINT);
-  return res?.data;
+  const response = await Http.get<ResponseSuccess<User[]>>(ENDPOINT);
+  return response?.data;
 }
 
-export async function fetchUsersDetailsApi(id: string) {
-  const res = await Http.get<ResponseSuccess<User>>(`${ENDPOINT}/${id}`);
-  return res?.data;
+export async function fetchUserByIdApi(id: string) {
+  const response = await Http.get<ResponseSuccess<User>>(`${ENDPOINT}/${id}`);
+  return response?.data;
 }
 
-export async function createNewUserApi(values: CreateUserForm) {
+export async function createUserApi(values: CreateUserForm) {
   return await Http.post<ResponseSuccess<String>>(`${ENDPOINT}`, values);
 }
 
