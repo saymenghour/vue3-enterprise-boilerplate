@@ -1,5 +1,5 @@
 export type Permission = {
-  id: string;
+  id: number;
   code: string;
   nameEn: string;
   nameKh: string;
@@ -21,7 +21,7 @@ export type CreateRoleForm = {
   nameKh: string;
   type: string;
   description?: string;
-  permissions?: number[];
+  permissionIds?: number[] | undefined;
 }
 
 export type EditRoleForm = CreateRoleForm;

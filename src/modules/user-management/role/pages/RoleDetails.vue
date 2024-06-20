@@ -25,14 +25,12 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { useQuery } from '@tanstack/vue-query';
-
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box, EditButton, Avatar } from '@/components';
+import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box, EditButton } from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
-import { fetchRolesDetailsApi } from '../roleApi';
 import RoleStatus from '../components/RoleStatus.vue';
+import { useFetchRoleById } from '../roleService';
 
 const { t } = useI18n();
 const { params } = useRoute();
@@ -50,10 +48,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   },
 ]);
 
-const { isLoading, data } = useQuery({
-  queryKey: ['useFetchRoleById', params.id],
-  queryFn: () => fetchRolesDetailsApi(params.id as string)
-});
+const { isLoading, data } = useFetchRoleById(params.id as string);
 
 const fields = computed((): DescriptionsFieldProps[] => {
   const role = data.value;

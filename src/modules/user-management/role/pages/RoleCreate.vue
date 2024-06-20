@@ -42,7 +42,7 @@
 
         <div class="flex justify-end">
           <CancelButton />
-          <SaveButton />
+          <SaveButton :loading="isPending" />
         </div>
       </Box>
 
@@ -60,21 +60,18 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import router from '@/router';
 import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
-import { useMutation } from '@tanstack/vue-query';
 
-import { useI18n, useNotification } from '@/composables';
+import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb,Input, Title, Row, Col, Form, Section, Content, Box, SaveButton, CancelButton } from '@/components';
+import { Breadcrumb,Input, Title, Row, Col, Form, Box, SaveButton, CancelButton } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
-import { createRole } from '../roleService';
 import { createAndUpdateRoleValidationSchema } from '../roleSchema';
 import type { CreateRoleForm } from '../roleType';
+import { useCreateRole } from '../roleService';
 
 const { t } = useI18n();
-const { success } = useNotification();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
@@ -93,13 +90,7 @@ const { handleSubmit } = useForm<CreateRoleForm>({
   validationSchema: toTypedSchema(createAndUpdateRoleValidationSchema)
 });
 
-const { isPending, mutate } = useMutation({
-  mutationFn: (values: CreateRoleForm) => createRole(values),
-  onSuccess: (data) => {
-    success(data?.message);
-    router.push({ name: AppRoute.Role.name });
-  }
-});
+const { isPending, mutate } = useCreateRole();
 
 const onSubmit = handleSubmit((values) => {
   mutate(values);

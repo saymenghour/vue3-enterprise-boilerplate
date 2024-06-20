@@ -29,22 +29,17 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useQuery } from '@tanstack/vue-query';
-
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box, Avatar } from '@/components';
+import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box } from '@/components';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
-import { fetchRolesApi } from '../roleApi';
 import type { Role } from '../roleType';
 import RoleListingDropdownAction from '../components/RoleListingDropdownAction.vue';
 import RoleStatus from '../components/RoleStatus.vue';
+import { useFetchRoles } from '../roleService';
 
 const { t } = useI18n();
-const { data, isLoading } = useQuery({
-  queryKey: ['fetchRoles'],
-  queryFn: fetchRolesApi
-});
+const { data, isLoading } = useFetchRoles();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {

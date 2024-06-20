@@ -83,7 +83,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { toTypedSchema } from '@vee-validate/zod';
 import { useMutation, useQuery } from '@tanstack/vue-query';

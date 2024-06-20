@@ -43,7 +43,7 @@
 
         <div class="flex justify-end">
           <CancelButton />
-          <UpdateButton />
+          <UpdateButton :loading="isPending" />
         </div>
       </Box>
 
@@ -63,20 +63,16 @@
 import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { toTypedSchema } from '@vee-validate/zod';
-import { useMutation, useQuery } from '@tanstack/vue-query';
 
-import router from '@/router';
-import { useFormAsync, useI18n, useNotification } from '@/composables';
+import { useFormAsync, useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import { Breadcrumb, Input, Title, Row, Col, Form,Box, CancelButton, UpdateButton } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
-import { updateRole } from '../roleService';
+import { useFetchRoleEditById, useUpdateRole } from '../roleService';
 import { createAndUpdateRoleValidationSchema } from '../roleSchema';
 import type { EditRoleForm } from '../roleType';
-import { fetchRolesDetailsApi } from '../roleApi';
 
 const { t } = useI18n();
-const { success } = useNotification();
 const { params } = useRoute();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
@@ -92,30 +88,17 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { isLoading, data } = useQuery({
-  queryKey: ['useFetchRoleById', params.id],
-  queryFn: () => fetchRolesDetailsApi(params.id as string)
-});
+const { isLoading, data } = useFetchRoleEditById(params.id as string);
 
-const { handleSubmit, errors } = useFormAsync<EditRoleForm>({
+const { handleSubmit } = useFormAsync<EditRoleForm>({
   initialValues: data,
   validationSchema: toTypedSchema(createAndUpdateRoleValidationSchema)
 });
 
-const { isPending, mutate } = useMutation({
-  mutationFn: (values: EditRoleForm) => updateRole(values, params.id as string),
-  onSuccess: (data) => {
-    success(data?.message);
-    router.push({ name: AppRoute.Role.name });
-  }
-});
+const { isPending, mutate } = useUpdateRole(params.id as string);
 
 const onSubmit = handleSubmit((values) => {
   mutate(values);
-});
-
-watch(errors, (newErrors) => {
-  console.log(newErrors);
 });
 </script>
 
