@@ -68,7 +68,7 @@ import { useFormAsync, useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import { Breadcrumb, Input, Title, Row, Col, Form,Box, CancelButton, UpdateButton } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
-import { useFetchRoleEditById, useUpdateRole } from '../roleService';
+import { useFetchRolePermissionIdsById, useUpdateRole } from '../roleService';
 import { createAndUpdateRoleValidationSchema } from '../roleSchema';
 import type { EditRoleForm } from '../roleType';
 
@@ -88,7 +88,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { isLoading, data } = useFetchRoleEditById(params.id as string);
+const { isLoading, data } = useFetchRolePermissionIdsById(params.id as string);
 
 const { handleSubmit } = useFormAsync<EditRoleForm>({
   initialValues: data,
@@ -99,6 +99,10 @@ const { isPending, mutate } = useUpdateRole(params.id as string);
 
 const onSubmit = handleSubmit((values) => {
   mutate(values);
+});
+
+watch(data, (newData) => {
+  console.log(newData);
 });
 </script>
 

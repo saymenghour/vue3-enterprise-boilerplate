@@ -1,9 +1,8 @@
-import { reactive, watch } from "vue";
 import { useMutation, useQuery } from "@tanstack/vue-query";
 import router from "@/router";
 import { useNotification } from "@/composables";
 import { AppRoute } from "@/constants";
-import { createRoleApi, fetchRolesApi, fetchRolesDetailsApi, fetchRolesEditApi, updateRoleApi } from "./roleApi";
+import { createRoleApi, fetchRolesApi, fetchRoleByIdApi, updateRoleApi } from "./roleApi";
 import type { CreateRoleForm, EditRoleForm } from "./roleType";
 
 export function useFetchRoles() {
@@ -16,14 +15,21 @@ export function useFetchRoles() {
 export function useFetchRoleById(id: string) {
   return useQuery({
     queryKey: ['fetchRoleById', id],
-    queryFn: () => fetchRolesDetailsApi(id)
+    queryFn: () => fetchRoleByIdApi(id)
   });
 }
 
-export function useFetchRoleEditById(id: string) {
+export function useFetchRolePermissionIdsById(id: string) {
   return useQuery({
-    queryKey: ['fetchRoleEditById', id],
-    queryFn: () => fetchRolesEditApi(id)
+    queryKey: ['fetchRolePermissionIdsById', id],
+    queryFn: () => fetchRoleByIdApi(id),
+    select(data) {
+      const { permissions, ...rest } = data ?? {};
+      return {
+        ...rest,
+        permissionIds: permissions?.map((p) => p.id) ?? []
+      } as EditRoleForm;
+    },
   });
 }
 

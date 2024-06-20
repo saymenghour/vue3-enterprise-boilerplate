@@ -7,17 +7,9 @@ export async function fetchRolesApi() {
   return (await Http.get<ResponseSuccess<Role[]>>(ENDPOINT))?.data;
 }
 
-export async function fetchRolesDetailsApi(id: string) {
-  return (await Http.get<ResponseSuccess<Role>>(`${ENDPOINT}/${id}`))?.data;
-}
-
-export async function fetchRolesEditApi(id: string): Promise<EditRoleForm | undefined> {
+export async function fetchRoleByIdApi(id: string) {
   const response = await Http.get<ResponseSuccess<Role>>(`${ENDPOINT}/${id}`);
-  const { permissions, ...data } = response?.data ?? {};
-  return {
-    ...data,
-    permissionIds: permissions?.map((p) => p.id) ?? []
-  } as EditRoleForm;
+  return response?.data;
 }
 
 export async function createRoleApi(values: CreateRoleForm) {
