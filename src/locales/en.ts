@@ -1,7 +1,7 @@
 export default {
   locale: {
-    en: "English",
-    km: "Khmer"
+    en: 'English',
+    km: 'Khmer'
   },
 
   theme: {
@@ -11,24 +11,24 @@ export default {
   },
 
   signInToYourAccount: 'Sign in to your account',
-  search: "Search",
+  search: 'Search',
   loginInfo: 'Login Information',
   username: 'Username',
   password: 'Password',
   confirmPassword: 'Confirm Password',
-  personalInfo: "Personal Information",
-  firstName: "First Name",
-  lastName: "Last Name",
-  firstNameKh: "First Name (Khmer)",
-  lastNameKh: "Last Name (Khmer)",
+  personalInfo: 'Personal Information',
+  firstName: 'First Name',
+  lastName: 'Last Name',
+  firstNameKh: 'First Name (Khmer)',
+  lastNameKh: 'Last Name (Khmer)',
   fullName: 'Full Name',
   fullNameKh: 'Full Name (Khmer)',
-  email: "Email",
-  phoneNumber: "Phone Number",
-  status: "Status",
-  actions: "Actions",
-  description: "Description",
-  permissions: "Permissions",
+  email: 'Email',
+  phoneNumber: 'Phone Number',
+  status: 'Status',
+  actions: 'Actions',
+  description: 'Description',
+  permissions: 'Permissions',
 
   signIn: 'Sign in',
   forgotPassword: 'Forgot password?',
@@ -39,27 +39,28 @@ export default {
   cancel: 'Cancel',
   update: 'Update',
   back: 'Back',
-  create: "Create",
-  edit: "Edit",
-  details: "Details",
-  active: "Active",
-  deactivated: "Deactivated",
-  viewDetails: "View Details",
+  create: 'Create',
+  edit: 'Edit',
+  details: 'Details',
+  active: 'Active',
+  deactivated: 'Deactivated',
+  viewDetails: 'View Details',
 
   login: {
     username: 'Enter your username',
     password: 'Enter {passwordLength} characters or more'
   },
 
-  dashboard: "Dashboard",
-  userManagement: "User Management",
+  dashboard: 'Dashboard',
+  userManagement: 'User Management',
   user: {
     label: 'Users',
-    description: "Managing users includes functionalities such as user authentication, permissions, profile management, password control, activity tracking, account deactivation/suspension, and user communication.",
+    description:
+      'Managing users includes functionalities such as user authentication, permissions, profile management, password control, activity tracking, account deactivation/suspension, and user communication.',
     list: 'User List',
     category: 'Category',
-    addNew: "Add New User",
-    edit: "Edit User",
+    addNew: 'Add New User',
+    edit: 'Edit User'
   },
 
   role: {
@@ -70,7 +71,7 @@ export default {
     nameEn: 'Role Name',
     nameKh: 'Role Name (Khmer)',
     roleType: 'Role Type',
-    addNew: "Add New Role",
-    edit: "Edit Role",
-  },
+    addNew: 'Add New Role',
+    edit: 'Edit Role'
+  }
 };

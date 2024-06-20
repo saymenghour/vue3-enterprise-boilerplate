@@ -37,13 +37,11 @@ import { useI18n } from '@/composables';
 
 type UserDetailsInfoProps = {
   user: User | undefined;
-}
+};
 
 defineProps<UserDetailsInfoProps>();
 
 const { t } = useI18n();
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

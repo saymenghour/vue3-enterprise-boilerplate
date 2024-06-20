@@ -25,7 +25,7 @@ export const AppRoute = {
     edit: {
       name: 'user-edit',
       path: '/user-management/users/:id/edit'
-    },
+    }
   },
   Role: {
     name: 'role',
@@ -41,6 +41,6 @@ export const AppRoute = {
     edit: {
       name: 'user-edit',
       path: '/user-management/roles/:id/edit'
-    },
+    }
   }
 } as const;

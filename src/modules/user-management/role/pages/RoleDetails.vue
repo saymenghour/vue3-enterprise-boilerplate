@@ -27,7 +27,14 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box, EditButton } from '@/components';
+import {
+  Breadcrumb,
+  Descriptions,
+  Title,
+  SkeletonPageDetails,
+  Box,
+  EditButton
+} from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import RoleStatus from '../components/RoleStatus.vue';
 import { useFetchRoleById } from '../roleService';
@@ -44,8 +51,8 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     to: AppRoute.Role.path
   },
   {
-    title: t('details'),
-  },
+    title: t('details')
+  }
 ]);
 
 const { isLoading, data } = useFetchRoleById(params.id as string);
@@ -74,8 +81,8 @@ const fields = computed((): DescriptionsFieldProps[] => {
           value: role.description
         },
         {
-          slotName: "status",
-          label: t('status'),
+          slotName: 'status',
+          label: t('status')
         }
       ]
     }

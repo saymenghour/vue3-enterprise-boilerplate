@@ -30,7 +30,7 @@
           v-else
           class="font-medium"
         >
-          {{ item.value ?? (displayDashIfValueIsNull ? "-" : "") }}
+          {{ item.value ?? (displayDashIfValueIsNull ? '-' : '') }}
         </span>
       </div>
     </div>
@@ -44,7 +44,7 @@ export type DescriptionsFieldProps = {
 } & (
   | {
       value?: never;
-      type?: "section";
+      type?: 'section';
       fields: DescriptionsFieldProps[];
     }
   | {
@@ -57,7 +57,7 @@ export type DescriptionsFieldProps = {
 type DescriptionsProps = {
   fields: DescriptionsFieldProps[];
   displayDashIfValueIsNull?: boolean;
-}
+};
 
 withDefaults(defineProps<DescriptionsProps>(), {
   displayDashIfValueIsNull: true

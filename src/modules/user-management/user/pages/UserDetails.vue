@@ -11,7 +11,7 @@
         :label="t('user.edit')"
       />
     </Title>
-      
+
     <Box class="mb-5 flex">
       <UserDetailsInfo :user="data" />
     </Box>
@@ -32,7 +32,14 @@ import { useRoute } from 'vue-router';
 
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Descriptions, Title, SkeletonPageDetails, Box, EditButton } from '@/components';
+import {
+  Breadcrumb,
+  Descriptions,
+  Title,
+  SkeletonPageDetails,
+  Box,
+  EditButton
+} from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import UserDetailsInfo from '../components/UserDetailsInfo.vue';
 import UserStatus from '../components/UserStatus.vue';
@@ -50,8 +57,8 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     to: AppRoute.User.path
   },
   {
-    title: t('details'),
-  },
+    title: t('details')
+  }
 ]);
 
 const { isLoading, data } = useFetchUserById(params.id as string);
@@ -84,8 +91,8 @@ const fields = computed((): DescriptionsFieldProps[] => {
           value: user.email
         },
         {
-          slotName: "status",
-          label: t('status'),
+          slotName: 'status',
+          label: t('status')
           // value: user.status
         }
       ]

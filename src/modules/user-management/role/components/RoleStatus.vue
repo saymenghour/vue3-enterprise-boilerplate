@@ -14,7 +14,7 @@ import { useI18n } from '@/composables';
 
 type RoleStatusProps = {
   status: string | undefined;
-}
+};
 
 const { status } = defineProps<RoleStatusProps>();
 const { t } = useI18n();
@@ -22,11 +22,11 @@ const { t } = useI18n();
 const roleStatus = computed<Record<string, TagProps>>(() => ({
   ACTIVE: {
     label: t('active'),
-    type: "success"
+    type: 'success'
   }
 }));
 
-const state = computed(() => roleStatus.value[status ?? ""]);
+const state = computed(() => roleStatus.value[status ?? '']);
 </script>
 
 <style scoped></style>

@@ -106,7 +106,18 @@ import { toTypedSchema } from '@vee-validate/zod';
 
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb,Input, Title, Row, Col, Form, Section, Content, Box, SaveButton, CancelButton } from '@/components';
+import {
+  Breadcrumb,
+  Input,
+  Title,
+  Row,
+  Col,
+  Form,
+  Section,
+  Box,
+  SaveButton,
+  CancelButton
+} from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
 import { createUserValidationSchema } from '../userSchema';
 import type { CreateUserForm } from '../userType';
@@ -123,8 +134,8 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     to: AppRoute.User.path
   },
   {
-    title: t('create'),
-  },
+    title: t('create')
+  }
 ]);
 
 const { handleSubmit } = useForm<CreateUserForm>({

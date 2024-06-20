@@ -8,7 +8,12 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     component: () => import('@/modules/user-management/user/pages/UserListing.vue'),
     meta: {
       requiresAuth: true,
-      authorities: [Permission.CREATE_USER, Permission.EDIT_USER, Permission.VIEW_USER_LISTING, Permission.VIEW_USER_DETAILS]
+      authorities: [
+        Permission.CREATE_USER,
+        Permission.EDIT_USER,
+        Permission.VIEW_USER_LISTING,
+        Permission.VIEW_USER_DETAILS
+      ]
     }
   },
   {
@@ -26,7 +31,12 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     component: () => import('@/modules/user-management/user/pages/UserDetails.vue'),
     meta: {
       requiresAuth: true,
-      authorities: [Permission.CREATE_USER, Permission.EDIT_USER, Permission.VIEW_USER_LISTING, Permission.VIEW_USER_DETAILS]
+      authorities: [
+        Permission.CREATE_USER,
+        Permission.EDIT_USER,
+        Permission.VIEW_USER_LISTING,
+        Permission.VIEW_USER_DETAILS
+      ]
     }
   },
 
@@ -36,7 +46,11 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     component: () => import('@/modules/user-management/user/pages/UserEdit.vue'),
     meta: {
       requiresAuth: true,
-      authorities: [Permission.EDIT_USER, Permission.VIEW_USER_LISTING, Permission.VIEW_USER_DETAILS]
+      authorities: [
+        Permission.EDIT_USER,
+        Permission.VIEW_USER_LISTING,
+        Permission.VIEW_USER_DETAILS
+      ]
     }
   },
   {
@@ -45,8 +59,13 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     component: () => import('@/modules/user-management/role/pages/RoleListing.vue'),
     meta: {
       requiresAuth: true,
-      authorities: [Permission.VIEW_USER_LISTING, Permission.VIEW_USER_DETAILS, Permission.CREATE_USER, Permission.EDIT_USER]
-    },
+      authorities: [
+        Permission.VIEW_USER_LISTING,
+        Permission.VIEW_USER_DETAILS,
+        Permission.CREATE_USER,
+        Permission.EDIT_USER
+      ]
+    }
   },
   {
     path: AppRoute.Role.addNew.path,
@@ -54,7 +73,11 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     component: () => import('@/modules/user-management/role/pages/RoleCreate.vue'),
     meta: {
       requiresAuth: true,
-      authorities: [Permission.VIEW_ROLE_LISTING, Permission.VIEW_ROLE_DETAILS, Permission.CREATE_ROLE]
+      authorities: [
+        Permission.VIEW_ROLE_LISTING,
+        Permission.VIEW_ROLE_DETAILS,
+        Permission.CREATE_ROLE
+      ]
     }
   },
   {
@@ -72,7 +95,11 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     component: () => import('@/modules/user-management/role/pages/RoleEdit.vue'),
     meta: {
       requiresAuth: true,
-      authorities: [Permission.VIEW_ROLE_LISTING, Permission.VIEW_ROLE_DETAILS, Permission.EDIT_ROLE]
+      authorities: [
+        Permission.VIEW_ROLE_LISTING,
+        Permission.VIEW_ROLE_DETAILS,
+        Permission.EDIT_ROLE
+      ]
     }
-  },
+  }
 ];

@@ -66,7 +66,17 @@ import { toTypedSchema } from '@vee-validate/zod';
 
 import { useFormAsync, useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Input, Title, Row, Col, Form,Box, CancelButton, UpdateButton } from '@/components';
+import {
+  Breadcrumb,
+  Input,
+  Title,
+  Row,
+  Col,
+  Form,
+  Box,
+  CancelButton,
+  UpdateButton
+} from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
 import { useFetchRolePermissionIdsById, useUpdateRole } from '../roleService';
 import { createAndUpdateRoleValidationSchema } from '../roleSchema';

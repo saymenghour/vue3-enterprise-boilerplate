@@ -1,13 +1,11 @@
 <template>
-  <div class="flex items-center justify-between mb-1 min-h-10 text-[#303133] dark:text-[#E5EAF3] text-lg font-medium">
+  <div
+    class="flex items-center justify-between mb-1 min-h-10 text-[#303133] dark:text-[#E5EAF3] text-lg font-medium"
+  >
     <slot />
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts"></script>
 
-</script>
-
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -27,11 +27,9 @@ type InputProps = {
   type?: string;
   required?: boolean;
   placeholder?: string;
-}
+};
 
 defineProps<InputProps>();
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

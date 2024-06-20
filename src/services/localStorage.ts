@@ -37,7 +37,12 @@ export const setDeviceId = (deviceId: string) => {
   localStorage.setItem(Authentication.DeviceId, deviceId);
 };
 
-export const saveToken = (accessToken: string, refreshToken: string, expiryIn: string, deviceId: string = ''): void => {
+export const saveToken = (
+  accessToken: string,
+  refreshToken: string,
+  expiryIn: string,
+  deviceId: string = ''
+): void => {
   setAccessToken(accessToken);
   setRefreshToken(refreshToken);
   setExpiryIn(expiryIn);

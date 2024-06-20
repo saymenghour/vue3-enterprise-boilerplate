@@ -14,7 +14,7 @@ import { useI18n } from '@/composables';
 
 type UserStatusProps = {
   status: string | undefined;
-}
+};
 
 const { status } = defineProps<UserStatusProps>();
 const { t } = useI18n();
@@ -22,11 +22,11 @@ const { t } = useI18n();
 const userStatus = computed<Record<string, TagProps>>(() => ({
   ACTIVE: {
     label: t('active'),
-    type: "success"
+    type: 'success'
   }
 }));
 
-const state = computed(() => userStatus.value[status ?? ""]);
+const state = computed(() => userStatus.value[status ?? '']);
 </script>
 
 <style scoped></style>

@@ -1,5 +1,6 @@
 export type CurrentUser = {
-  user: {
+  user:
+  | {
     firstName: string;
     lastName: string;
     firstNameKh: string;
@@ -10,6 +11,7 @@ export type CurrentUser = {
     displayName: string;
     email: string;
     profileImageUrl: string;
-  } | undefined;
+  }
+  | undefined;
   authorities: string[];
 };

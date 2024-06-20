@@ -1,5 +1,5 @@
-import { Http } from "@/http";
-import type { CreateUserForm, EditUserForm, User } from "./userType";
+import { Http } from '@/http';
+import type { CreateUserForm, EditUserForm, User } from './userType';
 
 const ENDPOINT = '/api/v1/users';
 

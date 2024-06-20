@@ -8,7 +8,7 @@
 type GridProps = {
   col?: number;
   gap?: number;
-}
+};
 
 const { col, gap } = withDefaults(defineProps<GridProps>(), {
   col: 2,
@@ -16,6 +16,4 @@ const { col, gap } = withDefaults(defineProps<GridProps>(), {
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

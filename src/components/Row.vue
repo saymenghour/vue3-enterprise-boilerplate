@@ -9,11 +9,9 @@ interface ElRowProps {
   gutter?: number;
 }
 
-const props = withDefaults(defineProps<ElRowProps>(), {
+withDefaults(defineProps<ElRowProps>(), {
   gutter: 20
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

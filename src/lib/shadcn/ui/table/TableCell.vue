@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'vue';
 import { cn } from '@/lib/utils';
 
 const props = defineProps<{
-  class?: HTMLAttributes['class']
+  class?: HTMLAttributes['class'];
 }>();
 </script>
 
@@ -12,7 +12,7 @@ const props = defineProps<{
     :class="
       cn(
         'p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-0.5',
-        props.class,
+        props.class
       )
     "
   >

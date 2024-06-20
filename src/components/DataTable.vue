@@ -15,10 +15,10 @@
       >
         <template #default="scope">
           <span>
-            {{ 
-              column.render 
-                ? column.render(scope.row) 
-                : scope.row[column.dataIndex] ?? (column.displayDashIfValueIsNull ? "-" : "") 
+            {{
+              column.render
+                ? column.render(scope.row)
+                : scope.row[column.dataIndex] ?? (column.displayDashIfValueIsNull ? '-' : '')
             }}
             <slot
               :name="column.key"
@@ -31,23 +31,20 @@
   </el-table>
 </template>
 
-<script setup lang="ts" generic="T extends Record<string, any>"> 
+<script setup lang="ts" generic="T extends Record<string, any>">
 export type ColumnProps<T> = {
   title: string;
   width?: string | number;
   minWidth?: string | number;
   displayDashIfValueIsNull?: boolean;
   render?: (row: T) => any;
-} & (
-    | { key: string; dataIndex?: never }
-    | { key?: never; dataIndex: keyof T }
-  );
+} & ({ key: string; dataIndex?: never } | { key?: never; dataIndex: keyof T });
 
 type DataTableProps = {
   loading: boolean;
   data?: T[];
   columns: ColumnProps<T>[];
-}
+};
 
 defineProps<DataTableProps>();
 </script>

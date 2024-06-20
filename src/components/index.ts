@@ -18,11 +18,11 @@ export { default as Section } from './Section.vue';
 export { default as Content } from './Content.vue';
 export { default as Row } from './Row.vue';
 export { default as Col } from './Col.vue';
-export { default as Button } from "./Button.vue";
-export { default as Box } from "./Box.vue";
-export { default as Tag } from "./Tag.vue";
-export { default as Avatar } from "./Avatar.vue";
+export { default as Button } from './Button.vue';
+export { default as Box } from './Box.vue';
+export { default as Tag } from './Tag.vue';
+export { default as Avatar } from './Avatar.vue';
 
-export { default as SkeletonPageListing } from "./Skeleton/SkeletonPageListing.vue";
-export { default as SkeletonPageDetails } from "./Skeleton/SkeletonPageDetails.vue";
-export { default as SkeletonPageHeader } from "./Skeleton/SkeletonPageHeader.vue";
+export { default as SkeletonPageListing } from './Skeleton/SkeletonPageListing.vue';
+export { default as SkeletonPageDetails } from './Skeleton/SkeletonPageDetails.vue';
+export { default as SkeletonPageHeader } from './Skeleton/SkeletonPageHeader.vue';

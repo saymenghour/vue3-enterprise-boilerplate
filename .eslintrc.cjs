@@ -9,17 +9,18 @@ module.exports = {
     '@vue/eslint-config-typescript',
     '@vue/eslint-config-prettier/skip-formatting',
     'plugin:vue/vue3-recommended',
-    "plugin:@tanstack/eslint-plugin-query/recommended",
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   parserOptions: {
     ecmaVersion: 'latest'
   },
   rules: {
-    "semi": [
-      "error",
-      "always"
+    'quotes': ['error', 'single'],
+    'semi': [
+      'error',
+      'always'
     ],
-    "vue/multi-word-component-names": "off",
-    "@typescript-eslint/no-unused-vars": "off"
+    'vue/multi-word-component-names': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn'
   }
 };

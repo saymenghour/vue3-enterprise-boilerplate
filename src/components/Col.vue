@@ -19,9 +19,7 @@ interface ElColProps {
   xl?: number;
 }
 
-const props = defineProps<ElColProps>();
+defineProps<ElColProps>();
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

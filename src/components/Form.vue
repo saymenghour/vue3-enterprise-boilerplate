@@ -18,14 +18,12 @@ interface ElFormProps {
   requireAsteriskPosition?: 'right' | 'left';
 }
 
-const props = withDefaults(defineProps<ElFormProps>(), {
+withDefaults(defineProps<ElFormProps>(), {
   labelPosition: 'top',
   statusIcon: true,
   scrollToError: true,
-  requireAsteriskPosition: "right"
+  requireAsteriskPosition: 'right'
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

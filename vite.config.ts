@@ -4,19 +4,19 @@ import { defineConfig, loadEnv, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import VueDevTools from 'vite-plugin-vue-devtools';
-import autoprefixer from "autoprefixer";
-import tailwind from "tailwindcss";
+import autoprefixer from 'autoprefixer';
+import tailwind from 'tailwindcss';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: UserConfig) => {
-  const env = loadEnv(mode ?? "development", process.cwd(), "");
+  const env = loadEnv(mode ?? 'development', process.cwd(), '');
 
   let basePath: string = env.VUE_BASE_PATH;
-  if (basePath && basePath.endsWith("/")) {
+  if (basePath && basePath.endsWith('/')) {
     basePath = basePath.slice(0, -1);
   }
   const proxy: Record<string, string> = {
-    api: basePath + "/api",
+    api: basePath + '/api',
   };
 
   return {
@@ -37,7 +37,7 @@ export default defineConfig(({ mode }: UserConfig) => {
       },
     },
     define: {
-      "process.env": env,
+      'process.env': env,
     },
     server: {
       host: true,
@@ -45,7 +45,7 @@ export default defineConfig(({ mode }: UserConfig) => {
         [proxy.api]: {
           target: env.BASE_API_URL,
           changeOrigin: true,
-          rewrite: (path) => path.replace(basePath, ""),
+          rewrite: (path) => path.replace(basePath, ''),
         },
       },
     },

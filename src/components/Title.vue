@@ -34,7 +34,7 @@ import { ChevronLeft } from 'lucide-vue-next';
 
 type ActionButtonProps = {
   label: string;
-}
+};
 
 type PageProps = {
   showBackButton?: boolean;
@@ -42,7 +42,7 @@ type PageProps = {
   name: string | undefined;
   description?: string;
   actionButton?: ActionButtonProps[];
-}
+};
 
 defineProps<PageProps>();
 

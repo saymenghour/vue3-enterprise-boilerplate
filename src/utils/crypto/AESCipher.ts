@@ -1,10 +1,9 @@
 import CryptoJS from 'crypto-js';
 
-const iv = process.env.AES_IV ?? "";
-const secretKey = process.env.AES_SECRET_KEY ?? "";
+const iv = process.env.AES_IV ?? '';
+const secretKey = process.env.AES_SECRET_KEY ?? '';
 
 class AESCipher {
-
   /**
    * Generates a random string using CryptoJS library.
    *
@@ -86,7 +85,6 @@ class AESCipher {
   private generateIv() {
     return CryptoJS.enc.Utf8.parse(iv.substring(0, 16));
   }
-
 }
 
 export default new AESCipher();

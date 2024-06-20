@@ -1,7 +1,6 @@
 import { JSEncrypt } from 'jsencrypt';
 
 class RSACipher {
-
   /**
    * Encrypts the plain text using the provided public key.
    *
@@ -27,7 +26,6 @@ class RSACipher {
     jsEncrypt.setPrivateKey(privateKey);
     return jsEncrypt.decrypt(encryptedText) as string;
   }
-
 }
 
 export default new RSACipher();

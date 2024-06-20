@@ -24,11 +24,11 @@
             </div>
           </div>
         </template>
-      
+
         <template #status="{ row: user }">
           <UserStatus :status="user.status" />
         </template>
-        
+
         <template #actions="{ row: user }">
           <UserListingDropdownAction :user />
         </template>
@@ -41,7 +41,15 @@
 import { computed } from 'vue';
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box, Avatar } from '@/components';
+import {
+  Breadcrumb,
+  DataTable,
+  SkeletonPageListing,
+  Title,
+  AddNewButton,
+  Box,
+  Avatar
+} from '@/components';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 import type { User } from '../userType';
 import UserListingDropdownAction from '../components/UserListingDropdownAction.vue';
@@ -60,34 +68,33 @@ const columns = computed<ColumnProps<User>[]>(() => [
   {
     key: 'fullName',
     title: t('fullName'),
-    minWidth: 150,
+    minWidth: 150
   },
   {
     title: t('email'),
     dataIndex: 'email',
     displayDashIfValueIsNull: true,
-    minWidth: 150,
+    minWidth: 150
   },
   {
     title: t('phoneNumber'),
     dataIndex: 'phoneNumber',
     displayDashIfValueIsNull: true,
-    minWidth: 150,
+    minWidth: 150
   },
   {
     key: 'status',
     title: t('status'),
-    minWidth: 120,
+    minWidth: 120
   },
   {
     key: 'actions',
     title: t('actions'),
-    minWidth: 80,
+    minWidth: 80
   }
 ]);
 
 const { data, isLoading } = useFetchUsers();
-
 </script>
 
 <style scoped></style>

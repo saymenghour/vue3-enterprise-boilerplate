@@ -15,10 +15,10 @@ export type TagProps = {
   label: string | undefined;
   round?: boolean;
   effect?: 'dark' | 'light' | 'plain';
-}
+};
 
 withDefaults(defineProps<TagProps>(), {
-  effect: "light"
+  effect: 'light'
 });
 </script>
 

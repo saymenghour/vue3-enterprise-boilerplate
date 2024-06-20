@@ -38,7 +38,6 @@
 <script lang="ts" setup>
 import { onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
-import { storeToRefs } from 'pinia';
 
 import { menus } from '@/constants';
 import { useI18n } from '@/composables';
@@ -49,7 +48,6 @@ import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 const { t } = useI18n();
 const route = useRoute();
 const store = useCurrentUserStore();
-const { authorities } = storeToRefs(store);
 
 const activeMenu = ref<string>('');
 const authorizedMenus = ref<MenuItem[]>(getAuthorizedMenus(menus));

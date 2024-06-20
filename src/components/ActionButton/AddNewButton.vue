@@ -15,13 +15,11 @@ import Button from '@/lib/shadcn/ui/button/Button.vue';
 type ButtonProps = {
   label: string;
   path: string;
-}
+};
 
 const { label, path } = defineProps<ButtonProps>();
 
-const link = computed(() => path ? { path } : "");
+const link = computed(() => (path ? { path } : ''));
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -18,7 +18,7 @@
         <template #status="{ row: role }">
           <RoleStatus :status="role.status" />
         </template>
-        
+
         <template #actions="{ row: role }">
           <RoleListingDropdownAction :role />
         </template>
@@ -50,23 +50,23 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
 const columns = computed<ColumnProps<Role>[]>(() => [
   {
     title: t('role.nameEn'),
-    dataIndex: 'nameEn',
+    dataIndex: 'nameEn'
   },
   {
     title: t('role.nameKh'),
-    dataIndex: 'nameKh',
+    dataIndex: 'nameKh'
   },
   {
     title: t('role.roleType'),
-    dataIndex: 'type',
+    dataIndex: 'type'
   },
   {
     key: 'status',
-    title: t('status'),
+    title: t('status')
   },
   {
     key: 'actions',
-    title: t('actions'),
+    title: t('actions')
   }
 ]);
 </script>

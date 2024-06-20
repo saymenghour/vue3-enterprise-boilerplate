@@ -1,4 +1,4 @@
-import { ElNotification } from "element-plus";
+import { ElNotification } from 'element-plus';
 
 export function useNotification() {
   return {
@@ -6,14 +6,14 @@ export function useNotification() {
       ElNotification({
         type: 'success',
         title: title ?? 'Success',
-        message: message ?? "Success",
+        message: message ?? 'Success'
       });
     },
     error: (message?: string, title?: string) => {
       ElNotification({
         type: 'error',
         title: title ?? 'Error',
-        message: message ?? "Error",
+        message: message ?? 'Error'
       });
     }
   };

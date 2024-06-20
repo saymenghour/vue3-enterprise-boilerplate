@@ -87,16 +87,26 @@ import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { toTypedSchema } from '@vee-validate/zod';
 
-import { useFormAsync, useI18n, useNotification } from '@/composables';
+import { useFormAsync, useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, Input, Title, Row, Col, Form, Section, Box, CancelButton, UpdateButton } from '@/components';
+import {
+  Breadcrumb,
+  Input,
+  Title,
+  Row,
+  Col,
+  Form,
+  Section,
+  Box,
+  CancelButton,
+  UpdateButton
+} from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
 import { useFetchUserById, useUpdateUser } from '../userService';
 import { updateUserValidationSchema } from '../userSchema';
 import type { EditUserForm } from '../userType';
 
 const { t } = useI18n();
-const { success } = useNotification();
 const { params } = useRoute();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [

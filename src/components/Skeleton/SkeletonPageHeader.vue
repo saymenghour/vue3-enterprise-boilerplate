@@ -24,11 +24,9 @@ interface Props {
   loading?: boolean;
 }
 
-const { loading } = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   loading: true
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

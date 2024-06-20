@@ -65,7 +65,17 @@ import { toTypedSchema } from '@vee-validate/zod';
 
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb,Input, Title, Row, Col, Form, Box, SaveButton, CancelButton } from '@/components';
+import {
+  Breadcrumb,
+  Input,
+  Title,
+  Row,
+  Col,
+  Form,
+  Box,
+  SaveButton,
+  CancelButton
+} from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
 import { createAndUpdateRoleValidationSchema } from '../roleSchema';
 import type { CreateRoleForm } from '../roleType';
@@ -82,8 +92,8 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     to: AppRoute.Role.path
   },
   {
-    title: t('create'),
-  },
+    title: t('create')
+  }
 ]);
 
 const { handleSubmit } = useForm<CreateRoleForm>({

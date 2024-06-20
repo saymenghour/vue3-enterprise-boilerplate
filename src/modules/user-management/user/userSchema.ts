@@ -4,11 +4,11 @@ export const createUserValidationSchema = z
   .object({
     lastNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
     firstNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
-    lastName: z.
-      string({ message: 'Last name is required.' })
+    lastName: z
+      .string({ message: 'Last name is required.' })
       .max(35, { message: 'Last name must be no more than 35 characters long.' }),
-    firstName: z.
-      string({ message: 'First name is required.' })
+    firstName: z
+      .string({ message: 'First name is required.' })
       .max(35, { message: 'First name must be no more than 35 characters long.' }),
     phoneNumber: z.string().min(9).max(15).optional().or(z.literal('')).nullable(),
     email: z.string().email().max(50).optional().or(z.literal('')).nullable(),
@@ -17,7 +17,9 @@ export const createUserValidationSchema = z
       .min(4, { message: 'Username must be at least 4 characters long.' })
       .max(35, { message: 'Username must be no more than 35 characters long.' })
       .refine((value) => !value.includes(' '), { message: 'Username cannot contain spaces.' })
-      .refine((value) => /^[a-zA-Z0-9.]+$/.test(value), { message: 'Username can only contain letters, numbers, and dots.' }),
+      .refine((value) => /^[a-zA-Z0-9.]+$/.test(value), {
+        message: 'Username can only contain letters, numbers, and dots.'
+      }),
     password: z
       .string({ message: 'Password is required.' })
       .min(8, 'Password must be at least 8 characters long.')
@@ -34,26 +36,27 @@ export const createUserValidationSchema = z
       .trim()
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match.",
+    message: 'Passwords don\'t match.',
     path: ['confirmPassword']
   });
 
-export const updateUserValidationSchema = z
-  .object({
-    lastNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
-    firstNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
-    lastName: z.
-      string({ message: 'Last name is required.' })
-      .max(35, { message: 'Last name must be no more than 35 characters long.' }),
-    firstName: z.
-      string({ message: 'First name is required.' })
-      .max(35, { message: 'First name must be no more than 35 characters long.' }),
-    phoneNumber: z.string().min(9).max(15).optional().or(z.literal('')).nullable(),
-    email: z.string().email().max(50).optional().or(z.literal('')).nullable(),
-    username: z
-      .string({ message: 'Username is required.' })
-      .min(4, { message: 'Username must be at least 4 characters long.' })
-      .max(35, { message: 'Username must be no more than 35 characters long.' })
-      .refine((value) => !value.includes(' '), { message: 'Username cannot contain spaces.' })
-      .refine((value) => /^[a-zA-Z0-9.]+$/.test(value), { message: 'Username can only contain letters, numbers, and dots.' }),
-  });
+export const updateUserValidationSchema = z.object({
+  lastNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
+  firstNameKh: z.string().max(50).optional().or(z.literal('')).nullable(),
+  lastName: z
+    .string({ message: 'Last name is required.' })
+    .max(35, { message: 'Last name must be no more than 35 characters long.' }),
+  firstName: z
+    .string({ message: 'First name is required.' })
+    .max(35, { message: 'First name must be no more than 35 characters long.' }),
+  phoneNumber: z.string().min(9).max(15).optional().or(z.literal('')).nullable(),
+  email: z.string().email().max(50).optional().or(z.literal('')).nullable(),
+  username: z
+    .string({ message: 'Username is required.' })
+    .min(4, { message: 'Username must be at least 4 characters long.' })
+    .max(35, { message: 'Username must be no more than 35 characters long.' })
+    .refine((value) => !value.includes(' '), { message: 'Username cannot contain spaces.' })
+    .refine((value) => /^[a-zA-Z0-9.]+$/.test(value), {
+      message: 'Username can only contain letters, numbers, and dots.'
+    })
+});

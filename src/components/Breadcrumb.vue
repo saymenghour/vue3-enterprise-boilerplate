@@ -40,12 +40,12 @@ import { RouterLink, type RouteLocationRaw } from 'vue-router';
 import { ChevronRight } from 'lucide-vue-next';
 
 export interface BreadcrumbItemProps {
-  title: string
-  to?: RouteLocationRaw
+  title: string;
+  to?: RouteLocationRaw;
 }
 
 interface BreadcrumbProps {
-  items: BreadcrumbItemProps[]
+  items: BreadcrumbItemProps[];
 }
 
 const { t } = useI18n();

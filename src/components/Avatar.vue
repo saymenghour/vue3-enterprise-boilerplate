@@ -15,13 +15,11 @@ import { UserFilled } from '@element-plus/icons-vue';
 type AvatarProps = {
   size?: number;
   src: string | undefined;
-}
+};
 
 withDefaults(defineProps<AvatarProps>(), {
   size: 38
 });
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

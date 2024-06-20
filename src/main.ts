@@ -17,10 +17,10 @@ const vueQueryPluginOptions: VueQueryPluginOptions = {
   queryClientConfig: {
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus: false,
-      },
-    },
-  },
+        refetchOnWindowFocus: false
+      }
+    }
+  }
 };
 
 const app = createApp(App);

@@ -5,7 +5,9 @@
         aria-label="Global"
         class="flex basis-full items-center w-full mx-auto"
       >
-        <div class="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
+        <div
+          class="w-full flex items-center justify-end ms-auto sm:justify-between sm:gap-x-3 sm:order-3"
+        >
           <div class="sm:hidden">
             <button
               class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:color-background"
@@ -39,7 +41,9 @@
               for="icon"
             >Search</label>
             <div class="relative">
-              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4">
+              <div
+                class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-4"
+              >
                 <svg
                   class="flex-shrink-0 h-4 w-4 text-gray-400"
                   fill="none"

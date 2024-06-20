@@ -1,9 +1,22 @@
 import router from '@/router';
 import { axios } from '@/http/axios';
 import { AppRoute } from '@/constants';
-import { destroySensitiveInfo, getAccessToken, getBearerToken, getDeviceId, getRefreshToken, saveToken } from '@/services/localStorage';
+import {
+  destroySensitiveInfo,
+  getAccessToken,
+  getBearerToken,
+  getDeviceId,
+  getRefreshToken,
+  saveToken
+} from '@/services/localStorage';
 import { AESCipher, RSACipher } from '@/utils/crypto';
-import type { LoginForm, LoginRequest, LoginResponse, RefreshTokenRequest, RefreshTokenResponse } from './authenticationType';
+import type {
+  LoginForm,
+  LoginRequest,
+  LoginResponse,
+  RefreshTokenRequest,
+  RefreshTokenResponse
+} from './authenticationType';
 
 export const loginWithCredential = async ({ username, password }: LoginForm) => {
   const secretKey = AESCipher.generateRandomString();
@@ -36,11 +49,15 @@ export const refreshToken = async (): Promise<string | undefined> => {
         refreshToken: getRefreshToken() ?? ''
       };
 
-      const res = await axios.post<ResponseSuccess<RefreshTokenResponse>>('/api/v1/oauth2/refresh-token', data, {
-        headers: {
-          'Device-Id': getDeviceId()
+      const res = await axios.post<ResponseSuccess<RefreshTokenResponse>>(
+        '/api/v1/oauth2/refresh-token',
+        data,
+        {
+          headers: {
+            'Device-Id': getDeviceId()
+          }
         }
-      });
+      );
       const { accessToken, refreshToken, expiresAt, deviceId } = res.data?.data ?? {};
       saveToken(accessToken, refreshToken, expiresAt, deviceId);
       // TODO: display dialog session expired
@@ -57,14 +74,18 @@ export const refreshToken = async (): Promise<string | undefined> => {
 };
 
 export function logout() {
-  axios.post('/api/v1/oauth2/logout', {
-    accessToken: getAccessToken()
-  }, {
-    headers: {
-      'Device-Id': getDeviceId(),
-      "Authorization": getBearerToken()
+  axios.post(
+    '/api/v1/oauth2/logout',
+    {
+      accessToken: getAccessToken()
+    },
+    {
+      headers: {
+        'Device-Id': getDeviceId(),
+        Authorization: getBearerToken()
+      }
     }
-  });
+  );
   destroySensitiveInfo();
   router.push({ name: AppRoute.Login.name });
 }

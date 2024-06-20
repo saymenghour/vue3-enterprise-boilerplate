@@ -10,7 +10,7 @@ export const useUserStore = defineStore('userStore', {
     setUsers(users: User[]) {
       this.users = users ?? [];
     }
-  },
+  }
 });
 
 if (import.meta.hot) {

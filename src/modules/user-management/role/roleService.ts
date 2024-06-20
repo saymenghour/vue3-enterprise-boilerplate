@@ -1,9 +1,9 @@
-import { useMutation, useQuery } from "@tanstack/vue-query";
-import router from "@/router";
-import { useNotification } from "@/composables";
-import { AppRoute } from "@/constants";
-import { createRoleApi, fetchRolesApi, fetchRoleByIdApi, updateRoleApi } from "./roleApi";
-import type { CreateRoleForm, EditRoleForm } from "./roleType";
+import { useMutation, useQuery } from '@tanstack/vue-query';
+import router from '@/router';
+import { useNotification } from '@/composables';
+import { AppRoute } from '@/constants';
+import { createRoleApi, fetchRolesApi, fetchRoleByIdApi, updateRoleApi } from './roleApi';
+import type { CreateRoleForm, EditRoleForm } from './roleType';
 
 export function useFetchRoles() {
   return useQuery({
@@ -29,7 +29,7 @@ export function useFetchRolePermissionIdsById(id: string) {
         ...rest,
         permissionIds: permissions?.map((p) => p.id) ?? []
       } as EditRoleForm;
-    },
+    }
   });
 }
 

@@ -16,7 +16,7 @@ interface ButtonProps {
   loading?: boolean;
 }
 
-const props = withDefaults(defineProps<ButtonProps>(), {
+withDefaults(defineProps<ButtonProps>(), {
   type: 'button',
   variant: undefined,
   loading: false

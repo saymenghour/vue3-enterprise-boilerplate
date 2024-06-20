@@ -1,4 +1,4 @@
-import type { Role } from "../role/roleType";
+import type { Role } from '../role/roleType';
 
 export type User = {
   recordState: string;
@@ -19,11 +19,11 @@ export type User = {
   email: string;
   profileImageUrl: string;
   status: string;
-  branch: Branch
+  branch: Branch;
   departmentId: string;
   positionId: string;
-  roles: Role[]
-}
+  roles: Role[];
+};
 
 export type CreateUserForm = {
   firstNameKh?: string;
@@ -35,7 +35,7 @@ export type CreateUserForm = {
   email?: string;
   password: string;
   confirmPassword: string;
-}
+};
 
 export type EditUserForm = {
   firstNameKh?: string;
@@ -45,11 +45,11 @@ export type EditUserForm = {
   username: string;
   phoneNumber?: string;
   email?: string;
-}
+};
 
 export type Branch = {
   id: number;
   code: string;
   nameEn: string;
   nameKh: string;
-}
+};

@@ -17,11 +17,9 @@ type CheckboxProps = {
   required?: boolean;
   placeholder?: string;
   description?: string;
-}
+};
 
-const props = defineProps<CheckboxProps>();
+defineProps<CheckboxProps>();
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

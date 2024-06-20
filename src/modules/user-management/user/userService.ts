@@ -1,10 +1,9 @@
-import { useMutation, useQuery } from "@tanstack/vue-query";
-import router from "@/router";
-import { AppRoute } from "@/constants";
-import { useNotification } from "@/composables";
-import { createUserApi, fetchUserByIdApi, fetchUsersApi, updateUserApi } from "./userApi";
-import type { CreateUserForm, EditUserForm } from "./userType";
-
+import { useMutation, useQuery } from '@tanstack/vue-query';
+import router from '@/router';
+import { AppRoute } from '@/constants';
+import { useNotification } from '@/composables';
+import { createUserApi, fetchUserByIdApi, fetchUsersApi, updateUserApi } from './userApi';
+import type { CreateUserForm, EditUserForm } from './userType';
 
 export function useFetchUsers() {
   return useQuery({

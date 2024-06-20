@@ -4,7 +4,7 @@ export type Permission = {
   nameEn: string;
   nameKh: string;
   description: string;
-}
+};
 
 export type Role = {
   id: string;
@@ -14,7 +14,7 @@ export type Role = {
   description?: string;
   permissions?: Permission[];
   status: string;
-}
+};
 
 export type CreateRoleForm = {
   nameEn: string;
@@ -22,6 +22,6 @@ export type CreateRoleForm = {
   type: string;
   description?: string;
   permissionIds?: number[] | undefined;
-}
+};
 
 export type EditRoleForm = CreateRoleForm;

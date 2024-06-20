@@ -10,7 +10,7 @@ export const useRoleStore = defineStore('roleStore', {
     setRoles(roles: Role[]) {
       this.roles = roles ?? [];
     }
-  },
+  }
 });
 
 if (import.meta.hot) {

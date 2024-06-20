@@ -1,5 +1,5 @@
-import { Http } from "@/http";
-import type { CreateRoleForm, EditRoleForm, Role } from "./roleType";
+import { Http } from '@/http';
+import type { CreateRoleForm, EditRoleForm, Role } from './roleType';
 
 const ENDPOINT = '/api/v1/roles';
 
