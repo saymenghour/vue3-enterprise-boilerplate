@@ -1,13 +1,12 @@
 import type { RouteRecordRaw } from 'vue-router';
 
-import PrivateOutletVue from '@/components/PrivateOutlet.vue';
 import { AppRoute } from '@/constants';
 import { userManagementRoutes } from '@/modules/user-management/router';
 
 export const privateRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: PrivateOutletVue,
+    component: () => import('@/components/PrivateOutlet.vue'),
     children: [
       {
         path: AppRoute.Dashboard.path,

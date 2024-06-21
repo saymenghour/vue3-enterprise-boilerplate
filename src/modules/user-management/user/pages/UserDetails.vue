@@ -27,8 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useQueryClient } from '@tanstack/vue-query';
 
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
@@ -43,8 +44,9 @@ import {
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import UserDetailsInfo from '../components/UserDetailsInfo.vue';
 import UserStatus from '../components/UserStatus.vue';
-import { useFetchUserById } from '../userService';
+import { getFetchUserByIdQueryKey, useFetchUserById } from '../userService';
 
+const queryClient = useQueryClient();
 const { t } = useI18n();
 const { params } = useRoute();
 
@@ -98,6 +100,10 @@ const fields = computed((): DescriptionsFieldProps[] => {
       ]
     }
   ];
+});
+
+onUnmounted(() => {
+  queryClient.cancelQueries({ queryKey: getFetchUserByIdQueryKey(params.id as string) });
 });
 </script>
 

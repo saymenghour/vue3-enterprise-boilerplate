@@ -23,8 +23,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
+import { useQueryClient } from '@tanstack/vue-query';
+
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import {
@@ -37,8 +39,9 @@ import {
 } from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import RoleStatus from '../components/RoleStatus.vue';
-import { useFetchRoleById } from '../roleService';
+import { getFetchRoleByIdQueryKey, useFetchRoleById } from '../roleService';
 
+const queryClient = useQueryClient();
 const { t } = useI18n();
 const { params } = useRoute();
 
@@ -87,6 +90,10 @@ const fields = computed((): DescriptionsFieldProps[] => {
       ]
     }
   ];
+});
+
+onUnmounted(() => {
+  queryClient.cancelQueries({ queryKey: getFetchRoleByIdQueryKey(params.id as string) });
 });
 </script>
 

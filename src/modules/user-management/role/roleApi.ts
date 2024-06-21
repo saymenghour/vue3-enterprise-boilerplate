@@ -3,13 +3,13 @@ import type { CreateRoleForm, EditRoleForm, Role } from './roleType';
 
 const ENDPOINT = '/api/v1/roles';
 
-export async function fetchRolesApi() {
-  const response = await Http.get<ResponseSuccess<Role[]>>(ENDPOINT);
+export async function fetchRolesApi(signal: AbortSignal) {
+  const response = await Http.get<ResponseSuccess<Role[]>>(ENDPOINT, undefined, { signal });
   return response?.data;
 }
 
-export async function fetchRoleByIdApi(id: string) {
-  const response = await Http.get<ResponseSuccess<Role>>(`${ENDPOINT}/${id}`);
+export async function fetchRoleByIdApi(id: string, signal: AbortSignal) {
+  const response = await Http.get<ResponseSuccess<Role>>(`${ENDPOINT}/${id}`, undefined, { signal });
   return response?.data;
 }
 

@@ -39,7 +39,6 @@ export const userManagementRoutes: RouteRecordRaw[] = [
       ]
     }
   },
-
   {
     path: AppRoute.User.edit.path,
     name: AppRoute.User.edit.name,

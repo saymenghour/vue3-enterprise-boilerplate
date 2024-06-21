@@ -5,24 +5,38 @@ import { AppRoute } from '@/constants';
 import { createRoleApi, fetchRolesApi, fetchRoleByIdApi, updateRoleApi } from './roleApi';
 import type { CreateRoleForm, EditRoleForm } from './roleType';
 
+export function getFetchRolesQueryKey() {
+  return ['fetchRoles'];
+}
+
+export function getFetchRoleByIdQueryKey(id: string) {
+  if (!id) return ['fetchRoleById'];
+  return ['fetchRoleById', id];
+}
+
+export function getFetchRolePermissionIdsById(id: string) {
+  if (!id) return ['fetchRolePermissionIdsById'];
+  return ['fetchRolePermissionIdsById', id];
+}
+
 export function useFetchRoles() {
   return useQuery({
-    queryKey: ['fetchRoles'],
-    queryFn: fetchRolesApi
+    queryKey: getFetchRolesQueryKey(),
+    queryFn: ({ signal }) => fetchRolesApi(signal)
   });
 }
 
 export function useFetchRoleById(id: string) {
   return useQuery({
-    queryKey: ['fetchRoleById', id],
-    queryFn: () => fetchRoleByIdApi(id)
+    queryKey: getFetchRoleByIdQueryKey(id),
+    queryFn: ({ signal }) => fetchRoleByIdApi(id, signal)
   });
 }
 
 export function useFetchRolePermissionIdsById(id: string) {
   return useQuery({
-    queryKey: ['fetchRolePermissionIdsById', id],
-    queryFn: () => fetchRoleByIdApi(id),
+    queryKey: getFetchRolePermissionIdsById(id),
+    queryFn: ({ signal }) => fetchRoleByIdApi(id, signal),
     select(data) {
       const { permissions, ...rest } = data ?? {};
       return {

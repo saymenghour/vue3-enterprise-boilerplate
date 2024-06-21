@@ -60,9 +60,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue';
+import { computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 import { toTypedSchema } from '@vee-validate/zod';
+import { useQueryClient } from '@tanstack/vue-query';
 
 import { useFormAsync, useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
@@ -78,10 +79,11 @@ import {
   UpdateButton
 } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
-import { useFetchRolePermissionIdsById, useUpdateRole } from '../roleService';
+import { getFetchRolePermissionIdsById, useFetchRolePermissionIdsById, useUpdateRole } from '../roleService';
 import { createAndUpdateRoleValidationSchema } from '../roleSchema';
 import type { EditRoleForm } from '../roleType';
 
+const queryClient = useQueryClient();
 const { t } = useI18n();
 const { params } = useRoute();
 
@@ -111,8 +113,8 @@ const onSubmit = handleSubmit((values) => {
   mutate(values);
 });
 
-watch(data, (newData) => {
-  console.log(newData);
+onUnmounted(() => {
+  queryClient.cancelQueries({ queryKey: getFetchRolePermissionIdsById(params.id as string) });
 });
 </script>
 

@@ -38,7 +38,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onUnmounted } from 'vue';
+import { useQueryClient } from '@tanstack/vue-query';
+
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import {
@@ -54,8 +56,9 @@ import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 import type { User } from '../userType';
 import UserListingDropdownAction from '../components/UserListingDropdownAction.vue';
 import UserStatus from '../components/UserStatus.vue';
-import { useFetchUsers } from '../userService';
+import { getFetchUsersQueryKey, useFetchUsers } from '../userService';
 
+const queryClient = useQueryClient();
 const { t } = useI18n();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
@@ -95,6 +98,10 @@ const columns = computed<ColumnProps<User>[]>(() => [
 ]);
 
 const { data, isLoading } = useFetchUsers();
+
+onUnmounted(() => {
+  queryClient.cancelQueries({ queryKey: getFetchUsersQueryKey() });
+});
 </script>
 
 <style scoped></style>

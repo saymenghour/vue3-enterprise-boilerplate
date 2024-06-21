@@ -20,7 +20,7 @@ export class Http {
     return {
       ...rest,
       headers: {
-        ...defaultConfig,
+        ...defaultConfig.headers,
         ...headers
       } as any
     };

@@ -13,7 +13,7 @@ import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
-import UnauthorizeView from '@/modules/exceptions/UnauthorizeView.vue';
+import UnauthorizeView from '@/modules/exception/UnauthorizeView.vue';
 
 const route = useRoute();
 const store = useCurrentUserStore();

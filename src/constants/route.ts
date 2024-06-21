@@ -35,11 +35,11 @@ export const AppRoute = {
       path: '/user-management/roles/create'
     },
     details: {
-      name: 'user-details',
+      name: 'role-details',
       path: '/user-management/roles/:id'
     },
     edit: {
-      name: 'user-edit',
+      name: 'role-edit',
       path: '/user-management/roles/:id/edit'
     }
   }

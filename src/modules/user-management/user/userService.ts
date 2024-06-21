@@ -5,17 +5,26 @@ import { useNotification } from '@/composables';
 import { createUserApi, fetchUserByIdApi, fetchUsersApi, updateUserApi } from './userApi';
 import type { CreateUserForm, EditUserForm } from './userType';
 
+export function getFetchUsersQueryKey() {
+  return ['fetchUsers'];
+}
+
+export function getFetchUserByIdQueryKey(id: string) {
+  if (!id) return ['fetchUserById'];
+  return ['fetchUserById', id];
+}
+
 export function useFetchUsers() {
   return useQuery({
-    queryKey: ['fetchUsers'],
-    queryFn: fetchUsersApi
+    queryKey: getFetchUsersQueryKey(),
+    queryFn: ({ signal }) => fetchUsersApi(signal)
   });
 }
 
 export function useFetchUserById(id: string) {
   return useQuery({
-    queryKey: ['fetchUserById', id],
-    queryFn: () => fetchUserByIdApi(id)
+    queryKey: getFetchUserByIdQueryKey(id),
+    queryFn: ({ signal }) => fetchUserByIdApi(id, signal)
   });
 }
 

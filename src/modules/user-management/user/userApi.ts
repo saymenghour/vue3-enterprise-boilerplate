@@ -3,13 +3,13 @@ import type { CreateUserForm, EditUserForm, User } from './userType';
 
 const ENDPOINT = '/api/v1/users';
 
-export async function fetchUsersApi() {
-  const response = await Http.get<ResponseSuccess<User[]>>(ENDPOINT);
+export async function fetchUsersApi(signal: AbortSignal) {
+  const response = await Http.get<ResponseSuccess<User[]>>(ENDPOINT, undefined, { signal });
   return response?.data;
 }
 
-export async function fetchUserByIdApi(id: string) {
-  const response = await Http.get<ResponseSuccess<User>>(`${ENDPOINT}/${id}`);
+export async function fetchUserByIdApi(id: string, signal: AbortSignal) {
+  const response = await Http.get<ResponseSuccess<User>>(`${ENDPOINT}/${id}`, undefined, { signal });
   return response?.data;
 }
 
