@@ -15,7 +15,7 @@
 <h1>✨ Vue Boilerplate ✨</h1>
 </div>
 
-The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind CSS, and Vue i18n for buildings efficient, faster, maintainable, and scalable for enterprise applications.
+The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind CSS, Vue Query, and Vue i18n for buildings efficient, faster, maintainable, and scalable for enterprise applications.
 
 ### 📚 Table of Contents
 
@@ -50,64 +50,127 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 
 | Library      | Version                                                                 | Description                                                                                        |
 | ------------ | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Vue          | ![Vue](https://img.shields.io/badge/%5E3.4.27-blue.svg)                 | A progressive JavaScript framework for building user interfaces.                                   |
-| Vite         | ![Vite](https://img.shields.io/badge/%5E5.2.11-blue.svg)                | Next-generation frontend build tooling for fast and efficient development.                         |
+| Vue          | ![Vue](https://img.shields.io/badge/%5E3.4.29-blue.svg)                 | A progressive JavaScript framework for building user interfaces.                                   |
+| Vite         | ![Vite](https://img.shields.io/badge/%5E5.3.1-blue.svg)                 | Next-generation frontend build tooling for fast and efficient development.                         |
 | Typescript   | ![Typescript](https://img.shields.io/badge/%5E5.4.5-blue.svg)           | A superset of JavaScript that enhances the development experience with static typing.              |
-| Vue Router   | ![Vue Router](https://img.shields.io/badge/%5E4.3.2-blue.svg)           | Official router for Vue.js, used for managing application routes.                                  |
+| Vue Router   | ![Vue Router](https://img.shields.io/badge/%5E4.3.3-blue.svg)           | Official router for Vue.js, used for managing application routes.                                  |
 | Vue i18n     | ![Vue i18n](https://img.shields.io/badge/%5E9.13.1-blue.svg)            | Internationalization plugin for Vue.js applications, enabling multi-language support.              |
-| Vue Query    | ![@tanstack/vue-query](https://img.shields.io/badge/%5E5.35.5-blue.svg) | A data-fetching and state management library for Vue.js, with powerful data-fetching capabilities. |
+| Vue Query    | ![@tanstack/vue-query](https://img.shields.io/badge/%5E5.45.0-blue.svg) | A data-fetching and state management library for Vue.js, with powerful data-fetching capabilities. |
 | Pinia        | ![Pinia](https://img.shields.io/badge/%5E2.1.7-blue.svg)                | An intuitive store for Vue.js applications, providing centralized state management.                |
-| Axios        | ![Axios](https://img.shields.io/badge/%5E1.6.8-blue.svg)                | Promise-based HTTP client for making API requests.                                                 |
-| Tailwind CSS | ![Tailwind CSS](https://img.shields.io/badge/%5E3.4.3-blue.svg)         | A highly customizable CSS framework for rapid web development.                                     |
+| Axios        | ![Axios](https://img.shields.io/badge/%5E1.7.2-blue.svg)                | Promise-based HTTP client for making API requests.                                                 |
+| Tailwind CSS | ![Tailwind CSS](https://img.shields.io/badge/%5E3.4.4-blue.svg)         | A highly customizable CSS framework for rapid web development.                                     |
 
 ## 🗂️ Project Structure
 
 ```
+.
 ├── public/
 │   ├── assets
 │   │   ├── fonts
 |   |   └── images
 │   └── favicon.ico
 ├── src
+│   ├── App.vue
 │   ├── assets
 │   │   ├── images
 │   │   └── styles
 │   ├── components
-│   │   ├── PrivateOutlet
-│   │   ├── ui
+│   │   ├── ActionButton
+│   │   ├── Avatar.vue
+│   │   ├── Box.vue
+│   │   ├── Breadcrumb.vue
+│   │   ├── Button.vue
+│   │   ├── Checkbox.vue
+│   │   ├── Col.vue
+│   │   ├── Content.vue
+│   │   ├── DataTable.vue
+│   │   ├── Descriptions.vue
+│   │   ├── Form.vue
+│   │   ├── Grid.vue
+│   │   ├── Input.vue
+│   │   ├── LocaleSwitcher.vue
+│   │   ├── PrivateOutlet.vue
+│   │   ├── Row.vue
+│   │   ├── Section.vue
+│   │   ├── Skeleton
+│   │   ├── Tag.vue
+│   │   ├── ThemeSwitcher
+│   │   │   ├── ThemeSwitcher.vue
+│   │   │   └── icons
+│   │   │       ├── dark.svg
+│   │   │       ├── light.svg
+│   │   │       └── system.svg
+│   │   ├── Title.vue
+│   │   ├── index.ts
 │   │   └── ...
+│   ├── composables
+│   │   ├── index.ts
+│   │   ├── notification.ts
+│   │   ├── useFormAsync.ts
+│   │   └── useI18n.ts
 │   ├── constants
-│   ├── hooks
 │   ├── http
 │   │   ├── axios
+│   │   │   ├── index.ts
+│   │   │   └── interceptor.ts
 │   │   └── index.ts
 │   ├── layouts
-│   │   ├── MainLayout.ts
-│   │   └── ...
+│   │   ├── MainLayout.vue
+│   │   ├── ...
+│   ├── lib
+│   │   ├── shadcn
+│   │   └── utils.ts
 │   ├── locales
-│   │   ├── en
-│   │   └── km
+│   │   ├── en.ts
+│   │   ├── index.ts
+│   │   └── km.ts
+│   ├── main.ts
 │   ├── modules
 │   │   ├── authentication
-│   │   ├── current-user
 │   │   ├── dashboard
-│   │   └── ...
+│   │   ├── exception
+│   │   │   ├── NotFound.vue
+│   │   │   └── ...
+│   │   └── user-management
+│   │       ├── router.ts
+│   │       └── user
+│   │           ├── components
+│   │           │   ├── UserDetailsInfo.vue
+│   │           │   ├── UserListingDropdownAction.vue
+│   │           │   └── UserStatus.vue
+│   │           ├── pages
+│   │           │   ├── UserCreate.vue
+│   │           │   ├── UserDetails.vue
+│   │           │   ├── UserEdit.vue
+│   │           │   └── UserListing.vue
+│   │           ├── userApi.ts
+│   │           ├── userSchema.ts
+│   │           ├── userService.ts
+│   │           ├── userStore.ts
+│   │           └── userType.ts
 │   ├── router
+│   │   ├── guards.ts
+│   │   ├── index.ts
 │   │   ├── privateRoutes.ts
-│   │   ├── publicRoutes.ts
-│   │   └── ...
+│   │   └── publicRoutes.ts
 │   ├── services
 │   ├── types
-│   ├── utils
-│   │   ├── common
-│   │   ├── crypto
-│   │   └── ...
-│   ├── App.ts
-│   └── main.ts
+│   └── utils
+│       ├── common
+│       └── crypto
 ├── types
+│   ├── env.d.ts
+│   ├── global.d.ts
+│   └── router.d.ts
 ├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.js
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
 └── ...
-.
 ```
 
 ## 🚀 Getting Started
