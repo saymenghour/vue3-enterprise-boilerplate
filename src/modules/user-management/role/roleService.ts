@@ -67,13 +67,16 @@ export function useUpdateRole(id: string) {
     mutationFn: (formValues: RoleForm) => {
       console.log(formValues);
       return updateRoleApi({
-        ...formValues,
+        nameEn: formValues.nameEn,
+        nameKh: formValues.nameKh,
+        type: formValues.type,
+        description: formValues.description,
         permissionIds: getPermissionIdsFromValuesToPermissionIds(formValues.permission)
       }, id);
     },
     onSuccess: (data) => {
       success(data?.message);
-      // router.push({ name: AppRoute.Role.name });
+      router.push({ name: AppRoute.Role.name });
     }
   });
 }

@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/vue-query';
-import { fetchResourceWithPermissionApi } from './reourceApi';
+import { fetchResourceWithPermissionApi } from './resourceApi';
 
 export function getFetchResourceWithPermissionsQueryKey() {
   return ['fetchResourceWithPermissions'];
