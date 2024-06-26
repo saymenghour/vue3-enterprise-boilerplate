@@ -3,7 +3,8 @@ import router from '@/router';
 import { useNotification } from '@/composables';
 import { AppRoute } from '@/constants';
 import { createRoleApi, fetchRolesApi, fetchRoleByIdApi, updateRoleApi } from './roleApi';
-import type { CreateRoleForm, EditRoleForm } from './roleType';
+import { getPermissionIdsFromValuesToPermissionIds, getResourcePermissionIds } from '../resource/resourceUtils';
+import type { RoleForm } from './roleType';
 
 export function getFetchRolesQueryKey() {
   return ['fetchRoles'];
@@ -37,12 +38,14 @@ export function useFetchRolePermissionIdsById(id: string) {
   return useQuery({
     queryKey: getFetchRolePermissionIdsById(id),
     queryFn: ({ signal }) => fetchRoleByIdApi(id, signal),
-    select(data) {
-      const { permissions, ...rest } = data ?? {};
+    select(data): RoleForm {
       return {
-        ...rest,
-        permissionIds: permissions?.map((p) => p.id) ?? []
-      } as EditRoleForm;
+        nameEn: data?.nameEn ?? '',
+        nameKh: data?.nameKh ?? '',
+        type: data?.type ?? '',
+        description: data?.description,
+        permission: getResourcePermissionIds(data?.permissions)
+      };
     }
   });
 }
@@ -50,7 +53,7 @@ export function useFetchRolePermissionIdsById(id: string) {
 export function useCreateRole() {
   const { success } = useNotification();
   return useMutation({
-    mutationFn: (values: CreateRoleForm) => createRoleApi(values),
+    mutationFn: (formValues: RoleForm) => createRoleApi(formValues),
     onSuccess: (data) => {
       success(data?.message);
       router.push({ name: AppRoute.Role.name });
@@ -61,10 +64,16 @@ export function useCreateRole() {
 export function useUpdateRole(id: string) {
   const { success } = useNotification();
   return useMutation({
-    mutationFn: (values: EditRoleForm) => updateRoleApi(values, id),
+    mutationFn: (formValues: RoleForm) => {
+      console.log(formValues);
+      return updateRoleApi({
+        ...formValues,
+        permissionIds: getPermissionIdsFromValuesToPermissionIds(formValues.permission)
+      }, id);
+    },
     onSuccess: (data) => {
       success(data?.message);
-      router.push({ name: AppRoute.Role.name });
+      // router.push({ name: AppRoute.Role.name });
     }
   });
 }

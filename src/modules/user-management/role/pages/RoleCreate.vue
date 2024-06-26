@@ -77,9 +77,9 @@ import {
   CancelButton
 } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
-import { createAndUpdateRoleValidationSchema } from '../roleSchema';
-import type { CreateRoleForm } from '../roleType';
+import { roleValidationSchema } from '../roleSchema';
 import { useCreateRole } from '../roleService';
+import type { RoleForm } from '../roleType';
 
 const { t } = useI18n();
 
@@ -96,14 +96,14 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { handleSubmit } = useForm<CreateRoleForm>({
-  validationSchema: toTypedSchema(createAndUpdateRoleValidationSchema)
+const { handleSubmit } = useForm<RoleForm>({
+  validationSchema: toTypedSchema(roleValidationSchema)
 });
 
 const { isPending, mutate } = useCreateRole();
 
-const onSubmit = handleSubmit((values) => {
-  mutate(values);
+const onSubmit = handleSubmit((formValues) => {
+  mutate(formValues);
 });
 </script>
 

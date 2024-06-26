@@ -1,10 +1,4 @@
-export type Permission = {
-  id: number;
-  code: string;
-  nameEn: string;
-  nameKh: string;
-  description: string;
-};
+import type { Permission, PermissionId } from '../resource/resourceType';
 
 export type Role = {
   id: string;
@@ -16,12 +10,18 @@ export type Role = {
   status: string;
 };
 
-export type CreateRoleForm = {
+export type RoleForm = {
   nameEn: string;
   nameKh: string;
   type: string;
   description?: string;
-  permissionIds?: number[] | undefined;
+  permission?: Record<string, PermissionId[]>;
 };
 
-export type EditRoleForm = CreateRoleForm;
+export type RoleRequest = {
+  nameEn: string;
+  nameKh: string;
+  type: string;
+  description?: string;
+  permissionIds?: PermissionId[];
+}

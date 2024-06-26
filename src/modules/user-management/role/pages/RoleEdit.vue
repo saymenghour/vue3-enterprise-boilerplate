@@ -1,13 +1,14 @@
 <template>
   <Breadcrumb :items="breadcrumbItems" />
   <Title
-    :name="data?.nameEn"
+    :name="role?.nameEn"
     :loading="isLoading"
     :show-back-button="true"
   />
 
   <div class="">
     <Form @submit="onSubmit">
+      <Section>{{ t('role.info') }}</Section>
       <Box class="mb-5">
         <Row>
           <Col :md="8">
@@ -34,27 +35,21 @@
         </Row>
         <Row>
           <Col :md="24">
-            <Input
-              name="description"
+            <TextArea
+              maxlength="255"
               :label="t('description')"
+              name="description"
             />
           </Col>
         </Row>
-
-        <div class="flex justify-end">
-          <CancelButton />
-          <UpdateButton :loading="isPending" />
-        </div>
       </Box>
 
-      <!-- <Box>
-        <Section>{{ t('permissions') }}</Section>
+      <RolePermission />
 
-        <div class="flex justify-end">
-          <CancelButton />
-          <SaveButton />
-        </div>
-      </Box> -->
+      <div class="flex justify-end mt-4">
+        <CancelButton />
+        <UpdateButton :loading="isSubmitting" />
+      </div>
     </Form>
   </div>
 </template>
@@ -62,10 +57,9 @@
 <script setup lang="ts">
 import { computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { toTypedSchema } from '@vee-validate/zod';
 import { useQueryClient } from '@tanstack/vue-query';
 
-import { useFormAsync, useI18n } from '@/composables';
+import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import {
   Breadcrumb,
@@ -76,12 +70,14 @@ import {
   Form,
   Box,
   CancelButton,
-  UpdateButton
+  UpdateButton,
+  Section,
+  TextArea
 } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
-import { getFetchRolePermissionIdsById, useFetchRolePermissionIdsById, useUpdateRole } from '../roleService';
-import { createAndUpdateRoleValidationSchema } from '../roleSchema';
-import type { EditRoleForm } from '../roleType';
+import { getFetchRolePermissionIdsById, useFetchRolePermissionIdsById } from '../roleService';
+import { useRoleEditForm } from '../composibles/useRoleEditForm';
+import RolePermission from '../components/RolePermission.vue';
 
 const queryClient = useQueryClient();
 const { t } = useI18n();
@@ -100,18 +96,8 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { isLoading, data } = useFetchRolePermissionIdsById(params.id as string);
-
-const { handleSubmit } = useFormAsync<EditRoleForm>({
-  initialValues: data,
-  validationSchema: toTypedSchema(createAndUpdateRoleValidationSchema)
-});
-
-const { isPending, mutate } = useUpdateRole(params.id as string);
-
-const onSubmit = handleSubmit((values) => {
-  mutate(values);
-});
+const { isLoading, data: role } = useFetchRolePermissionIdsById(params.id as string);
+const { isSubmitting, onSubmit } = useRoleEditForm(params.id as string, role);
 
 onUnmounted(() => {
   queryClient.cancelQueries({ queryKey: getFetchRolePermissionIdsById(params.id as string) });

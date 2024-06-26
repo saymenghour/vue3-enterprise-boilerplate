@@ -23,7 +23,7 @@ export default {
   lastNameKh: 'Last Name (Khmer)',
   fullName: 'Full Name',
   fullNameKh: 'Full Name (Khmer)',
-  email: 'Email',
+  email: 'E-mail',
   phoneNumber: 'Phone Number',
   status: 'Status',
   actions: 'Actions',
@@ -66,7 +66,7 @@ export default {
   role: {
     label: 'Roles',
     list: 'Roles List',
-    info: 'Role Info',
+    info: 'Role Information',
     name: 'Role Name',
     nameEn: 'Role Name',
     nameKh: 'Role Name (Khmer)',
