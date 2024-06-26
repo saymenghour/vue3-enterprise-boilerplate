@@ -6,8 +6,8 @@ export { default as DataTable } from './DataTable.vue';
 export { default as Descriptions } from './Descriptions.vue';
 export { default as Breadcrumb } from './Breadcrumb.vue';
 export { default as Title } from './Title.vue';
-export { default as Input } from './Input.vue';
-export { default as TextArea } from './TextArea.vue';
+export { default as InputField } from './InputField.vue';
+export { default as TextAreaField } from './TextAreaField.vue';
 export { default as Grid } from './Grid.vue';
 export { default as AddNewButton } from './ActionButton/AddNewButton.vue';
 export { default as EditButton } from './ActionButton/EditButton.vue';
@@ -25,6 +25,7 @@ export { default as Tag } from './Tag.vue';
 export { default as Avatar } from './Avatar.vue';
 export { default as Card } from './Card.vue';
 export { default as Divider } from './Divider.vue';
+export { default as CheckboxField } from './CheckboxField.vue';
 export { default as CheckboxGroupField } from './CheckboxGroupField.vue';
 
 export { default as SkeletonPageListing } from './Skeleton/SkeletonPageListing.vue';

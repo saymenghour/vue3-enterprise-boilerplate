@@ -12,21 +12,21 @@
       <Box class="mb-5">
         <Row>
           <Col :md="8">
-            <Input
+            <InputField
               required
               name="nameEn"
               :label="t('role.nameEn')"
             />
           </Col>
           <Col :md="8">
-            <Input
+            <InputField
               required
               name="nameKh"
               :label="t('role.nameKh')"
             />
           </Col>
           <Col :md="8">
-            <Input
+            <InputField
               required
               name="type"
               :label="t('role.roleType')"
@@ -35,7 +35,7 @@
         </Row>
         <Row>
           <Col :md="24">
-            <TextArea
+            <TextAreaField
               maxlength="255"
               :label="t('description')"
               name="description"
@@ -63,7 +63,7 @@ import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import {
   Breadcrumb,
-  Input,
+  InputField,
   Title,
   Row,
   Col,
@@ -72,7 +72,7 @@ import {
   CancelButton,
   UpdateButton,
   Section,
-  TextArea
+  TextAreaField
 } from '@/components';
 import type { BreadcrumbItemProps } from '@/types';
 import { getFetchRolePermissionIdsById, useFetchRolePermissionIdsById } from '../roleService';

@@ -26,8 +26,8 @@
 
 <script setup lang="ts" generic="T extends Record<string, string | number>">
 import { ref, watch } from 'vue';
-import Divider from './Divider.vue';
 import { useField } from 'vee-validate';
+import Divider from './Divider.vue';
 
 type CheckboxGroupFieldProps<T> = {
   labelKey: keyof T;

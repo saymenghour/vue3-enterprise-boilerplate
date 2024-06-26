@@ -12,39 +12,39 @@
         <Section>{{ t('personalInfo') }}</Section>
         <Row>
           <Col :md="12">
-            <Input
+            <InputField
               required
               name="lastName"
               :label="t('lastName')"
             />
           </Col>
           <Col :md="12">
-            <Input
+            <InputField
               required
               name="firstName"
               :label="t('firstName')"
             />
           </Col>
           <Col :md="12">
-            <Input
+            <InputField
               name="lastNameKh"
               :label="t('lastNameKh')"
             />
           </Col>
           <Col :md="12">
-            <Input
+            <InputField
               name="firstNameKh"
               :label="t('firstNameKh')"
             />
           </Col>
           <Col :md="12">
-            <Input
+            <InputField
               name="phoneNumber"
               :label="t('phoneNumber')"
             />
           </Col>
           <Col :md="12">
-            <Input
+            <InputField
               name="email"
               :label="t('email')"
             />
@@ -55,7 +55,7 @@
         <Row>
           <!-- <Col :md="12"> -->
           <Col>
-            <Input
+            <InputField
               required
               name="username"
               :label="t('username')"
@@ -91,7 +91,7 @@ import { useFormAsync, useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import {
   Breadcrumb,
-  Input,
+  InputField,
   Title,
   Row,
   Col,
