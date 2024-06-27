@@ -2,7 +2,10 @@
   <SkeletonPageListing v-if="isLoading" />
   <template v-else>
     <Breadcrumb :items="breadcrumbItems" />
-    <Title :name="t('user.list')">
+    <Title
+      :name="t('user.list')"
+      :show-back-button="false"
+    >
       <AddNewButton
         :path="AppRoute.User.addNew.path"
         :label="t('user.addNew')"

@@ -2,7 +2,10 @@
   <SkeletonPageListing v-if="isLoading" />
   <template v-else>
     <Breadcrumb :items="breadcrumbItems" />
-    <Title :name="t('role.list')">
+    <Title
+      :name="t('role.list')"
+      :show-back-button="false"
+    >
       <AddNewButton
         :path="AppRoute.Role.addNew.path"
         :label="t('role.addNew')"

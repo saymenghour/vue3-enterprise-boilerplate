@@ -27,6 +27,7 @@ export { default as Card } from './Card.vue';
 export { default as Divider } from './Divider.vue';
 export { default as CheckboxField } from './CheckboxField.vue';
 export { default as CheckboxGroupField } from './CheckboxGroupField.vue';
+export { default as Loading } from './Loading.vue';
 
 export { default as SkeletonPageListing } from './Skeleton/SkeletonPageListing.vue';
 export { default as SkeletonPageDetails } from './Skeleton/SkeletonPageDetails.vue';

@@ -6,52 +6,50 @@
     :show-back-button="true"
   />
 
-  <div class="">
-    <Form @submit="onSubmit">
-      <Section>{{ t('role.info') }}</Section>
-      <Box class="mb-5">
-        <Row>
-          <Col :md="8">
-            <InputField
-              required
-              name="nameEn"
-              :label="t('role.nameEn')"
-            />
-          </Col>
-          <Col :md="8">
-            <InputField
-              required
-              name="nameKh"
-              :label="t('role.nameKh')"
-            />
-          </Col>
-          <Col :md="8">
-            <InputField
-              required
-              name="type"
-              :label="t('role.roleType')"
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col :md="24">
-            <TextAreaField
-              maxlength="255"
-              :label="t('description')"
-              name="description"
-            />
-          </Col>
-        </Row>
-      </Box>
+  <Form @submit="onSubmit">
+    <Section>{{ t('role.info') }}</Section>
+    <Box class="mb-5">
+      <Row>
+        <Col :md="8">
+          <InputField
+            required
+            name="nameEn"
+            :label="t('role.nameEn')"
+          />
+        </Col>
+        <Col :md="8">
+          <InputField
+            required
+            name="nameKh"
+            :label="t('role.nameKh')"
+          />
+        </Col>
+        <Col :md="8">
+          <InputField
+            required
+            name="type"
+            :label="t('role.roleType')"
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col :md="24">
+          <TextAreaField
+            maxlength="255"
+            :label="t('description')"
+            name="description"
+          />
+        </Col>
+      </Row>
+    </Box>
 
-      <RolePermission />
+    <RolePermission />
 
-      <div class="flex justify-end mt-4">
-        <CancelButton />
-        <UpdateButton :loading="isSubmitting" />
-      </div>
-    </Form>
-  </div>
+    <div class="flex justify-end mt-4">
+      <CancelButton />
+      <UpdateButton :loading="isSubmitting" />
+    </div>
+  </Form>
 </template>
 
 <script setup lang="ts">
