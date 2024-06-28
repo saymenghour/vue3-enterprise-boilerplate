@@ -5,8 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import router from '@/router';
 import { useI18n } from '@/composables';
+import router from '@/router';
 import Button from '../Button.vue';
 
 const { t } = useI18n();

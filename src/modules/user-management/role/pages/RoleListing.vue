@@ -1,16 +1,18 @@
 <template>
   <SkeletonPageListing v-if="isLoading" />
   <template v-else>
-    <Breadcrumb :items="breadcrumbItems" />
-    <Title
+    <PageBreadcrumb :items="breadcrumbItems" />
+    <PageTitle
       :name="t('role.list')"
       :show-back-button="false"
     >
-      <AddNewButton
-        :path="AppRoute.Role.addNew.path"
-        :label="t('role.addNew')"
-      />
-    </Title>
+      <template #actionButton>
+        <AddNewButton
+          :path="AppRoute.Role.addNew.path"
+          :label="t('role.addNew')"
+        />
+      </template>
+    </PageTitle>
 
     <Box>
       <DataTable
@@ -31,17 +33,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onUnmounted } from 'vue';
 import { useQueryClient } from '@tanstack/vue-query';
+import { computed, onUnmounted } from 'vue';
 
+import { AddNewButton, Box, DataTable, PageBreadcrumb, PageTitle, SkeletonPageListing } from '@/components';
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import { Breadcrumb, DataTable, SkeletonPageListing, Title, AddNewButton, Box } from '@/components';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
-import type { Role } from '../roleType';
 import RoleListingDropdownAction from '../components/RoleListingDropdownAction.vue';
 import RoleStatus from '../components/RoleStatus.vue';
 import { getFetchRolesQueryKey, useFetchRoles } from '../roleService';
+import type { Role } from '../roleType';
 
 const queryClient = useQueryClient();
 const { t } = useI18n();

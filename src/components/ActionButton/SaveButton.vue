@@ -11,8 +11,8 @@
 
 <script setup lang="ts">
 import { useI18n } from '@/composables';
-import Button from '../Button.vue';
 import { Save } from 'lucide-vue-next';
+import Button from '../Button.vue';
 
 const { t } = useI18n();
 

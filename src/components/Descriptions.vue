@@ -18,15 +18,12 @@
         :key="item.label"
         class="mb-2 flex flex-col"
       >
-        <span>{{ item.label }}</span>
+        <span class="font-medium">{{ item.label }}</span>
 
         <span v-if="item.slotName">
           <slot :name="item.slotName" />
         </span>
-        <span
-          v-else
-          class="font-medium"
-        >
+        <span v-else>
           {{ item.value ?? (displayDashIfValueIsNull ? '-' : '') }}
         </span>
       </div>

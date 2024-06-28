@@ -1,5 +1,5 @@
 import { Http } from '@/http';
-import type { Role, RoleForm, RoleRequest } from './roleType';
+import type { Role, RoleRequest } from './roleType';
 
 const ENDPOINT = '/api/v1/roles';
 
@@ -13,7 +13,7 @@ export async function fetchRoleByIdApi(id: string, signal: AbortSignal) {
   return response?.data;
 }
 
-export async function createRoleApi(requestBody: RoleForm) {
+export async function createRoleApi(requestBody: RoleRequest) {
   return await Http.post<ResponseSuccess<String>>(`${ENDPOINT}`, requestBody);
 }
 

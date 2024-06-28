@@ -1,34 +1,34 @@
 <template>
   <Section>{{ t('permissions') }}</Section>
-  <Box>
-    <Transition name="fade">
-      <Loading v-if="isLoading" />
-      <div
-        v-else
-        class="grid grid-cols-3 gap-6"
+  <Transition name="fade">
+    <Loading v-if="isLoading" />
+    <div
+      v-else
+      class="grid grid-cols-3 gap-6 mt-4"
+    >
+      <Card
+        v-for="resource in resources"
+        :key="resource.id"
+        class="!round !rounded-2xl !border-white"
       >
-        <Card
-          v-for="resource in resources"
-          :key="resource.id"
-        >
-          <CheckboxGroupField
-            value-key="code"
-            label-key="nameEn"
-            :name="`permission.${resource.code}`" 
-            :options="resource.permissions"
-          />
-        </Card>
-      </div>
-    </Transition>
-  </Box>
+        <CheckboxGroupField
+          :label="resource.nameEn"
+          option-value-key="code"
+          option-label-key="nameEn"
+          :name="`permission.${resource.code}`" 
+          :options="resource.permissions"
+        />
+      </Card>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
-import { onUnmounted } from 'vue';
-import { useQueryClient } from '@tanstack/vue-query';
-import { Box, Card, CheckboxGroupField, Loading, Section } from '@/components';
-import { getFetchResourceWithPermissionsQueryKey, useFetchResourceWithPermissions } from '../../resource/resourceService';
+import { Card, CheckboxGroupField, Loading, Section } from '@/components';
 import { useI18n } from '@/composables';
+import { useQueryClient } from '@tanstack/vue-query';
+import { onUnmounted } from 'vue';
+import { getFetchResourceWithPermissionsQueryKey, useFetchResourceWithPermissions } from '../../resource/resourceService';
 
 const queryClient = useQueryClient();
 const { t } = useI18n();

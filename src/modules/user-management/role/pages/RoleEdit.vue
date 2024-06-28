@@ -1,6 +1,6 @@
 <template>
-  <Breadcrumb :items="breadcrumbItems" />
-  <Title
+  <PageBreadcrumb :items="breadcrumbItems" />
+  <PageTitle
     :name="role?.nameEn"
     :loading="isLoading"
     :show-back-button="true"
@@ -36,8 +36,8 @@
         <Col :md="24">
           <TextAreaField
             maxlength="255"
-            :label="t('description')"
             name="description"
+            :label="t('description')"
           />
         </Col>
       </Row>
@@ -53,29 +53,29 @@
 </template>
 
 <script setup lang="ts">
+import { useQueryClient } from '@tanstack/vue-query';
 import { computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { useQueryClient } from '@tanstack/vue-query';
 
-import { useI18n } from '@/composables';
-import { AppRoute } from '@/constants';
 import {
-  Breadcrumb,
-  InputField,
-  Title,
-  Row,
-  Col,
-  Form,
   Box,
   CancelButton,
-  UpdateButton,
+  Col,
+  Form,
+  InputField,
+  PageBreadcrumb,
+  Row,
   Section,
-  TextAreaField
+  TextAreaField,
+  UpdateButton
 } from '@/components';
+import PageTitle from '@/components/PageTitle.vue';
+import { useI18n } from '@/composables';
+import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps } from '@/types';
-import { getFetchRolePermissionIdsById, useFetchRolePermissionIdsById } from '../roleService';
-import { useRoleEditForm } from '../composibles/useRoleEditForm';
 import RolePermission from '../components/RolePermission.vue';
+import { useRoleEditForm } from '../composibles/useRoleEditForm';
+import { getFetchRolePermissionIdsById, useFetchRolePermissionIdsById } from '../roleService';
 
 const queryClient = useQueryClient();
 const { t } = useI18n();

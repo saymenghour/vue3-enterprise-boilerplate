@@ -1,11 +1,12 @@
 <template>
   <section class="flex justify-between">
     <el-checkbox
-      v-model="checkAll"
+      v-model="selectAll"
       :indeterminate="indeterminate"
+      class="w-full"
       @change="handleCheckAllChange"
     >
-      <span>Check all</span>
+      {{ label ??t('selectAll') }}
     </el-checkbox>
   </section>
   <Divider class="!my-2" />
@@ -17,50 +18,54 @@
   >
     <el-checkbox
       v-for="item in options"
-      :key="item[valueKey as string]"
-      :value="item[valueKey as string]"
-      :label="item[labelKey as string]"
+      :key="item[optionValueKey as string]"
+      :value="item[optionValueKey as string]"
+      :label="item[optionLabelKey as string]"
+      class="!mr-0"
     />
   </el-checkbox-group>
 </template>
 
 <script setup lang="ts" generic="T extends Record<string, string | number>">
-import { ref, watch } from 'vue';
+import { useI18n } from '@/composables';
 import { useField } from 'vee-validate';
+import { ref, watch } from 'vue';
 import Divider from './Divider.vue';
 
 type CheckboxGroupFieldProps<T> = {
-  labelKey: keyof T;
-  valueKey: keyof T;
+  optionLabelKey: keyof T;
+  optionValueKey: keyof T;
+  label?: string | undefined;
   name: string;
   options: T[];
 }
 
-const { name, valueKey, options } = defineProps<CheckboxGroupFieldProps<T>>();
+const { name, optionValueKey, optionLabelKey, options } = defineProps<CheckboxGroupFieldProps<T>>();
 
+const { t } = useI18n();
 const { value, setValue } = useField<(string | number)[]>(name);
 
 const isCheckAll = (checkedCount: number) => checkedCount === options.length;
 const isIndeterminate = (checkedCount: number) => checkedCount > 0 && checkedCount < options.length;
 
-const checkAll = ref(false);
+const selectAll = ref(false);
 const indeterminate = ref(false);
 
 watch(value, () => {
   const checkedCount = value.value?.length || 0;
-  checkAll.value = isCheckAll(checkedCount);
+  selectAll.value = isCheckAll(checkedCount);
   indeterminate.value = isIndeterminate(checkedCount);
 });
 
 const handleCheckAllChange = (val: boolean) => {
   indeterminate.value = false;
-  const optionsIds = val ? options.map(item => item[valueKey] as string | number) : [];
+  const optionsIds = val ? options.map(item => item[optionValueKey] as string | number) : [];
   setValue(optionsIds);
 };
 
 const handleCheckedChange = (values: (string | number)[]) => {
   const checkedCount = values.length;
-  checkAll.value = isCheckAll(checkedCount);
+  selectAll.value = isCheckAll(checkedCount);
   indeterminate.value = isIndeterminate(checkedCount);
   setValue(values);
 };

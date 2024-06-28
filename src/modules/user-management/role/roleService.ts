@@ -1,9 +1,9 @@
-import { useMutation, useQuery } from '@tanstack/vue-query';
-import router from '@/router';
 import { useNotification } from '@/composables';
 import { AppRoute } from '@/constants';
-import { createRoleApi, fetchRolesApi, fetchRoleByIdApi, updateRoleApi } from './roleApi';
+import router from '@/router';
+import { useMutation, useQuery } from '@tanstack/vue-query';
 import { getPermissionIdsFromValuesToPermissionIds, getResourcePermissionIds } from '../resource/resourceUtils';
+import { createRoleApi, fetchRoleByIdApi, fetchRolesApi, updateRoleApi } from './roleApi';
 import type { RoleForm } from './roleType';
 
 export function getFetchRolesQueryKey() {
@@ -53,7 +53,15 @@ export function useFetchRolePermissionIdsById(id: string) {
 export function useCreateRole() {
   const { success } = useNotification();
   return useMutation({
-    mutationFn: (formValues: RoleForm) => createRoleApi(formValues),
+    mutationFn: (formValues: RoleForm) => {
+      return createRoleApi({
+        nameEn: formValues.nameEn,
+        nameKh: formValues.nameKh,
+        type: formValues.type,
+        description: formValues.description,
+        permissionIds: getPermissionIdsFromValuesToPermissionIds(formValues.permission)
+      });
+    },
     onSuccess: (data) => {
       success(data?.message);
       router.push({ name: AppRoute.Role.name });
@@ -65,7 +73,6 @@ export function useUpdateRole(id: string) {
   const { success } = useNotification();
   return useMutation({
     mutationFn: (formValues: RoleForm) => {
-      console.log(formValues);
       return updateRoleApi({
         nameEn: formValues.nameEn,
         nameKh: formValues.nameKh,

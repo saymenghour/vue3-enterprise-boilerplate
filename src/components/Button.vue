@@ -3,7 +3,6 @@
     :native-type="type"
     :type="variant"
     :loading
-    class="mt-3"
   >
     <slot />
   </el-button>

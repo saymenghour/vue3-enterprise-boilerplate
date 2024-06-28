@@ -1,85 +1,77 @@
 <template>
-  <Breadcrumb :items="breadcrumbItems" />
-  <Title
+  <PageBreadcrumb :items="breadcrumbItems" />
+  <PageTitle
     :name="t('role.addNew')"
     :show-back-button="true"
   />
 
-  <div class="">
-    <Form @submit="onSubmit">
-      <Box class="mb-5">
-        <Row>
-          <Col :md="8">
-            <InputField
-              required
-              name="nameEn"
-              :label="t('role.nameEn')"
-            />
-          </Col>
-          <Col :md="8">
-            <InputField
-              required
-              name="nameKh"
-              :label="t('role.nameKh')"
-            />
-          </Col>
-          <Col :md="8">
-            <InputField
-              required
-              name="type"
-              :label="t('role.roleType')"
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col :md="24">
-            <InputField
-              name="description"
-              :label="t('description')"
-            />
-          </Col>
-        </Row>
+  <Form @submit="onSubmit">
+    <Section>{{ t('role.info') }}</Section>
+    <Box class="mb-5">
+      <Row>
+        <Col :md="8">
+          <InputField
+            required
+            name="nameEn"
+            :label="t('role.nameEn')"
+          />
+        </Col>
+        <Col :md="8">
+          <InputField
+            required
+            name="nameKh"
+            :label="t('role.nameKh')"
+          />
+        </Col>
+        <Col :md="8">
+          <InputField
+            required
+            name="type"
+            :label="t('role.roleType')"
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col :md="24">
+          <TextAreaField
+            maxlength="255"
+            name="description"
+            :label="t('description')"
+          />
+        </Col>
+      </Row>
+    </Box>
 
-        <div class="flex justify-end">
-          <CancelButton />
-          <SaveButton :loading="isPending" />
-        </div>
-      </Box>
+    <RolePermission />
 
-      <!-- <Box>
-        <Section>{{ t('permissions') }}</Section>
-
-        <div class="flex justify-end">
-          <CancelButton />
-          <SaveButton />
-        </div>
-      </Box> -->
-    </Form>
-  </div>
+    <div class="flex justify-end mt-4">
+      <CancelButton />
+      <SaveButton :loading="isSubmitting" />
+    </div>
+  </Form>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { useForm } from 'vee-validate';
-import { toTypedSchema } from '@vee-validate/zod';
 
-import { useI18n } from '@/composables';
-import { AppRoute } from '@/constants';
 import {
-  Breadcrumb,
-  InputField,
-  Title,
-  Row,
+  Box,
+  CancelButton,
   Col,
   Form,
-  Box,
+  InputField,
+  PageBreadcrumb,
+  PageTitle,
+  Row,
   SaveButton,
-  CancelButton
+  Section,
+  TextAreaField
 } from '@/components';
+import { useI18n } from '@/composables';
+import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps } from '@/types';
-import { roleValidationSchema } from '../roleSchema';
-import { useCreateRole } from '../roleService';
-import type { RoleForm } from '../roleType';
+import RolePermission from '../components/RolePermission.vue';
+import { useRoleCreateForm } from '../composibles/useRoleCreateForm';
 
 const { t } = useI18n();
 
@@ -96,15 +88,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { handleSubmit } = useForm<RoleForm>({
-  validationSchema: toTypedSchema(roleValidationSchema)
-});
-
-const { isPending, mutate } = useCreateRole();
-
-const onSubmit = handleSubmit((formValues) => {
-  mutate(formValues);
-});
+const { onSubmit, isSubmitting } = useRoleCreateForm();
 </script>
 
 <style scoped></style>

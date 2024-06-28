@@ -1,6 +1,6 @@
 <template>
-  <Breadcrumb :items="breadcrumbItems" />
-  <Title
+  <PageBreadcrumb :items="breadcrumbItems" />
+  <PageTitle
     :name="t('user.addNew')"
     :show-back-button="true"
   />
@@ -100,28 +100,28 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { useForm } from 'vee-validate';
 import { toTypedSchema } from '@vee-validate/zod';
+import { useForm } from 'vee-validate';
+import { computed } from 'vue';
 
-import { useI18n } from '@/composables';
-import { AppRoute } from '@/constants';
 import {
-  Breadcrumb,
-  InputField,
-  Title,
-  Row,
+  Box,
+  CancelButton,
   Col,
   Form,
-  Section,
-  Box,
+  InputField,
+  PageBreadcrumb,
+  PageTitle,
+  Row,
   SaveButton,
-  CancelButton
+  Section
 } from '@/components';
+import { useI18n } from '@/composables';
+import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps } from '@/types';
 import { createUserValidationSchema } from '../userSchema';
-import type { CreateUserForm } from '../userType';
 import { useCreateUser } from '../userService';
+import type { CreateUserForm } from '../userType';
 
 const { t } = useI18n();
 

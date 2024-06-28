@@ -29,6 +29,7 @@ export default {
   actions: 'Actions',
   description: 'Description',
   permissions: 'Permissions',
+  selectAll: 'Select all',
 
   signIn: 'Sign in',
   forgotPassword: 'Forgot password?',

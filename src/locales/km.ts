@@ -29,6 +29,7 @@ export default {
   actions: 'សកម្មភាព',
   description: 'ការពិពណ៌នា',
   permissions: 'ការអនុញ្ញាត',
+  selectAll: 'ជ្រើសរើសទាំងអស់',
 
   signIn: 'ចូល',
   forgotPassword: 'ភ្លេច​លេខសំងាត់​?',

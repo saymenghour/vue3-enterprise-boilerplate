@@ -1,16 +1,18 @@
 <template>
   <SkeletonPageDetails v-if="isLoading" />
   <template v-else>
-    <Breadcrumb :items="breadcrumbItems" />
-    <Title
+    <PageBreadcrumb :items="breadcrumbItems" />
+    <PageTitle
       :name="data?.fullName"
       :show-back-button="true"
     >
-      <EditButton
-        :path="`./${data?.id}/edit`"
-        :label="t('user.edit')"
-      />
-    </Title>
+      <template #actionButton>
+        <EditButton
+          :path="`./${data?.id}/edit`"
+          :label="t('user.edit')"
+        />
+      </template>
+    </PageTitle>
 
     <Box class="mb-5 flex">
       <UserDetailsInfo :user="data" />
@@ -27,20 +29,20 @@
 </template>
 
 <script setup lang="ts">
+import { useQueryClient } from '@tanstack/vue-query';
 import { computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { useQueryClient } from '@tanstack/vue-query';
 
+import {
+  Box,
+  Descriptions,
+  EditButton,
+  PageBreadcrumb,
+  PageTitle,
+  SkeletonPageDetails
+} from '@/components';
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import {
-  Breadcrumb,
-  Descriptions,
-  Title,
-  SkeletonPageDetails,
-  Box,
-  EditButton
-} from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import UserDetailsInfo from '../components/UserDetailsInfo.vue';
 import UserStatus from '../components/UserStatus.vue';

@@ -1,17 +1,20 @@
 <template>
   <SkeletonPageDetails v-if="isLoading" />
   <template v-else>
-    <Breadcrumb :items="breadcrumbItems" />
-    <Title
+    <PageBreadcrumb :items="breadcrumbItems" />
+    <PageTitle
       :name="data?.nameEn"
       :show-back-button="true"
     >
-      <EditButton
-        :path="`./${data?.id}/edit`"
-        :label="t('role.edit')"
-      />
-    </Title>
+      <template #actionButton>
+        <EditButton
+          :path="`./${data?.id}/edit`"
+          :label="t('role.edit')"
+        />
+      </template>
+    </PageTitle>
 
+    <Section>{{ t('role.info') }}</Section>
     <Box>
       <Descriptions :fields>
         <template #status>
@@ -23,20 +26,21 @@
 </template>
 
 <script setup lang="ts">
+import { useQueryClient } from '@tanstack/vue-query';
 import { computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
-import { useQueryClient } from '@tanstack/vue-query';
 
+import {
+  Box,
+  Descriptions,
+  EditButton,
+  PageBreadcrumb,
+  PageTitle,
+  Section,
+  SkeletonPageDetails
+} from '@/components';
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
-import {
-  Breadcrumb,
-  Descriptions,
-  Title,
-  SkeletonPageDetails,
-  Box,
-  EditButton
-} from '@/components';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import RoleStatus from '../components/RoleStatus.vue';
 import { getFetchRoleByIdQueryKey, useFetchRoleById } from '../roleService';
@@ -69,7 +73,6 @@ const fields = computed((): DescriptionsFieldProps[] => {
   return [
     {
       label: t('role.info'),
-      type: 'section',
       fields: [
         {
           label: t('role.nameEn'),

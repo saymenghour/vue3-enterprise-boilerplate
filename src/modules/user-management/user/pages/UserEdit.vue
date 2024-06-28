@@ -1,6 +1,6 @@
 <template>
-  <Breadcrumb :items="breadcrumbItems" />
-  <Title
+  <PageBreadcrumb :items="breadcrumbItems" />
+  <PageTitle
     :name="data?.fullName"
     :loading="isLoading"
     :show-back-button="true"
@@ -83,27 +83,27 @@
 </template>
 
 <script setup lang="ts">
+import { toTypedSchema } from '@vee-validate/zod';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { toTypedSchema } from '@vee-validate/zod';
 
-import { useFormAsync, useI18n } from '@/composables';
-import { AppRoute } from '@/constants';
 import {
-  Breadcrumb,
-  InputField,
-  Title,
-  Row,
-  Col,
-  Form,
-  Section,
   Box,
   CancelButton,
+  Col,
+  Form,
+  InputField,
+  PageBreadcrumb,
+  PageTitle,
+  Row,
+  Section,
   UpdateButton
 } from '@/components';
+import { useFormAsync, useI18n } from '@/composables';
+import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps } from '@/types';
-import { useFetchUserById, useUpdateUser } from '../userService';
 import { updateUserValidationSchema } from '../userSchema';
+import { useFetchUserById, useUpdateUser } from '../userService';
 import type { EditUserForm } from '../userType';
 
 const { t } = useI18n();

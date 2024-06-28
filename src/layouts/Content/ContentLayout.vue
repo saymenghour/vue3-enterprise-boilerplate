@@ -1,6 +1,6 @@
 <template>
   <main class="bg-white h-full">
-    <section class="mr-5 xs:m-5 px-5 pt-5 h-full bg-slate-50 rounded-t-2xl">
+    <section class="mr-5 xs:m-5 px-5 pt-5 h-full bg-slate-50 rounded-t-3xl">
       <UnauthorizeView v-if="!isAuthorize" />
       <slot v-else />
     </section>
@@ -8,9 +8,9 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from 'pinia';
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import { storeToRefs } from 'pinia';
 
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 import UnauthorizeView from '@/modules/exception/UnauthorizeView.vue';
