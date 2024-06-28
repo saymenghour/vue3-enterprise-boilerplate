@@ -1,18 +1,16 @@
 {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "[vue]": {
-        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-    },
     "editor.formatOnSave": true,
-    "eslint.validate": [
-        "typescript"
-    ],
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     "editor.codeActionsOnSave": {
         "source.fixAll": "always"
     },
-    "cSpell.words": [
-        "composables"
+    "[vue]": {
+        "editor.defaultFormatter": "Vue.volar",
+        "editor.formatOnSave": false,
+    },
+    "eslint.validate": [
+        "vue",
+        "typescript"
     ],
-    "vue3snippets.enable-compile-vue-file-on-did-save-code": true
 }
