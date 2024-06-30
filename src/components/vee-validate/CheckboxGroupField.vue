@@ -30,7 +30,7 @@
 import { useI18n } from '@/composables';
 import { useField } from 'vee-validate';
 import { ref, watch } from 'vue';
-import Divider from './Divider.vue';
+import Divider from '@/components/ui/Divider.vue';
 
 type CheckboxGroupFieldProps<T> = {
   optionLabelKey: keyof T;

@@ -67,9 +67,9 @@ import {
   Row,
   Section,
   TextAreaField,
-  UpdateButton
+  UpdateButton,
+  PageTitle
 } from '@/components';
-import PageTitle from '@/components/PageTitle.vue';
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps } from '@/types';

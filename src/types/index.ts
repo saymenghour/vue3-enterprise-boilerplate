@@ -1,6 +1,6 @@
-export type { ColumnProps } from '@/components/DataTable.vue';
-export type { DescriptionsFieldProps } from '@/components/Descriptions.vue';
-export type { BreadcrumbItemProps } from '@/components/PageBreadcrumb.vue';
-export type { TagProps } from '@/components/Tag.vue';
+export type { BreadcrumbItemProps } from '@/components/shared/PageBreadcrumb.vue';
+export type { ColumnProps } from '@/components/ui/DataTable.vue';
+export type { DescriptionsFieldProps } from '@/components/ui/Descriptions.vue';
+export type { TagProps } from '@/components/ui/Tag.vue';
 export type { MenuItem } from './menu';
 

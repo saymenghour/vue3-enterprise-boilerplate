@@ -5,14 +5,14 @@
     :loading
   >
     <Save class="mr-2 h-4 w-4" />
-    {{ t('save') }}
+    {{ t('update') }}
   </Button>
 </template>
 
 <script setup lang="ts">
 import { useI18n } from '@/composables';
 import { Save } from 'lucide-vue-next';
-import Button from '../Button.vue';
+import Button from '@/components/ui/Button.vue';
 
 const { t } = useI18n();
 

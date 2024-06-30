@@ -113,14 +113,14 @@ import { useField, useForm } from 'vee-validate';
 import { useMutation } from '@tanstack/vue-query';
 import { useRoute } from 'vue-router';
 
-import { loginWithCredential } from './authenticationService';
-import type { LoginForm } from './authenticationType';
-import { loginSchema } from './loginSchema';
-
-import ThemeSwitcher from '@/components/ThemeSwitcher/ThemeSwitcher.vue';
+import { ThemeSwitcher } from '@/components';
 import { AppRoute } from '@/constants';
 import { useI18n } from '@/composables';
 import router from '@/router';
+
+import { loginWithCredential } from './authenticationService';
+import type { LoginForm } from './authenticationType';
+import { loginSchema } from './loginSchema';
 
 const { t } = useI18n();
 const route = useRoute();

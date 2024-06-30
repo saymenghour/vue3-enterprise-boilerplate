@@ -1,16 +1,16 @@
 <template>
   <RouterLink :to="link">
     <Button variant="primary">
-      <Plus class="mr-2 h-4 w-4" />
+      <SquarePen class="mr-2 h-4 w-4" />
       {{ label }}
     </Button>
   </RouterLink>
 </template>
 
 <script setup lang="ts">
-import { Plus } from 'lucide-vue-next';
+import { SquarePen } from 'lucide-vue-next';
 import { computed } from 'vue';
-import Button from '../Button.vue';
+import Button from '@/components/ui/Button.vue';
 
 type ButtonProps = {
   label: string;
