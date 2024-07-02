@@ -16,7 +16,7 @@
     class="grid grid-cols-1"
     @change="handleCheckedChange"
   >
-    <el-checkbox
+    <Checkbox
       v-for="item in options"
       :key="item[optionValueKey as string]"
       :value="item[optionValueKey as string]"
@@ -27,10 +27,11 @@
 </template>
 
 <script setup lang="ts" generic="T extends Record<string, string | number>">
+import Divider from '@/components/ui/Divider.vue';
 import { useI18n } from '@/composables';
 import { useField } from 'vee-validate';
 import { ref, watch } from 'vue';
-import Divider from '@/components/ui/Divider.vue';
+import Checkbox from '../ui/Checkbox.vue';
 
 type CheckboxGroupFieldProps<T> = {
   optionLabelKey: keyof T;

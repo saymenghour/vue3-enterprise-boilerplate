@@ -12,7 +12,7 @@
         v-bind="componentField"
         type="textarea"
         :placeholder
-        :autosize="{ minRows: 6 }"
+        :autosize="{ minRows: 4 }"
         :maxlength
         :show-word-limit="!!maxlength"
       />

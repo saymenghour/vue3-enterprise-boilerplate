@@ -14,14 +14,17 @@
       </template>
     </PageTitle>
 
-    <Section>{{ t('role.info') }}</Section>
-    <Box>
-      <Descriptions :fields>
-        <template #status>
-          <RoleStatus :status="data?.status" />
-        </template>
-      </Descriptions>
-    </Box>
+    <PageContent>
+      <PageContentSection :title="t('role.info')">
+        <Descriptions :fields>
+          <template #status>
+            <RoleStatus :status="data?.status" />
+          </template>
+        </Descriptions>
+      </PageContentSection>
+      
+      <RolePermissionDetails :permissions="data?.permissions" />
+    </PageContent>
   </template>
 </template>
 
@@ -31,17 +34,18 @@ import { computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 import {
-  Box,
   Descriptions,
   EditButton,
   PageBreadcrumb,
+  PageContent,
+  PageContentSection,
   PageTitle,
-  Section,
   SkeletonPageDetails
 } from '@/components';
 import { useI18n } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
+import RolePermissionDetails from '../components/RolePermissionDetails.vue';
 import RoleStatus from '../components/RoleStatus.vue';
 import { getFetchRoleByIdQueryKey, useFetchRoleById } from '../roleService';
 

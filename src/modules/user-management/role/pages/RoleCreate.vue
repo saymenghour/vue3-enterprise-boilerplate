@@ -6,8 +6,7 @@
   />
 
   <Form @submit="onSubmit">
-    <Section>{{ t('role.info') }}</Section>
-    <Box class="mb-5">
+    <PageContentSection :title="t('role.info')">
       <Row>
         <Col :md="8">
           <InputField
@@ -40,11 +39,11 @@
           />
         </Col>
       </Row>
-    </Box>
+    </PageContentSection>
 
     <RolePermission />
 
-    <div class="flex justify-end mt-4">
+    <div class="flex justify-end">
       <CancelButton />
       <SaveButton :loading="isSubmitting" />
     </div>
@@ -55,16 +54,15 @@
 import { computed } from 'vue';
 
 import {
-  Box,
   CancelButton,
   Col,
   Form,
   InputField,
   PageBreadcrumb,
+  PageContentSection,
   PageTitle,
   Row,
   SaveButton,
-  Section,
   TextAreaField
 } from '@/components';
 import { useI18n } from '@/composables';

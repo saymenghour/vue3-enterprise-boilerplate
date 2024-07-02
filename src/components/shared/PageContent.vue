@@ -1,7 +1,7 @@
 <template>
-  <div class="p-4 bg-white rounded-2xl">
+  <main>
     <slot />
-  </div>
+  </main>
 </template>
 
 <script setup lang="ts">

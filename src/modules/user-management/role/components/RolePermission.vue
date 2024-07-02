@@ -1,10 +1,12 @@
 <template>
-  <Section>{{ t('permissions') }}</Section>
-  <Transition name="fade">
+  <section class="my-4">
+    <SectionTitle class="pb-3">
+      {{ t('permissions') }}
+    </SectionTitle>
     <Loading v-if="isLoading" />
     <div
       v-else
-      class="grid grid-cols-3 gap-6 mt-4"
+      class="grid grid-cols-3 gap-6"
     >
       <Card
         v-for="resource in resources"
@@ -20,11 +22,11 @@
         />
       </Card>
     </div>
-  </Transition>
+  </section>
 </template>
 
 <script setup lang="ts">
-import { Card, CheckboxGroupField, Loading, Section } from '@/components';
+import { Card, CheckboxGroupField, Loading, SectionTitle } from '@/components';
 import { useI18n } from '@/composables';
 import { useQueryClient } from '@tanstack/vue-query';
 import { onUnmounted } from 'vue';

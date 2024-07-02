@@ -1,5 +1,5 @@
 <template>
-  <section class="flex justify-between text-[#303133] dark:text-[#E5EAF3]">
+  <section class="flex justify-between min-h-8 text-[#303133] dark:text-[#E5EAF3]">
     <section class="w-3/6">
       <div class="flex items-center">
         <div
@@ -45,7 +45,7 @@ type ActionButtonProps = {
   label: string;
 };
 
-type PageProps = {
+type PageTitleProps = {
   showBackButton?: boolean;
   loading?: boolean;
   name: string | undefined;
@@ -53,7 +53,7 @@ type PageProps = {
   actionButton?: ActionButtonProps[];
 };
 
-withDefaults(defineProps<PageProps>(), {
+withDefaults(defineProps<PageTitleProps>(), {
   showBackButton: true,
 });
 

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="font-medium my-2 text-[#303133] dark:text-[#E5EAF3]"
+    class="font-medium text-[#303133] dark:text-[#E5EAF3]"
   >
     <slot />
   </div>

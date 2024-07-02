@@ -1,22 +1,22 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <Sider />
+      <SiderLayout />
       <el-container class="is-vertical">
-        <Header />
-        <Content>
+        <HeaderLayout />
+        <ContentLayout>
           <slot />
-        </Content>
+        </ContentLayout>
       </el-container>
     </el-container>
   </div>
 </template>
 
 <script setup lang="ts">
-import Content from './Content/ContentLayout.vue';
-import Header from './Header/HeaderLayout.vue';
-import Sider from './Sider/SiderLayout.vue';
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
+import ContentLayout from './Content/ContentLayout.vue';
+import HeaderLayout from './Header/HeaderLayout.vue';
+import SiderLayout from './Sider/SiderLayout.vue';
 
 const { fetchCurrentUser } = useCurrentUserStore();
 fetchCurrentUser();

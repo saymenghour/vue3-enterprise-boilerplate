@@ -3,12 +3,6 @@
     v-for="field in fields"
     :key="field.label"
   >
-    <SectionWithBackground
-      v-if="field.type === 'section'"
-    >
-      {{ field.label }}
-    </SectionWithBackground>
-
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4 text-[#303133] dark:text-[#E5EAF3]"
       :class="{ 'px-4 py-2': field.type === 'section' }"
@@ -32,8 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import SectionWithBackground from './SectionWithBackground.vue';
-
 export type DescriptionsFieldProps = {
   label: string;
   slotName?: string;
