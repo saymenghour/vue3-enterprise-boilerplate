@@ -26,21 +26,21 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router';
-import { Eye, MoreHorizontal, SquarePen } from 'lucide-vue-next';
+import { useTranslation } from '@/composables';
+import { Button } from '@/lib/shadcn/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/lib/shadcn/ui/dropdown-menu';
-import { Button } from '@/lib/shadcn/ui/button';
-import { useI18n } from '@/composables';
+import { Eye, MoreHorizontal, SquarePen } from 'lucide-vue-next';
+import { RouterLink } from 'vue-router';
 import type { Role } from '../roleType';
 
 defineProps<{
   role: Role;
 }>();
 
-const { t } = useI18n();
+const { t } = useTranslation();
 </script>

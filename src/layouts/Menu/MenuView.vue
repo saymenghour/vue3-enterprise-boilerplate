@@ -39,13 +39,13 @@
 import { onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
+import { useTranslation } from '@/composables';
 import { menus } from '@/constants';
-import { useI18n } from '@/composables';
+import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 import type { MenuItem } from '@/types/menu';
 import { ArrayUtils } from '@/utils/common';
-import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 
-const { t } = useI18n();
+const { t } = useTranslation();
 const route = useRoute();
 const store = useCurrentUserStore();
 

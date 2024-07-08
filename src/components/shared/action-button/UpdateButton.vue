@@ -10,11 +10,11 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '@/composables';
-import { Save } from 'lucide-vue-next';
 import Button from '@/components/ui/Button.vue';
+import { useTranslation } from '@/composables';
+import { Save } from 'lucide-vue-next';
 
-const { t } = useI18n();
+const { t } = useTranslation();
 
 defineProps<{
   loading?: boolean;

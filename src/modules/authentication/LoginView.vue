@@ -108,21 +108,21 @@
 </template>
 
 <script setup lang="ts">
+import { useMutation } from '@tanstack/vue-query';
 import { toTypedSchema } from '@vee-validate/zod';
 import { useField, useForm } from 'vee-validate';
-import { useMutation } from '@tanstack/vue-query';
 import { useRoute } from 'vue-router';
 
 import { ThemeSwitcher } from '@/components';
 import { AppRoute } from '@/constants';
-import { useI18n } from '@/composables';
 import router from '@/router';
 
+import { useTranslation } from '@/composables';
 import { loginWithCredential } from './authenticationService';
 import type { LoginForm } from './authenticationType';
 import { loginSchema } from './loginSchema';
 
-const { t } = useI18n();
+const { t } = useTranslation();
 const route = useRoute();
 
 const { handleSubmit, errors, resetForm } = useForm({

@@ -1,9 +1,9 @@
 <template>
   <main class="bg-white h-full">
-    <section class="mr-5 xs:m-5 px-5 pt-5 h-full bg-slate-50 rounded-t-3xl">
+    <div class="mr-5 xs:m-5 px-5 pt-5 h-full bg-slate-50 rounded-t-3xl">
       <UnauthorizeView v-if="!isAuthorize" />
       <slot v-else />
-    </section>
+    </div>
   </main>
 </template>
 

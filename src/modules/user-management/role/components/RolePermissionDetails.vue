@@ -1,5 +1,5 @@
 <template>
-  <section class="my-4">
+  <section>
     <SectionTitle class="pb-3">
       {{ t('permissions') }}
     </SectionTitle>
@@ -39,7 +39,7 @@ import { useQueryClient } from '@tanstack/vue-query';
 import { computed, onUnmounted } from 'vue';
 
 import { Card, Checkbox, Divider, Loading, SectionTitle } from '@/components';
-import { useI18n } from '@/composables';
+import { useTranslation } from '@/composables';
 import { getFetchResourceWithPermissionsQueryKey, useFetchResourceWithPermissions } from '../../resource/resourceService';
 import type { Permission } from '../../resource/resourceType';
 
@@ -50,7 +50,7 @@ type RolePermissionDetailsProps = {
 const props = defineProps<RolePermissionDetailsProps>();
 
 const queryClient = useQueryClient();
-const { t } = useI18n();
+const { t } = useTranslation();
 
 const { isLoading, data: resources } = useFetchResourceWithPermissions();
 

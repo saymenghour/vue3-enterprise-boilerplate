@@ -27,13 +27,13 @@
 
 <script setup lang="ts">
 import { Card, CheckboxGroupField, Loading, SectionTitle } from '@/components';
-import { useI18n } from '@/composables';
+import { useTranslation } from '@/composables';
 import { useQueryClient } from '@tanstack/vue-query';
 import { onUnmounted } from 'vue';
 import { getFetchResourceWithPermissionsQueryKey, useFetchResourceWithPermissions } from '../../resource/resourceService';
 
 const queryClient = useQueryClient();
-const { t } = useI18n();
+const { t } = useTranslation();
 
 const { isLoading, data: resources } = useFetchResourceWithPermissions();
 

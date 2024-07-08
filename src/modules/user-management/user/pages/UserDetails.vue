@@ -13,18 +13,26 @@
         />
       </template>
     </PageTitle>
-
-    <Box class="mb-5 flex">
+    
+    <PageContent>
       <UserDetailsInfo :user="data" />
-    </Box>
 
-    <Box>
-      <Descriptions :fields>
-        <template #status>
-          <UserStatus :status="data?.status" />
-        </template>
-      </Descriptions>
-    </Box>
+      <PageContentSection :title="t('personalInfo')">
+        <Descriptions :fields>
+          <template #status>
+            <UserStatus :status="data?.status" />
+          </template>
+        </Descriptions>
+      </PageContentSection>
+      
+      <PageContentSection :title="t('loginInfo')">
+        <Descriptions :fields>
+          <template #status>
+            <UserStatus :status="data?.status" />
+          </template>
+        </Descriptions>
+      </PageContentSection>
+    </PageContent>
   </template>
 </template>
 
@@ -34,14 +42,15 @@ import { computed, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 import {
-  Box,
   Descriptions,
   EditButton,
   PageBreadcrumb,
+  PageContent,
+  PageContentSection,
   PageTitle,
   SkeletonPageDetails
 } from '@/components';
-import { useI18n } from '@/composables';
+import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import UserDetailsInfo from '../components/UserDetailsInfo.vue';
@@ -49,7 +58,8 @@ import UserStatus from '../components/UserStatus.vue';
 import { getFetchUserByIdQueryKey, useFetchUserById } from '../userService';
 
 const queryClient = useQueryClient();
-const { t } = useI18n();
+const { t } = useTranslation();
+
 const { params } = useRoute();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
@@ -76,7 +86,6 @@ const fields = computed((): DescriptionsFieldProps[] => {
   return [
     {
       label: t('personalInfo'),
-      type: 'section',
       fields: [
         {
           label: t('fullName'),

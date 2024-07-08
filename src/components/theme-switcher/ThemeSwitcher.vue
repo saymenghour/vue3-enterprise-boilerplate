@@ -36,6 +36,7 @@ import darkIcon from './icons/dark.svg';
 import lightIcon from './icons/light.svg';
 import systemIcon from './icons/system.svg';
 
+import { useTranslation } from '@/composables';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -43,9 +44,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from '@/lib/shadcn/ui/dropdown-menu';
-import { useI18n } from '@/composables';
 
-const { t } = useI18n();
+const { t } = useTranslation();
 const mode = useColorMode();
 const isDark = useDark();
 

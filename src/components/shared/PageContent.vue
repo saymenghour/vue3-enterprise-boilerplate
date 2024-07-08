@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="mt-4 grid gap-4">
     <slot />
   </main>
 </template>

@@ -7,17 +7,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import { Tag } from '@/components';
+import { useTranslation } from '@/composables';
 import type { TagProps } from '@/types';
-import { useI18n } from '@/composables';
+import { computed } from 'vue';
 
 type UserStatusProps = {
   status: string | undefined;
 };
 
 const { status } = defineProps<UserStatusProps>();
-const { t } = useI18n();
+const { t } = useTranslation();
 
 const userStatus = computed<Record<string, TagProps>>(() => ({
   ACTIVE: {

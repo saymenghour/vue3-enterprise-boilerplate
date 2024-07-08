@@ -14,21 +14,23 @@
       </template>
     </PageTitle>
 
-    <Box>
-      <DataTable
-        :loading="isLoading"
-        :data
-        :columns
-      >
-        <template #status="{ row: role }">
-          <RoleStatus :status="role.status" />
-        </template>
+    <PageContent>
+      <Card>
+        <DataTable
+          :loading="isLoading"
+          :data
+          :columns
+        >
+          <template #status="{ row: role }">
+            <RoleStatus :status="role.status" />
+          </template>
 
-        <template #actions="{ row: role }">
-          <RoleListingDropdownAction :role />
-        </template>
-      </DataTable>
-    </Box>
+          <template #actions="{ row: role }">
+            <RoleListingDropdownAction :role />
+          </template>
+        </DataTable>
+      </Card>
+    </PageContent>
   </template>
 </template>
 
@@ -36,8 +38,8 @@
 import { useQueryClient } from '@tanstack/vue-query';
 import { computed, onUnmounted } from 'vue';
 
-import { AddNewButton, Box, DataTable, PageBreadcrumb, PageTitle, SkeletonPageListing } from '@/components';
-import { useI18n } from '@/composables';
+import { AddNewButton, Card, DataTable, PageBreadcrumb, PageContent, PageTitle, SkeletonPageListing } from '@/components';
+import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 import RoleListingDropdownAction from '../components/RoleListingDropdownAction.vue';
@@ -46,7 +48,7 @@ import { getFetchRolesQueryKey, useFetchRoles } from '../roleService';
 import type { Role } from '../roleType';
 
 const queryClient = useQueryClient();
-const { t } = useI18n();
+const { t } = useTranslation();
 const { data, isLoading } = useFetchRoles();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [

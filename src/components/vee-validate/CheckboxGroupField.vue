@@ -28,7 +28,7 @@
 
 <script setup lang="ts" generic="T extends Record<string, string | number>">
 import Divider from '@/components/ui/Divider.vue';
-import { useI18n } from '@/composables';
+import { useTranslation } from '@/composables';
 import { useField } from 'vee-validate';
 import { ref, watch } from 'vue';
 import Checkbox from '../ui/Checkbox.vue';
@@ -43,7 +43,7 @@ type CheckboxGroupFieldProps<T> = {
 
 const { name, optionValueKey, optionLabelKey, options } = defineProps<CheckboxGroupFieldProps<T>>();
 
-const { t } = useI18n();
+const { t } = useTranslation();
 const { value, setValue } = useField<(string | number)[]>(name);
 
 const isCheckAll = (checkedCount: number) => checkedCount === options.length;

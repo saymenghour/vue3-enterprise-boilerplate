@@ -1,5 +1,5 @@
 <template>
-  <section class="my-4">
+  <section>
     <PageContentSectionHeader>
       <SectionTitle>{{ title }}</SectionTitle>
     </PageContentSectionHeader>

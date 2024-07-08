@@ -42,7 +42,7 @@ import {
   PageTitle,
   SkeletonPageDetails
 } from '@/components';
-import { useI18n } from '@/composables';
+import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import RolePermissionDetails from '../components/RolePermissionDetails.vue';
@@ -50,7 +50,7 @@ import RoleStatus from '../components/RoleStatus.vue';
 import { getFetchRoleByIdQueryKey, useFetchRoleById } from '../roleService';
 
 const queryClient = useQueryClient();
-const { t } = useI18n();
+const { t } = useTranslation();
 const { params } = useRoute();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [

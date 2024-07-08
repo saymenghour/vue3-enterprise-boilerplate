@@ -14,31 +14,33 @@
       </template>
     </PageTitle>
 
-    <Box>
-      <DataTable
-        :loading="isLoading"
-        :data
-        :columns
-      >
-        <template #fullName="{ row: user }">
-          <div class="flex items-center">
-            <Avatar :src="user.profileImageUrl" />
-            <div class="flex flex-col">
-              <span class="font-medium">{{ user.fullName }}</span>
-              <span class="text-xs">@{{ user.username }}</span>
+    <PageContent>
+      <Card>
+        <DataTable
+          :loading="isLoading"
+          :data
+          :columns
+        >
+          <template #fullName="{ row: user }">
+            <div class="flex items-center">
+              <Avatar :src="user.profileImageUrl" />
+              <div class="flex flex-col">
+                <span class="font-medium">{{ user.fullName }}</span>
+                <span class="text-xs">@{{ user.username }}</span>
+              </div>
             </div>
-          </div>
-        </template>
-
-        <template #status="{ row: user }">
-          <UserStatus :status="user.status" />
-        </template>
-
-        <template #actions="{ row: user }">
-          <UserListingDropdownAction :user />
-        </template>
-      </DataTable>
-    </Box>
+          </template>
+        
+          <template #status="{ row: user }">
+            <UserStatus :status="user.status" />
+          </template>
+        
+          <template #actions="{ row: user }">
+            <UserListingDropdownAction :user />
+          </template>
+        </DataTable>
+      </Card>
+    </PageContent>
   </template>
 </template>
 
@@ -49,13 +51,14 @@ import { computed, onUnmounted } from 'vue';
 import {
   AddNewButton,
   Avatar,
-  Box,
+  Card,
   DataTable,
   PageBreadcrumb,
   PageTitle,
   SkeletonPageListing
 } from '@/components';
-import { useI18n } from '@/composables';
+import PageContent from '@/components/shared/PageContent.vue';
+import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 import UserListingDropdownAction from '../components/UserListingDropdownAction.vue';
@@ -64,7 +67,7 @@ import { getFetchUsersQueryKey, useFetchUsers } from '../userService';
 import type { User } from '../userType';
 
 const queryClient = useQueryClient();
-const { t } = useI18n();
+const { t } = useTranslation();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {

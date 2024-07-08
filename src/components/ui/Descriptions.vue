@@ -3,16 +3,13 @@
     v-for="field in fields"
     :key="field.label"
   >
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4 text-[#303133] dark:text-[#E5EAF3]"
-      :class="{ 'px-4 py-2': field.type === 'section' }"
-    >
+    <div class="px-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-4 text-[#303133] dark:text-[#E5EAF3]">
       <div
         v-for="item in field.fields ?? [field]"
         :key="item.label"
         class="mb-2 flex flex-col"
       >
-        <span class="font-medium">{{ item.label }}</span>
+        <span class="text-sm font-medium">{{ item.label }}</span>
 
         <span v-if="item.slotName">
           <slot :name="item.slotName" />

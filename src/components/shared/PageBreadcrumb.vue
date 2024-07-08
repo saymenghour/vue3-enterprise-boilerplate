@@ -35,9 +35,10 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '@/composables';
-import { RouterLink, type RouteLocationRaw } from 'vue-router';
 import { ChevronRight } from 'lucide-vue-next';
+import { RouterLink, type RouteLocationRaw } from 'vue-router';
+
+import { useTranslation } from '@/composables';
 
 export interface BreadcrumbItemProps {
   title: string;
@@ -48,7 +49,7 @@ interface BreadcrumbProps {
   items: BreadcrumbItemProps[];
 }
 
-const { t } = useI18n();
+const { t } = useTranslation();
 defineProps<BreadcrumbProps>();
 </script>
 

@@ -37,7 +37,7 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from '@/composables';
+import { useTranslation } from '@/composables';
 import router from '@/router';
 import { ChevronLeft } from 'lucide-vue-next';
 
@@ -57,7 +57,7 @@ withDefaults(defineProps<PageTitleProps>(), {
   showBackButton: true,
 });
 
-const { t } = useI18n();
+const { t } = useTranslation();
 
 const goBack = () => {
   router.back();

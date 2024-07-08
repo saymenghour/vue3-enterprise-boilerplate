@@ -5,7 +5,6 @@ export { default as ThemeSwitcher } from './theme-switcher/ThemeSwitcher.vue';
 
 // UI
 export { default as Avatar } from './ui/Avatar.vue';
-export { default as Box } from './ui/Box.vue';
 export { default as Button } from './ui/Button.vue';
 export { default as Card } from './ui/Card.vue';
 export { default as Checkbox } from './ui/Checkbox.vue';

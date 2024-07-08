@@ -6,49 +6,51 @@
     :show-back-button="true"
   />
 
-  <Form @submit="onSubmit">
-    <PageContentSection :title="t('role.info')">
-      <Row>
-        <Col :md="8">
-          <InputField
-            required
-            name="nameEn"
-            :label="t('role.nameEn')"
-          />
-        </Col>
-        <Col :md="8">
-          <InputField
-            required
-            name="nameKh"
-            :label="t('role.nameKh')"
-          />
-        </Col>
-        <Col :md="8">
-          <InputField
-            required
-            name="type"
-            :label="t('role.roleType')"
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col :md="24">
-          <TextAreaField
-            maxlength="255"
-            name="description"
-            :label="t('description')"
-          />
-        </Col>
-      </Row>
-    </PageContentSection>
+  <PageContent>
+    <Form @submit="onSubmit">
+      <PageContentSection :title="t('role.info')">
+        <Row>
+          <Col :md="8">
+            <InputField
+              required
+              name="nameEn"
+              :label="t('role.nameEn')"
+            />
+          </Col>
+          <Col :md="8">
+            <InputField
+              required
+              name="nameKh"
+              :label="t('role.nameKh')"
+            />
+          </Col>
+          <Col :md="8">
+            <InputField
+              required
+              name="type"
+              :label="t('role.roleType')"
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col :md="24">
+            <TextAreaField
+              maxlength="255"
+              name="description"
+              :label="t('description')"
+            />
+          </Col>
+        </Row>
+      </PageContentSection>
 
-    <RolePermission />
+      <RolePermission />
 
-    <div class="flex justify-end">
-      <CancelButton />
-      <UpdateButton :loading="isSubmitting" />
-    </div>
-  </Form>
+      <div class="flex justify-end">
+        <CancelButton />
+        <UpdateButton :loading="isSubmitting" />
+      </div>
+    </Form>
+  </PageContent>
 </template>
 
 <script setup lang="ts">
@@ -62,13 +64,14 @@ import {
   Form,
   InputField,
   PageBreadcrumb,
+  PageContent,
   PageContentSection,
   PageTitle,
   Row,
   TextAreaField,
   UpdateButton
 } from '@/components';
-import { useI18n } from '@/composables';
+import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps } from '@/types';
 import RolePermission from '../components/RolePermission.vue';
@@ -76,7 +79,7 @@ import { useRoleEditForm } from '../composibles/useRoleEditForm';
 import { getFetchRolePermissionIdsById, useFetchRolePermissionIdsById } from '../roleService';
 
 const queryClient = useQueryClient();
-const { t } = useI18n();
+const { t } = useTranslation();
 const { params } = useRoute();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
