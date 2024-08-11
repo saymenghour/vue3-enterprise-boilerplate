@@ -27,13 +27,6 @@
 
 <script setup lang="ts">
 import { useTranslation } from '@/composables';
-import { Button } from '@/lib/shadcn/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/lib/shadcn/ui/dropdown-menu';
 import { Eye, MoreHorizontal, SquarePen } from 'lucide-vue-next';
 import { RouterLink } from 'vue-router';
 import type { Role } from '../roleType';

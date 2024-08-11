@@ -1,5 +1,5 @@
-import { axiosInstance as axios } from '.';
 import { getBearerToken } from '@/services/localStorage';
+import { axiosInstance as axios } from '.';
 
 import { ErrorCode } from '@/constants';
 import { refreshToken } from '@/modules/authentication/authenticationService';
@@ -19,7 +19,7 @@ axios.interceptors.response.use(
     return response;
   },
   async (error: any) => {
-    const res: ResponseError = error.response.data;
+    const res: ErrorResponse = error.response.data;
     if (res?.errorCode == ErrorCode.AccessTokenExpired && !error.config._isRetry) {
       return refreshToken().then((response) => {
         if (response) {

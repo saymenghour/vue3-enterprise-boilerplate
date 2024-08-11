@@ -32,15 +32,6 @@
 </template>
 
 <script setup lang="ts">
-import Skeleton from '@/lib/shadcn/ui/skeleton/Skeleton.vue';
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from '@/lib/shadcn/ui/table';
 import SkeletonPageHeader from './SkeletonPageHeader.vue';
 
 interface Props {

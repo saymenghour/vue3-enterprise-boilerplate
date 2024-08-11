@@ -10,22 +10,25 @@
       :error-message="errorMessage"
       :extra
     >
-      <InputText
+      <Password
         v-bind="componentField"
         :aria-labelledby="name"
         :invalid="!!errorMessage"
-        :disabled
         :placeholder
+        :disabled
         :size="size ?? 'small'"
+        toggle-mask
+        fluid
+        class="text-sm"
       />
     </FormItem>
   </Field>
 </template>
 
 <script setup lang="ts">
-import InputText from 'primevue/inputtext';
 import { Field } from 'vee-validate';
 
+import Password from 'primevue/password';
 import FormItem from '../ui/FormItem.vue';
 
 type InputProps = {

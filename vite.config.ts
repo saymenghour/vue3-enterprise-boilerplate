@@ -1,11 +1,11 @@
 import { fileURLToPath, URL } from 'node:url';
 
-import { defineConfig, loadEnv, UserConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import VueDevTools from 'vite-plugin-vue-devtools';
 import autoprefixer from 'autoprefixer';
 import tailwind from 'tailwindcss';
+import { defineConfig, loadEnv, UserConfig } from 'vite';
+import VueDevTools from 'vite-plugin-vue-devtools';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }: UserConfig) => {

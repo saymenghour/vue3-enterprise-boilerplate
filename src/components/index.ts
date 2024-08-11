@@ -20,15 +20,15 @@ export { default as SectionTitle } from './ui/SectionTitle.vue';
 export { default as Tag } from './ui/Tag.vue';
 
 // shared
-export { default as PageBreadcrumb } from './shared/PageBreadcrumb.vue';
-export { default as PageContent } from './shared/PageContent.vue';
-export { default as PageContentSection } from './shared/PageContentSection.vue';
-export { default as PageTitle } from './shared/PageTitle.vue';
 export { default as AddNewButton } from './shared/action-button/AddNewButton.vue';
 export { default as CancelButton } from './shared/action-button/CancelButton.vue';
 export { default as EditButton } from './shared/action-button/EditButton.vue';
 export { default as SaveButton } from './shared/action-button/SaveButton.vue';
 export { default as UpdateButton } from './shared/action-button/UpdateButton.vue';
+export { default as PageBreadcrumb } from './shared/PageBreadcrumb.vue';
+export { default as PageContent } from './shared/PageContent.vue';
+export { default as PageContentSection } from './shared/PageContentSection.vue';
+export { default as PageTitle } from './shared/PageTitle.vue';
 export { default as SkeletonPageDetails } from './shared/skeleton/SkeletonPageDetails.vue';
 export { default as SkeletonPageHeader } from './shared/skeleton/SkeletonPageHeader.vue';
 export { default as SkeletonPageListing } from './shared/skeleton/SkeletonPageListing.vue';
@@ -37,5 +37,6 @@ export { default as SkeletonPageListing } from './shared/skeleton/SkeletonPageLi
 export { default as CheckboxField } from './vee-validate/CheckboxField.vue';
 export { default as CheckboxGroupField } from './vee-validate/CheckboxGroupField.vue';
 export { default as InputField } from './vee-validate/InputField.vue';
+export { default as PasswordField } from './vee-validate/PasswordField.vue';
 export { default as TextAreaField } from './vee-validate/TextAreaField.vue';
 

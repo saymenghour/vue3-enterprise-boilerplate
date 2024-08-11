@@ -48,8 +48,14 @@ export default {
   viewDetails: 'View Details',
 
   login: {
-    username: 'Enter your username',
-    password: 'Enter {passwordLength} characters or more'
+    placeholder: {
+      username: 'Enter your username',
+      password: 'Enter your password'
+    },
+    validation: {
+      username: 'Please enter a username.',
+      password: 'Please enter a password.'
+    },
   },
 
   dashboard: 'Dashboard',

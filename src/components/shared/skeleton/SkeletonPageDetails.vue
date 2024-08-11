@@ -59,7 +59,7 @@
 </template>
 
 <script setup lang="ts">
-import Skeleton from '@/lib/shadcn/ui/skeleton/Skeleton.vue';
+import Skeleton from 'primevue/skeleton';
 import SkeletonPageHeader from './SkeletonPageHeader.vue';
 
 interface Props {

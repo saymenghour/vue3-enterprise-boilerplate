@@ -1,6 +1,6 @@
-import router from '@/router';
-import { axios } from '@/http/axios';
 import { AppRoute } from '@/constants';
+import { axios } from '@/http/axios';
+import router from '@/router';
 import {
   destroySensitiveInfo,
   getAccessToken,
@@ -19,24 +19,29 @@ import type {
 } from './authenticationType';
 
 export const loginWithCredential = async ({ username, password }: LoginForm) => {
-  const secretKey = AESCipher.generateRandomString();
-  const data: LoginRequest = {
-    username: username.trim(),
-    password: AESCipher.encryptWithKey(password.trim(), secretKey),
-    grantType: 'password',
-    clientId: process.env.CLIENT_ID ?? '',
-    clientSecret: process.env.CLIENT_SECRET ?? '',
-    encryptedAesKey: RSACipher.encrypt(secretKey, process.env.PUBLIC_KEY ?? '')
-  };
+  try {
 
-  const res = await axios.post<ResponseSuccess<LoginResponse>>('/api/v1/oauth2/login', data, {
-    headers: {
-      'Device-Id': getDeviceId()
-    }
-  });
-  const { accessToken, refreshToken, expiresAt, deviceId } = res.data?.data ?? {};
-  saveToken(accessToken, refreshToken, expiresAt, deviceId);
-  return res.data;
+    const secretKey = AESCipher.generateRandomString();
+    const data: LoginRequest = {
+      username: username.trim(),
+      password: AESCipher.encryptWithKey(password.trim(), secretKey),
+      grantType: 'password',
+      clientId: process.env.CLIENT_ID ?? '',
+      clientSecret: process.env.CLIENT_SECRET ?? '',
+      encryptedAesKey: RSACipher.encrypt(secretKey, process.env.PUBLIC_KEY ?? '')
+    };
+
+    const res = await axios.post<SuccessResponse<LoginResponse>>('/api/v1/oauth2/login', data, {
+      headers: {
+        'Device-Id': getDeviceId()
+      }
+    });
+    const { accessToken, refreshToken, expiresAt, deviceId } = res.data?.data ?? {};
+    saveToken(accessToken, refreshToken, expiresAt, deviceId);
+    return res.data;
+  } catch (error: any) {
+    throw Error(error.response.data.message);
+  }
 };
 
 export const refreshToken = async (): Promise<string | undefined> => {
@@ -49,7 +54,7 @@ export const refreshToken = async (): Promise<string | undefined> => {
         refreshToken: getRefreshToken() ?? ''
       };
 
-      const res = await axios.post<ResponseSuccess<RefreshTokenResponse>>(
+      const res = await axios.post<SuccessResponse<RefreshTokenResponse>>(
         '/api/v1/oauth2/refresh-token',
         data,
         {

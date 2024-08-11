@@ -1,25 +1,25 @@
 <template>
-  <el-button
-    :native-type="type"
-    :type="variant"
+  <Button
+    :type
     :loading
+    :size="size ?? 'small'"
   >
     <slot />
-  </el-button>
+  </Button>
 </template>
 
 <script setup lang="ts">
+import Button from 'primevue/button';
+
+
 interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'primary' | 'success' | 'warning' | 'danger' | 'info';
+  severity?: 'secondary' | 'info' | 'success' | 'warn' | 'danger' | 'contrast' | 'help';
   loading?: boolean;
+  size?: 'large' | 'small';
 }
 
-withDefaults(defineProps<ButtonProps>(), {
-  type: 'button',
-  variant: undefined,
-  loading: false
-});
+defineProps<ButtonProps>();
 </script>
 
 <style scoped></style>

@@ -37,13 +37,6 @@ import lightIcon from './icons/light.svg';
 import systemIcon from './icons/system.svg';
 
 import { useTranslation } from '@/composables';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/lib/shadcn/ui/dropdown-menu';
 
 const { t } = useTranslation();
 const mode = useColorMode();

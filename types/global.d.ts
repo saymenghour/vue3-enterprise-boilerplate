@@ -2,14 +2,14 @@ export { };
 
 declare global {
 
-  type ResponseSuccess<T = any> = {
+  type SuccessResponse<T = any> = {
     data: T;
     message?: string;
     success?: boolean;
     timestamp?: string;
   };
 
-  type ResponseError = {
+  type ErrorResponse = {
     error: string;
     errorCode: string;
     message: string;

@@ -13,7 +13,6 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "types": [
       "node",
-      "element-plus/global"
     ],
     "baseUrl": ".",
     "paths": {

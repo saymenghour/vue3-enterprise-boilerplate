@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { Button } from '@/lib/shadcn/ui/button';
-import { Card, CardTitle, CardHeader, CardContent, CardDescription } from '@/lib/shadcn/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/lib/shadcn/ui/tabs';
-import RecentSales from './RecentSales.vue';
+import Tabs from 'primevue/tabs';
 import Overview from './OverviewView.vue';
+import RecentSales from './RecentSales.vue';
 </script>
 
 <template>

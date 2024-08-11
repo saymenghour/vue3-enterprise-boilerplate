@@ -1,6 +1,6 @@
-import { createApp } from 'vue';
-import { createPinia } from 'pinia';
 import { VueQueryPlugin, type VueQueryPluginOptions } from '@tanstack/vue-query';
+import { createPinia } from 'pinia';
+import { createApp } from 'vue';
 
 import '@/assets/styles/main.css';
 
@@ -9,15 +9,15 @@ import App from './App.vue';
 import { i18n } from './locales';
 import router from './router';
 
-import ElementPlus from 'element-plus';
-import 'element-plus/dist/index.css';
-import 'element-plus/theme-chalk/dark/css-vars.css';
+import Aura from '@primevue/themes/aura';
+import PrimeVue from 'primevue/config';
 
 const vueQueryPluginOptions: VueQueryPluginOptions = {
   queryClientConfig: {
     defaultOptions: {
       queries: {
-        refetchOnWindowFocus: false
+        refetchOnWindowFocus: false,
+        retryOnMount: false
       }
     }
   }
@@ -28,5 +28,9 @@ app.use(createPinia());
 app.use(router);
 app.use(i18n);
 app.use(VueQueryPlugin, vueQueryPluginOptions);
-app.use(ElementPlus);
+app.use(PrimeVue, {
+  theme: {
+    preset: Aura
+  }
+});
 app.mount('#app');

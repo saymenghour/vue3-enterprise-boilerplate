@@ -1,7 +1,6 @@
-import { useMutation, useQuery } from '@tanstack/vue-query';
-import router from '@/router';
 import { AppRoute } from '@/constants';
-import { useNotification } from '@/composables';
+import router from '@/router';
+import { useMutation, useQuery } from '@tanstack/vue-query';
 import { createUserApi, fetchUserByIdApi, fetchUsersApi, updateUserApi } from './userApi';
 import type { CreateUserForm, EditUserForm } from './userType';
 
@@ -29,22 +28,22 @@ export function useFetchUserById(id: string) {
 }
 
 export function useCreateUser() {
-  const { success } = useNotification();
+  // const { success } = useNotification();
   return useMutation({
     mutationFn: (values: CreateUserForm) => createUserApi(values),
     onSuccess: (data) => {
-      success(data?.message);
+      // success(data?.message);
       router.push({ name: AppRoute.User.name });
     }
   });
 }
 
 export function useUpdateUser(id: string) {
-  const { success } = useNotification();
+  // const { success } = useNotification();
   return useMutation({
     mutationFn: (values: EditUserForm) => updateUserApi(values, id),
     onSuccess: (data) => {
-      success(data?.message);
+      // success(data?.message);
       router.push({ name: AppRoute.User.name });
     }
   });

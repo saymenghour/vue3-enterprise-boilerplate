@@ -26,13 +26,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuTrigger
-} from '@/lib/shadcn/ui/dropdown-menu';
 import { setLocale } from '@/services/localStorage';
 import { Globe } from 'lucide-vue-next';
 </script>

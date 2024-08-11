@@ -1,4 +1,3 @@
-import { useNotification } from '@/composables';
 import { AppRoute } from '@/constants';
 import router from '@/router';
 import { useMutation, useQuery } from '@tanstack/vue-query';
@@ -51,7 +50,7 @@ export function useFetchRolePermissionIdsById(id: string) {
 }
 
 export function useCreateRole() {
-  const { success } = useNotification();
+  // const { success } = useNotification();
   return useMutation({
     mutationFn: (formValues: RoleForm) => {
       return createRoleApi({
@@ -63,14 +62,14 @@ export function useCreateRole() {
       });
     },
     onSuccess: (data) => {
-      success(data?.message);
+      // success(data?.message);
       router.push({ name: AppRoute.Role.name });
     }
   });
 }
 
 export function useUpdateRole(id: string) {
-  const { success } = useNotification();
+  // const { success } = useNotification();
   return useMutation({
     mutationFn: (formValues: RoleForm) => {
       return updateRoleApi({
@@ -82,7 +81,7 @@ export function useUpdateRole(id: string) {
       }, id);
     },
     onSuccess: (data) => {
-      success(data?.message);
+      // success(data?.message);
       router.push({ name: AppRoute.Role.name });
     }
   });

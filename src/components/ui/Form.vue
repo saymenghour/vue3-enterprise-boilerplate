@@ -1,13 +1,7 @@
 <template>
-  <el-form
-    label-width="auto"
-    :label-position="labelPosition"
-    :status-icon="statusIcon"
-    :scroll-to-error="scrollToError"
-    :require-asterisk-position="requireAsteriskPosition"
-  >
+  <form>
     <slot />
-  </el-form>
+  </form>
 </template>
 
 <script setup lang="ts">
