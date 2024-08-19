@@ -1,51 +1,29 @@
 <template>
-  <el-menu
-    :default-active="activeMenu"
-    :router="true"
-  >
-    <template v-for="item in authorizedMenus">
-      <el-menu-item
-        v-if="!item.subMenus"
-        :key="item.label"
-        :class="[isActive(item.key)]"
-        :index="item.key"
-      >
-        {{ t(item.label) }}
-      </el-menu-item>
-
-      <el-sub-menu
-        v-else
+  <div class="h-dvh px-4">
+    <el-menu
+      :default-active="activeMenu"
+      :router="true"
+    >
+      <template
+        v-for="item in authorizedMenus"
         :key="item.key"
-        :index="item.key"
       >
-        <template #title>
-          {{ t(item.label) }}
-        </template>
-        <el-menu-item
-          v-for="subMenu in item.subMenus"
-          :key="subMenu.key"
-          :class="isActive(subMenu.key)"
-          :index="subMenu.key"
-          :label="subMenu.label"
-        >
-          {{ t(subMenu.label) }}
-        </el-menu-item>
-      </el-sub-menu>
-    </template>
-  </el-menu>
+        <AppMenuItem :item="item" />
+      </template>
+    </el-menu>
+  </div>
 </template>
 
 <script lang="ts" setup>
 import { onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { useTranslation } from '@/composables';
 import { menus } from '@/constants';
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 import type { MenuItem } from '@/types/menu';
 import { ArrayUtils } from '@/utils/common';
+import AppMenuItem from './AppMenuItem.vue';
 
-const { t } = useTranslation();
 const route = useRoute();
 const store = useCurrentUserStore();
 
@@ -60,10 +38,6 @@ watchEffect(() => {
   authorizedMenus.value = getAuthorizedMenus(menus);
   activeMenu.value = route.path;
 });
-
-function isActive(path: string): string {
-  return activeMenu.value == path ? '!text-menu-active-color !bg-menu-active-bg-color' : '';
-}
 
 function getAuthorizedMenus(menus: MenuItem[]): MenuItem[] {
   const authorizedMenus: MenuItem[] = [];
@@ -81,4 +55,5 @@ function getAuthorizedMenus(menus: MenuItem[]): MenuItem[] {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

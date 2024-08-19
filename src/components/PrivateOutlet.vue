@@ -1,12 +1,12 @@
 <template>
-  <MasterLayout>
+  <AppLayout>
     <RouterView />
-  </MasterLayout>
+  </AppLayout>
 </template>
 
 <script setup lang="ts">
+import AppLayout from '@/layout/AppLayout.vue';
 import { RouterView } from 'vue-router';
-import MasterLayout from '@/layouts/MainLayout.vue';
 </script>
 
 <style scoped></style>

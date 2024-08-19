@@ -1,3 +1,5 @@
+@import './element-plus.css';
+
 .app-form-item>.app-form-item-required::after {
   content: '*';
   color: var(--color-danger);
