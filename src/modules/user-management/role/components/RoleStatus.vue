@@ -1,7 +1,7 @@
 <template>
   <Tag
     v-if="state"
-    :type="state.type"
+    :severity="state.severity"
     :label="state.label"
   />
 </template>
@@ -22,7 +22,7 @@ const { t } = useTranslation();
 const roleStatus = computed<Record<string, TagProps>>(() => ({
   ACTIVE: {
     label: t('active'),
-    type: 'success'
+    severity: 'success'
   }
 }));
 

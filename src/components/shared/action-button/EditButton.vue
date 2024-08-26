@@ -1,16 +1,16 @@
 <template>
-  <RouterLink :to="link">
-    <Button variant="primary">
-      <SquarePen class="mr-2 h-4 w-4" />
-      {{ label }}
-    </Button>
-  </RouterLink>
+  <Button
+    :label="label ?? t('edit')"
+    icon="pi pi-pen-to-square"
+    as="router-link"
+    :to="link"
+  />
 </template>
 
 <script setup lang="ts">
-import { SquarePen } from 'lucide-vue-next';
-import { computed } from 'vue';
 import Button from '@/components/ui/Button.vue';
+import { useTranslation } from '@/composables';
+import { computed } from 'vue';
 
 type ButtonProps = {
   label: string;
@@ -18,6 +18,7 @@ type ButtonProps = {
 };
 
 const { label, path } = defineProps<ButtonProps>();
+const { t } = useTranslation();
 
 const link = computed(() => (path ? { path } : ''));
 </script>

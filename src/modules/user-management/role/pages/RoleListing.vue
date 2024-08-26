@@ -38,7 +38,7 @@
 import { useQueryClient } from '@tanstack/vue-query';
 import { computed, onUnmounted } from 'vue';
 
-import { AddNewButton, Card, DataTable, PageBreadcrumb, PageContent, PageTitle, SkeletonPageListing } from '@/components';
+import { AddNewButton, Card, DataTable, PageBreadcrumb, PageContent, PageTitle } from '@/components';
 import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';

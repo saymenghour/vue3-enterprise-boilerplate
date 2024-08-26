@@ -1,47 +1,57 @@
 <template>
-  <SkeletonPageListing v-if="isLoading" />
-  <template v-else>
-    <PageBreadcrumb :items="breadcrumbItems" />
-    <PageTitle
-      :name="t('user.list')"
-      :show-back-button="false"
-    >
-      <template #actionButton>
-        <AddNewButton
-          :path="AppRoute.User.addNew.path"
-          :label="t('user.addNew')"
-        />
-      </template>
-    </PageTitle>
+  <PageBreadcrumb :items="breadcrumbItems" />
+  <PageTitle
+    :name="t('user.label')"
+    :show-back-button="false"
+  >
+    <template #actionButton>
+      <AddNewButton
+        :path="AppRoute.User.addNew.path"
+        :label="t('user.addNew')"
+      />
+    </template>
+  </PageTitle>
 
-    <PageContent>
-      <Card>
-        <DataTable
-          :loading="isLoading"
-          :data
-          :columns
-        >
-          <template #fullName="{ row: user }">
-            <div class="flex items-center">
-              <Avatar :src="user.profileImageUrl" />
-              <div class="flex flex-col">
-                <span class="font-medium">{{ user.fullName }}</span>
-                <span class="text-xs">@{{ user.username }}</span>
-              </div>
+  <PageContent>
+    <Card>
+      <DataTable
+        :loading="isLoading"
+        :data-source="data"
+        :columns
+      >
+        <template #fullName="{ row: user }">
+          <div class="flex items-center">
+            <UserAvatar />
+            <div class="flex flex-col">
+              <span class="font-medium">{{ user.fullName }}</span>
+              <span class="text-xs">@{{ user.username }}</span>
             </div>
-          </template>
+          </div>
+        </template>
         
-          <template #status="{ row: user }">
-            <UserStatus :status="user.status" />
-          </template>
+        <template #status="{ row: user }">
+          <UserStatus :status="user.status" />
+        </template>
         
-          <template #actions="{ row: user }">
-            <UserListingDropdownAction :user />
-          </template>
-        </DataTable>
-      </Card>
-    </PageContent>
-  </template>
+        <template #actions="{ row: user }">
+          <div class="flex gap-2">
+            <Button
+              :label="t('view')"
+              icon="pi pi-eye"
+              as="router-link"
+              :to="{ name: AppRoute.User.details.name, params: { id: user.id } }"
+            />
+            <Button
+              label="Edit"
+              icon="pi pi-pen-to-square"
+              as="router-link"
+              :to="{ name: AppRoute.User.edit.name, params: { id: user.id } }"
+            />
+          </div>
+        </template>
+      </DataTable>
+    </Card>
+  </PageContent>  
 </template>
 
 <script setup lang="ts">
@@ -50,18 +60,18 @@ import { computed, onUnmounted } from 'vue';
 
 import {
   AddNewButton,
-  Avatar,
+  Button,
   Card,
   DataTable,
   PageBreadcrumb,
   PageTitle,
-  SkeletonPageListing
+  UserAvatar
 } from '@/components';
 import PageContent from '@/components/shared/PageContent.vue';
 import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
-import UserListingDropdownAction from '../components/UserListingDropdownAction.vue';
+
 import UserStatus from '../components/UserStatus.vue';
 import { getFetchUsersQueryKey, useFetchUsers } from '../userService';
 import type { User } from '../userType';
@@ -100,7 +110,7 @@ const columns = computed<ColumnProps<User>[]>(() => [
   },
   {
     key: 'actions',
-    title: t('actions'),
+    title: '',
     minWidth: 80
   }
 ]);

@@ -3,7 +3,7 @@
   <PageTitle
     :name="role?.nameEn"
     :loading="isLoading"
-    :show-back-button="true"
+    
   />
 
   <PageContent>

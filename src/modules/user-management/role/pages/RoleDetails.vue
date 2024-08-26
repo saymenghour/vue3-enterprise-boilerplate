@@ -4,7 +4,6 @@
     <PageBreadcrumb :items="breadcrumbItems" />
     <PageTitle
       :name="data?.nameEn"
-      :show-back-button="true"
     >
       <template #actionButton>
         <EditButton
@@ -40,7 +39,6 @@ import {
   PageContent,
   PageContentSection,
   PageTitle,
-  SkeletonPageDetails
 } from '@/components';
 import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';

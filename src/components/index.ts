@@ -1,5 +1,5 @@
 // global
-export { default as LocaleSwitcher } from './LocaleSwitcher.vue';
+// export { default as LocaleSwitcher } from './LocaleSwitcher.vue';
 export { default as PrivateOutlet } from './PrivateOutlet.vue';
 export { default as ThemeSwitcher } from './theme-switcher/ThemeSwitcher.vue';
 
@@ -17,6 +17,7 @@ export { default as Grid } from './ui/Grid.vue';
 export { default as Loading } from './ui/Loading.vue';
 export { default as Row } from './ui/Row.vue';
 export { default as SectionTitle } from './ui/SectionTitle.vue';
+export { default as SplitButton } from './ui/SplitButton.vue';
 export { default as Tag } from './ui/Tag.vue';
 
 // shared
@@ -29,9 +30,7 @@ export { default as PageBreadcrumb } from './shared/PageBreadcrumb.vue';
 export { default as PageContent } from './shared/PageContent.vue';
 export { default as PageContentSection } from './shared/PageContentSection.vue';
 export { default as PageTitle } from './shared/PageTitle.vue';
-export { default as SkeletonPageDetails } from './shared/skeleton/SkeletonPageDetails.vue';
-export { default as SkeletonPageHeader } from './shared/skeleton/SkeletonPageHeader.vue';
-export { default as SkeletonPageListing } from './shared/skeleton/SkeletonPageListing.vue';
+export { default as UserAvatar } from './shared/UserAvatar.vue';
 
 // vee-validate
 export { default as CheckboxField } from './vee-validate/CheckboxField.vue';

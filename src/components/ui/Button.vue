@@ -1,8 +1,10 @@
 <template>
   <Button
-    :type
+    :type="type ?? 'button'"
+    :label="label"
     :loading
     :size="size ?? 'small'"
+    :severity="severity ?? 'secondary'"
   >
     <slot />
   </Button>
@@ -11,10 +13,10 @@
 <script setup lang="ts">
 import Button from 'primevue/button';
 
-
 interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
-  severity?: 'secondary' | 'info' | 'success' | 'warn' | 'danger' | 'contrast' | 'help';
+  label?: string;
+  severity?: 'secondary' | 'info' | 'success' | 'warn' | 'danger' | 'contrast' | 'help' | undefined;
   loading?: boolean;
   size?: 'large' | 'small';
 }

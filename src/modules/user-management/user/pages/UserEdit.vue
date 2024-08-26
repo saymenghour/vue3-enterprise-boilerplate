@@ -3,7 +3,6 @@
   <PageTitle
     :name="data?.fullName"
     :loading="isLoading"
-    :show-back-button="true"
   />
 
   <PageContent>
@@ -66,7 +65,7 @@
         </Row>
       </PageContentSection>
 
-      <div class="flex justify-end">
+      <div class="flex justify-end gap-2">
         <CancelButton />
         <UpdateButton :loading="isPending" />
       </div>
@@ -106,7 +105,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     title: t('userManagement')
   },
   {
-    title: t('user.list'),
+    title: t('user.label'),
     to: AppRoute.User.path
   },
   {

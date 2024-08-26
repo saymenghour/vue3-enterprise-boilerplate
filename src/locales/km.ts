@@ -40,8 +40,8 @@ export default {
   cancel: 'បោះបង់',
   update: 'ធ្វើបច្ចុប្បន្នភាព',
   back: 'ត្រឡប់ក្រោយ',
-
   create: 'បង្កើត',
+  view: 'មើល',
   edit: 'កែសម្រួល',
   details: 'ព័ត៌មានលម្អិត',
   active: 'សកម្ម',

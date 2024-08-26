@@ -54,7 +54,7 @@ type PageTitleProps = {
 };
 
 withDefaults(defineProps<PageTitleProps>(), {
-  showBackButton: true,
+  showBackButton: false,
 });
 
 const { t } = useTranslation();

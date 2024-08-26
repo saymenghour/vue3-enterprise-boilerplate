@@ -1,17 +1,21 @@
 <template>
-  avatar
+  <Avatar
+    :image="src"
+    :label="label"
+    :shape="shape ?? 'circle'"
+  />
 </template>
 
 <script setup lang="ts">
+import Avatar from 'primevue/avatar';
 
 type AvatarProps = {
-  size?: number;
   src: string | undefined;
+  label?: string | undefined;
+  shape?: 'circle' | 'square';
 };
 
-withDefaults(defineProps<AvatarProps>(), {
-  size: 38
-});
+defineProps<AvatarProps>();
 </script>
 
 <style scoped></style>

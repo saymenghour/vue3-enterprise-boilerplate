@@ -2,7 +2,7 @@
   <PageBreadcrumb :items="breadcrumbItems" />
   <PageTitle
     :name="t('role.addNew')"
-    :show-back-button="true"
+    
   />
 
   <PageContent>

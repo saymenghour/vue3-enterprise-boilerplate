@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <DropdownMenu>
     <DropdownMenuTrigger as-child>
       <Globe class="text-gray-700 relative h-5 w-5 mr-2 cursor-pointer" />
@@ -30,4 +30,4 @@ import { setLocale } from '@/services/localStorage';
 import { Globe } from 'lucide-vue-next';
 </script>
 
-<style scoped></style>
+<style scoped></style> -->

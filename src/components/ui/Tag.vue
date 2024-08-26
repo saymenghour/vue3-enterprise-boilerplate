@@ -1,19 +1,23 @@
 <template>
-  <el-tag
+  <Tag
     v-if="label"
-    :type
+    :severity
     :round
     :effect
+    :icon="icon"
   >
-    {{ label }}
-  </el-tag>
+    <span class="text-sm font-medium">{{ label }}</span>
+  </Tag>
 </template>
 
 <script setup lang="ts">
+import Tag from 'primevue/tag';
+
 export type TagProps = {
-  type: 'primary' | 'success' | 'info' | 'warning' | 'danger' | undefined;
+  severity: 'primary' | 'success' | 'info' | 'warning' | 'danger' | undefined;
   label: string | undefined;
   round?: boolean;
+  icon?: string | undefined;
   effect?: 'dark' | 'light' | 'plain';
 };
 

@@ -1,16 +1,18 @@
 <template>
   <Tag
     v-if="state"
-    :type="state.type"
+    :severity="state.severity"
     :label="state.label"
+    :icon="state.icon"
   />
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
+
 import { Tag } from '@/components';
 import { useTranslation } from '@/composables';
 import type { TagProps } from '@/types';
-import { computed } from 'vue';
 
 type UserStatusProps = {
   status: string | undefined;
@@ -22,7 +24,13 @@ const { t } = useTranslation();
 const userStatus = computed<Record<string, TagProps>>(() => ({
   ACTIVE: {
     label: t('active'),
-    type: 'success'
+    icon: 'pi pi-check',
+    severity: 'success'
+  },
+  DEACTIVATED: {
+    label: t('deactivated'),
+    icon: 'pi pi-times',
+    severity: 'danger'
   }
 }));
 

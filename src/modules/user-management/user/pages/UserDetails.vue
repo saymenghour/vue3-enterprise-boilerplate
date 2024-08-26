@@ -1,39 +1,29 @@
 <template>
-  <SkeletonPageDetails v-if="isLoading" />
-  <template v-else>
-    <PageBreadcrumb :items="breadcrumbItems" />
-    <PageTitle
-      :name="data?.fullName"
-      :show-back-button="true"
-    >
-      <template #actionButton>
-        <EditButton
-          :path="`./${data?.id}/edit`"
-          :label="t('user.edit')"
-        />
-      </template>
-    </PageTitle>
-    
-    <PageContent>
-      <UserDetailsInfo :user="data" />
+  <PageBreadcrumb :items="breadcrumbItems" />
+  <PageTitle :name="data?.fullName">
+    <template #actionButton>
+      <EditButton
+        :path="`./${data?.id}/edit`"
+        :label="t('user.edit')"
+      />
+    </template>
+  </PageTitle>
 
-      <PageContentSection :title="t('personalInfo')">
-        <Descriptions :fields>
-          <template #status>
-            <UserStatus :status="data?.status" />
-          </template>
-        </Descriptions>
-      </PageContentSection>
-      
-      <PageContentSection :title="t('loginInfo')">
-        <Descriptions :fields>
-          <template #status>
-            <UserStatus :status="data?.status" />
-          </template>
-        </Descriptions>
-      </PageContentSection>
-    </PageContent>
-  </template>
+  <PageContent>
+    <UserDetailsInfo :user="data" />
+
+    <PageContentSection :title="t('personalInfo')">
+      <Descriptions :fields>
+        <template #status>
+          <UserStatus :status="data?.status" />
+        </template>
+      </Descriptions>
+    </PageContentSection>
+
+    <PageContentSection :title="t('loginInfo')">
+      <Descriptions :fields="[{ label: t('username'), value: data?.username }]" />
+    </PageContentSection>
+  </PageContent>
 </template>
 
 <script setup lang="ts">
@@ -47,8 +37,7 @@ import {
   PageBreadcrumb,
   PageContent,
   PageContentSection,
-  PageTitle,
-  SkeletonPageDetails
+  PageTitle
 } from '@/components';
 import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
@@ -67,7 +56,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     title: t('userManagement')
   },
   {
-    title: t('user.list'),
+    title: t('user.label'),
     to: AppRoute.User.path
   },
   {
@@ -75,7 +64,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { isLoading, data } = useFetchUserById(params.id as string);
+const { data } = useFetchUserById(params.id as string);
 
 const fields = computed((): DescriptionsFieldProps[] => {
   const user = data.value;
@@ -109,7 +98,7 @@ const fields = computed((): DescriptionsFieldProps[] => {
           // value: user.status
         }
       ]
-    }
+    },
   ];
 });
 

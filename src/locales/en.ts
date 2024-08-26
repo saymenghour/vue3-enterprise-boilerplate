@@ -41,6 +41,7 @@ export default {
   update: 'Update',
   back: 'Back',
   create: 'Create',
+  view: 'View',
   edit: 'Edit',
   details: 'Details',
   active: 'Active',

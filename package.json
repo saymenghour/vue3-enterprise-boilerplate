@@ -14,23 +14,23 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "@primevue/themes": "^4.0.4",
+    "@primevue/themes": "^4.0.5",
     "@radix-icons/vue": "^1.0.0",
-    "@tanstack/vue-query": "^5.51.24",
+    "@tanstack/vue-query": "^5.52.0",
     "@unovis/vue": "^1.4.4",
     "@vee-validate/zod": "^4.13.2",
-    "@vueuse/core": "^11.0.1",
-    "axios": "^1.7.4",
+    "@vueuse/core": "^11.0.3",
+    "axios": "^1.7.5",
     "class-variance-authority": "^0.7.0",
     "crypto-js": "^4.2.0",
-    "element-plus": "^2.8.0",
+    "element-plus": "^2.8.1",
     "jsencrypt": "^3.3.2",
     "lucide-vue-next": "^0.428.0",
     "pinia": "^2.2.2",
     "primeicons": "^7.0.0",
-    "primevue": "^4.0.4",
+    "primevue": "^4.0.5",
     "query-string": "^9.1.0",
-    "radix-vue": "^1.9.4",
+    "radix-vue": "^1.9.5",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-primeui": "^0.3.4",
     "vee-validate": "^4.13.2",
@@ -40,9 +40,9 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@primevue/auto-import-resolver": "^4.0.4",
+    "@primevue/auto-import-resolver": "^4.0.5",
     "@rushstack/eslint-patch": "^1.10.4",
-    "@tanstack/eslint-plugin-query": "^5.51.15",
+    "@tanstack/eslint-plugin-query": "^5.52.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/crypto-js": "^4.2.2",
     "@types/node": "^20.16.1",
@@ -59,8 +59,8 @@
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4",
     "unplugin-vue-components": "^0.27.4",
-    "vite": "^5.4.1",
-    "vite-plugin-vue-devtools": "^7.3.8",
+    "vite": "^5.4.2",
+    "vite-plugin-vue-devtools": "^7.3.9",
     "vue-tsc": "^2.0.29"
   }
 }
