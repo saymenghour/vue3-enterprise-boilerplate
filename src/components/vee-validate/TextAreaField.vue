@@ -3,25 +3,27 @@
     v-slot="{ componentField, errorMessage }"
     :name
   >
-    <el-form-item
+    <FormItem
+      :name
       :label
       :required
-      :error="errorMessage"
+      :error-message="errorMessage"
     >
-      <el-input
+      <Textarea
         v-bind="componentField"
-        type="textarea"
+        :rows="rows ?? 3"
         :placeholder
-        :autosize="{ minRows: 4 }"
         :maxlength
         :show-word-limit="!!maxlength"
       />
-    </el-form-item>
+    </FormItem>
   </Field>
 </template>
 
 <script setup lang="ts">
+import Textarea from 'primevue/textarea';
 import { Field } from 'vee-validate';
+import FormItem from '../ui/FormItem.vue';
 
 type TextAreaProps = {
   name: string;
@@ -29,6 +31,7 @@ type TextAreaProps = {
   maxlength?: string | number;
   required?: boolean;
   placeholder?: string;
+  rows?: number;
 };
 
 defineProps<TextAreaProps>();

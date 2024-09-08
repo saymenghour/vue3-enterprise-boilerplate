@@ -10,7 +10,7 @@ type GridProps = {
   gap?: number;
 };
 
-const { col, gap } = withDefaults(defineProps<GridProps>(), {
+withDefaults(defineProps<GridProps>(), {
   col: 2,
   gap: 6
 });

@@ -1,48 +1,57 @@
 <template>
-  <SkeletonPageListing v-if="isLoading" />
-  <template v-else>
-    <PageBreadcrumb :items="breadcrumbItems" />
-    <PageTitle
-      :name="t('role.list')"
-      :show-back-button="false"
-    >
-      <template #actionButton>
-        <AddNewButton
-          :path="AppRoute.Role.addNew.path"
-          :label="t('role.addNew')"
-        />
-      </template>
-    </PageTitle>
+  <PageBreadcrumb :items="breadcrumbItems" />
+  <PageTitle
+    :name="t('role.label')"
+    :show-back-button="false"
+  >
+    <template #actionButton>
+      <AddNewButton
+        :path="AppRoute.Role.addNew.path"
+        :label="t('role.addNew')"
+      />
+    </template>
+  </PageTitle>
 
-    <PageContent>
-      <Card>
-        <DataTable
-          :loading="isLoading"
-          :data
-          :columns
-        >
-          <template #status="{ row: role }">
-            <RoleStatus :status="role.status" />
-          </template>
-
-          <template #actions="{ row: role }">
-            <RoleListingDropdownAction :role />
-          </template>
-        </DataTable>
-      </Card>
-    </PageContent>
-  </template>
+  <PageContent>
+    <Card>
+      <DataTable
+        :loading="isLoading"
+        :data-source="data"
+        :columns
+      >
+        <template #status="{ row: role }">
+          <RoleStatus :status="role.status" />
+        </template>
+        
+        <template #actions="{ row: role }">
+          <div class="flex gap-2">
+            <Button
+              :label="t('view')"
+              icon="pi pi-eye"
+              as="router-link"
+              :to="{ name: AppRoute.Role.details.name, params: { id: role.id } }"
+            />
+            <Button
+              label="Edit"
+              icon="pi pi-pen-to-square"
+              as="router-link"
+              :to="{ name: AppRoute.Role.edit.name, params: { id: role.id } }"
+            />
+          </div>
+        </template>
+      </DataTable>
+    </Card>
+  </PageContent>
 </template>
 
 <script setup lang="ts">
 import { useQueryClient } from '@tanstack/vue-query';
 import { computed, onUnmounted } from 'vue';
 
-import { AddNewButton, Card, DataTable, PageBreadcrumb, PageContent, PageTitle } from '@/components';
+import { AddNewButton, Button, Card, DataTable, PageBreadcrumb, PageContent, PageTitle } from '@/components';
 import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
-import RoleListingDropdownAction from '../components/RoleListingDropdownAction.vue';
 import RoleStatus from '../components/RoleStatus.vue';
 import { getFetchRolesQueryKey, useFetchRoles } from '../roleService';
 import type { Role } from '../roleType';
@@ -76,7 +85,7 @@ const columns = computed<ColumnProps<Role>[]>(() => [
   },
   {
     key: 'actions',
-    title: t('actions')
+    title: ''
   }
 ]);
 

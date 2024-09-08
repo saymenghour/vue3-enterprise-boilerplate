@@ -2,7 +2,6 @@
   <PageBreadcrumb :items="breadcrumbItems" />
   <PageTitle
     :name="t('role.addNew')"
-    
   />
 
   <PageContent>
@@ -81,7 +80,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     title: t('userManagement')
   },
   {
-    title: t('role.list'),
+    title: t('role.label'),
     to: AppRoute.Role.path
   },
   {
