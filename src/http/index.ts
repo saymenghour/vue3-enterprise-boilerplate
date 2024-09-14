@@ -1,7 +1,7 @@
 import { getBearerToken, getDeviceId } from '@/services/localStorage';
-import { axios } from './axios';
 import type { AxiosRequestConfig } from 'axios';
 import queryString from 'query-string';
+import { axios } from './axios';
 
 export class Http {
   private static getConfig = (config?: AxiosRequestConfig) => {
@@ -37,7 +37,7 @@ export class Http {
     }
   };
 
-  static async get<T = any>(url: string, queryParams?: any, config?: AxiosRequestConfig) {
+  static async get<T = any>(url: string, queryParams?: Record<string, any> | undefined, config?: AxiosRequestConfig) {
     try {
       if (queryParams) {
         const query = queryString.stringify(queryParams);

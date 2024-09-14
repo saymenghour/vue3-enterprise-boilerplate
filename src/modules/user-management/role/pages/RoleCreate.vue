@@ -23,11 +23,7 @@
             />
           </Col>
           <Col :md="8">
-            <InputField
-              required
-              name="type"
-              :label="t('role.roleType')"
-            />
+            <RoleType />
           </Col>
         </Row>
         <Row>
@@ -71,6 +67,7 @@ import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps } from '@/types';
 import RolePermission from '../components/RolePermission.vue';
+import RoleType from '../components/RoleType.vue';
 import { useRoleCreateForm } from '../composibles/useRoleCreateForm';
 
 const { t } = useTranslation();

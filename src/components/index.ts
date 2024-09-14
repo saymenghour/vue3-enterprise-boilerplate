@@ -37,5 +37,6 @@ export { default as CheckboxField } from './vee-validate/CheckboxField.vue';
 export { default as CheckboxGroupField } from './vee-validate/CheckboxGroupField.vue';
 export { default as InputField } from './vee-validate/InputField.vue';
 export { default as PasswordField } from './vee-validate/PasswordField.vue';
+export { default as SelectField } from './vee-validate/SelectField.vue';
 export { default as TextAreaField } from './vee-validate/TextAreaField.vue';
 
