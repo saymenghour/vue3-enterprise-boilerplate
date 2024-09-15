@@ -6,7 +6,9 @@
     :error-message="errorMessage"
     :extra
   >
-    <Select
+    <MultiSelect
+      filter
+      :display
       :model-value="value"
       :loading="loading"
       :options="options ?? []"
@@ -15,20 +17,21 @@
       :invalid="!!errorMessage"
       :placeholder="loading ? t('loading') : placeholder"
       :disabled
-      :size="size ?? 'small'"
+      :size="size"
       @change="onSelectChange"
     />
   </FormItem>
 </template>
 
 <script setup lang="ts" generic="T extends Record<string, any>">
-import Select from 'primevue/select';
 import { useField } from 'vee-validate';
 
 import { useTranslation } from '@/composables';
+import MultiSelect from 'primevue/multiselect';
 import FormItem from '../ui/FormItem.vue';
 
-type SelectProps = {
+type MultiSelectProps = {
+  display: 'comma' | 'chip';
   loading?: boolean;
   name: string;
   label: string;
@@ -45,7 +48,10 @@ type SelectProps = {
 
 const { t } = useTranslation();
 
-const props = defineProps<SelectProps>();
+const props = withDefaults(defineProps<MultiSelectProps>(), {
+  display: 'comma',
+  size: 'small',
+});
 const { value, errorMessage, setValue } = useField(props.name);
 
 function onSelectChange(event: { value: string }) {

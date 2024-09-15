@@ -1,3 +1,4 @@
+
 export default {
   locale: {
     en: 'English',
@@ -13,6 +14,7 @@ export default {
   signInToYourAccount: 'Sign in to your account',
   search: 'Search',
   loginInfo: 'Login Information',
+  additionalInfo: 'Additional Information',
   username: 'Username',
   password: 'Password',
   confirmPassword: 'Confirm Password',
@@ -47,6 +49,7 @@ export default {
   active: 'Active',
   deactivated: 'Deactivated',
   viewDetails: 'View Details',
+  loading: 'Loading...',
 
   login: {
     placeholder: {
@@ -62,18 +65,18 @@ export default {
   dashboard: 'Dashboard',
   userManagement: 'User Management',
   user: {
-    label: 'Users',
+    label: 'User',
     description:
       'Managing users includes functionalities such as user authentication, permissions, profile management, password control, activity tracking, account deactivation/suspension, and user communication.',
-    list: 'User List',
+    list: 'Users',
     category: 'Category',
     addNew: 'Add New User',
     edit: 'Edit User'
   },
 
   role: {
-    label: 'Roles',
-    list: 'Roles List',
+    label: 'Role',
+    list: 'Roles',
     info: 'Role Information',
     name: 'Role Name',
     nameEn: 'Role Name',
@@ -81,5 +84,11 @@ export default {
     roleType: 'Role Type',
     addNew: 'Add New Role',
     edit: 'Edit Role'
+  },
+
+  branch: {
+    label: 'Branch',
+    placeholder: 'Select Branch',
   }
+
 };

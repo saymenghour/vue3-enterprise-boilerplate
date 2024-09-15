@@ -23,27 +23,31 @@ export function useFetchUsers() {
 export function useFetchUserById(id: string) {
   return useQuery({
     queryKey: getFetchUserByIdQueryKey(id),
-    queryFn: ({ signal }) => fetchUserByIdApi(id, signal)
+    queryFn: ({ signal }) => fetchUserByIdApi(id, signal),
+    select: (data) => {
+      const { branch, roles, ...rest } = data;
+      return {
+        ...rest,
+        branchCode: branch.code,
+        roleIds: roles.map(role => role.id)
+      };
+    },
   });
 }
 
 export function useCreateUser() {
-  // const { success } = useNotification();
   return useMutation({
     mutationFn: (values: CreateUserForm) => createUserApi(values),
-    onSuccess: (data) => {
-      // success(data?.message);
+    onSuccess: () => {
       router.push({ name: AppRoute.User.name });
     }
   });
 }
 
 export function useUpdateUser(id: string) {
-  // const { success } = useNotification();
   return useMutation({
     mutationFn: (values: EditUserForm) => updateUserApi(values, id),
-    onSuccess: (data) => {
-      // success(data?.message);
+    onSuccess: () => {
       router.push({ name: AppRoute.User.name });
     }
   });

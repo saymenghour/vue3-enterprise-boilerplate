@@ -8,9 +8,9 @@ export async function fetchUsersApi(signal: AbortSignal) {
   return response?.data;
 }
 
-export async function fetchUserByIdApi(id: string, signal: AbortSignal) {
+export async function fetchUserByIdApi(id: string, signal: AbortSignal): Promise<User> {
   const response = await Http.get<SuccessResponse<User>>(`${ENDPOINT}/${id}`, undefined, { signal });
-  return response?.data;
+  return response?.data as User;
 }
 
 export async function createUserApi(values: CreateUserForm) {

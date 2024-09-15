@@ -24,7 +24,7 @@
             />
           </Col>
           <Col :md="8">
-            <RoleType />
+            <RoleTypeAutocomplete />
           </Col>
         </Row>
         <Row>
@@ -70,7 +70,7 @@ import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps } from '@/types';
 import RolePermission from '../components/RolePermission.vue';
-import RoleType from '../components/RoleType.vue';
+import RoleTypeAutocomplete from '../components/RoleTypeAutocomplete.vue';
 import { useRoleEditForm } from '../composibles/useRoleEditForm';
 import { getFetchRolePermissionIdsById, useFetchRolePermissionIdsById } from '../roleService';
 
@@ -83,7 +83,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     title: t('userManagement')
   },
   {
-    title: t('role.label'),
+    title: t('role.list'),
     to: AppRoute.Role.path
   },
   {

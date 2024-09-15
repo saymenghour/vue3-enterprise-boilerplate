@@ -13,6 +13,7 @@ export default {
   signInToYourAccount: 'ចូលគណនីរបស់អ្នក',
   search: 'ស្វែងរក',
   loginInfo: 'ព័ត៌មានចូលអ្នកប្រើប្រាស់',
+  additionalInfo: 'ព័ត៌មានបន្ថែមផ្សេងទៀត',
   username: 'ឈ្មោះ​អ្នកប្រើប្រាស់',
   password: 'ពាក្យសម្ងាត់',
   confirmPassword: 'បញ្ជាក់ពាក្យសម្ងាត់',
@@ -47,6 +48,7 @@ export default {
   active: 'សកម្ម',
   deactivated: 'អសកម្ម',
   viewDetails: 'មើលព័ត៌មានលម្អិត',
+  loading: 'កំពុងផ្ទុក...',
 
   login: {
     placeholder: {
@@ -81,5 +83,11 @@ export default {
     roleType: 'ប្រភេទតួនាទី',
     addNew: 'បន្ថែមតួនាទី',
     edit: 'កែសម្រួលតួនាទី'
+  },
+
+  branch: {
+    label: 'សាខា',
+    placeholder: 'ជ្រើសរើសសាខា',
   }
+
 };

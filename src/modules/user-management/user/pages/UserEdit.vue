@@ -52,6 +52,17 @@
           </Col>
         </Row>
       </PageContentSection>
+
+      <PageContentSection :title="t('additionalInfo')">
+        <Row>
+          <Col :md="8">
+            <BranchAutocomplete />
+          </Col>
+          <Col :md="8">
+            <RoleAutocomplete />
+          </Col>
+        </Row>
+      </PageContentSection>
       
       <PageContentSection :title="t('loginInfo')">
         <Row>
@@ -92,7 +103,9 @@ import {
 } from '@/components';
 import { useFormAsync, useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
+import BranchAutocomplete from '@/modules/branch/component/BranchAutocomplete.vue';
 import type { BreadcrumbItemProps } from '@/types';
+import RoleAutocomplete from '../../role/components/RoleAutocomplete.vue';
 import { updateUserValidationSchema } from '../userSchema';
 import { useFetchUserById, useUpdateUser } from '../userService';
 import type { EditUserForm } from '../userType';
@@ -105,7 +118,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     title: t('userManagement')
   },
   {
-    title: t('user.label'),
+    title: t('user.list'),
     to: AppRoute.User.path
   },
   {

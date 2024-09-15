@@ -1,7 +1,7 @@
 <template>
   <PageBreadcrumb :items="breadcrumbItems" />
   <PageTitle
-    :name="t('user.label')"
+    :name="t('user.list')"
     :show-back-button="false"
   >
     <template #actionButton>

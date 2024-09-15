@@ -2,11 +2,15 @@ import { AppRoute } from '@/constants';
 import router from '@/router';
 import { useMutation, useQuery } from '@tanstack/vue-query';
 import { getPermissionIdsFromValuesToPermissionIds, getResourcePermissionIds } from '../resource/resourceUtils';
-import { createRoleApi, fetchRoleByIdApi, fetchRolesApi, updateRoleApi } from './roleApi';
+import { createRoleApi, fetchRoleAutocompleteApi, fetchRoleByIdApi, fetchRolesApi, updateRoleApi } from './roleApi';
 import type { RoleForm } from './roleType';
 
 export function getFetchRolesQueryKey() {
   return ['fetchRoles'];
+}
+
+export function getFetchRoleAutocompleteQueryKey() {
+  return ['fetchRoleAutocomplete'];
 }
 
 export function getFetchRoleByIdQueryKey(id: string) {
@@ -23,6 +27,13 @@ export function useFetchRoles() {
   return useQuery({
     queryKey: getFetchRolesQueryKey(),
     queryFn: ({ signal }) => fetchRolesApi(signal)
+  });
+}
+
+export function useFetchRoleAutocomplete() {
+  return useQuery({
+    queryKey: getFetchRoleAutocompleteQueryKey(),
+    queryFn: ({ signal }) => fetchRoleAutocompleteApi(signal)
   });
 }
 
@@ -50,7 +61,6 @@ export function useFetchRolePermissionIdsById(id: string) {
 }
 
 export function useCreateRole() {
-  // const { success } = useNotification();
   return useMutation({
     mutationFn: (formValues: RoleForm) => {
       return createRoleApi({
@@ -61,15 +71,13 @@ export function useCreateRole() {
         permissionIds: getPermissionIdsFromValuesToPermissionIds(formValues.permission)
       });
     },
-    onSuccess: (data) => {
-      // success(data?.message);
+    onSuccess: () => {
       router.push({ name: AppRoute.Role.name });
     }
   });
 }
 
 export function useUpdateRole(id: string) {
-  // const { success } = useNotification();
   return useMutation({
     mutationFn: (formValues: RoleForm) => {
       return updateRoleApi({
@@ -80,8 +88,7 @@ export function useUpdateRole(id: string) {
         permissionIds: getPermissionIdsFromValuesToPermissionIds(formValues.permission)
       }, id);
     },
-    onSuccess: (data) => {
-      // success(data?.message);
+    onSuccess: () => {
       router.push({ name: AppRoute.Role.name });
     }
   });

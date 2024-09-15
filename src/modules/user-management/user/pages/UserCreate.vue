@@ -52,18 +52,27 @@
         </Row>
       </PageContentSection>
 
+      <PageContentSection :title="t('additionalInfo')">
+        <Row>
+          <Col :md="8">
+            <BranchAutocomplete />
+          </Col>
+          <Col :md="8">
+            <RoleAutocomplete />
+          </Col>
+        </Row>
+      </PageContentSection>
+
       <PageContentSection :title="t('loginInfo')">
         <Row>
-          <Col>
+          <Col :md="8">
             <InputField
               required
               name="username"
               :label="t('username')"
             />
           </Col>
-        </Row>
-        <Row>
-          <Col :md="12">
+          <Col :md="8">
             <InputField
               required
               type="password"
@@ -71,7 +80,7 @@
               :label="t('password')"
             />
           </Col>
-          <Col :md="12">
+          <Col :md="8">
             <InputField
               required
               type="password"
@@ -109,7 +118,9 @@ import {
 } from '@/components';
 import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
+import BranchAutocomplete from '@/modules/branch/component/BranchAutocomplete.vue';
 import type { BreadcrumbItemProps } from '@/types';
+import RoleAutocomplete from '../../role/components/RoleAutocomplete.vue';
 import { createUserValidationSchema } from '../userSchema';
 import { useCreateUser } from '../userService';
 import type { CreateUserForm } from '../userType';
@@ -121,7 +132,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     title: t('userManagement')
   },
   {
-    title: t('user.label'),
+    title: t('user.list'),
     to: AppRoute.User.path
   },
   {

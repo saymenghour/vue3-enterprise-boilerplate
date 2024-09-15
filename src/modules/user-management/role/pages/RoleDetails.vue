@@ -56,7 +56,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
     title: t('userManagement')
   },
   {
-    title: t('role.label'),
+    title: t('role.list'),
     to: AppRoute.Role.path
   },
   {

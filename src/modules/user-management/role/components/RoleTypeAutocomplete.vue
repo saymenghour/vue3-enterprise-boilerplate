@@ -12,15 +12,14 @@
 <script setup lang="ts">
 import { SelectField } from '@/components';
 import { useTranslation } from '@/composables';
-import { getFetchMasterDataByDataTypeQuery, getFetchMasterDataByDataTypeQueryKey } from '@/modules/master-data/MasterDataService';
+import { getFetchMasterDataByDataTypeQueryKey, useFetchMasterDataByDataTypeQuery } from '@/modules/master-data/masterDataService';
 import { useQueryClient } from '@tanstack/vue-query';
 import { onUnmounted } from 'vue';
 
 const queryClient = useQueryClient();
 
 const { t } = useTranslation();
-const { data, isLoading } = getFetchMasterDataByDataTypeQuery({ type: 'ROLE_TYPE' });
-
+const { data, isLoading } = useFetchMasterDataByDataTypeQuery({ type: 'ROLE_TYPE' });
 
 onUnmounted(() => {
   queryClient.cancelQueries({ queryKey: getFetchMasterDataByDataTypeQueryKey() });

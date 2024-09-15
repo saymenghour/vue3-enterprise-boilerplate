@@ -3,11 +3,11 @@ import { fetchMasterDataByDataTypeApi } from './masterDataApi';
 import type { MasterDataQuery } from './masterDataType';
 
 export function getFetchMasterDataByDataTypeQueryKey(query?: MasterDataQuery) {
-  if (!query?.type) return ['fetchMasterDataByDataTypeQueryKey'];
-  return ['fetchMasterDataByDataTypeQueryKey', query?.type];
+  if (!query?.type) return ['fetchMasterDataByDataType'];
+  return ['fetchMasterDataByDataType', query?.type];
 }
 
-export function getFetchMasterDataByDataTypeQuery(query: MasterDataQuery) {
+export function useFetchMasterDataByDataTypeQuery(query: MasterDataQuery) {
   return useQuery({
     queryKey: getFetchMasterDataByDataTypeQueryKey(query),
     queryFn: ({ signal }) => fetchMasterDataByDataTypeApi(signal, query)

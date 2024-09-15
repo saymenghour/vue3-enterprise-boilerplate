@@ -12,6 +12,9 @@ export const createUserValidationSchema = z
       .max(35, { message: 'First name must be no more than 35 characters long.' }),
     phoneNumber: z.string().min(9).max(15).optional().or(z.literal('')).nullable(),
     email: z.string().email().max(50).optional().or(z.literal('')).nullable(),
+    branchCode: z.string({ message: 'Branch is required.' }),
+    roleIds: z.array(z.number())
+      .min(1, { message: 'At least one role is required.' }),
     username: z
       .string({ message: 'Username is required.' })
       .min(4, { message: 'Username must be at least 4 characters long.' })
@@ -51,6 +54,9 @@ export const updateUserValidationSchema = z.object({
     .max(35, { message: 'First name must be no more than 35 characters long.' }),
   phoneNumber: z.string().min(9).max(15).optional().or(z.literal('')).nullable(),
   email: z.string().email().max(50).optional().or(z.literal('')).nullable(),
+  branchCode: z.string({ message: 'Branch is required.' }),
+  roleIds: z.array(z.number())
+    .min(1, { message: 'At least one role is required.' }),
   username: z
     .string({ message: 'Username is required.' })
     .min(4, { message: 'Username must be at least 4 characters long.' })

@@ -1,7 +1,7 @@
 <template>
   <PageBreadcrumb :items="breadcrumbItems" />
   <PageTitle
-    :name="t('role.label')"
+    :name="t('role.list')"
     :show-back-button="false"
   >
     <template #actionButton>
