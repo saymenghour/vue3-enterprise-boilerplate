@@ -53,7 +53,7 @@ import { useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 import RoleStatus from '../components/RoleStatus.vue';
-import { getFetchRolesQueryKey, useFetchRoles } from '../roleService';
+import { fetchRolesQueryKey, useFetchRoles } from '../roleService';
 import type { Role } from '../roleType';
 
 const queryClient = useQueryClient();
@@ -90,7 +90,7 @@ const columns = computed<ColumnProps<Role>[]>(() => [
 ]);
 
 onUnmounted(() => {
-  queryClient.cancelQueries({ queryKey: getFetchRolesQueryKey() });
+  queryClient.cancelQueries({ queryKey: fetchRolesQueryKey() });
 });
 </script>
 

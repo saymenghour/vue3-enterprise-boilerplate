@@ -8,11 +8,6 @@ export function getFetchUsersQueryKey() {
   return ['fetchUsers'];
 }
 
-export function getFetchUserByIdQueryKey(id: string) {
-  if (!id) return ['fetchUserById'];
-  return ['fetchUserById', id];
-}
-
 export function useFetchUsers() {
   return useQuery({
     queryKey: getFetchUsersQueryKey(),
@@ -20,7 +15,19 @@ export function useFetchUsers() {
   });
 }
 
+export function getFetchUserByIdQueryKey(id: string) {
+  if (!id) return ['fetchUserById'];
+  return ['fetchUserById', id];
+}
+
 export function useFetchUserById(id: string) {
+  return useQuery({
+    queryKey: getFetchUserByIdQueryKey(id),
+    queryFn: ({ signal }) => fetchUserByIdApi(id, signal),
+  });
+}
+
+export function useFetchFormUserById(id: string) {
   return useQuery({
     queryKey: getFetchUserByIdQueryKey(id),
     queryFn: ({ signal }) => fetchUserByIdApi(id, signal),

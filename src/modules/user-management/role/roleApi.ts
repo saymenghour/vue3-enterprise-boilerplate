@@ -8,8 +8,8 @@ export async function fetchRolesApi(signal: AbortSignal) {
   return response?.data;
 }
 
-export async function fetchRoleAutocompleteApi(signal: AbortSignal) {
-  const response = await Http.get<SuccessResponse<Role[]>>(ENDPOINT + '/autocomplete', undefined, { signal });
+export async function fetchRoleAutocompleteApi(signal: AbortSignal, brancCode: string) {
+  const response = await Http.get<SuccessResponse<Role[]>>(`${ENDPOINT}/autocomplete?branchCode=${brancCode}`, undefined, { signal });
   return response?.data;
 }
 

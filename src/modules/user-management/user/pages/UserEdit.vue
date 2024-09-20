@@ -59,7 +59,7 @@
             <BranchAutocomplete />
           </Col>
           <Col :md="8">
-            <RoleAutocomplete />
+            <RoleAutocomplete :branch-code="values.branchCode" />
           </Col>
         </Row>
       </PageContentSection>
@@ -107,7 +107,7 @@ import BranchAutocomplete from '@/modules/branch/component/BranchAutocomplete.vu
 import type { BreadcrumbItemProps } from '@/types';
 import RoleAutocomplete from '../../role/components/RoleAutocomplete.vue';
 import { updateUserValidationSchema } from '../userSchema';
-import { useFetchUserById, useUpdateUser } from '../userService';
+import { useFetchFormUserById, useUpdateUser } from '../userService';
 import type { EditUserForm } from '../userType';
 
 const { t } = useTranslation();
@@ -126,9 +126,9 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { isLoading, data } = useFetchUserById(params.id as string);
+const { isLoading, data } = useFetchFormUserById(params.id as string);
 
-const { handleSubmit } = useFormAsync<EditUserForm>({
+const { handleSubmit, values } = useFormAsync<EditUserForm>({
   initialValues: data,
   validationSchema: toTypedSchema(updateUserValidationSchema)
 });

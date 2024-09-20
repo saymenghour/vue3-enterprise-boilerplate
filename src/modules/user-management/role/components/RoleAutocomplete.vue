@@ -1,11 +1,12 @@
 <template>
   <MultiSelectField
-    :name
     display="chip"
+    :disabled="!enabled"
+    :name
     :required
     :loading="isLoading"
     :label="t('role.label')"
-    :options="data"
+    :options="roles"
     option-label="nameEn"
     option-value="id"
   />
@@ -13,28 +14,31 @@
 
 <script setup lang="ts">
 import { useQueryClient } from '@tanstack/vue-query';
-import { onUnmounted } from 'vue';
+import { computed, onUnmounted } from 'vue';
 
 import { MultiSelectField } from '@/components';
 import { useTranslation } from '@/composables';
-import { getFetchRoleAutocompleteQueryKey, useFetchRoleAutocomplete } from '../roleService';
+import { fetchRoleAutocompleteQueryKey, useFetchRoleAutocomplete } from '../roleService';
 
 interface BranchAutocompleteProps {
   name?: string;
   required?: boolean;
+  branchCode: string;
 }
 
-withDefaults(defineProps<BranchAutocompleteProps>(), {
-  name: 'roleIds',
-  required: true
-});
+const { name = 'roleIds', required = true, branchCode } = defineProps<BranchAutocompleteProps>();
 
 const queryClient = useQueryClient();
 const { t } = useTranslation();
-const { data, isLoading } = useFetchRoleAutocomplete();
+
+const computedBranchCode = computed(() => branchCode);
+const enabled = computed(() => !!branchCode);
+
+const { roles, isLoading } = useFetchRoleAutocomplete(computedBranchCode);
+
 
 onUnmounted(() => {
-  queryClient.cancelQueries({ queryKey: getFetchRoleAutocompleteQueryKey() });
+  queryClient.cancelQueries({ queryKey: fetchRoleAutocompleteQueryKey(computedBranchCode) });
 });
 </script>
 

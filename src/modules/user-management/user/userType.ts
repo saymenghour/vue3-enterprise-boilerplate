@@ -25,7 +25,7 @@ export type User = {
   roles: Role[];
 };
 
-export type CreateUserForm = {
+type UserForm = {
   firstNameKh?: string;
   lastNameKh?: string;
   firstName: string;
@@ -33,19 +33,16 @@ export type CreateUserForm = {
   username: string;
   phoneNumber?: string;
   email?: string;
+  branchCode: string;
+  roleIds: number[];
+}
+
+export type CreateUserForm = UserForm & {
   password: string;
   confirmPassword: string;
 };
 
-export type EditUserForm = {
-  firstNameKh?: string;
-  lastNameKh?: string;
-  firstName: string;
-  lastName: string;
-  username: string;
-  phoneNumber?: string;
-  email?: string;
-};
+export type EditUserForm = UserForm;
 
 export type Branch = {
   id: number;

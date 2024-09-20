@@ -1,52 +1,58 @@
 import { AppRoute } from '@/constants';
 import router from '@/router';
 import { useMutation, useQuery } from '@tanstack/vue-query';
+import { computed, type ComputedRef } from 'vue';
 import { getPermissionIdsFromValuesToPermissionIds, getResourcePermissionIds } from '../resource/resourceUtils';
 import { createRoleApi, fetchRoleAutocompleteApi, fetchRoleByIdApi, fetchRolesApi, updateRoleApi } from './roleApi';
 import type { RoleForm } from './roleType';
 
-export function getFetchRolesQueryKey() {
+export function fetchRolesQueryKey() {
   return ['fetchRoles'];
-}
-
-export function getFetchRoleAutocompleteQueryKey() {
-  return ['fetchRoleAutocomplete'];
-}
-
-export function getFetchRoleByIdQueryKey(id: string) {
-  if (!id) return ['fetchRoleById'];
-  return ['fetchRoleById', id];
-}
-
-export function getFetchRolePermissionIdsById(id: string) {
-  if (!id) return ['fetchRolePermissionIdsById'];
-  return ['fetchRolePermissionIdsById', id];
 }
 
 export function useFetchRoles() {
   return useQuery({
-    queryKey: getFetchRolesQueryKey(),
+    queryKey: fetchRolesQueryKey(),
     queryFn: ({ signal }) => fetchRolesApi(signal)
   });
 }
 
-export function useFetchRoleAutocomplete() {
-  return useQuery({
-    queryKey: getFetchRoleAutocompleteQueryKey(),
-    queryFn: ({ signal }) => fetchRoleAutocompleteApi(signal)
+export function fetchRoleAutocompleteQueryKey(branchCode: ComputedRef<string>) {
+  return ['fetchRolesAutocomplete', branchCode];
+}
+
+export function useFetchRoleAutocomplete(branchCode: ComputedRef<string>) {
+  const enabled = computed(() => !!branchCode);
+
+  const { data: roles, isLoading } = useQuery({
+    queryKey: fetchRoleAutocompleteQueryKey(branchCode),
+    queryFn: ({ signal }) => fetchRoleAutocompleteApi(signal, branchCode.value),
+    enabled,
   });
+
+  return { roles, isLoading };
+}
+
+export function fetchRoleByIdQueryKey(id: string) {
+  if (!id) return ['fetchRoleById'];
+  return ['fetchRoleById', id];
 }
 
 export function useFetchRoleById(id: string) {
   return useQuery({
-    queryKey: getFetchRoleByIdQueryKey(id),
+    queryKey: fetchRoleByIdQueryKey(id),
     queryFn: ({ signal }) => fetchRoleByIdApi(id, signal)
   });
 }
 
+export function getFetchRolePermissionIdsByIdQueryKey(id: string) {
+  if (!id) return ['fetchRolePermissionIdsById'];
+  return ['fetchRolePermissionIdsById', id];
+}
+
 export function useFetchRolePermissionIdsById(id: string) {
   return useQuery({
-    queryKey: getFetchRolePermissionIdsById(id),
+    queryKey: getFetchRolePermissionIdsByIdQueryKey(id),
     queryFn: ({ signal }) => fetchRoleByIdApi(id, signal),
     select(data): RoleForm {
       return {

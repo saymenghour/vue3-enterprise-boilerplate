@@ -58,7 +58,7 @@
             <BranchAutocomplete />
           </Col>
           <Col :md="8">
-            <RoleAutocomplete />
+            <RoleAutocomplete :branch-code="values.branchCode" />
           </Col>
         </Row>
       </PageContentSection>
@@ -140,7 +140,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { handleSubmit } = useForm<CreateUserForm>({
+const { handleSubmit, values } = useForm<CreateUserForm>({
   validationSchema: toTypedSchema(createUserValidationSchema)
 });
 

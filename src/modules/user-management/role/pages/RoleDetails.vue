@@ -45,7 +45,7 @@ import { AppRoute } from '@/constants';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import RolePermissionDetails from '../components/RolePermissionDetails.vue';
 import RoleStatus from '../components/RoleStatus.vue';
-import { getFetchRoleByIdQueryKey, useFetchRoleById } from '../roleService';
+import { fetchRoleByIdQueryKey, useFetchRoleById } from '../roleService';
 
 const queryClient = useQueryClient();
 const { t } = useTranslation();
@@ -98,7 +98,7 @@ const fields = computed((): DescriptionsFieldProps[] => {
 });
 
 onUnmounted(() => {
-  queryClient.cancelQueries({ queryKey: getFetchRoleByIdQueryKey(params.id as string) });
+  queryClient.cancelQueries({ queryKey: fetchRoleByIdQueryKey(params.id as string) });
 });
 </script>
 

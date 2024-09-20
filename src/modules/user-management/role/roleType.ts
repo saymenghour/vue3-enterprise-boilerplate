@@ -1,7 +1,7 @@
 import type { Permission, PermissionId } from '../resource/resourceType';
 
 export type Role = {
-  id: string;
+  id: number;
   nameEn: string;
   nameKh: string;
   type: string;

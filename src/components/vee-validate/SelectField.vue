@@ -16,7 +16,7 @@
       :placeholder="loading ? t('loading') : placeholder"
       :disabled
       :size="size ?? 'small'"
-      @change="onSelectChange"
+      @change="onChange"
     />
   </FormItem>
 </template>
@@ -43,13 +43,18 @@ type SelectProps = {
   extra?: string;
 };
 
-const { t } = useTranslation();
+const emit = defineEmits<{
+  onChange: [id: string];
+}>();
 
 const props = defineProps<SelectProps>();
+
+const { t } = useTranslation();
 const { value, errorMessage, setValue } = useField(props.name);
 
-function onSelectChange(event: { value: string }) {
+function onChange(event: { value: string }) {
   setValue(event.value);
+  emit('onChange', event.value);
 }
 
 </script>

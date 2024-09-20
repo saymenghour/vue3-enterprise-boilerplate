@@ -7,6 +7,7 @@
     :options="data"
     option-label="nameEn"
     option-value="code"
+    @on-change="onChange"
   />
 </template>
 
@@ -21,6 +22,10 @@ interface BranchAutocompleteProps {
   required?: boolean;
 }
 
+const emit = defineEmits<{
+  onChange: [id: string];
+}>();
+
 withDefaults(defineProps<BranchAutocompleteProps>(), {
   required: true
 });
@@ -28,6 +33,10 @@ withDefaults(defineProps<BranchAutocompleteProps>(), {
 const queryClient = useQueryClient();
 const { t } = useTranslation();
 const { data, isLoading } = useFetchMasterDataByDataTypeQuery();
+
+function onChange(id: string) {
+  emit('onChange', id);
+}
 
 onUnmounted(() => {
   queryClient.cancelQueries({ queryKey: getFetchBranchAutocompleteApiQueryKey() });
