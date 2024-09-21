@@ -44,7 +44,7 @@ type SelectProps = {
 };
 
 const emit = defineEmits<{
-  onChange: [id: string];
+  change: [id: string];
 }>();
 
 const props = defineProps<SelectProps>();
@@ -54,7 +54,7 @@ const { value, errorMessage, setValue } = useField(props.name);
 
 function onChange(event: { value: string }) {
   setValue(event.value);
-  emit('onChange', event.value);
+  emit('change', event.value);
 }
 
 </script>

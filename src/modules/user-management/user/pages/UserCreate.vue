@@ -55,10 +55,18 @@
       <PageContentSection :title="t('additionalInfo')">
         <Row>
           <Col :md="8">
-            <BranchAutocomplete />
+            <BranchAutocomplete
+              required
+              name="branchCode"
+              @change="onBranchChange"
+            />
           </Col>
           <Col :md="8">
-            <RoleAutocomplete :branch-code="values.branchCode" />
+            <RoleAutocomplete
+              required
+              name="roleIds"
+              :branch-code="values.branchCode"
+            />
           </Col>
         </Row>
       </PageContentSection>
@@ -101,7 +109,6 @@
 
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod';
-import { useForm } from 'vee-validate';
 import { computed } from 'vue';
 
 import {
@@ -116,7 +123,7 @@ import {
   Row,
   SaveButton
 } from '@/components';
-import { useTranslation } from '@/composables';
+import { useFormAsync, useTranslation } from '@/composables';
 import { AppRoute } from '@/constants';
 import BranchAutocomplete from '@/modules/branch/component/BranchAutocomplete.vue';
 import type { BreadcrumbItemProps } from '@/types';
@@ -140,7 +147,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { handleSubmit, values } = useForm<CreateUserForm>({
+const { handleSubmit, values, setFieldValue } = useFormAsync<CreateUserForm>({
   validationSchema: toTypedSchema(createUserValidationSchema)
 });
 
@@ -149,6 +156,10 @@ const { isPending, mutate } = useCreateUser();
 const onSubmit = handleSubmit((values) => {
   mutate(values);
 });
+
+function onBranchChange() {
+  setFieldValue('roleIds', [], false);
+}
 </script>
 
 <style scoped></style>

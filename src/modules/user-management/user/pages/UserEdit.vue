@@ -56,10 +56,18 @@
       <PageContentSection :title="t('additionalInfo')">
         <Row>
           <Col :md="8">
-            <BranchAutocomplete />
+            <BranchAutocomplete
+              required
+              name="branchCode"
+              @change="onBranchChange"
+            />
           </Col>
           <Col :md="8">
-            <RoleAutocomplete :branch-code="values.branchCode" />
+            <RoleAutocomplete
+              required
+              name="roleIds"
+              :branch-code="values.branchCode"
+            />
           </Col>
         </Row>
       </PageContentSection>
@@ -128,7 +136,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
 
 const { isLoading, data } = useFetchFormUserById(params.id as string);
 
-const { handleSubmit, values } = useFormAsync<EditUserForm>({
+const { handleSubmit, values, setFieldValue } = useFormAsync<EditUserForm>({
   initialValues: data,
   validationSchema: toTypedSchema(updateUserValidationSchema)
 });
@@ -138,6 +146,10 @@ const { isPending, mutate } = useUpdateUser(params.id as string);
 const onSubmit = handleSubmit((values) => {
   mutate(values);
 });
+
+function onBranchChange() {
+  setFieldValue('roleIds', [], false);
+}
 </script>
 
 <style scoped></style>

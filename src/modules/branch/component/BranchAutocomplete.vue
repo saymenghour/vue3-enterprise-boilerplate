@@ -1,41 +1,41 @@
 <template>
   <SelectField
     :required
-    name="branchCode"
+    :name
     :loading="isLoading"
     :label="t('branch.label')"
     :options="data"
     option-label="nameEn"
     option-value="code"
-    @on-change="onChange"
+    @change="onChange"
   />
 </template>
 
 <script setup lang="ts">
-import { SelectField } from '@/components';
-import { useTranslation } from '@/composables';
 import { useQueryClient } from '@tanstack/vue-query';
 import { onUnmounted } from 'vue';
+
+import { SelectField } from '@/components';
+import { useTranslation } from '@/composables';
 import { getFetchBranchAutocompleteApiQueryKey, useFetchMasterDataByDataTypeQuery } from '../branchService';
 
 interface BranchAutocompleteProps {
+  name: string;
   required?: boolean;
 }
 
 const emit = defineEmits<{
-  onChange: [id: string];
+  change: [id: string];
 }>();
 
-withDefaults(defineProps<BranchAutocompleteProps>(), {
-  required: true
-});
+defineProps<BranchAutocompleteProps>();
 
 const queryClient = useQueryClient();
 const { t } = useTranslation();
 const { data, isLoading } = useFetchMasterDataByDataTypeQuery();
 
 function onChange(id: string) {
-  emit('onChange', id);
+  emit('change', id);
 }
 
 onUnmounted(() => {

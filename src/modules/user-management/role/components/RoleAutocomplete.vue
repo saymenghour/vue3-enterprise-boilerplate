@@ -21,12 +21,12 @@ import { useTranslation } from '@/composables';
 import { fetchRoleAutocompleteQueryKey, useFetchRoleAutocomplete } from '../roleService';
 
 interface BranchAutocompleteProps {
-  name?: string;
+  name: string;
   required?: boolean;
   branchCode: string;
 }
 
-const { name = 'roleIds', required = true, branchCode } = defineProps<BranchAutocompleteProps>();
+const { branchCode } = defineProps<BranchAutocompleteProps>();
 
 const queryClient = useQueryClient();
 const { t } = useTranslation();
