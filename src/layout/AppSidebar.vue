@@ -1,11 +1,11 @@
 <template>
-  <div class="h-dvh">
-    <el-aside>
+  <div class="app-sidebar">
+    <div class="h-dvh w-72 sticky top-0 self-start">
       <BrandLogo />
-      <el-scrollbar>
+      <div class="h-full overflow-auto">
         <AppMenu />
-      </el-scrollbar>
-    </el-aside>
+      </div>
+    </div>
   </div>
 </template>
 

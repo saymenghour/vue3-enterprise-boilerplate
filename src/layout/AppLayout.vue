@@ -1,14 +1,12 @@
 <template>
-  <div class="common-layout">
-    <el-container>
-      <AppSidebar />
-      <el-container class="is-vertical">
-        <AppHeader />
-        <AppContent>
-          <slot />
-        </AppContent>
-      </el-container>
-    </el-container>
+  <div class="app-layout grid grid-cols-[auto_1fr] h-dvh">
+    <AppSidebar />
+    <div class="app-container flex flex-col">
+      <AppHeader />
+      <AppContent>
+        <slot />
+      </AppContent>
+    </div>
   </div>
 </template>
 

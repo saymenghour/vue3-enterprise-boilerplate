@@ -1,5 +1,5 @@
 <template>
-  <div class="text-2xl mb-7 flex justify-center items-center">
+  <div class="flex justify-center items-center h-16">
     <img
       :src="vue"
       alt="Logo"

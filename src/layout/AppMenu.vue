@@ -1,5 +1,5 @@
 <template>
-  <div class="h-dvh px-4">
+  <div class="px-3">
     <el-menu
       :default-active="activeMenu"
       :router="true"
