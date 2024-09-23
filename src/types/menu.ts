@@ -1,5 +1,6 @@
 export interface MenuItem {
-  key: string;
+  key?: string;
+  to: string;
   label: string;
   icon?: any;
   authorities?: string[];

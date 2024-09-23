@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { VisAxis, VisStackedBar, VisXYContainer } from '@unovis/vue';
 
 type Data = (typeof data)[number];
 const data = [

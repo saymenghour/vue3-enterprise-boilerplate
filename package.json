@@ -15,9 +15,7 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.0.5",
-    "@radix-icons/vue": "^1.0.0",
     "@tanstack/vue-query": "^5.54.2",
-    "@unovis/vue": "^1.4.4",
     "@vee-validate/zod": "^4.13.2",
     "@vueuse/core": "^11.0.3",
     "axios": "^1.7.7",
@@ -30,7 +28,6 @@
     "primeicons": "^7.0.0",
     "primevue": "^4.0.5",
     "query-string": "^9.1.0",
-    "radix-vue": "^1.9.5",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-primeui": "^0.3.4",
     "vee-validate": "^4.13.2",

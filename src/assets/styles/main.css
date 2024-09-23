@@ -6,11 +6,31 @@
 
 @layer base {
   :root {
-    --color-danger: #f87171;
+    --color-primary: #3b82f6;
+    --color-primary-light-4: #e6f4ff;
+    --color-danger: #f56c6c;
+
+    --text-color: #334155;
+    --background-color: #f1f5f9;
+
+    --menu-active-color: var(--color-primary);
+    --menu-active-background: var(--color-primary-light-4);
+    --menu-hover-color: var(--text-color);
+    --menu-hover-background: var(--background-color);
   }
 
   :root[class~='dark'] {
-    --color-danger: #f87171;
+    --color-primary: #3b82f6;
+    --color-primary-light-4: #e6f4ff;
+    --color-danger: #f56c6c;
+
+    --text-color: #334155;
+    --background-color: #f1f5f9;
+
+    --menu-active-color: var(--color-primary);
+    --menu-active-background: var(--color-primary-light-4);
+    --menu-hover-color: var(--text-color);
+    --menu-hover-background: var(--background-color);
   }
 }
 

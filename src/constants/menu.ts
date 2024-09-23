@@ -1,17 +1,20 @@
 import { AppRoute, Permission } from '@/constants';
 import type { MenuItem } from '@/types/menu';
+import { LayoutDashboard, UserCog } from 'lucide-vue-next';
 
 export const menus: MenuItem[] = [
   {
-    key: AppRoute.Dashboard.path,
-    label: 'dashboard'
+    to: AppRoute.Dashboard.path,
+    label: 'dashboard',
+    icon: LayoutDashboard
   },
   {
-    key: '/user-management',
+    to: '/user-management',
     label: 'userManagement',
+    icon: UserCog,
     subMenus: [
       {
-        key: AppRoute.User.path,
+        to: AppRoute.User.path,
         label: 'user.label',
         authorities: [
           Permission.CREATE_USER,
@@ -21,7 +24,7 @@ export const menus: MenuItem[] = [
         ]
       },
       {
-        key: AppRoute.Role.path,
+        to: AppRoute.Role.path,
         label: 'role.label',
         authorities: [
           Permission.CREATE_ROLE,
@@ -31,5 +34,5 @@ export const menus: MenuItem[] = [
         ]
       }
     ]
-  }
+  },
 ];
