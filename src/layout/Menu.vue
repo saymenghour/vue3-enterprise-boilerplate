@@ -1,5 +1,5 @@
 <template>
-  <ul class="grid gap-0.5">
+  <ul class="min-w-11">
     <template
       v-for="menu in menus"
       :key="menu.key ?? menu.to"

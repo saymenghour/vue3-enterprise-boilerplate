@@ -15,8 +15,6 @@ export { default as Divider } from './ui/Divider.vue';
 export { default as Form } from './ui/Form.vue';
 export { default as Grid } from './ui/Grid.vue';
 export { default as Loading } from './ui/Loading.vue';
-export { default as Menu } from './ui/Menu.vue';
-export { default as MenuItem } from './ui/MenuItem.vue';
 export { default as Row } from './ui/Row.vue';
 export { default as SectionTitle } from './ui/SectionTitle.vue';
 export { default as SplitButton } from './ui/SplitButton.vue';

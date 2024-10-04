@@ -1,11 +1,11 @@
 <template>
-  <li class="grid gap-0.5">
+  <li>
     <div
       class="menu-item flex items-center cursor-pointer rounded-lg p-3 hover:bg-color-primary"
       @click="toggleSubMenu"
     >
-      <div class="flex grow">
-        <span class="mr-3">
+      <div class="flex">
+        <span>
           <slot
             v-if="$slots.icon"
             name="icon"
@@ -17,24 +17,25 @@
             size="20"
           />
         </span>
-
-        <slot
-          v-if="$slots.title"
-          name="title"
-          :item="menu"
-        />
-        <span v-else>{{ menu.label }}</span>
       </div>
 
-      <div>
+      <div :class="`menu-item--title  ml-3 flex items-center justify-between ${collapsed ? 'w-0' : 'w-full'}`">
+        <span>
+          <slot
+            v-if="$slots.title"
+            name="title"
+            :item="menu"
+          />
+          <span v-else>{{ menu.label }}</span>
+        </span>
         <ChevronDown
           :size="16"
-          :class="`${show ? '-rotate-180' : ''} duration-200`"
+          :class="`${showSubMenu ? '-rotate-180' : ''} duration-200`"
         />
       </div>
     </div>
 
-    <ul :class="`sub-menu ${show ? 'show' : ''}`">
+    <ul :class="`sub-menu ${showSubMenu ? 'show' : ''}`">
       <div class="overflow-hidden">
         <MenuItem
           v-for="subMenu in menu.subMenus ?? []"
@@ -57,19 +58,19 @@
 <script setup lang="ts">
 import type { MenuItem as MenuItemType } from '@/types';
 import { ChevronDown } from 'lucide-vue-next';
-import { ref } from 'vue';
+import { storeToRefs } from 'pinia';
 import MenuItem from './MenuItem.vue';
+import { useUseLayoutStore } from './useLayout';
 
 type MenuItemProps = {
   menu: MenuItemType;
 };
 
 defineProps<MenuItemProps>();
-const show = ref<boolean>(false);
 
-function toggleSubMenu() {
-  show.value = !show.value;
-}
+const store = useUseLayoutStore();
+const { toggleSubMenu } = store;
+const { collapsed, showSubMenu } = storeToRefs(store);
 </script>
 
 <style scoped>
@@ -90,5 +91,10 @@ function toggleSubMenu() {
 .menu-item:hover {
   color: var(--menu-hover-color);
   background: var(--menu-hover-background);
+}
+
+.menu-item .menu-item--title {
+  overflow: hidden;
+  transition: 0.2s ease-in-out;
 }
 </style>

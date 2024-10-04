@@ -1,8 +1,8 @@
 <template>
-  <div class="app-layout grid grid-cols-[auto_1fr] h-dvh">
-    <AppSidebar />
-    <div class="app-container flex flex-col">
-      <AppHeader />
+  <div class="app-layout h-dvh">
+    <AppHeader />
+    <div class="app-container  grid grid-cols-[auto_1fr]">
+      <AppSidebar />
       <AppContent>
         <slot />
       </AppContent>

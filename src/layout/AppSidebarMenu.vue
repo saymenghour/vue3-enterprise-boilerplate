@@ -1,9 +1,6 @@
 <template>
-  <div class="h-full overflow-auto">
-    <Menu
-      :menus="authorizedMenus"
-      class="px-3"
-    >
+  <div class="h-full overflow-auto px-3">
+    <Menu :menus="authorizedMenus">
       <template #title="{ item }">
         {{ t(item.label) }}
       </template>
@@ -15,12 +12,12 @@
 import { onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
-import { Menu } from '@/components';
 import { useTranslation } from '@/composables';
 import { menus } from '@/constants';
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 import type { MenuItem } from '@/types/menu';
 import { ArrayUtils } from '@/utils/common';
+import Menu from './Menu.vue';
 
 const { t } = useTranslation();
 const route = useRoute();

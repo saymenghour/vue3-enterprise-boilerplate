@@ -1,15 +1,22 @@
 <template>
-  <div class="app-sidebar">
-    <div class="h-dvh w-72 sticky top-0 self-start">
-      <AppBrand />
+  <div :class="`app-sidebar h-dvh ${collapsed ? 'w-16' : 'w-72'}`">
+    <div class="sticky top-0 self-start overflow-hidden text-nowrap">
       <AppSidebarMenu />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import AppBrand from './AppBrand.vue';
+import { storeToRefs } from 'pinia';
 import AppSidebarMenu from './AppSidebarMenu.vue';
+import { useUseLayoutStore } from './useLayout';
+
+const store = useUseLayoutStore();
+const { collapsed } = storeToRefs(store);
 </script>
 
-<style scoped></style>
+<style scoped>
+.app-sidebar {
+  transition: width 0.3s ease-in-out;
+}
+</style>
