@@ -4,29 +4,31 @@
       v-for="menu in menus"
       :key="menu.key ?? menu.to"
     >
-      <MenuSubItem
-        v-if="menu.subMenus?.length"
-        :menu="menu"
-      >
-        <template #title="{ item }">
-          <slot
-            name="title"
-            :item="item"
-          />
-        </template>
-      </MenuSubItem>
-      
-      <MenuItem
-        v-else
-        :menu="menu"
-      >
-        <template #title="{ item }">
-          <slot
-            name="title"
-            :item="item"
-          />
-        </template>
-      </MenuItem>
+      <li>
+        <MenuSubItem
+          v-if="menu.subMenus?.length"
+          :menu="menu"
+        >
+          <template #title="{ item }">
+            <slot
+              name="title"
+              :item="item"
+            />
+          </template>
+        </MenuSubItem>
+    
+        <MenuItem
+          v-else
+          :menu="menu"
+        >
+          <template #title="{ item }">
+            <slot
+              name="title"
+              :item="item"
+            />
+          </template>
+        </MenuItem>
+      </li>
     </template>
   </ul>
 </template>

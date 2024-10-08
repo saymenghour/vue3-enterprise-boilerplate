@@ -1,33 +1,29 @@
 <template>
-  <li>
-    <RouterLink :to="menu.to ?? ''">
-      <div
-        class="menu-item flex items-center cursor-pointer rounded-lg hover:rounded-lg p-3"
-      >
-        <span>
-          <slot
-            v-if="$slots.icon"
-            name="icon"
-            :item="menu"
-          />
-          <component
-            :is="menu.icon"
-            v-else
-            size="20"
-          />
-        </span>
-
-        <span :class="`menu-item--title ml-3 ${collapsed ? 'w-0' : 'w-full'}`">
-          <slot
-            v-if="$slots.title"
-            name="title"
-            :item="menu"
-          />
-          <span v-else>{{ menu.label }}</span>
-        </span>
+  <RouterLink :to="menu.to ?? ''">
+    <div class="menu-item flex items-center rounded-lg hover:rounded-lg p-3">
+      <div class="menu-item--icon mr-2">
+        <slot
+          v-if="$slots.icon"
+          name="icon"
+          :item="menu"
+        />
+        <component
+          :is="menu.icon"
+          v-else
+          size="20"
+        />
       </div>
-    </RouterLink>
-  </li>
+
+      <div :class="`menu-item--title ${collapsed ? 'w-0' : 'w-full'}`">
+        <slot
+          v-if="$slots.title"
+          name="title"
+          :item="menu"
+        />
+        <span v-else>{{ menu.label }}</span>
+      </div>
+    </div>
+  </RouterLink>
 </template>
 
 <script setup lang="ts">

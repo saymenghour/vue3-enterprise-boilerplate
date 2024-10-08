@@ -1,47 +1,48 @@
 <template>
-  <li>
-    <div
-      class="menu-item flex items-center cursor-pointer rounded-lg p-3 hover:bg-color-primary"
-      @click="toggleSubMenu"
-    >
-      <div class="flex">
-        <span>
-          <slot
-            v-if="$slots.icon"
-            name="icon"
-            :item="menu"
-          />
-          <component
-            :is="menu.icon"
-            v-else
-            size="20"
-          />
-        </span>
-      </div>
-
-      <div :class="`menu-item--title  ml-3 flex items-center justify-between ${collapsed ? 'w-0' : 'w-full'}`">
-        <span>
-          <slot
-            v-if="$slots.title"
-            name="title"
-            :item="menu"
-          />
-          <span v-else>{{ menu.label }}</span>
-        </span>
-        <ChevronDown
-          :size="16"
-          :class="`${showSubMenu ? '-rotate-180' : ''} duration-200`"
+  <div
+    class="menu-item flex items-center cursor-pointer rounded-lg p-3 hover:bg-color-primary"
+    @click="toggleSubMenu"
+  >
+    <div class="flex">
+      <div class="menu-item--icon mr-2">
+        <slot
+          v-if="$slots.icon"
+          name="icon"
+          :item="menu"
+        />
+        <component
+          :is="menu.icon"
+          v-else
+          size="20"
         />
       </div>
     </div>
 
-    <ul :class="`sub-menu ${showSubMenu ? 'show' : ''}`">
-      <div class="overflow-hidden">
+    <div :class="`menu-item--title flex items-center justify-between ${collapsed ? 'w-0' : 'w-full'}`">
+      <div>
+        <slot
+          v-if="$slots.title"
+          name="title"
+          :item="menu"
+        />
+        <span v-else>{{ menu.label }}</span>
+      </div>
+      <ChevronDown
+        :size="16"
+        :class="`${showSubMenu ? '-rotate-180' : ''} duration-200`"
+      />
+    </div>
+  </div>
+
+  <ul :class="`sub-menu ${showSubMenu ? 'show' : ''} ml-8`">
+    <div class="overflow-hidden">
+      <li
+        v-for="subMenu in menu.subMenus ?? []"
+        :key="subMenu.key ?? subMenu.to"
+      >
         <MenuItem
-          v-for="subMenu in menu.subMenus ?? []"
-          :key="subMenu.key ?? subMenu.to"
           :menu="subMenu"
-          class="pl-5"
+          class="p-0"
         >
           <template #title="{ item }">
             <slot
@@ -50,9 +51,9 @@
             />
           </template>
         </MenuItem>
-      </div>
-    </ul>
-  </li>
+      </li>
+    </div>
+  </ul>
 </template>
 
 <script setup lang="ts">
@@ -77,7 +78,7 @@ const { collapsed, showSubMenu } = storeToRefs(store);
 .sub-menu {
   display: grid;
   grid-template-rows: 0fr;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 
   >div {
     overflow: hidden;
