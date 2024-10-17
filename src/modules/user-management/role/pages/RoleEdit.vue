@@ -40,7 +40,7 @@
 
       <RolePermission />
 
-      <div class="flex justify-end">
+      <div class="flex justify-end gap-2">
         <CancelButton />
         <UpdateButton :loading="isSubmitting" />
       </div>

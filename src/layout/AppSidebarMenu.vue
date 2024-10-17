@@ -13,15 +13,15 @@ import { onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
 import { useTranslation } from '@/composables';
+import { useAuthorization } from '@/composables/useAuthorization';
 import { menus } from '@/constants';
-import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 import type { MenuItem } from '@/types/menu';
 import { ArrayUtils } from '@/utils/common';
 import Menu from './Menu.vue';
 
 const { t } = useTranslation();
 const route = useRoute();
-const store = useCurrentUserStore();
+const { hasAuthority } = useAuthorization();
 
 const activeMenu = ref<string>('');
 const authorizedMenus = ref<MenuItem[]>(getAuthorizedMenus(menus));
@@ -38,7 +38,7 @@ watchEffect(() => {
 function getAuthorizedMenus(menus: MenuItem[]): MenuItem[] {
   const authorizedMenus: MenuItem[] = [];
   for (const menu of menus) {
-    if (store.isAuthorize(menu.authorities) && ArrayUtils.isEmpty(menu.subMenus)) {
+    if (ArrayUtils.isEmpty(menu.subMenus) && hasAuthority(menu.authorities)) {
       authorizedMenus.push(menu);
     } else if (!ArrayUtils.isEmpty(menu.subMenus)) {
       const subMenus = getAuthorizedMenus(menu.subMenus ?? []);

@@ -1,7 +1,10 @@
 <template>
   <PageBreadcrumb :items="breadcrumbItems" />
   <PageTitle :name="data?.fullName">
-    <template #actionButton>
+    <template
+      v-if="hasPermission(Permission.EDIT_USER)"
+      #actionButton
+    >
       <EditButton
         :path="`./${data?.id}/edit`"
         :label="t('user.edit')"
@@ -40,7 +43,8 @@ import {
   PageTitle
 } from '@/components';
 import { useTranslation } from '@/composables';
-import { AppRoute } from '@/constants';
+import { useAuthorization } from '@/composables/useAuthorization';
+import { AppRoute, Permission } from '@/constants';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import UserDetailsInfo from '../components/UserDetailsInfo.vue';
 import UserStatus from '../components/UserStatus.vue';
@@ -48,8 +52,8 @@ import { getFetchUserByIdQueryKey, useFetchUserById } from '../userService';
 
 const queryClient = useQueryClient();
 const { t } = useTranslation();
-
 const { params } = useRoute();
+const { hasPermission } = useAuthorization();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {

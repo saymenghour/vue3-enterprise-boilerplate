@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex text-sm"
+    class="flex text-sm mb-4"
     aria-label="Breadcrumb"
   >
     <ol class="inline-flex items-center text-[#303133] dark:text-[#E5EAF3]">

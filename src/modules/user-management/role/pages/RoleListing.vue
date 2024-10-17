@@ -4,7 +4,10 @@
     :name="t('role.list')"
     :show-back-button="false"
   >
-    <template #actionButton>
+    <template
+      v-if="hasPermission(Permission.CREATE_ROLE)"
+      #actionButton
+    >
       <AddNewButton
         :path="AppRoute.Role.addNew.path"
         :label="t('role.addNew')"
@@ -26,13 +29,15 @@
         <template #actions="{ row: role }">
           <div class="flex gap-2">
             <Button
+              v-if="hasPermission(Permission.VIEW_ROLE_DETAILS)"
               :label="t('view')"
               icon="pi pi-eye"
               as="router-link"
               :to="{ name: AppRoute.Role.details.name, params: { id: role.id } }"
             />
             <Button
-              label="Edit"
+              v-if="hasPermission(Permission.EDIT_ROLE)"
+              :label="t('edit')"
               icon="pi pi-pen-to-square"
               as="router-link"
               :to="{ name: AppRoute.Role.edit.name, params: { id: role.id } }"
@@ -50,7 +55,8 @@ import { computed, onUnmounted } from 'vue';
 
 import { AddNewButton, Button, Card, DataTable, PageBreadcrumb, PageContent, PageTitle } from '@/components';
 import { useTranslation } from '@/composables';
-import { AppRoute } from '@/constants';
+import { useAuthorization } from '@/composables/useAuthorization';
+import { AppRoute, Permission } from '@/constants';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 import RoleStatus from '../components/RoleStatus.vue';
 import { fetchRolesQueryKey, useFetchRoles } from '../roleService';
@@ -58,6 +64,7 @@ import type { Role } from '../roleType';
 
 const queryClient = useQueryClient();
 const { t } = useTranslation();
+const { hasPermission } = useAuthorization();
 const { data, isLoading } = useFetchRoles();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [

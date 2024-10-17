@@ -1,6 +1,5 @@
 <template>
   <DataTable
-    v-if="dataSource?.length"
     :value="dataSource"
     table-style="min-width: 50rem"  
   >
@@ -12,7 +11,6 @@
       style="width: 25%"
     >
       <template #body="{ data, field }">
-        {{ console.log(data) }}
         <span>
           {{
             col.render
@@ -26,6 +24,12 @@
         </span>
       </template>
     </Column>
+
+    <template #empty>
+      <span class="flex justify-center">
+        No data found.
+      </span>
+    </template>
   </DataTable>
 </template>
 

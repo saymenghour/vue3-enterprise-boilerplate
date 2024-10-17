@@ -1,5 +1,5 @@
 <template>
-  <div :class="`app-sidebar h-dvh ${collapsed ? 'w-16' : 'w-72'}`">
+  <div :class="`app-sidebar h-dvh ${collapsed ? 'w-16' : 'w-72'} mt-2`">
     <div class="sticky top-0 self-start overflow-hidden text-nowrap">
       <AppSidebarMenu />
     </div>

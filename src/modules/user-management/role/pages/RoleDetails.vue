@@ -1,30 +1,28 @@
 <template>
-  <SkeletonPageDetails v-if="isLoading" />
-  <template v-else>
-    <PageBreadcrumb :items="breadcrumbItems" />
-    <PageTitle
-      :name="data?.nameEn"
+  <PageBreadcrumb :items="breadcrumbItems" />
+  <PageTitle :name="data?.nameEn">
+    <template
+      v-if="hasPermission(Permission.EDIT_ROLE)"
+      #actionButton
     >
-      <template #actionButton>
-        <EditButton
-          :path="`./${data?.id}/edit`"
-          :label="t('role.edit')"
-        />
-      </template>
-    </PageTitle>
+      <EditButton
+        :path="`./${data?.id}/edit`"
+        :label="t('role.edit')"
+      />
+    </template>
+  </PageTitle>
 
-    <PageContent>
-      <PageContentSection :title="t('role.info')">
-        <Descriptions :fields>
-          <template #status>
-            <RoleStatus :status="data?.status" />
-          </template>
-        </Descriptions>
-      </PageContentSection>
-      
-      <RolePermissionDetails :permissions="data?.permissions" />
-    </PageContent>
-  </template>
+  <PageContent>
+    <PageContentSection :title="t('role.info')">
+      <Descriptions :fields>
+        <template #status>
+          <RoleStatus :status="data?.status" />
+        </template>
+      </Descriptions>
+    </PageContentSection>
+
+    <RolePermissionDetails :permissions="data?.permissions" />
+  </PageContent>
 </template>
 
 <script setup lang="ts">
@@ -41,7 +39,8 @@ import {
   PageTitle,
 } from '@/components';
 import { useTranslation } from '@/composables';
-import { AppRoute } from '@/constants';
+import { useAuthorization } from '@/composables/useAuthorization';
+import { AppRoute, Permission } from '@/constants';
 import type { BreadcrumbItemProps, DescriptionsFieldProps } from '@/types';
 import RolePermissionDetails from '../components/RolePermissionDetails.vue';
 import RoleStatus from '../components/RoleStatus.vue';
@@ -50,6 +49,7 @@ import { fetchRoleByIdQueryKey, useFetchRoleById } from '../roleService';
 const queryClient = useQueryClient();
 const { t } = useTranslation();
 const { params } = useRoute();
+const { hasPermission } = useAuthorization();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {
@@ -64,7 +64,7 @@ const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   }
 ]);
 
-const { isLoading, data } = useFetchRoleById(params.id as string);
+const { data } = useFetchRoleById(params.id as string);
 
 const fields = computed((): DescriptionsFieldProps[] => {
   const role = data.value;

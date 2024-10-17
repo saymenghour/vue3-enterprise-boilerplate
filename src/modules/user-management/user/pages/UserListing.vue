@@ -4,7 +4,10 @@
     :name="t('user.list')"
     :show-back-button="false"
   >
-    <template #actionButton>
+    <template
+      v-if="hasPermission(Permission.CREATE_USER)"
+      #actionButton
+    >
       <AddNewButton
         :path="AppRoute.User.addNew.path"
         :label="t('user.addNew')"
@@ -36,13 +39,15 @@
         <template #actions="{ row: user }">
           <div class="flex gap-2">
             <Button
+              v-if="hasPermission(Permission.VIEW_USER_DETAILS)"
               :label="t('view')"
               icon="pi pi-eye"
               as="router-link"
               :to="{ name: AppRoute.User.details.name, params: { id: user.id } }"
             />
             <Button
-              label="Edit"
+              v-if="hasPermission(Permission.EDIT_USER)"
+              :label="t('edit')"
               icon="pi pi-pen-to-square"
               as="router-link"
               :to="{ name: AppRoute.User.edit.name, params: { id: user.id } }"
@@ -69,15 +74,17 @@ import {
 } from '@/components';
 import PageContent from '@/components/shared/PageContent.vue';
 import { useTranslation } from '@/composables';
-import { AppRoute } from '@/constants';
+import { AppRoute, Permission } from '@/constants';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 
+import { useAuthorization } from '@/composables/useAuthorization';
 import UserStatus from '../components/UserStatus.vue';
 import { getFetchUsersQueryKey, useFetchUsers } from '../userService';
 import type { User } from '../userType';
 
 const queryClient = useQueryClient();
 const { t } = useTranslation();
+const { hasPermission } = useAuthorization();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {

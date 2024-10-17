@@ -1,5 +1,5 @@
-import type { RouteRecordRaw } from 'vue-router';
 import { AppRoute, Permission } from '@/constants';
+import type { RouteRecordRaw } from 'vue-router';
 
 export const userManagementRoutes: RouteRecordRaw[] = [
   {
@@ -9,10 +9,7 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     meta: {
       requiresAuth: true,
       authorities: [
-        Permission.CREATE_USER,
-        Permission.EDIT_USER,
         Permission.VIEW_USER_LISTING,
-        Permission.VIEW_USER_DETAILS
       ]
     }
   },
@@ -22,7 +19,9 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     component: () => import('@/modules/user-management/user/pages/UserCreate.vue'),
     meta: {
       requiresAuth: true,
-      authorities: [Permission.CREATE_USER]
+      authorities: [
+        Permission.CREATE_USER
+      ]
     }
   },
   {
@@ -32,9 +31,6 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     meta: {
       requiresAuth: true,
       authorities: [
-        Permission.CREATE_USER,
-        Permission.EDIT_USER,
-        Permission.VIEW_USER_LISTING,
         Permission.VIEW_USER_DETAILS
       ]
     }
@@ -47,8 +43,6 @@ export const userManagementRoutes: RouteRecordRaw[] = [
       requiresAuth: true,
       authorities: [
         Permission.EDIT_USER,
-        Permission.VIEW_USER_LISTING,
-        Permission.VIEW_USER_DETAILS
       ]
     }
   },
@@ -59,10 +53,7 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     meta: {
       requiresAuth: true,
       authorities: [
-        Permission.VIEW_USER_LISTING,
-        Permission.VIEW_USER_DETAILS,
-        Permission.CREATE_USER,
-        Permission.EDIT_USER
+        Permission.VIEW_ROLE_LISTING,
       ]
     }
   },
@@ -73,8 +64,6 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     meta: {
       requiresAuth: true,
       authorities: [
-        Permission.VIEW_ROLE_LISTING,
-        Permission.VIEW_ROLE_DETAILS,
         Permission.CREATE_ROLE
       ]
     }
@@ -85,7 +74,9 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     component: () => import('@/modules/user-management/role/pages/RoleDetails.vue'),
     meta: {
       requiresAuth: true,
-      authorities: [Permission.VIEW_ROLE_LISTING, Permission.VIEW_ROLE_DETAILS]
+      authorities: [
+        Permission.VIEW_ROLE_DETAILS
+      ]
     }
   },
   {
@@ -95,8 +86,6 @@ export const userManagementRoutes: RouteRecordRaw[] = [
     meta: {
       requiresAuth: true,
       authorities: [
-        Permission.VIEW_ROLE_LISTING,
-        Permission.VIEW_ROLE_DETAILS,
         Permission.EDIT_ROLE
       ]
     }
