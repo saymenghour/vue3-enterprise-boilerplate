@@ -14,10 +14,7 @@ import RecentSales from './RecentSales.vue';
         <Button>Download</Button>
       </div>
     </div>
-    <Tabs
-      default-value="overview"
-      class="space-y-4"
-    >
+    <Tabs value="overview">
       <TabsList>
         <TabsTrigger value="overview">
           Overview

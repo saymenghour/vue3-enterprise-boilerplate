@@ -3,7 +3,7 @@ import { storeToRefs } from 'pinia';
 
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 
-export function useAuthorization() {
+export function useAuth() {
   const store = useCurrentUserStore();
   const { authorities } = storeToRefs(store);
 

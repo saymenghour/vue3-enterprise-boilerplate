@@ -1,14 +1,12 @@
 import axiosRequest from 'axios';
 
-import { VUE_BASE_PATH } from '@/constants';
+import { env } from '@/utils/env';
 
 export const axios = axiosRequest.create({
-  baseURL: VUE_BASE_PATH,
+  baseURL: env.APP_BASE_PATH,
   headers: {
     Accept: 'application/json',
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json'
   }
 });
-
-export const axiosInstance = axios;

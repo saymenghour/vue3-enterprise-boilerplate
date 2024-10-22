@@ -14,7 +14,7 @@ const routes: RouteRecordRaw[] = [
         next({ path: from.fullPath, replace: true });
       }
     },
-    component: () => import('@/modules/authentication/LoginView.vue')
+    component: () => import('@/modules/auth/LoginView.vue')
   }
 ];
 

@@ -38,8 +38,8 @@ type SelectProps = {
   placeholder?: string;
   size?: 'large' | 'small';
   options: T[] | undefined;
-  optionLabel: keyof T | ((item: T) => string);
-  optionValue: keyof T | ((item: T) => string);
+  optionLabel: keyof T & string | ((item: T) => string);
+  optionValue: keyof T & string | ((item: T) => string);
   extra?: string;
 };
 

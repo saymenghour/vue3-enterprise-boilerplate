@@ -13,15 +13,15 @@ import { onMounted, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
 import { useTranslation } from '@/composables';
-import { useAuthorization } from '@/composables/useAuthorization';
 import { menus } from '@/constants';
+import { useAuth } from '@/modules/auth/useAuth';
 import type { MenuItem } from '@/types/menu';
 import { ArrayUtils } from '@/utils/common';
 import Menu from './Menu.vue';
 
 const { t } = useTranslation();
 const route = useRoute();
-const { hasAuthority } = useAuthorization();
+const { hasAuthority } = useAuth();
 
 const activeMenu = ref<string>('');
 const authorizedMenus = ref<MenuItem[]>(getAuthorizedMenus(menus));

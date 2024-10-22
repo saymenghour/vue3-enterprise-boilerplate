@@ -42,4 +42,14 @@ const currentLabel = computed(
 
 </script>
 
-<style scoped></style>
+<style scoped>
+.app-form-item>.app-form-item-required::after {
+  content: '*';
+  color: var(--color-danger);
+  margin-left: 4px;
+}
+
+.app-form-item>.app-form-item-error {
+  color: var(--color-danger);
+}
+</style>

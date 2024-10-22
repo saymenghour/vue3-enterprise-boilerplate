@@ -55,8 +55,8 @@ import { computed, onUnmounted } from 'vue';
 
 import { AddNewButton, Button, Card, DataTable, PageBreadcrumb, PageContent, PageTitle } from '@/components';
 import { useTranslation } from '@/composables';
-import { useAuthorization } from '@/composables/useAuthorization';
 import { AppRoute, Permission } from '@/constants';
+import { useAuth } from '@/modules/auth/useAuth';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 import RoleStatus from '../components/RoleStatus.vue';
 import { fetchRolesQueryKey, useFetchRoles } from '../roleService';
@@ -64,7 +64,7 @@ import type { Role } from '../roleType';
 
 const queryClient = useQueryClient();
 const { t } = useTranslation();
-const { hasPermission } = useAuthorization();
+const { hasPermission } = useAuth();
 const { data, isLoading } = useFetchRoles();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [

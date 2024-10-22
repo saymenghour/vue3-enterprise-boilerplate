@@ -15,7 +15,7 @@
 <h1>✨ Vue Boilerplate ✨</h1>
 </div>
 
-The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind CSS, Vue Query, and Vue i18n for buildings efficient, faster, maintainable, and scalable for enterprise applications.
+The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind CSS, Vue Query, VeeValidate, Zod, and Vue i18n for buildings efficient, faster, maintainable, and scalable for enterprise applications.
 
 ### 📚 Table of Contents
 
@@ -36,10 +36,10 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 - [x] Authentication: Provides a secure login system for users.
 - [x] Authorization: Implements role-based access control to manage user permissions.
 - [x] Multiple Language: Supports localization and enables users to switch between different languages.
-- [x] Theme (Light/Dark/System): Offers a choice of light, dark, or system-based theme for a personalized user experience.
 - [x] Form Validation: Includes form validation functionality to ensure data integrity and improve user experience.
 - [x] Error Handling: Handles and displays error messages in a user-friendly manner.
 - [x] API Integration: Integrates with external APIs to fetch data and provide dynamic content.
+- [ ] Theme (Light/Dark/System): Offers a choice of light, dark, or system-based theme for a personalized user experience.
 - [ ] Responsive Design: Ensures the application is optimized for various screen sizes and devices.
 - [ ] Testing: Includes a test suite with unit tests and integration tests for reliable code quality.
 - [ ] Documentation: Provides comprehensive documentation to guide developers and users.
@@ -48,17 +48,19 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 
 [&#8593; Back to top](#-table-of-contents)
 
-| Library      | Version                                                                 | Description                                                                                        |
-| ------------ | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| Vue          | ![Vue](https://img.shields.io/badge/%5E3.4.29-blue.svg)                 | A progressive JavaScript framework for building user interfaces.                                   |
-| Vite         | ![Vite](https://img.shields.io/badge/%5E5.3.1-blue.svg)                 | Next-generation frontend build tooling for fast and efficient development.                         |
-| Typescript   | ![Typescript](https://img.shields.io/badge/%5E5.4.5-blue.svg)           | A superset of JavaScript that enhances the development experience with static typing.              |
-| Vue Router   | ![Vue Router](https://img.shields.io/badge/%5E4.3.3-blue.svg)           | Official router for Vue.js, used for managing application routes.                                  |
-| Vue i18n     | ![Vue i18n](https://img.shields.io/badge/%5E9.13.1-blue.svg)            | Internationalization plugin for Vue.js applications, enabling multi-language support.              |
-| Vue Query    | ![@tanstack/vue-query](https://img.shields.io/badge/%5E5.45.0-blue.svg) | A data-fetching and state management library for Vue.js, with powerful data-fetching capabilities. |
-| Pinia        | ![Pinia](https://img.shields.io/badge/%5E2.1.7-blue.svg)                | An intuitive store for Vue.js applications, providing centralized state management.                |
-| Axios        | ![Axios](https://img.shields.io/badge/%5E1.7.2-blue.svg)                | Promise-based HTTP client for making API requests.                                                 |
-| Tailwind CSS | ![Tailwind CSS](https://img.shields.io/badge/%5E3.4.4-blue.svg)         | A highly customizable CSS framework for rapid web development.                                     |
+| Library      | Version                                                                  | Description                                                                                        |
+| ------------ | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| Vue          | ![Vue](https://img.shields.io/badge/%5E3.5.12-blue.svg)                  | A progressive JavaScript framework for building user interfaces.                                   |
+| Vite         | ![Vite](https://img.shields.io/badge/%5E5.4.9-blue.svg)                  | Next-generation frontend build tooling for fast and efficient development.                         |
+| Typescript   | ![Typescript](https://img.shields.io/badge/%5E5.6.3-blue.svg)            | A superset of JavaScript that enhances the development experience with static typing.              |
+| Vue Router   | ![Vue Router](https://img.shields.io/badge/%5E4.4.5-blue.svg)            | Official router for Vue.js, used for managing application routes.                                  |
+| Vue i18n     | ![Vue i18n](https://img.shields.io/badge/%5E9.14.1-blue.svg)             | Internationalization plugin for Vue.js applications, enabling multi-language support.              |
+| Vue Query    | ![@tanstack/vue-query](https://img.shields.io/badge/%5E5.59.13-blue.svg) | A data-fetching and state management library for Vue.js, with powerful data-fetching capabilities. |
+| Pinia        | ![Pinia](https://img.shields.io/badge/%5E2.2.4-blue.svg)                 | An intuitive store for Vue.js applications, providing centralized state management.                |
+| Axios        | ![Axios](https://img.shields.io/badge/%5E1.7.7-blue.svg)                 | Promise-based HTTP client for making API requests.                                                 |
+| Tailwind CSS | ![Tailwind CSS](https://img.shields.io/badge/%5E3.4.14-blue.svg)         | A highly customizable CSS framework for rapid web development.                                     |
+| VeeValidate  | ![VeeValidate](https://img.shields.io/badge/%5E4.14.3-blue.svg)          | Painless Vue form.                                                                                 |
+| Zod          | ![Zod](https://img.shields.io/badge/%5E3.23.8-blue.svg)                  | TypeScript-first schema validation with static type inference.                                     |
 
 ## 🗂️ Project Structure
 
@@ -73,41 +75,23 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 │   ├── App.vue
 │   ├── assets
 │   │   ├── images
+│   │   │   └── logo.svg
 │   │   └── styles
+│   │       └── main.css
 │   ├── components
-│   │   ├── ActionButton
-│   │   ├── Avatar.vue
-│   │   ├── Box.vue
-│   │   ├── Breadcrumb.vue
-│   │   ├── Button.vue
-│   │   ├── Checkbox.vue
-│   │   ├── Col.vue
-│   │   ├── Content.vue
-│   │   ├── DataTable.vue
-│   │   ├── Descriptions.vue
-│   │   ├── Form.vue
-│   │   ├── Grid.vue
-│   │   ├── Input.vue
-│   │   ├── LocaleSwitcher.vue
-│   │   ├── PrivateOutlet.vue
-│   │   ├── Row.vue
-│   │   ├── Section.vue
-│   │   ├── Skeleton
-│   │   ├── Tag.vue
-│   │   ├── ThemeSwitcher
-│   │   │   ├── ThemeSwitcher.vue
-│   │   │   └── icons
-│   │   │       ├── dark.svg
-│   │   │       ├── light.svg
-│   │   │       └── system.svg
-│   │   ├── Title.vue
 │   │   ├── index.ts
-│   │   └── ...
+│   │   ├── shared
+│   │   ├── theme-switcher
+│   │   ├── ui
+│   │   │   ├── Avatar.vue
+│   │   │   ├── Button.vue
+│   │   │   ├── Card.vue
+│   │   │   └── ...
+│   │   └── vee-validate
+│   │       ├── CheckboxField.vue
+│   │       ├── CheckboxGroupField.vue
+│   │   │   └── ...
 │   ├── composables
-│   │   ├── index.ts
-│   │   ├── notification.ts
-│   │   ├── useFormAsync.ts
-│   │   └── useI18n.ts
 │   ├── constants
 │   ├── http
 │   │   ├── axios
@@ -115,49 +99,44 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 │   │   │   └── interceptor.ts
 │   │   └── index.ts
 │   ├── layouts
-│   │   ├── MainLayout.vue
-│   │   ├── ...
-│   ├── lib
-│   │   ├── shadcn
-│   │   └── utils.ts
 │   ├── locales
 │   │   ├── en.ts
 │   │   ├── index.ts
 │   │   └── km.ts
 │   ├── main.ts
 │   ├── modules
-│   │   ├── authentication
+│   │   ├── auth
+│   │   │   ├── LoginView.vue
+│   │   │   ├── authenticationService.ts
+│   │   │   ├── authenticationType.ts
+│   │   │   ├── loginSchema.ts
+│   │   │   ├── routes.ts
+│   │   │   └── useAuth.ts
+│   │   ├── current-user
+│   │   │   ├── currentUserApi.ts
+│   │   │   ├── currentUserStore.ts
+│   │   │   └── currentUserType.ts
 │   │   ├── dashboard
+│   │   │   ├── DashboardView.vue
+│   │   │   ├── OverviewView.vue
+│   │   │   └── RecentSales.vue
 │   │   ├── exception
 │   │   │   ├── NotFound.vue
-│   │   │   └── ...
-│   │   └── user-management
-│   │       ├── router.ts
-│   │       └── user
-│   │           ├── components
-│   │           │   ├── UserDetailsInfo.vue
-│   │           │   ├── UserListingDropdownAction.vue
-│   │           │   └── UserStatus.vue
-│   │           ├── pages
-│   │           │   ├── UserCreate.vue
-│   │           │   ├── UserDetails.vue
-│   │           │   ├── UserEdit.vue
-│   │           │   └── UserListing.vue
-│   │           ├── userApi.ts
-│   │           ├── userSchema.ts
-│   │           ├── userService.ts
-│   │           ├── userStore.ts
-│   │           └── userType.ts
+│   │   │   └── UnauthorizeView.vue
 │   ├── router
 │   │   ├── guards.ts
 │   │   ├── index.ts
 │   │   ├── privateRoutes.ts
 │   │   └── publicRoutes.ts
 │   ├── services
+│   │   └── localStorage.ts
 │   ├── types
+│   │   ├── index.ts
+│   │   └── menu.ts
 │   └── utils
 │       ├── common
-│       └── crypto
+│       ├── crypto
+│       └── env.ts
 ├── types
 │   ├── env.d.ts
 │   ├── global.d.ts
@@ -179,7 +158,7 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
 
 [&#8593; Back to top](#-table-of-contents)
 
-1. [Node Js](https://nodejs.org/en/) version `v20.10.0`. The current Long Term Support (LTS) release is an ideal starting point.
+1. [Node Js](https://nodejs.org/en/) version `v20+`. The current Long Term Support (LTS) release is an ideal starting point.
 2. [Visual Studio Code](https://code.visualstudio.com/download). Visual Studio Code is the free and open-sourced code editor. It is one of the top most editor used especially for JavaScript application development.
 
    **Recommended Plugin for VSCode**
@@ -189,7 +168,6 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
    - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
    - [Prettier ESLint](https://marketplace.visualstudio.com/items?itemName=rvest.vs-code-prettier-eslint)
    - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
-   - [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)
    - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
    - [Git Graph](https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)
    - [GitLens — Git supercharged](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
@@ -238,57 +216,9 @@ The boilerplate of Vue v3, Typescript, Vite, Vue Router, Pinia, Axios, Tailwind 
     pnpm build
     ```
 
-### Run with Docker manually
+This will gracefully stop the container without affecting its data or configuration.
 
-- In your terminal, navigate to the root directory of your React project and run:
-
-  ```sh
-  docker build -t my-react-app .
-  ```
-
-- Start the container using the following command, replacing my-react-app with your preferred name:
-
-  ```sh
-  docker run -p 5173:5173 --name my-react-app my-react-app
-  ```
-
-  #### Explanation of the Run Command:
-
-  `-p 5173:5173`: Maps port 5173 inside the container to port 5173 on your Mac, allowing access from your browser.
-
-  `--name my-react-app`: Assigns a name (my-react-app) to the container for easier management.
-
-### Run with Docker compose
-
-- Build and Run the Container
-
-  Execute the following command to build the Docker all images and start the container in detached mode (running in the background) for local development:
-
-  ```sh
-  docker compose up -d
-  ```
-
-  Build and start for production
-
-  ```sh
-  docker compose -f compose.prod.yaml up -d
-  ```
-
-  `docker-compose up`: This instructs Docker Compose to build and bring up the services defined in your docker-compose.yml file.
-
-  `-d`: The -d flag specifies detached mode, allowing the container to run in the background without attaching to your terminal session.
-
-- Stop the Container
-
-  When you're finished developing and want to stop the container, use this command:
-
-  ```sh
-  docker compose stop
-  ```
-
-  This will gracefully stop the container without affecting its data or configuration.
-
-  Happy Coding :)
+Happy Coding :)
 
 ## 💡 Scripts
 

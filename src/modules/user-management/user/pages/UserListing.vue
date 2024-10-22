@@ -64,27 +64,27 @@ import { useQueryClient } from '@tanstack/vue-query';
 import { computed, onUnmounted } from 'vue';
 
 import {
-  AddNewButton,
-  Button,
-  Card,
-  DataTable,
-  PageBreadcrumb,
-  PageTitle,
-  UserAvatar
+    AddNewButton,
+    Button,
+    Card,
+    DataTable,
+    PageBreadcrumb,
+    PageTitle,
+    UserAvatar
 } from '@/components';
 import PageContent from '@/components/shared/PageContent.vue';
 import { useTranslation } from '@/composables';
 import { AppRoute, Permission } from '@/constants';
 import type { BreadcrumbItemProps, ColumnProps } from '@/types';
 
-import { useAuthorization } from '@/composables/useAuthorization';
+import { useAuth } from '@/modules/auth/useAuth';
 import UserStatus from '../components/UserStatus.vue';
 import { getFetchUsersQueryKey, useFetchUsers } from '../userService';
 import type { User } from '../userType';
 
 const queryClient = useQueryClient();
 const { t } = useTranslation();
-const { hasPermission } = useAuthorization();
+const { hasPermission } = useAuth();
 
 const breadcrumbItems = computed<BreadcrumbItemProps[]>(() => [
   {

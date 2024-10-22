@@ -1,12 +1,8 @@
-import { useQuery } from '@tanstack/vue-query';
 import { acceptHMRUpdate, defineStore } from 'pinia';
-import { watch } from 'vue';
-import { fetchCurrentUserApi } from './currentUserApi';
 import type { CurrentUser } from './currentUserType';
 
 export const useCurrentUserStore = defineStore('currentUser', {
   state: (): CurrentUser => ({
-    loading: false,
     user: undefined,
     authorities: []
   }),
@@ -17,17 +13,9 @@ export const useCurrentUserStore = defineStore('currentUser', {
     }
   },
   actions: {
-    async fetchCurrentUser() {
-      this.loading = true;
-      const { data } = useQuery({
-        queryKey: ['currentUser'],
-        queryFn: fetchCurrentUserApi
-      });
-      watch(data, (data) => {
-        this.loading = false;
-        this.user = data?.user ?? undefined;
-        this.authorities = data?.authorities ?? [];
-      });
+    setCurrentUser(currentUser: CurrentUser) {
+      this.user = currentUser.user;
+      this.authorities = currentUser.authorities;
     }
   }
 });

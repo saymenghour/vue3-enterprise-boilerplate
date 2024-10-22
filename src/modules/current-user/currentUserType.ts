@@ -1,5 +1,4 @@
 export type CurrentUser = {
-  loading: boolean;
   user:
   | {
     firstName: string;

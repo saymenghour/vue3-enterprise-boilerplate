@@ -6,7 +6,7 @@ import { userManagementRoutes } from '@/modules/user-management/router';
 export const privateRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('@/components/PrivateOutlet.vue'),
+    component: () => import('@/layouts/MasterLayout/AppMasterLayout.vue'),
     children: [
       {
         path: AppRoute.Dashboard.path,

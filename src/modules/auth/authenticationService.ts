@@ -1,5 +1,4 @@
 import { AppRoute } from '@/constants';
-import { axios } from '@/http/axios';
 import router from '@/router';
 import {
   destroySensitiveInfo,
@@ -10,6 +9,7 @@ import {
   saveToken
 } from '@/services/localStorage';
 import { AESCipher, RSACipher } from '@/utils/crypto';
+import axios from 'axios';
 import type {
   LoginForm,
   LoginRequest,
@@ -18,9 +18,8 @@ import type {
   RefreshTokenResponse
 } from './authenticationType';
 
-export const loginWithCredential = async ({ username, password }: LoginForm) => {
+export async function loginWithCredential({ username, password }: LoginForm) {
   try {
-
     const secretKey = AESCipher.generateRandomString();
     const data: LoginRequest = {
       username: username.trim(),
@@ -42,9 +41,9 @@ export const loginWithCredential = async ({ username, password }: LoginForm) => 
   } catch (error: any) {
     throw Error(error.response.data.message);
   }
-};
+}
 
-export const refreshToken = async (): Promise<string | undefined> => {
+export async function refreshToken(): Promise<string | undefined> {
   try {
     if (getRefreshToken() && getDeviceId()) {
       const data: RefreshTokenRequest = {
@@ -78,7 +77,7 @@ export const refreshToken = async (): Promise<string | undefined> => {
   }
 };
 
-export function logout() {
+export function logout(): void {
   axios.post(
     '/api/v1/oauth2/logout',
     {

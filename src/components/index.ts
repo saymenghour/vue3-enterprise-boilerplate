@@ -1,6 +1,4 @@
 // global
-// export { default as LocaleSwitcher } from './LocaleSwitcher.vue';
-export { default as PrivateOutlet } from './PrivateOutlet.vue';
 export { default as ThemeSwitcher } from './theme-switcher/ThemeSwitcher.vue';
 
 // UI

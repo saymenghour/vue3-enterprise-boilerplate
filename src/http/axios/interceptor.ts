@@ -1,12 +1,16 @@
-import { getBearerToken } from '@/services/localStorage';
-import { axiosInstance as axios } from '.';
+import { getAccessToken, getBearerToken, getDeviceId } from '@/services/localStorage';
+import { axios } from '.';
 
 import { ErrorCode } from '@/constants';
-import { refreshToken } from '@/modules/authentication/authenticationService';
+import { refreshToken } from '@/modules/auth/authenticationService';
 
 axios.interceptors.request.use(
   async (config) => {
-    // Do something with request
+    const token = getAccessToken(); // Function to get the current token
+    if (token) {
+      config.headers['Device-Id'] = getDeviceId();
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
     return config;
   },
   async (error: any) => {

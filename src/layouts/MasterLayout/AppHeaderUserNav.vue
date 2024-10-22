@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import UserAvatar from '@/components/shared/UserAvatar.vue';
+import { logout } from '@/modules/auth/authenticationService';
 import { useCurrentUserStore } from '@/modules/current-user/currentUserStore';
 import { storeToRefs } from 'pinia';
 import Menu from 'primevue/menu';
@@ -10,29 +11,35 @@ const { user } = storeToRefs(store);
 
 const menu = ref();
 const items = ref([
-    {
-        separator: true
-    },
-    {
-        label: 'Profile',
-        items: [
-            {
-                label: 'Settings',
-                icon: 'pi pi-cog',
-                shortcut: '⌘+O'
-            },
-            {
-                label: 'Logout',
-                icon: 'pi pi-sign-out',
-                shortcut: '⌘+Q'
-            }
-        ]
-    },
+  {
+    separator: true
+  },
+  {
+    label: 'Profile',
+    items: [
+      {
+        label: 'Settings',
+        icon: 'pi pi-cog',
+        shortcut: '⌘+O'
+      },
+      {
+        label: 'Logout',
+        icon: 'pi pi-sign-out',
+        shortcut: '⌘+Q',
+        action: () => handleLogout()
+      }
+    ]
+  },
 ]);
 
 const toggle = (event: any) => {
-    menu.value.toggle(event);
+  menu.value.toggle(event);
 };
+
+function handleLogout() {
+  logout();
+}
+
 </script>
 
 <template>
@@ -61,13 +68,14 @@ const toggle = (event: any) => {
           </div>
         </span>
       </template>
-      <template #submenulabel="{ item }">
+      <template #submenuitem="{ item }">
         <span class="text-primary">{{ item.label }}</span>
       </template>
       <template #item="{ item, props }">
         <a
           class="flex items-center"
           v-bind="props.action"
+          @click="item.action"
         >
           <span :class="item.icon" />
           <span>{{ item.label }}</span>

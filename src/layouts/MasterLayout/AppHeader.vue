@@ -1,12 +1,12 @@
 <template>
   <div class="flex justify-between items-center">
     <div class="flex justify-between items-center h-16 w-72 px-6">
-      <div class="inline-flex">
+      <!-- <div class="inline-flex">
         <img
           :src="logo"
           alt="logo"
         >
-      </div>
+      </div> -->
 
       <!-- <div
         :class="`cursor-pointer ${collapsed ? 'rotate-180' : ''}`"
@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import logo from '@/assets/images/logo.svg';
+// import logo from '@/assets/images/logo.svg';
 import AppHeaderUserNav from './AppHeaderUserNav.vue';
 </script>
 
